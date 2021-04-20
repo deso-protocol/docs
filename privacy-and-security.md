@@ -6,7 +6,7 @@ Your seed phrase is the password that controls your entire account. **Your seed 
 
 ## **Does bitclout.com have access to my seed phrase?**
 
-**No, bitclout.com does not have access to your seed phrase.** Your seed is stored in your browser in a highly-secured iFrame that is completely isolated from the rest of the app. Transactions are signed in your browser by this iFrame and **your seed phrase never leaves your browser.**
+**No, bitclout.com does not have access to your seed phrase.** Your seed is stored in your browser in a highly-secured `iframe` that is completely isolated from the rest of the app. Transactions are signed in your browser by this `iframe` and **your seed phrase never leaves your browser.**
 
 ## **How do I keep my account safe?**
 
