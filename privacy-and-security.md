@@ -24,9 +24,9 @@ Because your seed phrase is stored exclusively in your browser, it cannot be rec
 
 We apologize for the inconvenience here. We know this process is not ideal, we're working on alternative solutions, and hope to have an easier recovery path for users in the future.
 
-## How does the BitClout Identity Service work?
+## How does BitClout Identity work?
 
-The BitClout Identity Service, located at [identity.bitclout.com](https://identity.bitclout.com), safely stores your sensitive account information in your browser's local storage. To protect private key material the identity service has minimal dependencies, a strict content security policy, and is audited by multiple security firms. **The developer community does not recommend entering your seed phrase anywhere other than identity.bitclout.com.** Always check the URL bar to verify you are using identity.bitclout.com.
+BitClout Identity, located at [identity.bitclout.com](https://identity.bitclout.com), safely stores your sensitive account information in your browser's local storage. To protect private key material the identity service has minimal dependencies, a strict content security policy, and is audited by multiple security firms. **The developer community does not recommend entering your seed phrase anywhere other than identity.bitclout.com.** Always check the URL bar to verify you are using identity.bitclout.com.
 
 The BitClout Identity Service aims to make it easy for users to use a wide array of community projects safely and securely. Apps and nodes can integrate with BitClout Identity to onboard users without requiring them to enter private key material. Users can easily grant different levels of access on a per-account basis. The developer community is working on complete documentation for integrating with the BitClout Identity Service.
 
