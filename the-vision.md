@@ -41,7 +41,5 @@ Moreover, because BitClout is money-native, new signals emerge that can be used 
 
 With your help, we hope to build the BitClout blockchain into an enduring positive force for humanity that can bring competition and innovation back to the internet. The internet started as a fundamentally decentralized thing, but we’re at a point in history where things have concentrated and where innovating is harder than it used to be. After much thought over the past several years, we are convinced that the pendulum will swing back toward decentralization, perhaps permanently, and we all have an opportunity to be a part of that. A new generation of applications that the entire world can build collaboratively, unlocking the full potential of human ingenuity.
 
-In retrospect, it was inevitable
-
 @diamondhands
 
