@@ -16,7 +16,7 @@ Every profile on the platform gets its own coin that anybody can buy and sell. W
 
 ### You Can Buy Your Favorite Person’s Coin
 
-To buy someone’s coin, you simply navigate to their profile and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\). Profiles for the top 15,000 influencers from Twitter have been pre-loaded into the platform, meaning that you can buy and sell their coins even though they’re not on the platform yet. These “reserved” profiles have a “clock” icon next to their names, indicating the owner of the profile has not joined yet.
+To buy someone’s coin, you simply navigate to their profile and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\). Profiles for the top 15,000 influencers from Twitter have been pre-loaded into the platform, which means you can buy and sell their coins even though they're not on the platform yet. These “reserved” profiles have a “clock” icon next to their names, indicating the owner of the profile has not joined yet.
 
 ![](.gitbook/assets/image.png)
 
