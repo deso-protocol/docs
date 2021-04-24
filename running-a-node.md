@@ -114,7 +114,7 @@ BlockCypher will help prevent double-spends in the mempool. You can signup for a
 
 Once you have signed up for an account you may copy a token from the [tokens](https://accounts.blockcypher.com/tokens) section of the dashboard.
 
-You will copy this token in your  `dev.dev` file as the value for `BLOCK_CYPHER_API_KEY`.
+You will copy this token in your  `dev.env` file as the value for `BLOCK_CYPHER_API_KEY`.
 
 ### What type of records do I use with custom domains?
 
@@ -126,7 +126,7 @@ Both records should point to the IP address of your node.
 | Hostname | Type | TTL | Priority | Content |
 |----------|------|-----|----------|---------|
 | node.`DOMAIN`.com | A    | 299   | |`IPADDRESS` |
-| API.`DOMAIN`.com | A    | 299   | |`IPADDRESS` |
+| api.`DOMAIN`.com | A    | 299   | |`IPADDRESS` |
 
 If you do not create both records you will be unable to use a custom domain.
 
