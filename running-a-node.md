@@ -96,3 +96,17 @@ When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes 
 
 When a user logs in on your node, they have the ability to sign in with their BitClout identity, without having to re-enter their seed phrase. Once a user signs in, your node can sign transactions on their behalf with varying levels of approval required depending on what kind of permission the user granted. This creates a login mechanism for node operators that is as easy for users as "login with Facebook," but it unlocks a wallet in addition to a user's identity.
 
+## FAQ
+
+Answers to common questions and issues about running your own node:
+
+### What are the minimum requirements for syncing a node?
+
+We recommend having a machine with at least 32GB of RAM and 50GB of storage.
+
+### How do I configure SSL?
+
+There is an example SSL configuration in `nginx.dev`.
+
+
+
