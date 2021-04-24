@@ -108,5 +108,10 @@ We recommend having a machine with at least 32GB of RAM and 50GB of storage.
 
 There is an example SSL configuration in `nginx.dev`.
 
+### How do I use the BlockCypher API?
 
+BlockCypher will help prevent double-spends in the mempool. You can signup for a [BlockCypher](https://www.blockcypher.com/) account on the BlockCypher website. BlockCypher does offer a free amount of API calls.
 
+Once you have signed up for an account you may copy a token from the [tokens](https://accounts.blockcypher.com/tokens) section of the dashboard.
+
+You will copy this token in your  `dev.dev` file as the value for `BLOCK_CYPHER_API_KEY`.
