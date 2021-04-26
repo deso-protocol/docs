@@ -123,10 +123,11 @@ You must create two seperate **A** type domain records.
 Both records should point to the IP address of your node.
 
 #### Example DNS Records:
+
 | Hostname | Type | TTL | Priority | Content |
-|----------|------|-----|----------|---------|
-| node.`DOMAIN`.com | A    | 299   | |`IPADDRESS` |
-| api.`DOMAIN`.com | A    | 299   | |`IPADDRESS` |
+| :--- | :--- | :--- | :--- | :--- |
+| node.`DOMAIN`.com | A | 299 |  | `IPADDRESS` |
+| api.`DOMAIN`.com | A | 299 |  | `IPADDRESS` |
 
 If you do not create both records you will be unable to use a custom domain.
 
@@ -139,3 +140,4 @@ At this time this is not possible but more information will be given soon.
 Twilio provides an SMS API that allows you to confirm user phone numbers and thus send them currency from your seed wallet set inside the `dev.env` file. If you do not have this set users will be unable to verify a phone number.
 
 Twilio pricing can be reviewed [here](https://www.twilio.com/sms/pricing/us).
+
