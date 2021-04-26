@@ -13,7 +13,7 @@ Below is a list of severity levels and reward amounts for each level, as well as
     * The maximum amount will be rewarded if this exploit can impact all currently active users.
     * Example: a post containing an XSS attack that extracts seed phrases for all users who load the post in their browser.
   * Exploit: You are able to print money.
-    * The maximum amount will be rewarded if this exploit can result in the actual blockchain becoming corrupted. Corrupting the mempool is a lower-severity issue. In order be considered critical, the exploit must result in the state of the actual blockchain being corrupted.
+    * The maximum amount will be rewarded if this exploit can result in the actual blockchain becoming corrupted. Corrupting the mempool is a lower-severity issue. In order to be considered critical, the exploit must result in the state of the actual blockchain being corrupted.
     * Example: you create a transaction that prints BitClout and mines into the chain.
     * Example: you buy and sell a creator coin in a way that prints BitClout
 * **High: Up to $25,000 USD**
