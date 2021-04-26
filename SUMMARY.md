@@ -7,9 +7,9 @@
 
 * [Privacy and Security](faq/privacy-and-security.md)
 
-## For Developers
+## For Developers <a id="devs"></a>
 
-* [Running a Node](for-developers/running-a-node.md)
-* [The Exchange Listing API](for-developers/the-exchange-listing-api.md)
-* [Bug Bounty](for-developers/bug-bounty.md)
+* [Running a Node](devs/running-a-node.md)
+* [Exchange Listing API](devs/exchange-listing-api.md)
+* [Bug Bounty](devs/bug-bounty.md)
 
