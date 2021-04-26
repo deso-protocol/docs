@@ -108,6 +108,10 @@ We recommend having a machine with at least 32GB of RAM and 50GB of storage.
 
 There is an example SSL configuration in `nginx.dev`.
 
+### How do I host a node on AWS EC2?
+
+Community member [@sigil](https://bitclout.com/u/sigil) and [@aryanm](https://bitclout.com/u/aryanm) put together a guide that can be found [here](https://docs.bitswap.network/setting-up-a-bitclout-node-using-aws-ec2).
+
 ### How do I use the BlockCypher API?
 
 BlockCypher will help prevent double-spends in the mempool. You can signup for a [BlockCypher](https://www.blockcypher.com/) account on the BlockCypher website. BlockCypher does offer a free amount of API calls.
