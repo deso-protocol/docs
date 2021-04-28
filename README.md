@@ -38,7 +38,7 @@ A creator can make it so that only people who own a certain amount of their coin
 
 #### Sponsored Posts
 
-A creator can make it so that only people who own a certain amount of their coin can participate in the comments section of their posts. This forces anyone who wants to have a voice in that creator’s content to first align themselves with the creator by buying their coin. The alignment not only reduces spam significantly, but it could bias conversations to be significantly more positive than on existing platforms. It would also create a lot of demand for one’s coin-- can you imagine if Elon Musk or Chamath did an AMA with a minimum threshold for buying their coin in order to participate? Or if they answered questions in order of coin holdings?
+Creators can have an “inbox” where anyone can “bid” to have them repost \(aka “retweet”\) a particular post. If you want Kim Kardashian to retweet your fashion brand, you can submit an entry into her inbox, and if she retweets it then she keeps your money. The bids can all be made using the creator’s own coin, thus significantly increasing the demand for the coin.
 
 #### Premium Content
 
