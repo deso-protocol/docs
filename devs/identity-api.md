@@ -13,7 +13,7 @@ A few notes about message formats:
 * Messages with an `id` and `method` are requests that expect a response.
 * Messages with an `id` and no `method` are responses to requests.
 * Messages without an `id` do not expect a response.
-* UUID v4 is the recommend `id` format.
+* UUID v4 is the recommended `id` format.
 
 ### `initialize`
 
