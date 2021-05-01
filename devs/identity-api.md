@@ -173,7 +173,7 @@ The sign message is responsible for signing transaction hexes. If approval is re
   method: 'sign',
   payload: {
     accessLevel: 3,
-    acessLevelHmac: "0fab13f4...",
+    accessLevelHmac: "0fab13f4...",
     encryptedSeedHex: "0fab13f4...",
     transactionHex: "0fab13f4...",
   },
@@ -217,7 +217,7 @@ The decrypt message is responsible for decrypting messages.
   method: 'decrypt',
   payload: {
     accessLevel: 3,
-    acessLevelHmac: "0fab13f4...",
+    accessLevelHmac: "0fab13f4...",
     encryptedSeedHex: "0fab13f4...",
     encryptedHexes: [
       "0fab13f4...",
