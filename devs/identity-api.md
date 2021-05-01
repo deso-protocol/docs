@@ -255,7 +255,7 @@ The `jwt` message creates signed JWT tokens that can be used to verify a user's 
   method: 'jwt',
   payload: {
     accessLevel: 3,
-    acessLevelHmac: "0fab13f4...",
+    accessLevelHmac: "0fab13f4...",
     encryptedSeedHex: "0fab13f4...",
   },
 }
