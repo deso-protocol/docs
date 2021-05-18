@@ -26,11 +26,9 @@ We think the easiest way to understand the architecture is to describe how a nod
 * frontend: [c1363f7fb0239a835b1f2c91d395c8e2d22cbb8f](https://github.com/bitclout/frontend/tree/c1363f7fb0239a835b1f2c91d395c8e2d22cbb8f)
 * Identity: [665281c54b8136a5b8965fb907aac7419ac4c735](https://github.com/bitclout/identity/tree/665281c54b8136a5b8965fb907aac7419ac4c735)
 
-**FIXME: Links may need to be updated once repos are public**
-
 ### The node’s main loop
 
-* The entrypoint to everything the node does is [main.go](https://github.com/bitclout/backend/blob/96d2456/main.go#L15). It's better to start tracing from the backend repo's main rather than the core repo's main, since the core repo is mainly intended to be used as a library. Moreover, since backend uses the core repo as a library, we will hit all of the core functionality by starting here anyway.
+* The entrypoint to everything the node does is [`main.go`](https://github.com/bitclout/backend/blob/96d2456/main.go#L15). It's better to start tracing from the backend repo's main rather than the core repo's main, since the core repo is mainly intended to be used as a library. Moreover, since backend uses the core repo as a library, we will hit all of the core functionality by starting here anyway.
   * There is a lot of indirection in main introduced by the fact that we are using Viper to manage our command-line flags. When the backend binary is run, a command is passed, such as "run," which triggers [a `Run()` function defined in the cmd package](https://github.com/bitclout/backend/blob/96d2456/cmd/run.go#L23).
   * All available commandline flags can be viewed [in the `init()` function](https://github.com/bitclout/backend/blob/96d2456/cmd/run.go#L45). Some of these flags are initialized in [`LoadConfig()`](https://github.com/bitclout/backend/blob/96d2456/cmd/run.go#L25) at the beginning of `Run()`.
     * Note the core repo's flags are effectively imported into backend. This allows for maximum composability, whereby someone can include the core repo and get all of its functionality embedded into their binary for free.
