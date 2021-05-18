@@ -4,7 +4,7 @@ In this tutorial, we will show you how to make changes to the BitClout codebase,
 
 ## Prerequisites
 
-This guide assumes you have successfully made it through **Setting Up Your Dev Environment\(FIXME\)**. In particular, it assumes you have a testnet node running with n0\_test showing a frontend UI that looks roughly like the following screenshot:
+This guide assumes you have successfully made it through **[Setting Up Your Dev Environment](https://docs.bitclout.com/code/dev-setup)**. In particular, it assumes you have a testnet node running with n0\_test showing a frontend UI that looks roughly like the following screenshot:
 
 ![](../.gitbook/assets/image%20%2811%29.png)
 
