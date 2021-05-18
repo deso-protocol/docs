@@ -40,9 +40,6 @@ If you like Vim, you can also install the Vim plugin so you get your typical Vim
 cd frontend
 npm install
 
-# Install angular cli
-sudo npm install -g @angular/cli typescript tslint dep
-
 # The following command will serve the frontend on localhost:4200 with
 # auto-reloading on changes. You must run a node before the site will
 # actually work however (see next section).
@@ -69,7 +66,7 @@ cd backend/scripts/nodes
 http://localhost:4200
 ```
 
-By default, your browser will point at localhost:17001, which is the default "mainnet" API port. However, when you run n0\_test, your node spins up on localhost:18001. To point your frontend at your testnet node, however, you must open up your inspector and change your lastLocalNodev2 parameter to localhost:18001 as shown in the screenshot below. After you do this, you should be able to Sign Up, and everything should work normally.
+By default, your browser will point at `localhost:17001`, which is the default "mainnet" API port. However, when you run n0\_test, your node spins up on `localhost:18001`. To point your frontend at your testnet node, however, you must open up your inspector and change your `lastLocalNodev2` parameter to `localhost:18001` as shown in the screenshot below. After you do this, you should be able to Sign Up, and everything should work normally.
 
 ![](../.gitbook/assets/image%20%2810%29.png)
 

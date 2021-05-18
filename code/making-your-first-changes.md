@@ -4,9 +4,9 @@ In this tutorial, we will show you how to make changes to the BitClout codebase,
 
 ## Prerequisites
 
-This guide assumes you have successfully made it through **Setting Up Your Dev Environment\(FIXME\)**. In particular, it assumes you have a testnet node running with n0\_test showing a frontend UI that looks roughly like the following screenshot:
+This guide assumes you have successfully made it through [**Setting Up Your Dev Environment**](dev-setup.md). In particular, it assumes you have a testnet node running with n0\_test showing a frontend UI that looks roughly like the following screenshot:
 
-![](../.gitbook/assets/image%20%2811%29.png)
+![](../.gitbook/assets/image%20%2813%29.png)
 
 ## Make Your First Frontend Change
 
@@ -47,7 +47,5 @@ Now you should see some custom content in the post that you added to the feed. Y
 
 ## Make Your First Core Change
 
-**FIXME: Fill this in**
-
-@diamondhands
+**WIP**
 
