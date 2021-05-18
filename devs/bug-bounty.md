@@ -8,7 +8,7 @@ Hundreds of thousands of users have accounts on the BitClout blockchain, and thi
 
 Below is a list of severity levels and reward amounts for each level, as well as examples of exploits at each level. Please note that all reward amounts are ultimately subject to the discretion of the BitClout developer community, and the example exploits below are just a guide. The actual reward amounts may vary depending on the nature of the exploit, but we will try to be as generous as possible. All rewards are payable in Bitcoin or BitClout.‌
 
-* **Critical: Up to $50,000 USD**
+* **Critical: Up to $75,000 USD**
   * Exploit: You can acquire the seed phrases of users on bitclout.com without them having to perform any special action on an external site.
     * The maximum amount will be rewarded if this exploit can impact all currently active users.
     * Example: a post containing an XSS attack that extracts seed phrases for all users who load the post in their browser.
@@ -16,7 +16,7 @@ Below is a list of severity levels and reward amounts for each level, as well as
     * The maximum amount will be rewarded if this exploit can result in the actual blockchain becoming corrupted. Corrupting the mempool is a lower-severity issue. In order to be considered critical, the exploit must result in the state of the actual blockchain being corrupted.
     * Example: you create a transaction that prints BitClout and mines into the chain.
     * Example: you buy and sell a creator coin in a way that prints BitClout
-* **High: Up to $25,000 USD**
+* **High: Up to $35,000 USD**
   * Exploit: You can steal money from users on bitclout.com without them having to perform any special action external to the site. However, you are unable to compromise the seed phrases of these users.
     * The maximum amount will be rewarded if this exploit can impact all currently active users.
     * Example: a post containing an XSS attack that sends all of a user's money to your wallet when they view the post in their browser.
