@@ -7,7 +7,13 @@
 
 * [Privacy and Security](faq/privacy-and-security.md)
 
-## For Developers <a id="devs"></a>
+## The BitClout Code <a id="code"></a>
+
+* [Setting Up Your Dev Environment](code/dev-setup.md)
+* [Making Your First Changes](code/making-your-first-changes.md)
+* [BitClout Code Walkthrough](code/walkthrough.md)
+
+## Developer Docs <a id="devs"></a>
 
 * [Running a Node](devs/running-a-node.md)
 * [Identity API](devs/identity-api.md)
