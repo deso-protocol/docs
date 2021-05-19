@@ -15,7 +15,7 @@ This guide will cover all of the API endpoints that are needed in order to list 
 
 The [Quick Start](exchange-listing-api.md#quick-start) section provides examples of all of the above using the “curl” command. The [Full API Guide](exchange-listing-api.md#full-api-guide) section provides more detail on each API endpoint shown in the examples.
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use in-browser signing such that your seed phrase never leaves your browser \(**_[_**learn more**_](https://docs.bitclout.com/privacy-and-security)_**\). In contrast, exchanges are typically custodial and so some these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use in-browser signing such that your seed phrase never leaves your browser \(**_[_**learn more**_](https://docs.bitclout.com/privacy-and-security)_**\). In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 _**Note: The dev community is also working to complete an integration with**_ [_**Rosetta**_](https://www.rosetta-api.org/) _**that will further build on this API.**_
 
@@ -85,7 +85,7 @@ Notes:
     ```
 * We pipe the command into “python -m json.tool” so that it will “pretty print” but that you can delete this if you don’t have Python installed.
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 ### Check Balance of BitClout Public Key
 
@@ -122,7 +122,7 @@ Notes:
 * This endpoint will return information for the transaction created. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section on this endpoint for more information on what is returned.
 * A custom “fee rate” can also be set. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint for more detail on that.
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 ### Look Up Transactions for a Public Key
 
@@ -180,7 +180,7 @@ For more information, see the [Full API Guide](exchange-listing-api.md#full-api-
 
 ## Full API Guide
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 _**Note: The dev community is also working to complete an integration with**_ [_**Rosetta**_](https://www.rosetta-api.org/) _**that will further build on this API.**_
 
