@@ -18,11 +18,11 @@ This CIP describes a method to disclose Rugpulling (coin owners selling their ow
 
 ==Motivation==
 
-There has been a significant number of people who have been rug pulled recently as of May 2021. Several users have complained that they didn't anticipate the creator selling their own coin. This is especially relevant to new users, who are still understanding how creator coin prices work on an Automated Market Maker.
+There has been a significant number of people who have been rug pulled recently as of May 2021. Several users have complained that they didn't anticipate the creator selling their own coin. This is especially relevant to new users, who are still learning how creator coin prices work on an Automated Market Maker.
 
 ==Goals and Non Goals==
 
-This CIP will not prevent anyone from selling their coin in perpetuity. This is because there are always valid reasons for creators (or anyone) to sell their coin. This CIP will not prevent any supporter from selling the coin they purchased. From the vision document, the core feature of creator coins is to allow fans to be able to support/oppose creator's action with their buy/sell of the coin. The protection this CIP offers can be circumvented by situations mentioned below in the Weakness section. However, in these circumstances, we will anticipate the coin buyers to do the due diligence to cover these scenarios (or anticipate nodes offering tools to identify these scenarios for coin buyers). These scenarios are not differentiable from a legitimate situation where lack of confidence or an action by the creator can cause the coin price to tumble. In such or similar scenarios, this CIP will err on the side of ensuring the original use case envisioned in the vision doc be prioritized.
+This CIP will not prevent anyone from selling their coin in perpetuity. This is because there are always valid reasons for creators (or anyone) to sell their coin. This CIP will not prevent any supporter from selling the coin they purchased. From the [https://docs.bitclout.com/the-vision vision document], the core feature of creator coins is to allow fans to be able to support/oppose creator's action with their buy/sell of the coin. The protection this CIP offers can be circumvented by situations mentioned below in the Weakness section. However, in these circumstances, we will anticipate the coin buyers to do the due diligence to cover these scenarios (or anticipate nodes offering tools to identify these scenarios for coin buyers). These scenarios are not differentiable from a legitimate situation where lack of confidence or an action by the creator can cause the coin price to tumble. In such or similar scenarios, this CIP will err on the side of ensuring the original use case envisioned in the vision doc be prioritized.
 
 ==Specification==
 
@@ -32,16 +32,36 @@ Every account profile will have an extra field called <code>RugPullProtectionSta
 type UpdateProfileMetadata struct {
 	...
 	RugPullProtectionStatus bool
+	// Timestamp at which protection is disabled. Any time >= the field value will have protection disabled.
         RugPullEndTime          timestamp
 }
 </pre>
 
-This field will be updated by users voluntarily and would be available for nodes to display if a user has opted into it. The default state is false and a user needs to turn for the feature to be true. For the top 15000 profiles, this feature will be by default turned on. Turning off this feature will involve disclosure of turning off this feature by clients.
+This field will be updated by users voluntarily and would be available for nodes to display if a user has opted into it. The default state is false and a user needs to turn on for the feature to be true. For the top 15000 profiles, this feature will be by default turned on. Turning off this feature will use disclosure mechanism to notify clients that the feature is being turned off.
+
+When <code>RugPullProtectionStatus</code> is not set, then the feature is off. When the feature is turned on <code>RugPullProtectionStatus</code> is set to <code>True</code> with <code>RugPullEndTime</code> unset. When creator intends to turn off the protection, the field <code>RugPullEndTime</code> is set with the actual end time.
 
 The delay between the protection status request to be turned to false and actually enforced is proposed to a minimum of 15 days by the chain (but can be increased by the node operator). Once turned off, none of the disclosure requirements are applicable.
 
 ==Profile Rugpull Disclosure==
-Users can turn on rugpull protection anytime. When this is turned on, the owner's coin sale would be subject to disclosure. An user can turn on rugpull protection back anytime, including when having turned on disclosure for rugpull protection end. The effect of this will be immediate. Nodes will make clear to users the effect of this - that they can't sell any of their coins the next 15 days (or more based on the RugPullEndTime).
+Creators can turn on rugpull protection anytime. When this is turned on, the owner's coin sale would be subject to disclosure. A creator can turn on rugpull protection back anytime.
+
+Here are the possible scenarios when a creator can turn it on or off.
+
+# Current status: Status missing
+## On: Possible to turn on. Will set <code>RugPullProtectionStatus</code> to True.
+## Off: No-op.
+# Status on
+## On: No-op.
+## Off: Possible to turn off. Will trigger a disclosure and update profile with <code>RugPullEndTime</code> set with a future timestamp.
+# Status on with <code>RugPullEndTime</code> set up with future timestamp.
+## On: Updates profile with <code>RugPullendTime</code> cleared.
+## Off: No-op
+# Status on with <code>RugPullEndTime</code> set up with past timestamp.
+## On: Updates profile with <code>RugPullProtectionStatus</code> to True and <code>RugPullEndTime</code> cleared.
+## Off: No-op
+
+The effect of toggling to On will be immediate. Nodes will make clear to creator that they can't sell any of their coins the next 15 days (or more based on the <code>RugPullEndTime</code>) when initiating turning off.
 
 ==Coin Sales==
 Coin sales can be of the following scenarios:
@@ -101,6 +121,8 @@ Supporter intending to sell may be selling only a small fraction of the entire c
 If the supporter wants to dump their coins, because they aren't aligned with the creator anymore and they don't want to associate with the creator, the only option then is to transfer the coins back to the creator and lose their share or to send it to a burn address to lose those coins permanently. If the coins that the supporter possesses is transferred from another supporter, they would still be subject to the same rule. This effectively means, coins transferred from the creator in general are less mobile entities than coins purchased, as they are aligned with LONG strategy for the coin. If you want to support the creator and retain the ability to sell it anytime, you should prefer to buy the coins rather than obtain transferred coins.
 
 Scenario 3 has no restrictions and the supporter is free to buy and sell the coin the way they desire.
+
+It is possible to have an inflight profile disclosure protection status toggle to false at the same time with an intent to sell disclosure. 
 
 ==Sale of transferred coins==
 To allow easy indexing, coins sold that were obtained as transfer will have an additional bit that indicates this was a transfer sale.
