@@ -46,9 +46,9 @@ Users can turn on rugpull protection anytime. When this is turned on, the owner'
 ==Coin Sales==
 Coin sales can be of the following scenarios:
 
-1.  Coin sale by the creator of their own coins that they either bought or received.
-2.  Coin sale by supporter, where the supporter received the coin, either from the creator or someone else.
-3.  Coin sale by supporter of the coin, where the supporter purchased the coin.
+# Coin sale by the creator of their own coins that they either bought or received.
+# Coin sale by supporter, where the supporter received the coin, either from the creator or someone else.
+# Coin sale by supporter of the coin, where the supporter purchased the coin.
 
 When rugpull protection is enabled, the disclosure affects 1 and 2. The disclosure does not affect 3 under any circumstance. When the creator tries to sell their own coin, they are expected to first issue an <code>IntentToSell</code> operation for their creator coin.
 
@@ -92,9 +92,9 @@ For scenario 2, there are two requirements that need to be satisfied:
 If requirement 2 is satisfied, if the creator already has a disclosure in place, the supporter will be subject to the same disclosure. If there is no such disclosure, the supporter will be able to create a disclosure to the maximum of the amount that they possess. This disclosure shall also have <code>MaxCreatorCoinsToSell</code>, <code>ReasonPostForIntentToSell</code>, <code>SellStartDate</code>, <code>SellDuration</code> and additionally <code>TransferredCoinHolderPK</code> indicating the public key of the supporter who intends to sell.
 
 When pre-validating this disclosure, nodes need to ensure that:
-1) The supporter PK is different from the creator PK.
-2) The supporter has enough coins as mentioned in the disclosure. 
-3) MaxCreatorCoinsToSell is > 0 and at least 50% of the coins they possess.
+# The supporter PK is different from the creator PK.
+# The supporter has enough coins as mentioned in the disclosure. 
+# MaxCreatorCoinsToSell is > 0 and at least 50% of the coins they possess.
 
 Supporter intending to sell may be selling only a small fraction of the entire coin supply but still be subjected to the disclosure. Ways to avoid being subject to disclosure would be to reduce the amount being sold and trying again later. Nodes can provide the ability for supporters to schedule sales when the threshold drops below 10%.
 
@@ -120,11 +120,11 @@ It does not force anyone to sell or not sell. The core of the CIP is disclosure 
 ==Weakness==
 Situation below is a valid circumstance where rug pulling might still happen, but will not be prevented by the CIP.
 
-1.  Creator opens account A, FR at 100%. Creators buy their own coin in small quantities.
-2.  Creator creates another unrelated account B (or reuses an existing account). Seeds the account with CLOUT and buys up lots of coins for account A created in 1 above. This is a legitimate way to both transfer CLOUT to A (if the FR is high) and to hold coins of A.
-3.  The collusion between B and A is not public. Other users continue to buy coins of A.
-4.  B sells all of A's coin and cashes out. Coin value drops as the dump was already done.
-5.  A pretends to be shocked.
+#  Creator opens account A, FR at 100%. Creators buy their own coin in small quantities.
+#  Creator creates another unrelated account B (or reuses an existing account). Seeds the account with CLOUT and buys up lots of coins for account A created in 1 above. This is a legitimate way to both transfer CLOUT to A (if the FR is high) and to hold coins of A.
+#  The collusion between B and A is not public. Other users continue to buy coins of A.
+#  B sells all of A's coin and cashes out. Coin value drops as the dump was already done.
+#  A pretends to be shocked.
 
 The telltale sign of this scheme is unknown accounts like B owning large amounts of coins. An user can potentially create multiple popular accounts and rug pull all of them at the same time. However, the barrier to do them is high due to the solution above. If collusion between A and B is not publicly known, then this scenario above is no different from the creator coin market reacting to abhorrent behavior by the creator.
 
