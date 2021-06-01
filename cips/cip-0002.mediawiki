@@ -155,7 +155,7 @@ Situation below is a valid circumstance where rug pulling might still happen, bu
 The telltale sign of this scheme is unknown accounts like B owning large amounts of coins. Scammers can potentially create multiple popular accounts and rug pull all of them at the same time. However, the barrier to do them is high due to the solution above. If collusion between A and B is not publicly known, then this scenario above is no different from the creator coin market reacting to abhorrent behavior by the creator.
 
 ==Blockchain data sustainability==
-This CIP, if implemented as is, is expected to add x number of additional y profile update operations and additional Intent to Sell operations on the chain.
+This CIP, if implemented as is, is expected to add x number of additional profile update operations and y additional Intent to Sell operations on the chain.
 
 ==Acknowledgments==
 The author would like to acknowledge Nigel (http://bitclout.com/u/nigeleccles) and V (http://bitclout.com/u/v) for their thoughtful discussion in Discord, which lead to this CIP.
