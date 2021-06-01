@@ -50,7 +50,7 @@ Coin sales can be of the following scenarios:
 2.  Coin sale by supporter, where the supporter received the coin, either from the creator or someone else.
 3.  Coin sale by supporter of the coin, where the supporter purchased the coin.
 
-When rugpull protection is enabled, the disclosure affects 1 and 2. The disclosure does not affect 3 under any circumstance. When the creator tries to sell their own coin, they are expected to first issue an <pre>IntentToSell</pre> operation for their creator coin.
+When rugpull protection is enabled, the disclosure affects 1 and 2. The disclosure does not affect 3 under any circumstance. When the creator tries to sell their own coin, they are expected to first issue an <code>IntentToSell</code> operation for their creator coin.
 
 <pre>
 type CreatorCoinOperationType uint8
@@ -79,9 +79,9 @@ type CreatorCoinMetadataa struct {
 }
 </pre>
 
-For scenario 1, the blockchain will first set up an intent to sell, with an appropriate reason, maximum amount to sell and when the sell starts and duration of sell. The coin sale will never be earlier than 7 days from the date of issue of intent to sell. The sell duration is a positive duration (and should not be more than 15 days). If the creator tries to sell more than the <pre>MaxCreatorCoinsToSell</pre> within that duration, the chain will not allow the creator to sell. The chain will sum the sale of coins from the beginning of SellStartDate to check this. The blockchain will NOT allow sale of coins before the <pre>SellStartDate</pre> and beyond <pre>SellStartDate + SellDuration</pre> (without another disclosure). Nodes can use the <pre>ReasonPostForIntentToSell</pre> field to provide the hash to their post, which can be used by nodes to link to the post, with preview on the reason. This field is optional. A creator is not obligated to sell all of their coins in the provided period. They may choose to sell no coins, if their circumstance changes. However, creators cannot withdraw their intent to sell. This is to prevent creators spamming the chain with unwanted intent to sell.
+For scenario 1, the blockchain will first set up an intent to sell, with an appropriate reason, maximum amount to sell and when the sell starts and duration of sell. The coin sale will never be earlier than 7 days from the date of issue of intent to sell. The sell duration is a positive duration (and should not be more than 15 days). If the creator tries to sell more than the <code>MaxCreatorCoinsToSell</code> within that duration, the chain will not allow the creator to sell. The chain will sum the sale of coins from the beginning of SellStartDate to check this. The blockchain will NOT allow sale of coins before the <code>SellStartDate</code> and beyond <code>SellStartDate + SellDuration</code> (without another disclosure). Nodes can use the <code>ReasonPostForIntentToSell</code> field to provide the hash to their post, which can be used by nodes to link to the post, with preview on the reason. This field is optional. A creator is not obligated to sell all of their coins in the provided period. They may choose to sell no coins, if their circumstance changes. However, creators cannot withdraw their intent to sell. This is to prevent creators spamming the chain with unwanted intent to sell.
 
-<pre>MaxCreatorCoinsToSell</pre> <pre>SellStartDate</pre> <pre>SellDuration</pre> are required fields. When a supporter sells a transferred coin <pre>TransferredCoinHolderPK</pre> field needs to be set. If this field is not set, then the transaction can only be made by the coin creator.
+<code>MaxCreatorCoinsToSell</code> <code>SellStartDate</code> <code>SellDuration</code> are required fields. When a supporter sells a transferred coin <code>TransferredCoinHolderPK</code> field needs to be set. If this field is not set, then the transaction can only be made by the coin creator.
 
 For scenario 2, there are two requirements that need to be satisfied:
 
@@ -89,7 +89,7 @@ For scenario 2, there are two requirements that need to be satisfied:
 (AND)
 2. Should aggregate sale of coins in the last 24 hour window (not calendar window) with the transferred coin sale exceed 10% of the overall supply, the supporter's coin sale will be immediately subject to disclosure.
 
-If requirement 2 is satisfied, if the creator already has a disclosure in place, the supporter will be subject to the same disclosure. If there is no such disclosure, the supporter will be able to create a disclosure to the maximum of the amount that they possess. This disclosure shall also have <pre>MaxCreatorCoinsToSell</pre>, <pre>ReasonPostForIntentToSell</pre>, <pre>SellStartDate</pre>, <pre>SellDuration</pre> and additionally <pre>TransferredCoinHolderPK</pre> indicating the public key of the supporter who intends to sell.
+If requirement 2 is satisfied, if the creator already has a disclosure in place, the supporter will be subject to the same disclosure. If there is no such disclosure, the supporter will be able to create a disclosure to the maximum of the amount that they possess. This disclosure shall also have <code>MaxCreatorCoinsToSell</code>, <code>ReasonPostForIntentToSell</code>, <code>SellStartDate</code>, <code>SellDuration</code> and additionally <code>TransferredCoinHolderPK</code> indicating the public key of the supporter who intends to sell.
 
 When pre-validating this disclosure, nodes need to ensure that:
 1) The supporter PK is different from the creator PK.
