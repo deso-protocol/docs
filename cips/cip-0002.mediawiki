@@ -85,9 +85,9 @@ For scenario 1, the blockchain will first set up an intent to sell, with an appr
 
 For scenario 2, there are two requirements that need to be satisfied:
 
-1. Any sale of these coins below 0.1% of the total coin supply will not need any disclosure.
+# Any sale of these coins below 0.1% of the total coin supply will not need any disclosure.
 (AND)
-2. Should aggregate sale of coins in the last 24 hour window (not calendar window) with the transferred coin sale exceed 10% of the overall supply, the supporter's coin sale will be immediately subject to disclosure.
+# Should aggregate sale of coins in the last 24 hour window (not calendar window) with the transferred coin sale exceed 10% of the overall supply, the supporter's coin sale will be immediately subject to disclosure.
 
 If requirement 2 is satisfied, if the creator already has a disclosure in place, the supporter will be subject to the same disclosure. If there is no such disclosure, the supporter will be able to create a disclosure to the maximum of the amount that they possess. This disclosure shall also have <code>MaxCreatorCoinsToSell</code>, <code>ReasonPostForIntentToSell</code>, <code>SellStartDate</code>, <code>SellDuration</code> and additionally <code>TransferredCoinHolderPK</code> indicating the public key of the supporter who intends to sell.
 
