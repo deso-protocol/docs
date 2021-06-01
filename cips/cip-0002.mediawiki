@@ -26,7 +26,7 @@ This CIP will not prevent anyone from selling their coin in perpetuity. This is 
 
 ==Specification==
 
-Every account profile will have an extra field called <pre>RugPullProtectionStatus</pre>.
+Every account profile will have an extra field called <code>RugPullProtectionStatus</code>.
 
 <pre>
 type UpdateProfileMetadata struct {
