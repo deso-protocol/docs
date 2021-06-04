@@ -1,6 +1,6 @@
 # What is BitClout?
 
-**BitClout is a new type of social network that lets you speculate on people and posts with real money, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, BitClout is a fully open-source project and there is no company behind it-- it’s just coins and code.
+**BitClout is a new type of social network that mixes speculation and social media, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, BitClout is a fully open-source project and there is no company behind it-- it’s just coins and code.
 
 ## Buying BitClout
 
