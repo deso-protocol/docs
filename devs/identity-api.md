@@ -295,3 +295,15 @@ func ValidateJWT(publicKey string, jwtToken string) (bool, error) {
 }
 ```
 
+## Mobile / Webview support
+
+Identity current offers support for mobile projects as well, but there are some differences needed in order to fully integrate. 
+
+Major differences:
+
+1. There is no need to run an iframe context. You will send all messages to one context running in a webview.
+2. Your webview context will need have an additional parameter `?webview=true`
+3. Depending on your mobile development framework, you need to make sure messages to and from the webview are being registered appropriately. Currently iOS, Android, and React Native webviews are supported.
+
+
+
