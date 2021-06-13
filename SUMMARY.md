@@ -21,3 +21,8 @@
 * [Identity API](devs/identity-api.md)
 * [Exchange Listing API](devs/exchange-listing-api.md)
 
+## 中国
+
+* [什么是BitClout? \(What is BitClout?\)](zhong-guo/shen-me-shi-bitclout-what-is-bitclout.md)
+* [愿景 \(The Vision\)](zhong-guo/yuan-jing-the-vision.md)
+
