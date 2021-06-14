@@ -131,7 +131,7 @@ Both records should point to the IP address of your node.
 
 If you do not create both records you will be unable to use a custom domain.
 
-### Can my node write-back to the mainnet?
+### Can my node write back to the mainnet?
 
 Yes! Every transaction is broadcast to all other nodes on the network, and should eventually be mined into a block.
 
