@@ -133,7 +133,7 @@ If you do not create both records you will be unable to use a custom domain.
 
 ### Can my node write back to the mainnet?
 
-Yes! Every transaction is broadcast to all other nodes on the network, and should eventually be mined into a block. For maximum security, though, we recommend transactions not be shown as final until they have been mined.
+Yes! Every transaction is broadcast to all other nodes on the network, and should eventually be mined into a block.
 
 ### What does Twilio provide to my node?
 
