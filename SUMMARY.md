@@ -21,8 +21,8 @@
 * [Identity API](devs/identity-api.md)
 * [Exchange Listing API](devs/exchange-listing-api.md)
 
-## 中文 <a id="zhong-guo"></a>
+## 中文
 
-* [什么是BitClout? \(What is BitClout?\)](zhong-guo/shen-me-shi-bitclout-what-is-bitclout.md)
-* [愿景 \(The Vision\)](zhong-guo/yuan-jing-the-vision.md)
+* [什么是BitClout? \(What is BitClout?\)](zhong-wen/shen-me-shi-bitclout-what-is-bitclout.md)
+* [愿景 \(The Vision\)](zhong-wen/yuan-jing-the-vision.md)
 
