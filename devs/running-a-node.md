@@ -133,7 +133,7 @@ If you do not create both records you will be unable to use a custom domain.
 
 ### Can my node write-back to the mainnet?
 
-At this time this is not possible but more information will be given soon.
+Yes! Every transaction is broadcast to all other nodes on the network, and should eventually be mined into a block.
 
 ### What does Twilio provide to my node?
 
