@@ -18,13 +18,13 @@ Every profile on the platform gets its own coin that anybody can buy and sell. W
 
 To buy someone’s coin, you simply navigate to their profile and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\). Profiles for the top 15,000 influencers from Twitter have been pre-loaded into the platform, which means you can buy and sell their coins even though they're not on the platform yet. These “reserved” profiles have a “clock” icon next to their names, indicating the owner of the profile has not joined yet.
 
-![](.gitbook/assets/image.png)
+![](.gitbook/assets/image%20%287%29.png)
 
 ### Tweet to Claim Your Profile
 
 The owner of a reserved profile can claim their profile by navigating to their profile and hitting a button to Tweet their BitClout public key \(shown below\). When they do this, they gain full access to the account, as well as a percentage of the creator coins associated with their profile \(see [Founder Rewards](./#founder-rewards)\). Only the owner of the Twitter account associated with a reserved profile can claim it.
 
-![](.gitbook/assets/image%20%281%29.png)
+![](.gitbook/assets/image%20%285%29.png)
 
 ### What Are Creator Coins Useful For?
 
@@ -88,7 +88,7 @@ Below is a graph of what the creator coin price curve looks like as a function o
 |  640 |  $19,660.80 |  $4,194,304 |
 |  1280 |  $78,643.20 |  $33,554,432 |
 
-![](.gitbook/assets/image%20%282%29.png)
+![](.gitbook/assets/image%20%286%29.png)
 
 ### Founder Rewards
 

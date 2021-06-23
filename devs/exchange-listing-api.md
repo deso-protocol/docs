@@ -1,5 +1,7 @@
 # Exchange Listing API
 
+**The dev community recommends using the open source Rosetta API implementation for integrating BitClout on an exchange:** [**https://github.com/bitclout/rosetta-bitclout**](https://github.com/bitclout/rosetta-bitclout)**. The other APIs in this doc are less supported than the Rosetta APIs.**
+
 Multiple major crypto exchanges have expressed interest in listing BitClout. The dev community is working closely with several of these, but, now that anyone in the world can run a BitClout node, we thought we'd democratize and decentralize this effort by publishing a simple public API that any crypto exchange in the world could follow to integrate BitClout.
 
 This guide will cover all of the API endpoints that are needed in order to list BitClout, with detailed descriptions and examples. This includes:
@@ -16,8 +18,6 @@ This guide will cover all of the API endpoints that are needed in order to list 
 The [Quick Start](exchange-listing-api.md#quick-start) section provides examples of all of the above using the “curl” command. The [Full API Guide](exchange-listing-api.md#full-api-guide) section provides more detail on each API endpoint shown in the examples.
 
 _**Note: This API is strictly for use by exchanges. The bitclout.com nodes use in-browser signing such that your seed phrase never leaves your browser \(**_[_**learn more**_](https://docs.bitclout.com/privacy-and-security)_**\). In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
-
-_**Note: The dev community is also working to complete an integration with**_ [_**Rosetta**_](https://www.rosetta-api.org/) _**that will further build on this API.**_
 
 ## Quick Start
 
