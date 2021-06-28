@@ -63,6 +63,7 @@ Once your node is synced, you have access to the full firehose of BitClout data 
 * Try to whitelist some posts in the Admin tab and see that they've made their way onto your global feed.
 * Read through the flags available in the [dev.env](https://github.com/bitclout/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
 * Set `ADMIN_PUBLIC_KEYS` to your public key so that the Admin tab is only visible to your username.
+* Set `SUPER_ADMIN_PUBLIC_KEYS` to your public key so that the Super Admin tab is only visible to your username.
 * Whitelist some posts and verify that they show up on the global feed.
 * Deploy your node on any cloud provider with a static IP to make it accessible to anyone on the internet.
 * Set a `PASSWORDS_FILE` if you want to restrict read access to your node.
@@ -91,6 +92,38 @@ When you run a node, you act as a moderator and have a variety of superpowers th
 ![](../.gitbook/assets/image%20%284%29.png)
 
 When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes visible only to you. This is a critical step in securing your node. Not doing this would make it so that all your users can add posts to the global feed.
+
+## Super Admin Public Keys
+
+Within the Admin Panel, there is a `Super` tab which is only accessible by Super Admins.   Super Admin can manage user verification and $CLOUT purchasing behavior from the `Super` tab.
+
+### Username Verification
+
+![](../.gitbook/assets/verify-users.png)
+
+Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`.  Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
+
+### Buy $CLOUT Management
+
+Any node can sell $CLOUT if they set the following flags appropriately. Super Admins can set two values in the `Super` tab to manage the price at which $CLOUT is sold on their node: `USD-to-BitClout Reserve Price`and `Buy BitClout Fee Rate`.
+
+![](../.gitbook/assets/buy-bitclout-settings.png)
+
+#### USD-to-BitClout Reserve Price
+
+This is the minimum price at which you are willing to sell $CLOUT on your node. If the price retrieved from exchange APIs is lower than this amount, your node will sell $CLOUT at this reserve price instead of the API price.  Additionally, the price in the right sidebar will appear the reserve price in the event that the price from the API dips below the reserve price.
+
+#### Buy BitClout Fee Rate
+
+This is a percentage-based fee applied to all $CLOUT purchased on your node. If the current price of $CLOUT in USD is $100 and the `Buy BitClout Fee Rate` is 5%, the buyer will pay $105 per $CLOUT and the node operator has earned $5 net. For more details on configuring your node to sell $CLOUT, please read the section titled `Sell $CLOUT on your node`.
+
+## Sell $CLOUT on your node
+
+To simplify the on-boarding experience for new users on your node, you can sell $CLOUT for Bitcoin directly to users.  To configure  your node to sell $CLOUT, please set the following flags:
+
+* `BUY_BITCLOUT_SEED`: This is a seed phrase for the public key that contains $CLOUT that you will sell to users.  As with all seed phrases, keep this secret and share it with nobody. Take extra precautions to not commit it to version control and quickly move funds if this seed is ever compromised.
+  * You will need to deposit $CLOUT to the public key for this seed phrase.  All $CLOUT purchases on your node will send $CLOUT from this wallet.
+* `BUY_BITCLOUT_BTC_ADDRESS`: This is a Bitcoin address you control. When users purchased $CLOUT with Bitcoin, the Bitcoin will arrive at this address. 
 
 ## How Users Login
 
