@@ -300,7 +300,9 @@ The math below walks through BitClout's scalability at each stage:
 
 ### **Is there obfuscated code in the BitClout blockchain miner?**
 
-No. The BitClout reference implementation contains a fully open-source CPU miner with good comments [here](https://github.com/bitclout/core/blob/main/lib/miner.go). Some independent developers, such as [@lobovkin](https://bitclout.com/u/lobovkin?password=b04d50e0cf1f0472a2f03398632e1e3aab763f60b80d417d3ae186109153da83), decided to make their own miners that were tailored to the GPU. They offered these as obfuscated binaries so they could make money, but the BitClout core developers were not involved in this \(and we take no issue with this since it allows third-party developers like @lobovkin to make money off of their IP\).
+No. The BitClout reference implementation contains a fully open-source CPU miner with good comments [here](https://github.com/bitclout/core/blob/main/lib/miner.go). 
+
+Some independent developers offered obfuscated binaries tailored to GPU mining, offering faster hash rates using proprietary software, but the BitClout core developers were not involved in this \(and we take no issue with this since it allows third-party developers to make money off of their IP\). Moreover, awesome developers like @lobovkin have since [open-sourced their GPU code](https://github.com/lobovkin/BitPoolMiner)!
 
 ### **Why does signing transactions have to go through an iframe at identity.bitclout.com, and is there a roadmap for local /offline signing?**
 
