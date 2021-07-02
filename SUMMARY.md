@@ -5,8 +5,8 @@
 
 ## FAQ
 
-* [Privacy and Security](faq/privacy-and-security.md)
 * [BitClout FAQ](faq/bitclout-faq.md)
+* [Privacy and Security](faq/privacy-and-security.md)
 
 ## The BitClout Code <a id="code"></a>
 
