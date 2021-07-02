@@ -132,7 +132,7 @@ Simply DM @bitclout on Twitter from the account with the same handle as the rese
 
 Importantly, removing your account from bitclout.com does not remove it from the underlying BitClout blockchain. This means your profile may still show up on other nodes, such as [bitcloutsignal.com](https://bitcloutsignal.com) or [prosperclout.com](https://prosperclout.com). They may decide to follow bitclout.com or make their own moderation decisions.
 
-An account can removed from bitclout.com either by request or by the admin of the bitclout.com node. Only the owner of the account can request removal; accounts cannot be removed by anyone other than the owner or the admin of the bitclout.com node.
+An account can be removed from bitclout.com either by request or by the admin of the bitclout.com node. Only the owner of the account can request removal; accounts cannot be removed by anyone other than the owner or the admin of the bitclout.com node.
 
 ### How do I un-remove my profile from bitclout.com?
 
