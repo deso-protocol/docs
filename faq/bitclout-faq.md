@@ -535,7 +535,7 @@ Without revealing too much, two of the core devs have known each other for over 
 
 #### How long has Bitclout been in development before it was released earlier this year? \(@tijn\)
 
-@diamondhands started working on it religiously in early 2019, alone, in total isolation. He didn't tell anyone about it until very late 2020. At that point, he felt it was ready to start talking to people about, and brought on the second core dev. The rest is history.
+@diamondhands started working on it religiously in early 2019, alone, in total isolation. He didn't tell anyone about it until very late in 2020. At that point, he felt it was finally ready to tell people about, and brought on the second core dev. The rest is history.
 
 #### Will the core devs always remain pseudononymous or will there be a face reveal \(maybe at $1k clout price\) ? \(@tijn\)
 
