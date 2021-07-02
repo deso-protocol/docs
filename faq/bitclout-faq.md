@@ -342,6 +342,14 @@ For example, bitclout.com does not surface all profiles in its UI; it filters ou
 
 Note that reserved profiles are controlled by the core devs until they are transferred, and so the coins owned by those profiles are not in the custody of the corresponding Twitter user until they are claimed. This means the core devs reserve the right to remove profiles prior to transferring them, as discussed [here](https://app.gitbook.com/@bitclout-1/s/diamondhands-drafts/~/drafts/-Mda9JRswSJvc85UwFlq/bitclout-faq).
 
+### How does the global feed work?
+
+Every node operator gets to curate what shows up on their own global feed, as described and shown [here](https://docs.bitclout.com/devs/running-a-node#managing-your-feed). This means that, in the very near future, we will have many feeds, not just the global feed on bitclout.com, as described in more detail [here](https://docs.bitclout.com/devs/running-a-node#running-your-own-feed).
+
+In addition, the follow feed will _always_ shows you every post from all the people you follow, which reduces the reliance on node-level curation. Once you're following enough people, there ceases to be a need to check the global feed anymore.
+
+This being said, there are no strict guidelines on anything that shows up in the global feed on bitclout.com. In the short-term, because bitclout.com aims to appeal to as wide an audience as possible, the content will generally bias more toward things that have mass appeal. But that's about it.
+
 ## **4. $CLOUT**
 
 ### **Can you cash out your $CLOUT for BTC?**
