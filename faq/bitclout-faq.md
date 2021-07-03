@@ -154,7 +154,7 @@ Seed phrases were used as a mechanism to log users in prior to the introduction 
 
 ### If I signed up with a seed phrase only, how do I switch to login with Google with 2FA?
 
-Currently, we don't have a migration path for people who logged in with a seed phrase and want to "import" that seed phrase into their Google account. We hope to have a fix for this soon so that everyone who wants to use Google to login can import their seed phrase and have the benefit of 2FA and secure storage of their seed phrase.
+Currently, we don't have a migration path for people who logged in with a seed phrase and want to "import" that seed phrase into their Google account. We hope to have a fix for this soon so that everyone who wants to use Google to login can import their seed phrase and have the benefit of 2FA and secure storage of their seed phrase. The dev community is working aggressively on improving BitClout Identity to add this, especially the Flick team, which creates the top BitClout mobile apps.
 
 ### Can Bitclout.com access my private keys, if I’m a normal user?
 
