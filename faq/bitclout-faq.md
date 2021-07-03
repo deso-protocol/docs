@@ -152,7 +152,7 @@ In the past, reserved profiles have been removed when it appears as though the p
 
 Seed phrases were used as a mechanism to log users in prior to the introduction of the “Login with Google” flow. A seed phrase is used to deterministically generate one’s private key, and neither the seed phrase nor the user’s private key ever leave the browser.
 
-### If i signed up with a seed phrase only, how do I switch to login with Google with 2FA?
+### If I signed up with a seed phrase only, how do I switch to login with Google with 2FA?
 
 Currently, we don't have a migration path for people who logged in with a seed phrase and want to "import" that seed phrase into their Google account. We hope to have a fix for this soon so that everyone who wants to use Google to login can import their seed phrase and have the benefit of 2FA and secure storage of their seed phrase.
 
