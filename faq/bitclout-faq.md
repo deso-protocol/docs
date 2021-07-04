@@ -417,6 +417,10 @@ The amount of time we've spent thinking about lock-ups... There is a tremendousl
 
 There has been a lot of discussion about this, and it's mainly a matter of getting the user experience right. For example, if a creator wants to approve every buy, then do they have to be approved in order? And we need to think about edge cases where a lot of buys queue up and the creator accepts them all at once. It's all solvable, and we look forward to iterating on proposals with the community once we get through a couple major releases like the NFTs launch.
 
+#### When will we be able to give ‘bananas’? \#apelife 🦧🦧🦧 \(@DannyWithAlotOfUgene\)
+
+Great idea for a third-party node: ApeClout. BitClout for apes. Diamonds can be reskinned as bananas, among other things.
+
 ### Community Engagement
 
 #### Can we have a regular community engagement event, like Clubhouse has their weekly Townhalls \(@Davidsun @GeneGMB @CloutCurator\)
