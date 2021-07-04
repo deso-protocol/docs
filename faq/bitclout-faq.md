@@ -413,6 +413,10 @@ It was intended to promote positivity and unity over division and toxicity, whil
 
 The amount of time we've spent thinking about lock-ups... There is a tremendously long doc that walks through many proposals and explains why we haven't publicly proposed something here yet, but it's not properly anonymized. I will share it soon...
 
+#### How about giving creators the optionality to reject investors?
+
+There has been a lot of discussion about this, and it's mainly a matter of getting the user experience right. For example, if a creator wants to approve every buy, then do they have to be approved in order? And we need to think about edge cases where a lot of buys queue up and the creator accepts them all at once. It's all solvable, and we look forward to iterating on proposals with the community once we get through a couple major releases like the NFTs launch.
+
 ### Community Engagement
 
 #### Can we have a regular community engagement event, like Clubhouse has their weekly Townhalls \(@Davidsun @GeneGMB @CloutCurator\)
