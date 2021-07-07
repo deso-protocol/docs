@@ -537,6 +537,10 @@ I'm not sure what this is asking. Creator coins are stored directly on-chain.
 
 I'm not sure exactly what this is referring to. Block producers and miners, together, decide what transactions go into blocks.
 
+#### How do creator coins scale given that miners can theoretically "front-run" blockchain transactions?
+
+This problem is generally known as "miner extractable value" or MEV. The solution is to have a "slippage" parameter set on every creator coin transaction, and that's currently the case today. By having such a parameter, you are capping the amount a miner can extract. This is exactly how Uniswap works as well.
+
 ### Behind the Curtain
 
 #### Who is the funniest and who is the most sarcastic in the core dev group? \(@cloutviz\)
