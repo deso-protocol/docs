@@ -307,7 +307,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 | Title | string | \(optional\) |
 | BodyObj | json | {Body: STRING, ImageURLs: \[\]} |
 | RecloutedPostHashHex | string | \(optional\) hash of post to modify |
-| PostExtraData | json | \(optional\) extra data |
+| PostExtraData | json | \(optional\) extra data, values must be strings |
 | IsHidden | bool |  |
 | MinFeeRateNanosPerKB | uint64 | Rate per KB |
 
