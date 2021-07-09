@@ -16,7 +16,7 @@ Both mobile browsers and the BitClout desktop app are secured, sandboxed environ
 
 While bitclout.com is generally safe to access in a regular Desktop browser like Chrome, Safari, Firefox, etc, there is some risk that malicious browser extensions could steal your seed phrase if you give them access to bitclout.com. **This should be rare, but if you own a large amount of BitClout it is recommended that you either disable extensions manually or use Incognito mode, which disables extensions automatically.**
 
-Furthermore, if you own a large amount of BitClout it may be prudent to create two separate accounts: one account that you use to post and follow, and a separate account to hold your coins. This will be easier to manage once creator coin transfers are launched.
+Furthermore, if you own a large amount of BitClout it may be prudent to create two separate accounts: one account that you use to post and follow, and a separate account to hold your coins. 
 
 ## **What do I do i**f I lose my seed phrase?
 
