@@ -100,13 +100,15 @@
 
 - [@bluepartyhat 💎](https://bitclout.com/u/bluepartyhat)
 
-- [@merlin 💎](https://bitclout.com/u/merlin)
+- [@andyboyd 💎](https://bitclout.com/u/andyboyd)
 
 ### Contributors
 
 - [@carsenk](https://bitclout.com/u/carsenk)
 
 - [@petern](https://bitclout.com/u/petern)
+
+- [@hpaulson](https://bitclout.com/u/hpaulson)
 
 ## GitHub Repos
 
