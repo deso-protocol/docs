@@ -1,12 +1,12 @@
 # What is BitClout?
 
-**BitClout is a new type of social network that mixes speculation and social media, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, BitClout is a fully open-source project and there is no company behind it-- it’s just coins and code.
+**BitClout is a new type of social network that mixes speculation and social media, and it’s built from the ground up as its own custom blockchain.** Its archimtecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, BitClout is a fully open-source project and there is no company behind it-- it’s just coins and code.
 
 ## Buying BitClout
 
 The BitClout blockchain has its own native cryptocurrency, called BitClout, that you can use to do all kinds of things on the platform, including buy a new type of asset called [“creator coins,” discussed below.](./#what-are-creator-coins)
 
-Anyone can buy the BitClout cryptocurrency with Bitcoin in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy BitClout” page](https://bitclout.com/buy-bitclout). The price of BitClout doubles for every million BitClout sold. This makes BitClout naturally scarce, resulting in 10 to 19 million BitClout minted in the long run \(less than Bitcoin’s max supply of 21 million\).
+Anyone can buy the BitClout cryptocurrency with Bitcoin in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy BitClout” page](https://bitclout.com/buy-bitclout). The supply of BitClout is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
 
 ## What are Creator Coins?
 
@@ -18,7 +18,7 @@ Every profile on the platform gets its own coin that anybody can buy and sell. W
 
 To buy someone’s coin, you simply navigate to their profile and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\). Profiles for the top 15,000 influencers from Twitter have been pre-loaded into the platform, which means you can buy and sell their coins even though they're not on the platform yet. These “reserved” profiles have a “clock” icon next to their names, indicating the owner of the profile has not joined yet.
 
-![](.gitbook/assets/image%20%287%29.png)
+![](.gitbook/assets/image%20%287%29%20%281%29.png)
 
 ### Tweet to Claim Your Profile
 
@@ -88,7 +88,7 @@ Below is a graph of what the creator coin price curve looks like as a function o
 |  640 |  $19,660.80 |  $4,194,304 |
 |  1280 |  $78,643.20 |  $33,554,432 |
 
-![](.gitbook/assets/image%20%286%29.png)
+![](.gitbook/assets/image%20%286%29%20%281%29.png)
 
 ### Founder Rewards
 

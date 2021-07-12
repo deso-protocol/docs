@@ -1,8 +1,8 @@
 # Backend API
 
-### General Endpoints
+## General Endpoints
 
-#### Index
+### Index
 
 ```text
 GET /
@@ -20,7 +20,7 @@ None
 Your BitClout node is running!
 ```
 
-#### Health Check
+### Health Check
 
 ```text
 GET /api/v0/health-check
@@ -40,7 +40,7 @@ If node is synced and received all transactions.
 200
 ```
 
-#### Get Exchange Rate
+### Get Exchange Rate
 
 ```text
 GET /api/v0/get-exchange-rate
@@ -62,7 +62,7 @@ None
 }
 ```
 
-#### Get App State
+### Get App State
 
 ```text
 POST /api/v0/get-app-state
@@ -107,9 +107,9 @@ None; however, you need to send an empty JSON `{ }`. Otherwise, you will get 400
 }
 ```
 
-### Transaction Endpoints
+## Transaction Endpoints
 
-#### Get Txn
+### Get Txn
 
 ```text
 POST /api/v0/get-txn
@@ -133,7 +133,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Submit Transaction
+### Submit Transaction
 
 ```text
 POST /api/v0/submit-transaction
@@ -177,7 +177,7 @@ Read more on transaction format [here](https://github.com/bitclout/docs/blob/mai
 }
 ```
 
-#### Update Profile
+### Update Profile
 
 ```text
 POST /api/v0/update-profile
@@ -232,11 +232,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Burn Bitcoin
+### Burn Bitcoin
 
 TODO
 
-#### Send BitClout
+### Send BitClout
 
 ```text
 POST /api/v0/send-bitclout
@@ -287,7 +287,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Submit Post
+### Submit Post
 
 ```text
 POST /api/v0/submit-post
@@ -343,7 +343,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Create Follow Txn Stateless
+### Create Follow Txn Stateless
 
 ```text
 POST /api/v0/create-follow-txn-stateless
@@ -392,7 +392,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Creator Like Stateless
+### Creator Like Stateless
 
 ```text
 POST /api/v0/create-like-stateless
@@ -441,7 +441,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Buy or Sell Creator Coin
+### Buy or Sell Creator Coin
 
 ```text
 POST /api/v0/buy-or-sell-creator-coin
@@ -501,7 +501,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Transfer Creator Coin
+### Transfer Creator Coin
 
 ```text
 POST /api/v0/transfer-creator-coin
@@ -553,7 +553,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Send Diamonds
+### Send Diamonds
 
 ```text
 POST /api/v0/send-diamonds
@@ -605,9 +605,9 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-### User Endpoints
+## User Endpoints
 
-#### Get Users Stateless
+### Get Users Stateless
 
 ```text
 POST /api/v0/get-users-stateless
@@ -651,7 +651,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Delete Identities
+### Delete Identities
 
 ```text
 POST /api/v0/delete-identities
@@ -667,7 +667,7 @@ None
 
 None
 
-#### Get Profiles
+### Get Profiles
 
 ```text
 POST /api/v0/get-profiles
@@ -730,7 +730,7 @@ OrderBy possible values: `{"influencer_stake", "influencer_post_stake", "newest_
 }
 ```
 
-#### Get Single Profile
+### Get Single Profile
 
 ```text
 POST /api/v0/get-single-profile
@@ -785,7 +785,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Get Hodlers For Public Key
+### Get Hodlers For Public Key
 
 ```text
 POST /api/v0/get-hodlers-for-public-key
@@ -824,7 +824,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Get Diamonds for Public Key
+### Get Diamonds for Public Key
 
 ```text
 POST /api/v0/get-diamonds-for-public-key
@@ -859,7 +859,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Get Follows Stateless
+### Get Follows Stateless
 
 ```text
 POST /api/v0/get-follows-stateless
@@ -917,7 +917,7 @@ Either publickey or username can be set. More info on the request [here](https:/
 }
 ```
 
-#### Get User Global Metadata
+### Get User Global Metadata
 
 ```text
 POST /api/v0/get-user-global-metadata
@@ -943,7 +943,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Update User Global Meta
+### Update User Global Meta
 
 ```text
 POST /api/v0/update-user-global-metadata
@@ -951,7 +951,7 @@ POST /api/v0/update-user-global-metadata
 
 TODO
 
-#### Get Notifications
+### Get Notifications
 
 ```text
 POST /api/v0/get-notifications
@@ -1053,7 +1053,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-#### Block Public Key
+### Block Public Key
 
 ```text
 POST /api/v0/block-public-key
@@ -1083,9 +1083,9 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 }
 ```
 
-### Post Endpoints
+## Post Endpoints
 
-#### Get Posts Stateless
+### Get Posts Stateless
 
 ```text
 POST /api/v0/get-posts-stateless
@@ -1093,7 +1093,7 @@ POST /api/v0/get-posts-stateless
 
 TODO
 
-#### Get Single Post
+### Get Single Post
 
 ```text
 POST /api/v0/get-single-post
@@ -1101,7 +1101,7 @@ POST /api/v0/get-single-post
 
 TODO
 
-#### Get Posts For Public Key
+### Get Posts For Public Key
 
 ```text
 POST /api/v0/get-posts-for-public-key
@@ -1109,7 +1109,7 @@ POST /api/v0/get-posts-for-public-key
 
 TODO
 
-#### Get Diamonded Posts
+### Get Diamonded Posts
 
 ```text
 POST /api/v0/get-diamonded-posts
@@ -1117,9 +1117,9 @@ POST /api/v0/get-diamonded-posts
 
 TODO
 
-### Media Endpoints
+## Media Endpoints
 
-#### Upload Image
+### Upload Image
 
 ```text
 POST /api/v0/upload-image
@@ -1127,7 +1127,7 @@ POST /api/v0/upload-image
 
 TODO
 
-#### Get Full TikTok URL
+### Get Full TikTok URL
 
 ```text
 POST /api/v0/get-full-tiktok-url
@@ -1135,9 +1135,9 @@ POST /api/v0/get-full-tiktok-url
 
 TODO
 
-### Message Endpoints
+## Message Endpoints
 
-#### Send Message Stateless
+### Send Message Stateless
 
 ```text
 POST /api/v0/send-message-stateless
@@ -1145,13 +1145,13 @@ POST /api/v0/send-message-stateless
 
 TODO
 
-#### Get Messages Stateless
+### Get Messages Stateless
 
 ```text
 POST /api/v0/get-messages-stateless
 ```
 
-#### Mark Contact Messages Read
+### Mark Contact Messages Read
 
 ```text
 POST /api/v0/mark-contact-messages-read
@@ -1159,7 +1159,7 @@ POST /api/v0/mark-contact-messages-read
 
 TODO
 
-#### Mark All Messages Read
+### Mark All Messages Read
 
 ```text
 POST /api/v0/mark-all-messages-read
@@ -1167,9 +1167,9 @@ POST /api/v0/mark-all-messages-read
 
 TODO
 
-### Verify Endpoints
+## Verify Endpoints
 
-#### Send Phone Number Verification Text
+### Send Phone Number Verification Text
 
 ```text
 POST /api/v0/send-phone-number-verification-text
@@ -1177,7 +1177,7 @@ POST /api/v0/send-phone-number-verification-text
 
 TODO
 
-#### Submit Phone Number Verification Text
+### Submit Phone Number Verification Text
 
 ```text
 POST /api/v0/submit-phone-number-verification-code
@@ -1185,15 +1185,15 @@ POST /api/v0/submit-phone-number-verification-code
 
 TODO
 
-### Wyre Endpoints
+## Wyre Endpoints
 
-#### Get Wyre Wallet Order Quotation
+### Get Wyre Wallet Order Quotation
 
 ```text
 POST /api/v0/get-wyre-wallet-order-quotation
 ```
 
-#### Get Wyre Wallet Order Reservation
+### Get Wyre Wallet Order Reservation
 
 ```text
 POST /api/v0/get-wyre-wallet-order-reservation
@@ -1201,7 +1201,7 @@ POST /api/v0/get-wyre-wallet-order-reservation
 
 TODO
 
-#### Wyre Wallet Order Subscription
+### Wyre Wallet Order Subscription
 
 ```text
 POST /api/v0/wyre-wallet-order-subscription
@@ -1209,7 +1209,7 @@ POST /api/v0/wyre-wallet-order-subscription
 
 TODO
 
-#### Admin Get Wyre Orders For Public Key
+### Admin Get Wyre Orders For Public Key
 
 ```text
 POST /api/v0/admin/get-wyre-wallet-orders-for-public-key
@@ -1217,9 +1217,9 @@ POST /api/v0/admin/get-wyre-wallet-orders-for-public-key
 
 TODO
 
-### Miner Endpoints
+## Miner Endpoints
 
-#### Get Block Template
+### Get Block Template
 
 ```text
 POST /api/v0/get-block-template
@@ -1227,7 +1227,7 @@ POST /api/v0/get-block-template
 
 TODO
 
-#### Submit Block
+### Submit Block
 
 ```text
 POST /api/v0/submit-block
@@ -1235,9 +1235,9 @@ POST /api/v0/submit-block
 
 TODO
 
-### Admin Node Endpoints
+## Admin Node Endpoints
 
-#### Node Control
+### Node Control
 
 ```text
 POST /api/v0/admin/node-control
@@ -1245,7 +1245,7 @@ POST /api/v0/admin/node-control
 
 TODO
 
-#### Reprocess Bitcoin Block
+### Reprocess Bitcoin Block
 
 ```text
 POST /api/v0/admin/reprocess-bitcoin-block
@@ -1253,7 +1253,7 @@ POST /api/v0/admin/reprocess-bitcoin-block
 
 TODO
 
-#### Get Mempool Stats
+### Get Mempool Stats
 
 ```text
 POST /api/v0/admin/get-mempool-stats
@@ -1261,7 +1261,7 @@ POST /api/v0/admin/get-mempool-stats
 
 TODO
 
-#### Evict Unmined Bitcoin Txns
+### Evict Unmined Bitcoin Txns
 
 ```text
 POST /api/v0/admin/evict-unmined-bitcoin-txns
@@ -1269,9 +1269,9 @@ POST /api/v0/admin/evict-unmined-bitcoin-txns
 
 TODO
 
-### Admin Transaction Endpoints
+## Admin Transaction Endpoints
 
-#### Get Global Params
+### Get Global Params
 
 ```text
 POST /api/v0/admin/get-global-params
@@ -1279,7 +1279,7 @@ POST /api/v0/admin/get-global-params
 
 TODO
 
-#### Update Global Params
+### Update Global Params
 
 ```text
 POST /api/v0/admin/update-global-params
@@ -1287,7 +1287,7 @@ POST /api/v0/admin/update-global-params
 
 TODO
 
-#### Swap Identity
+### Swap Identity
 
 ```text
 POST /api/v0/admin/swap-identity
@@ -1295,9 +1295,9 @@ POST /api/v0/admin/swap-identity
 
 TODO
 
-### Admin User Endpoints
+## Admin User Endpoints
 
-#### Update User Global Metadata
+### Update User Global Metadata
 
 ```text
 POST /api/v0/admin/update-user-global-metadata
@@ -1305,7 +1305,7 @@ POST /api/v0/admin/update-user-global-metadata
 
 TODO
 
-#### Get All User Global Metadata
+### Get All User Global Metadata
 
 ```text
 POST /api/v0/admin/get-all-user-global-metadata
@@ -1313,7 +1313,7 @@ POST /api/v0/admin/get-all-user-global-metadata
 
 TODO
 
-#### Get User Global Metadata
+### Get User Global Metadata
 
 ```text
 POST /api/v0/admin/get-user-global-metadata
@@ -1321,7 +1321,7 @@ POST /api/v0/admin/get-user-global-metadata
 
 TODO
 
-#### Grant Verification Badge
+### Grant Verification Badge
 
 ```text
 POST /api/v0/admin/grant-verification-badge
@@ -1329,7 +1329,7 @@ POST /api/v0/admin/grant-verification-badge
 
 TODO
 
-#### Remove Verification Badge
+### Remove Verification Badge
 
 ```text
 POST /api/v0/admin/remove-verification-badge
@@ -1337,7 +1337,7 @@ POST /api/v0/admin/remove-verification-badge
 
 TODO
 
-#### Get Verified Users
+### Get Verified Users
 
 ```text
 POST /api/v0/admin/get-verified-users
@@ -1345,7 +1345,7 @@ POST /api/v0/admin/get-verified-users
 
 TODO
 
-#### Get Username Verification Audit Logs
+### Get Username Verification Audit Logs
 
 ```text
 POST /api/v0/admin/get-username-verification-audit-logs
@@ -1353,9 +1353,9 @@ POST /api/v0/admin/get-username-verification-audit-logs
 
 TODO
 
-### Admin Feed Endpoints
+## Admin Feed Endpoints
 
-#### Update Global Feed
+### Update Global Feed
 
 ```text
 POST /api/v0/admin/update-global-feed
@@ -1363,7 +1363,7 @@ POST /api/v0/admin/update-global-feed
 
 TODO
 
-#### Pin Post
+### Pin Post
 
 ```text
 POST /api/v0/admin/pin-post
@@ -1371,7 +1371,7 @@ POST /api/v0/admin/pin-post
 
 TODO
 
-#### Remove Nil Posts
+### Remove Nil Posts
 
 ```text
 POST /api/v0/admin/remove-nil-posts

@@ -34,7 +34,7 @@ For this reason we think BitClout as a whole is _already_ significantly more dec
 The main difference between BitClout and most previous public blockchains is that BitClout focuses on _social_ rather than financial transactions, like [updating a profile](https://github.com/bitclout/core/blob/main/lib/network.go#L211) or [buying a creator coin](https://github.com/bitclout/core/blob/27426de8fd6dfb5d0d0e98a2f6b82773d92a6288/lib/network.go#L215). Just to make that clear, here’s a [screenshot](https://www.bitcloutpulse.com/explorer/blocks/00000000000099a0306c0bd5b8bbb5eb6e2e716be4a929e20157d2af18189661) of a recent BitClout block from a third party block explorer called bitcloutpulse.com. Note that you can see individual social transaction types, such as `BLOCK_REWARD`, `SUBMIT_POST`, `FOLLOW`, `LIKE`, and so on.  
 
 
-![](../.gitbook/assets/image.png)
+![](../.gitbook/assets/image%20%282%29.png)
 
 #### The Bitclout.com Frontend
 
