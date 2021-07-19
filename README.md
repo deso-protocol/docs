@@ -48,7 +48,7 @@ Creators can have an “inbox” where anyone can “bid” to have them repost 
 
 People who own a certain amount of a creator’s coin get access to special content. Or, alternatively, people must pay a monthly subscription in the form of the creator’s coin in order to get premium content.
 
-#### Distributions and Engagement 
+#### Distributions and Engagement
 
 Creators can also use their coins to distribute scarce resources to the largest holders of their coins. For example, imagine if a famous celebrity offered to have lunch with whoever held the most of their coin at a particular date. Or imagine if they were going to offer 1,000 signed posters to their 1,000 largest holders. This is just the beginning of how creators can engage with their fans using their coins, and all such ideas could increase demand for their coin significantly.
 
@@ -76,17 +76,17 @@ When you create a profile, there are initially zero coins in existence and thus 
 
 Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a BitClout price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1zBEQBBoS12ZhFpPbB13-GTZ8keDVlstRG3l2If78pWM/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
 
-|  **Creator Coins in Circulation** |  **Creator Coin Price \(USD\)** |  **USD Locked in Profile** |
+| **Creator Coins in Circulation** | **Creator Coin Price \(USD\)** | **USD Locked in Profile** |
 | :--- | :--- | :--- |
-|  5 |  $1.20 |  $2 |
-|  10 |  $4.80 |  $16 |
-|  20 |  $19.20 |  $128 |
-|  40 |  $76.80 |  $1,024 |
-|  80 |  $307.20 |  $8,192 |
-|  160 |  $1,228.80 |  $65,536 |
-|  320 |  $4,915.20 |  $524,288 |
-|  640 |  $19,660.80 |  $4,194,304 |
-|  1280 |  $78,643.20 |  $33,554,432 |
+| 5 | $1.20 | $2 |
+| 10 | $4.80 | $16 |
+| 20 | $19.20 | $128 |
+| 40 | $76.80 | $1,024 |
+| 80 | $307.20 | $8,192 |
+| 160 | $1,228.80 | $65,536 |
+| 320 | $4,915.20 | $524,288 |
+| 640 | $19,660.80 | $4,194,304 |
+| 1280 | $78,643.20 | $33,554,432 |
 
 ![](.gitbook/assets/image%20%286%29%20%281%29.png)
 

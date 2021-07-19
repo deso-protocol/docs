@@ -2,6 +2,7 @@
 
 * [What is BitClout?](README.md)
 * [The Vision](the-vision.md)
+* [BitClout NFT's](bitclout-nfts.md)
 
 ## FAQ
 
