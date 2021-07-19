@@ -1,6 +1,6 @@
 # BitClout NFT's
 
-Today, we are proud to announce that NFT's are coming to the BitClout platform! This post will tell you everything you need to know about this groundbreaking launch, and its implications on the future of crypto, social media, and the creator economy. If you have any feedback ahead of the launch, please comment [here](https://FIXME.com)\(FIXME\).
+Today, we are proud to announce that NFT's are coming to the BitClout platform! We are putting the finishing touches on everything now. In the meantime, this post will tell you everything you need to know about the upcoming launch, and its implications on the future of crypto, social media, and the creator economy. If you have any feedback ahead of the launch, please comment [here](https://FIXME.com)\(FIXME\).
 
 ![](.gitbook/assets/image.png)
 
