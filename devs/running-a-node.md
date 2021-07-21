@@ -135,7 +135,7 @@ Answers to common questions and issues about running your own node:
 
 ### What are the minimum requirements for syncing a node?
 
-We recommend having a machine with at least 32GB of RAM and 50GB of storage.
+We recommend having a machine with at least 32GB of RAM and at least 350GB of storage (as at 21 July 2021), increasing by about 50GB per month.
 
 ### How do I configure SSL?
 
