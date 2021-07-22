@@ -135,7 +135,7 @@ Answers to common questions and issues about running your own node:
 
 ### What are the minimum requirements for syncing a node?
 
-We recommend having a machine with at least 32GB of RAM and 50GB of storage.
+We recommend having a machine with at least 32GB of RAM and 350GB of storage (as at 21 July 2021).  If TXIndex is disabled, then you need about 200GB in total. The Blockchain DB takes up about 90 GB, and the TXIndex takes up 160 GB. THe DB+TXindex size grows by about 50GB a month currently.
 
 ### How do I configure SSL?
 
