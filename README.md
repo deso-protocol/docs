@@ -26,6 +26,19 @@ The owner of a reserved profile can claim their profile by navigating to their p
 
 ![](.gitbook/assets/image%20%285%29.png)
 
+### Verify to claim your free 0.10 $CLOUT
+
+When you start with BitClout, or you have an existing account and need some starter CLOUT, you can now claim it by verifying you are human.
+
+Just click the link in the sidebar (or at the top of your feed on mobile):
+
+![](./verify.png)
+
+BitClout uses the trusted and private Jumio service to verify you are human. BitClout does not store any of your identity information.
+
+Verification is always optional!
+
+
 ### What Are Creator Coins Useful For?
 
 Creator coins are a new type of asset class that is tied to the reputation of an individual, rather than to a company or commodity. They are truly the first tool we have as a society to trade “social clout” as an asset. If people understand this, then the value of someone’s coin should be correlated to that person’s standing in society. For example, if Elon Musk succeeds in landing the first person on Mars, his coin price should theoretically go up. And if, in contrast, he makes a racial slur during a press conference, his coin price should theoretically go down. Thus, people who believe in someone’s potential can buy their coin and succeed with them financially when that person realizes their potential. And traders can make money buying and selling the ups and downs.
