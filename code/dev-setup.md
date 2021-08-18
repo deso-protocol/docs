@@ -92,6 +92,36 @@ $ ./n0
 http://localhost:4200
 ```
 
+### Running frontend without a local node
+
+For quick debugging or making changes to only the frontend without running a node with Visual Studio Code. You can change launch.json of Visual Studio Code to start an instance of Chrome without Cors checking (Cors prevents localhost from using api.bitclout.com). This way you can use api.bitclout.com as node to test the frontend running on localhost:4200.
+
+```text
+# Run the frontend see (above steps in Setup)
+ng serve
+
+# Make sure you have Chrome installed.
+# Hit F5 or Run debug from the menu. Change the launch.json like this.
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}",
+            "runtimeArgs": ["--disable-web-security"]
+        }
+    ]
+}
+```
+
+The next time you run debug it will start an instance of chrome with cors disabled. You can set debug breakpoints in the frontend code.
+
 ## Running a local identity service \(optional\)
 
 Running an identity service locally is generally not required. However, doing so is as easy as running the Angular app:
