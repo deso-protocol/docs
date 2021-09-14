@@ -1,6 +1,6 @@
 # BitClout NFT's
 
-Today, we are proud to announce that NFT's are coming to the BitClout platform! We are putting the finishing touches on everything now. In the meantime, this post will tell you everything you need to know about the upcoming launch, and its implications on the future of crypto, social media, and the creator economy. If you have any feedback ahead of the launch, please comment [here](https://bitclout.com/posts/b196c2e2adc9bbcf3b1b81942f123991c38340a390362e678f2ea58ab063ecb5).
+Today, we are proud to announce that NFT's are coming to the BitClout platform! We are putting the finishing touches on everything now. In the meantime, this post will tell you everything you need to know about the upcoming launch, and its implications on the future of crypto, social media, and the creator economy.
 
 ![](.gitbook/assets/image.png)
 
@@ -132,13 +132,16 @@ Finally, as a means of concentrating liquidity around certain NFTs, we have desi
 
 Using this system, a node operator can curate a collection of NFTs every week, or even more frequently, and engage the community around them. **This, in some sense, allows node operators to serve as the curators of their own digital galleries, with each drop introducing a new exhibition.**
 
-## Launching BitClout NFTs: A Community Contest
+## NFT Showcase: A Community Contest
 
-The launch of BitClout NFTs is a highly-anticipated event, and what better way to bring the product into this world than by working together with some of our most-beloved community members?
+The NFT Showcase is a curated feed on BitClout.com where NFTs from different NFT artists are showcased.
 
-**Starting today, and ending on the launch date of NFTs \(TBD\), the core dev team will be accepting NFT submissions from all users to participate in bitclout.com's first major NFT drop!** Any member of the community can submit an NFT using [this form](https://docs.google.com/forms/d/1stA6z-w6j4tgSpgenbgSfrasSDjmgiMeFH6W-Qy2lJU/viewform), and the winners will be the first ones ever to be featured on bitclout.com's NFTs tab. Once the NFTs are up, all users will then be able to bid on them, and potentially win them!
+It's possible to apply for your work to be featured in the NFT Showcase. It's easy as 1-2-3:
 
-And if you don't make it into the first drop, don't worry! Any NFT you mint always gets shown to all of your followers, it's visible on your profile, and it can even make the global feed. Additionally, we plan on doing a new drop of NFTs every week on bitclout.com so that new artists are continuously featured, and we hope to make this even more frequent in the future. Lastly, don't forget that new nodes are spinning up every day that offer superior experiences to bitclout.com, and your NFTs will automatically be available in all of these new nodes as well.
+* Mint an NFT and Reclout with #CLOUTNFT
+* Cross-post to Twitter or Instagram (recommend @oneclout(https://bitclout.com/u/oneclout) for cross-posting)
+
+And if you don't make it into this drop, don't worry! Any NFT you mint always gets shown to all of your followers, it's visible on your profile, and it can even make the global feed. Every now an then we are doing a new drop of NFTs on BitClout.com so that new artists are continuously featured, and we hope to make this even more frequent in the future. Lastly, don't forget that new nodes are spinning up every day that offer superior experiences to BitClout.com, and your NFTs will automatically be available in all of these new nodes as well.
 
 ## Third-Party Apps
 
