@@ -1,6 +1,6 @@
 # Identity API
 
-The BitClout Identity service provides a convenient and secure way for users to login to many different BitClout nodes and applications. When using BitClout Identity, users' private key material never leaves the browser. All signing happens in a secured `iframe` and transaction approvals occur in a pop-up window.
+The DeSo Identity service provides a convenient and secure way for users to login to many different DeSo nodes and applications. When using DeSo Identity, users' private key material never leaves the browser. All signing happens in a secured `iframe` and transaction approvals occur in a pop-up window.
 
 The developer community highly recommends node operators and app developers integrate with [identity.bitclout.com](https://identity.bitclout.com) to provide users with consistent log in, sign up, and account management experiences. Identity currently integrates most smoothly with web-based applications. The developer community is working on creating libraries for integrating with iOS and Android.
 
@@ -120,7 +120,7 @@ The iframe is responsible for signing and decryption. The iframe is usually enti
 
 ### `info`
 
-The iframe responds to `info` messages which helps Identity support Safari and Chrome on iOS. Apple's Intelligent Tracking Prevention \(ITP\) places strict limitations on cross-domain data storage and access. This means the Identity `iframe` must request storage access every time the page reloads. When a user visits a BitClout application in Safari they will see a "Tap anywhere to unlock your wallet" prompt which is a giant button in the `iframe`. When the `info` message returns `hasStorageAccess: false`, an application should make the `iframe` take over the entire page. Above, this means setting `requestingStorageAccess = true`.
+The iframe responds to `info` messages which helps Identity support Safari and Chrome on iOS. Apple's Intelligent Tracking Prevention \(ITP\) places strict limitations on cross-domain data storage and access. This means the Identity `iframe` must request storage access every time the page reloads. When a user visits a DeSo application in Safari they will see a "Tap anywhere to unlock your wallet" prompt which is a giant button in the `iframe`. When the `info` message returns `hasStorageAccess: false`, an application should make the `iframe` take over the entire page. Above, this means setting `requestingStorageAccess = true`.
 
 The `info` message also detects if a user has disabled third party cookies. Third party cookies are required for Identity to securely sign transactions. If `info` returns `browserSupported: false` an application should inform the user they will not be able to use Identity to sign or decrypt anything.
 

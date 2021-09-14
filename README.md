@@ -1,12 +1,12 @@
-# What is BitClout?
+# What is DeSo?
 
-**BitClout is a new type of social network that mixes speculation and social media, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, BitClout is a fully open-source project and there is no company behind it-- it’s just coins and code.
+**DeSo is a new type of social network that mixes speculation and social media, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, DeSo is a fully open-source project and there is no company behind it-- it’s just coins and code.
 
-## Buying BitClout
+## Buying DeSo
 
-The BitClout blockchain has its own native cryptocurrency, called BitClout, that you can use to do all kinds of things on the platform, including buy a new type of asset called [“creator coins,” discussed below.](./#what-are-creator-coins)
+The DeSo blockchain has its own native cryptocurrency, called DeSo, that you can use to do all kinds of things on the platform, including buy a new type of asset called [“creator coins,” discussed below.](./#what-are-creator-coins)
 
-Anyone can buy the BitClout cryptocurrency with Bitcoin in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy BitClout” page](https://bitclout.com/buy-bitclout). The supply of BitClout is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
+Anyone can buy the DeSo cryptocurrency with Bitcoin in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy DeSo” page](https://bitclout.com/buy-bitclout). The supply of DeSo is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
 
 ## What are Creator Coins?
 
@@ -22,7 +22,7 @@ To buy someone’s coin, you simply navigate to their profile and hit “Buy.”
 
 ### Tweet to Claim Your Profile
 
-The owner of a reserved profile can claim their profile by navigating to their profile and hitting a button to Tweet their BitClout public key \(shown below\). When they do this, they gain full access to the account, as well as a percentage of the creator coins associated with their profile \(see [Founder Rewards](./#founder-rewards)\). Only the owner of the Twitter account associated with a reserved profile can claim it.
+The owner of a reserved profile can claim their profile by navigating to their profile and hitting a button to Tweet their DeSo public key \(shown below\). When they do this, they gain full access to the account, as well as a percentage of the creator coins associated with their profile \(see [Founder Rewards](./#founder-rewards)\). Only the owner of the Twitter account associated with a reserved profile can claim it.
 
 ![](.gitbook/assets/image%20%285%29.png)
 
@@ -38,7 +38,7 @@ A creator can make it so that only people who own a certain amount of their coin
 
 #### Premium Messages
 
-Most creators get a torrent of spam in their message inbox on social media. With BitClout they could make it so that only people who own a certain amount of their coin can message them, or they could simply rank and prioritize messages from the largest holders of their coin. Alternatively, they can make it so that a certain amount of their coin must be paid to them directly in order for the message to actually enter their inbox. All of this would increase demand for their coin while helping to minimize spam for the creator.
+Most creators get a torrent of spam in their message inbox on social media. With DeSo they could make it so that only people who own a certain amount of their coin can message them, or they could simply rank and prioritize messages from the largest holders of their coin. Alternatively, they can make it so that a certain amount of their coin must be paid to them directly in order for the message to actually enter their inbox. All of this would increase demand for their coin while helping to minimize spam for the creator.
 
 #### Sponsored Posts
 
@@ -58,13 +58,13 @@ Likes can be re-imagined as purchases of the creator’s coin. So it costs money
 
 #### Emergent Phenomena
 
-What can happen when you give people the ability to speculate on a person’s reputation? We can’t know for sure, but one of the features that has emerged is what we call “buy and retweet.” Ordinarily, retweeting someone gives you nothing. If that person becomes a superstar because you boosted them, you’ll be lucky if they even remember your name in a few years. In contrast, with BitClout you can buy someone’s coin and then retweet them, which makes it so that you’re not only along for the ride financially if they blow up, but you also get bragging rights. Imagine the difference between being able to say “I retweeted her early on” vs being able to say “I bought her coin when it was $0.50 and now it’s $500-- and by the way I’ve done this hundreds of times, and I can prove it because my track record is on the blockchain.” The latter is clearly a very different game. Moreover, it’s not just a famous person’s game. If you know someone with a lot of clout, or if you know someone who knows someone, you can buy a coin and send it to someone else so that they can buy and retweet them. And thus the incentives go many layers deep. The interesting thing about this mechanic is that it wasn’t even something consciously designed into the product. It exists as an “emergent” phenomenon off of the core creator coin mechanic. What other dynamics could exist that we haven’t yet thought of?
+What can happen when you give people the ability to speculate on a person’s reputation? We can’t know for sure, but one of the features that has emerged is what we call “buy and retweet.” Ordinarily, retweeting someone gives you nothing. If that person becomes a superstar because you boosted them, you’ll be lucky if they even remember your name in a few years. In contrast, with DeSo you can buy someone’s coin and then retweet them, which makes it so that you’re not only along for the ride financially if they blow up, but you also get bragging rights. Imagine the difference between being able to say “I retweeted her early on” vs being able to say “I bought her coin when it was $0.50 and now it’s $500-- and by the way I’ve done this hundreds of times, and I can prove it because my track record is on the blockchain.” The latter is clearly a very different game. Moreover, it’s not just a famous person’s game. If you know someone with a lot of clout, or if you know someone who knows someone, you can buy a coin and send it to someone else so that they can buy and retweet them. And thus the incentives go many layers deep. The interesting thing about this mechanic is that it wasn’t even something consciously designed into the product. It exists as an “emergent” phenomenon off of the core creator coin mechanic. What other dynamics could exist that we haven’t yet thought of?
 
 ### The Creator Coin Supply Curve
 
 Creator coins are naturally scarce, with generally fewer than 100 to 1,500 coins in existence for each profile. This is because as more people buy a profile’s creator coin, the price of the coin goes up automatically at a faster and faster rate. This means that, eventually, it would take billions of dollars to mint even one more coin.
 
-The formula or “curve” for determining the price of a creator’s coin is as follows. Note that creator coins are normally bought and sold with the BitClout cryptocurrency, but we provide a dollar version of the formula for easy calculating:
+The formula or “curve” for determining the price of a creator’s coin is as follows. Note that creator coins are normally bought and sold with the DeSo cryptocurrency, but we provide a dollar version of the formula for easy calculating:
 
 $$
 price\_in\_bitclout = .003 \times creator\_coins\_in\_circulation^2
@@ -74,7 +74,7 @@ $$
 
 When you create a profile, there are initially zero coins in existence and thus the price is zero. If you want to buy coins from the profile, it will happily mint them out of thin air and sell them to you according to the price curve above, making it more and more expensive as more coins are purchased. The money you use to buy the coins gets “locked” in the profile in exchange for the coins. On the flipside, if you want to sell coins, the profile will happily buy them from you according to the curve using the money locked from previous buys. And so buying **creates** coins while pushing the price **up** and **locking** money into the profile, while selling **destroys** coins while pushing the price **down** and **unlocking** money from the profile. This is often referred to as an “automated market-maker,” and it’s the same concept that powers protocols like Uniswap and Bancor.
 
-Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a BitClout price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1zBEQBBoS12ZhFpPbB13-GTZ8keDVlstRG3l2If78pWM/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
+Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a DeSo price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1zBEQBBoS12ZhFpPbB13-GTZ8keDVlstRG3l2If78pWM/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
 
 | **Creator Coins in Circulation** | **Creator Coin Price \(USD\)** | **USD Locked in Profile** |
 | :--- | :--- | :--- |
@@ -92,11 +92,11 @@ Below is a graph of what the creator coin price curve looks like as a function o
 
 ### Founder Rewards
 
-Every profile allows the creator to keep a certain percentage of the coins that are created as a “founder reward.” For example, if someone sets their founder reward percentage to 10% and then someone buys 100 BitClout of their coin, then 10 BitClout would be used to buy the creator’s coin, and those coins would go to the creator’s wallet rather than the purchaser’s.
+Every profile allows the creator to keep a certain percentage of the coins that are created as a “founder reward.” For example, if someone sets their founder reward percentage to 10% and then someone buys 100 DeSo of their coin, then 10 DeSo would be used to buy the creator’s coin, and those coins would go to the creator’s wallet rather than the purchaser’s.
 
 The above being said, we think the better way for creators to own a piece of the upside of their coin is simply to buy their coin up-front when they create their profile, and then set their founder reward percentage to zero. This works because the coins are cheapest at the beginning of the curve, and it has the upshot of reducing friction on subsequent purchases of their coin. Nevertheless, the founder reward percentage being 10% is a “sane default” that guarantees creators will maintain a certain percentage of their coin even if they do nothing.
 
 ## The Power of Decentralization
 
-Just like Bitcoin, anyone on the internet can run a BitClout “node” that serves the BitClout content, and every node on the network stores a full copy of all the data. This means that anybody can build apps on top of the BitClout data without the risk of being de-platformed, and they can even create their own feed algorithm. When you visit bitclout.com, you’re using our node, but there are already dozens of nodes on the network, all run by people like you. In the long run there will likely be hundreds or thousands of other nodes you could visit to get access to the same content, each with their own moderation policy. It also means that your login on bitclout.com can be used on any domain that runs a BitClout node. In the same way that you can move Bitcoin from one wallet to another, BitClout makes it so that you can move your “clout” in the form of your followers, posts, creator coin balances, etc anywhere as well. Thus, in some sense, BitClout is decentralizing social media in much the same way as Bitcoin is decentralizing the financial system.
+Just like Bitcoin, anyone on the internet can run a DeSo “node” that serves the DeSo content, and every node on the network stores a full copy of all the data. This means that anybody can build apps on top of the DeSo data without the risk of being de-platformed, and they can even create their own feed algorithm. When you visit bitclout.com, you’re using our node, but there are already dozens of nodes on the network, all run by people like you. In the long run there will likely be hundreds or thousands of other nodes you could visit to get access to the same content, each with their own moderation policy. It also means that your login on bitclout.com can be used on any domain that runs a DeSo node. In the same way that you can move Bitcoin from one wallet to another, DeSo makes it so that you can move your “clout” in the form of your followers, posts, creator coin balances, etc anywhere as well. Thus, in some sense, DeSo is decentralizing social media in much the same way as Bitcoin is decentralizing the financial system.
 

@@ -1,19 +1,19 @@
 # Table of contents
 
-* [What is BitClout?](README.md)
+* [What is DeSo?](README.md)
 * [The Vision](the-vision.md)
-* [BitClout NFT's](bitclout-nfts.md)
+* [DeSo NFT's](bitclout-nfts.md)
 
 ## FAQ
 
-* [BitClout FAQ](faq/bitclout-faq.md)
+* [DeSo FAQ](faq/bitclout-faq.md)
 * [Privacy and Security](faq/privacy-and-security.md)
 
-## The BitClout Code <a id="code"></a>
+## The DeSo Code <a id="code"></a>
 
 * [Setting Up Your Dev Environment](code/dev-setup.md)
 * [Making Your First Changes](code/making-your-first-changes.md)
-* [BitClout Code Walkthrough](code/walkthrough.md)
+* [DeSo Code Walkthrough](code/walkthrough.md)
 
 ## Developer Docs <a id="devs"></a>
 
@@ -25,6 +25,6 @@
 
 ## 中文
 
-* [什么是BitClout? \(What is BitClout?\)](zhong-wen/shen-me-shi-bitclout-what-is-bitclout.md)
+* [什么是DeSo? \(What is DeSo?\)](zhong-wen/shen-me-shi-bitclout-what-is-bitclout.md)
 * [愿景 \(The Vision\)](zhong-wen/yuan-jing-the-vision.md)
 

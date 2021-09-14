@@ -1,12 +1,12 @@
 # Setting Up Your Dev Environment
 
-This doc will teach you how to set up your dev environment. Although it's not a hard prerequisite, we recommend skimming the [BitClout Code Walkthrough](walkthrough.md) first, as it provides some useful context.
+This doc will teach you how to set up your dev environment. Although it's not a hard prerequisite, we recommend skimming the [DeSo Code Walkthrough](walkthrough.md) first, as it provides some useful context.
 
 ## Prerequisites
 
 To run the frontend repo, you will need to be running Node v13.13.0 and NPM 6.14.4. We recommend using NVM to set this environment up. To run the backend you'll need Go v1.15.6 installed.
 
-We will also assume that you have [Goland](https://www.jetbrains.com/go/) installed. This is the recommended IDE for developing on BitClout since most of the code is Go code.
+We will also assume that you have [Goland](https://www.jetbrains.com/go/) installed. This is the recommended IDE for developing on DeSo since most of the code is Go code.
 
 ## Setup
 

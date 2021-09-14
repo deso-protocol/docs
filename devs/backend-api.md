@@ -8,7 +8,7 @@
 GET /
 ```
 
-Basic endpoint to test if your BitClout node is running.
+Basic endpoint to test if your DeSo node is running.
 
 **Parameters**
 
@@ -17,7 +17,7 @@ None
 **Response**
 
 ```text
-Your BitClout node is running!
+Your DeSo node is running!
 ```
 
 ### Health Check
@@ -26,7 +26,7 @@ Your BitClout node is running!
 GET /api/v0/health-check
 ```
 
-Check if your BitClout node is synced
+Check if your DeSo node is synced
 
 **Parameters:**
 
@@ -46,7 +46,7 @@ If node is synced and received all transactions.
 GET /api/v0/get-exchange-rate
 ```
 
-Get BitClout exchange rate, total amount of nanos sold, and Bitcoin exchange rate.
+Get DeSo exchange rate, total amount of nanos sold, and Bitcoin exchange rate.
 
 **Parameters:**
 
@@ -56,7 +56,7 @@ None
 
 ```text
 {
-    "SatoshisPerBitCloutExchangeRate":498484,
+    "SatoshisPerDeSoExchangeRate":498484,
     "NanosSold":8491518125648433,
     "USDCentsPerBitcoinExchangeRate":3608200
 }
@@ -68,7 +68,7 @@ None
 POST /api/v0/get-app-state
 ```
 
-Get state of BitClout App, such as cost of profile creation and diamond level map. Example use in the [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1106) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/base.go#L86).
+Get state of DeSo App, such as cost of profile creation and diamond level map. Example use in the [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1106) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/base.go#L86).
 
 **Parameters**
 
@@ -88,7 +88,7 @@ None; however, you need to send an empty JSON `{ }`. Otherwise, you will get 400
     "IsTestnet": false,
     "SupportEmail": "node.admin@protonmail.com",
     "ShowProcessingSpinners": true,
-    "HasStarterBitCloutSeed": false,
+    "HasStarterDeSoSeed": false,
     "HasTwilioAPIKey": false,
     "CreateProfileFeeNanos": 10000000,
     "CompProfileCreation": false,
@@ -139,7 +139,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/submit-transaction
 ```
 
-Submit transaction to BitClout blockchain. Example use in [frontend](https://github.com/bitclout/docs/tree/48edcd8f15f30a527a2d6d927e87c83bf10becdb/devs/%60https:/github.com/bitclout/frontend/blob/96bdf0c40e05010ec62a1b1cdc78bf0d0fb2ef44/src/app/backend-api.service.ts#L496%60) and endpoint implementation in [backend](https://github.com/bitclout/docs/tree/48edcd8f15f30a527a2d6d927e87c83bf10becdb/devs/%60https:/github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L81%60).
+Submit transaction to DeSo blockchain. Example use in [frontend](https://github.com/bitclout/docs/tree/48edcd8f15f30a527a2d6d927e87c83bf10becdb/devs/%60https:/github.com/bitclout/frontend/blob/96bdf0c40e05010ec62a1b1cdc78bf0d0fb2ef44/src/app/backend-api.service.ts#L496%60) and endpoint implementation in [backend](https://github.com/bitclout/docs/tree/48edcd8f15f30a527a2d6d927e87c83bf10becdb/devs/%60https:/github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L81%60).
 
 **Parameters**
 
@@ -236,13 +236,13 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 
 TODO
 
-### Send BitClout
+### Send DeSo
 
 ```text
 POST /api/v0/send-bitclout
 ```
 
-Prepare transaction for sending BitClout. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L470) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L837).
+Prepare transaction for sending DeSo. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L470) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L837).
 
 **Parameters**
 
@@ -458,10 +458,10 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 | UpdaterPublicKeyBase58Check | string | Public key of updater |
 | CreatorPublicKeyBase58Check | string | Public key of creator |
 | OperationType | string | "buy" or "sell" |
-| BitCloutToSellNanos | uint64 | Amount of BitClout to spend |
+| DeSoToSellNanos | uint64 | Amount of DeSo to spend |
 | CreatorCoinToSellNanos | uint64 | Amount of Creator Coin to spend |
-| BitCloutToAddNanos | uint64 | 0 |
-| MinBitCloutExpectedNanos | uint64 | 0 |
+| DeSoToAddNanos | uint64 | 0 |
+| MinDeSoExpectedNanos | uint64 | 0 |
 | MinCreatorCoinExpectedNanos | uint64 | 0 |
 | MinFeeRateNanosPerKB | uint64 | Rate per KB |
 
@@ -469,7 +469,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 
 ```text
 {
-    ExpectedBitCloutReturnedNanos: 0,
+    ExpectedDeSoReturnedNanos: 0,
     ExpectedCreatorCoinReturnedNanos: 220387140
     FounderRewardGeneratedNanos: 0,
     FounderRewardGeneratedNanos    0
@@ -709,12 +709,12 @@ OrderBy possible values: `{"influencer_stake", "influencer_post_stake", "newest_
             Posts: null,
             CoinEntry: {
                 CreatorBasisPoints: 1000,
-                BitCloutLockedNanos: 0,
+                DeSoLockedNanos: 0,
                 NumberOfHolders: 0,
                 CoinsInCirculationNanos: 0,
                 CoinWatermarkNanos: 0
             },
-            CoinPriceBitCloutNanos: 0,
+            CoinPriceDeSoNanos: 0,
             StakeMultipleBasisPoints: 12500,
             StakeEntryStats: {
                 TotalStakeNanos: 0, 
@@ -764,12 +764,12 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
             Posts: null,
             CoinEntry: {
                 CreatorBasisPoints: 1000,
-                BitCloutLockedNanos: 0,
+                DeSoLockedNanos: 0,
                 NumberOfHolders: 0,
                 CoinsInCirculationNanos: 0,
                 CoinWatermarkNanos: 0
             },
-            CoinPriceBitCloutNanos: 0,
+            CoinPriceDeSoNanos: 0,
             StakeMultipleBasisPoints: 12500,
             StakeEntryStats: {
                 TotalStakeNanos: 0, 
@@ -896,12 +896,12 @@ Either publickey or username can be set. More info on the request [here](https:/
             Posts: null,
             CoinEntry: {
                 CreatorBasisPoints: 1000,
-                BitCloutLockedNanos: 0,
+                DeSoLockedNanos: 0,
                 NumberOfHolders: 0,
                 CoinsInCirculationNanos: 0,
                 CoinWatermarkNanos: 0
             },
-            CoinPriceBitCloutNanos: 0,
+            CoinPriceDeSoNanos: 0,
             StakeMultipleBasisPoints: 12500,
             StakeEntryStats: {
                 TotalStakeNanos: 0, 
@@ -1004,12 +1004,12 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
             Posts: null,
             CoinEntry: {
                 CreatorBasisPoints: 1000,
-                BitCloutLockedNanos: 0,
+                DeSoLockedNanos: 0,
                 NumberOfHolders: 0,
                 CoinsInCirculationNanos: 0,
                 CoinWatermarkNanos: 0
             },
-            CoinPriceBitCloutNanos: 0,
+            CoinPriceDeSoNanos: 0,
             StakeMultipleBasisPoints: 12500,
             StakeEntryStats: {
                 TotalStakeNanos: 0, 

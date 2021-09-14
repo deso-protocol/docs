@@ -1,6 +1,6 @@
 # Making Your First Changes
 
-In this tutorial, we will show you how to make changes to the BitClout codebase, and see your changes reflected in a local dev environment.
+In this tutorial, we will show you how to make changes to the DeSo codebase, and see your changes reflected in a local dev environment.
 
 ## Prerequisites
 
