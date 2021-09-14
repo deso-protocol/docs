@@ -51,7 +51,7 @@ The above mechanisms don't even factor in profits that could be derived from aug
 
 Running a node currently requires a modest amount of technical know-how. For the full instructions on how to run a node, check out this GitHub repository:
 
-* [https://github.com/bitclout/run](https://github.com/bitclout/run)
+* [https://github.com/deso-project/run](https://github.com/deso-project/run)
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
@@ -61,7 +61,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 * Go to your Admin tab and watch the unfiltered feed update as your node syncs. It's like a time machine!
 * Try to whitelist some posts in the Admin tab and see that they've made their way onto your global feed.
-* Read through the flags available in the [dev.env](https://github.com/bitclout/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
+* Read through the flags available in the [dev.env](https://github.com/deso-project/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
 * Set `ADMIN_PUBLIC_KEYS` to your public key so that the Admin tab is only visible to your username.
 * Set `SUPER_ADMIN_PUBLIC_KEYS` to your public key so that the Super Admin tab is only visible to your username.
 * Whitelist some posts and verify that they show up on the global feed.
@@ -95,7 +95,7 @@ When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes 
 
 ## Super Admin Public Keys
 
-Within the Admin Panel, there is a `Super` tab which is only accessible by Super Admins.   Super Admin can manage user verification and $CLOUT purchasing behavior from the `Super` tab.
+Within the Admin Panel, there is a `Super` tab which is only accessible by Super Admins.   Super Admin can manage user verification and $DESO purchasing behavior from the `Super` tab.
 
 ### Username Verification
 
@@ -103,27 +103,27 @@ Within the Admin Panel, there is a `Super` tab which is only accessible by Super
 
 Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`.  Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
 
-### Buy $CLOUT Management
+### Buy $DESO Management
 
-Any node can sell $CLOUT if they set the following flags appropriately. Super Admins can set two values in the `Super` tab to manage the price at which $CLOUT is sold on their node: `USD-to-DeSo Reserve Price`and `Buy DeSo Fee Rate`.
+Any node can sell $DESO if they set the following flags appropriately. Super Admins can set two values in the `Super` tab to manage the price at which $DESO is sold on their node: `USD-to-DeSo Reserve Price`and `Buy DeSo Fee Rate`.
 
 ![](../.gitbook/assets/buy-bitclout-settings.png)
 
 #### USD-to-DeSo Reserve Price
 
-This is the minimum price at which you are willing to sell $CLOUT on your node. If the price retrieved from exchange APIs is lower than this amount, your node will sell $CLOUT at this reserve price instead of the API price.  Additionally, the price in the right sidebar will appear the reserve price in the event that the price from the API dips below the reserve price.
+This is the minimum price at which you are willing to sell $DESO on your node. If the price retrieved from exchange APIs is lower than this amount, your node will sell $DESO at this reserve price instead of the API price.  Additionally, the price in the right sidebar will appear the reserve price in the event that the price from the API dips below the reserve price.
 
 #### Buy DeSo Fee Rate
 
-This is a percentage-based fee applied to all $CLOUT purchased on your node. If the current price of $CLOUT in USD is $100 and the `Buy DeSo Fee Rate` is 5%, the buyer will pay $105 per $CLOUT and the node operator has earned $5 net. For more details on configuring your node to sell $CLOUT, please read the section titled `Sell $CLOUT on your node`.
+This is a percentage-based fee applied to all $DESO purchased on your node. If the current price of $DESO in USD is $100 and the `Buy DeSo Fee Rate` is 5%, the buyer will pay $105 per $DESO and the node operator has earned $5 net. For more details on configuring your node to sell $DESO, please read the section titled `Sell $DESO on your node`.
 
-## Sell $CLOUT on your node
+## Sell $DESO on your node
 
-To simplify the on-boarding experience for new users on your node, you can sell $CLOUT for Bitcoin directly to users.  To configure  your node to sell $CLOUT, please set the following flags:
+To simplify the on-boarding experience for new users on your node, you can sell $DESO for Bitcoin directly to users.  To configure  your node to sell $DESO, please set the following flags:
 
-* `BUY_BITCLOUT_SEED`: This is a seed phrase for the public key that contains $CLOUT that you will sell to users.  As with all seed phrases, keep this secret and share it with nobody. Take extra precautions to not commit it to version control and quickly move funds if this seed is ever compromised.
-  * You will need to deposit $CLOUT to the public key for this seed phrase.  All $CLOUT purchases on your node will send $CLOUT from this wallet.
-* `BUY_BITCLOUT_BTC_ADDRESS`: This is a Bitcoin address you control. When users purchased $CLOUT with Bitcoin, the Bitcoin will arrive at this address. 
+* `BUY_DESO_SEED`: This is a seed phrase for the public key that contains $DESO that you will sell to users.  As with all seed phrases, keep this secret and share it with nobody. Take extra precautions to not commit it to version control and quickly move funds if this seed is ever compromised.
+  * You will need to deposit $DESO to the public key for this seed phrase.  All $DESO purchases on your node will send $DESO from this wallet.
+* `BUY_DESO_BTC_ADDRESS`: This is a Bitcoin address you control. When users purchased $DESO with Bitcoin, the Bitcoin will arrive at this address. 
 
 ## How Users Login
 

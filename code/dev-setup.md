@@ -14,10 +14,10 @@ First, you must checkout all repos into the same directory. Some of these repos 
 
 ```text
 cd $WORKING_DIRECTORY
-git clone https://github.com/bitclout/core.git
-git clone https://github.com/bitclout/backend.git
-git clone https://github.com/bitclout/frontend.git
-git clone https://github.com/bitclout/identity.git
+git clone https://github.com/deso-project/core.git
+git clone https://github.com/deso-project/backend.git
+git clone https://github.com/deso-project/frontend.git
+git clone https://github.com/deso-project/identity.git
 ```
 
 Once all of these repos are checked out, we recommend importing them into a single Goland project. This allows you search across and develop on all of of the repos concurrently. To do this, open Goland, hit File &gt; Open, select a repo folder, and select "Attach" when prompted. If you do this correctly, you should have all four repos loaded into a single Goland project.

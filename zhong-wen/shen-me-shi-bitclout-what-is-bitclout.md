@@ -68,7 +68,7 @@ DeSo区块链有自己的原生代币，叫DeSo, 用户可以使用它在平台�
 
 决定创作者代币价格的公式或“曲线”如下：请注意创作者代币通常是由DeSo加密货币来买卖，但是这里我们提供了一以美元形式的公式，以方便展示计算：
 
-price\_in\_bitclout （以DeSo为基准代币价格） = .003 x creator\_coins\_in\_circulation^2 （创作者代币流通数量）
+price\_in\_deso （以DeSo为基准代币价格） = .003 x creator\_coins\_in\_circulation^2 （创作者代币流通数量）
 
 `price_in_usd（以美元为基准代币价格） = .003 x creator_coins_in_circulation^2 （创作者代币流通数量）x bitclout_price_in_usd （DeSo代币的美元价值）`
 

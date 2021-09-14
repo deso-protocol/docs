@@ -2,11 +2,11 @@
 
 * [What is DeSo?](README.md)
 * [The Vision](the-vision.md)
-* [DeSo NFT's](bitclout-nfts.md)
+* [DeSo NFT's](deso-nfts.md)
 
 ## FAQ
 
-* [DeSo FAQ](faq/bitclout-faq.md)
+* [DeSo FAQ](faq/deso-faq.md)
 * [Privacy and Security](faq/privacy-and-security.md)
 
 ## The DeSo Code <a id="code"></a>
@@ -25,6 +25,6 @@
 
 ## 中文
 
-* [什么是DeSo? \(What is DeSo?\)](zhong-wen/shen-me-shi-bitclout-what-is-bitclout.md)
+* [什么是DeSo? \(What is DeSo?\)](zhong-wen/shen-me-shi-deso-what-is-deso.md)
 * [愿景 \(The Vision\)](zhong-wen/yuan-jing-the-vision.md)
 

@@ -1,6 +1,6 @@
 # Exchange Listing API
 
-**The dev community recommends using the open source Rosetta API implementation for integrating DeSo on an exchange:** [**https://github.com/bitclout/rosetta-bitclout**](https://github.com/bitclout/rosetta-bitclout)**. The other APIs in this doc are less supported than the Rosetta APIs.**
+**The dev community recommends using the open source Rosetta API implementation for integrating DeSo on an exchange:** [**https://github.com/deso-project/rosetta-deso**](https://github.com/deso-project/rosetta-deso)**. The other APIs in this doc are less supported than the Rosetta APIs.**
 
 Multiple major crypto exchanges have expressed interest in listing DeSo. The dev community is working closely with several of these, but, now that anyone in the world can run a DeSo node, we thought we'd democratize and decentralize this effort by publishing a simple public API that any crypto exchange in the world could follow to integrate DeSo.
 
@@ -36,11 +36,11 @@ What we will use in our examples:
 
 All of the commands and examples in this guide will assume that you have a DeSo node running on your local machine. To set one up, simply follow the instructions in the open-source /run repository. If you run into any trouble, the [nodes-discussion](https://discord.com/channels/820740896181452841/835273317773869086) Discord channel is always available to help you:
 
-* [https://github.com/bitclout/run](https://github.com/bitclout/run)
+* [https://github.com/deso-project/run](https://github.com/deso-project/run)
 
 Note that the node software is cross-platform and should run on Linux, Mac, and Windows. However, it seems as though people have had the most success with Linux and Mac machines with at least 32GB of RAM and at least 100GB of free disk space.
 
-_NOTE: You must set `READ_ONLY_MODE` to false in_ [_dev.env_](https://github.com/bitclout/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L265) _in order for some API calls to work. However, at the time of this writing, it is not yet recommended to deploy a production node with `READ_ONLY_MODE` set to false. This should change shortly, though. Keep an eye on the_ [_README_](https://github.com/bitclout/run/tree/190a2380b278689a4db844bb52a31d0450db7d46) _for updates._
+_NOTE: You must set `READ_ONLY_MODE` to false in_ [_dev.env_](https://github.com/deso-project/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L265) _in order for some API calls to work. However, at the time of this writing, it is not yet recommended to deploy a production node with `READ_ONLY_MODE` set to false. This should change shortly, though. Keep an eye on the_ [_README_](https://github.com/deso-project/run/tree/190a2380b278689a4db844bb52a31d0450db7d46) _for updates._
 
 ### Check Node Sync Status
 
@@ -108,7 +108,7 @@ curl --header "Content-Type: application/json" --request POST --data '{
     "SenderPrivateKeyBase58Check":"bc6EmekhAbzn2V9BchgRLMRMZW1m8mo7kmvdwjZRB5nnKpgQhWSf4", 
     "RecipientPublicKeyBase58Check":"BC1YLgU67opDhT9bTPsqvue9QmyJLDHRZrSj77cF3P4yYDndmad9Wmx", 
     "AmountNanos": 1000000000
-}' http://localhost:17001/api/v1/transfer-bitclout | python -m json.tool
+}' http://localhost:17001/api/v1/transfer-deso | python -m json.tool
 ```
 
 Notes:
@@ -138,13 +138,13 @@ Notes:
 * A transaction ID is a sha256 hash of a transaction, encoded using base58 check encoding, that uniquely identifies a transaction.
 * This gets all the transaction IDs for a particular public key ordered from oldest to newest.
   * To fetch full transactions rather than just the IDs, simply set `IDsOnly` to `false` rather than `true` or leave it out of the request entirely.
-* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/bitclout/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
+* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/deso-project/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
   * You must also wait for your `TXINDEX` to generate, which can take a few hours. Grep your logs for UpdateTxIndex to monitor its progress.
 * See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint to see what information will be returned by this endpoint.
 
 ### Look Up Transaction Using Transaction ID
 
-Get information for a specific transaction using that transaction’s transaction ID. You can get a transaction ID from other endpoints like the [transfer-bitclout endpoint](exchange-listing-api.md#api-v-1-transfer-bitclout) described previously.
+Get information for a specific transaction using that transaction’s transaction ID. You can get a transaction ID from other endpoints like the [transfer-deso endpoint](exchange-listing-api.md#api-v-1-transfer-deso) described previously.
 
 ```text
 curl --header "Content-Type: application/json" --request POST --data '{
@@ -155,7 +155,7 @@ curl --header "Content-Type: application/json" --request POST --data '{
 Notes:
 
 * This is the same endpoint as the one used to lookup the transactions for a public key. When a `PublicKeyBase58Check` param is set, the `TransactionIDBase58Check` param is expected to be unset and is ignored.
-* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/bitclout/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
+* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/deso-project/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
 * See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint to see what information will be returned by this endpoint.
 
 ### **Get Block For Block Hash or Height**
@@ -289,7 +289,7 @@ RETURNS:
   }, ... ]
 ```
 
-### /api/v1/transfer-bitclout
+### /api/v1/transfer-deso
 
 DeSo can be transferred from one public key to another using this simple API call. To transfer DeSo, one must either provide a public/private key pair.
 
@@ -307,7 +307,7 @@ computed as (total input – total output) just like in Bitcoin.
 The maximum amount of DeSo can be sent by specifying a negative amount when calling the endpoint. We recommend running the endpoint once with `DryRun` set to `true`, inspecting the output, and then running it with `DryRun` set to `false`, which will actually broadcast the transaction.
 
 ```text
-PATH: /api/v1/transfer-bitclout
+PATH: /api/v1/transfer-deso
 METHOD: POST
 POST PARAMS:
 	// A DeSo private key encoded using base58 check encoding (starts
@@ -385,7 +385,7 @@ RETURNS:
 
 ### /api/v1/transaction-info
 
-If one has a TransactionIDBase58Check, e.g. from calling the “transfer-bitclout” endpoint, one can get the corresponding human-readable “Transaction object” by passing this transaction id to a node. Note that this endpoint will error if `TXINDEX` is set to false. If `TXINDEX` was passed to the node but it has not finished syncing the blockchain yet, this endpoint may return incomplete results. The `/node-info` endpoint can be used to check where a node is in its sync process \(generally, syncing takes only a minute or two\).
+If one has a TransactionIDBase58Check, e.g. from calling the “transfer-deso” endpoint, one can get the corresponding human-readable “Transaction object” by passing this transaction id to a node. Note that this endpoint will error if `TXINDEX` is set to false. If `TXINDEX` was passed to the node but it has not finished syncing the blockchain yet, this endpoint may return incomplete results. The `/node-info` endpoint can be used to check where a node is in its sync process \(generally, syncing takes only a minute or two\).
 
 If one has a PublicKeyBase58Check \(starts with “BC”\), one can get all of the TransactionIDs associated with that public key sorted by oldest to newest \(this will include transactions where the address is a sender and a receiver\). One can also optionally get the full Transaction objects for all of the transactions in the same call.
 
@@ -394,7 +394,7 @@ PATH: /api/v1/transaction-info
 METHOD: POST
 POST PARAMS:
   // A string that uniquely identifies this transaction. E.g. from a previous
-  // call to “transfer-bitclout”. Ignored when PublicKeyBase58Check is set.
+  // call to “transfer-deso”. Ignored when PublicKeyBase58Check is set.
   // When a transaction is looked up using its ID directly, we also scan the
   // mempool for it. This makes it so that a “block explorer” can easily
   // surface transactions associated with a particular ID.
