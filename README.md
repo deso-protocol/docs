@@ -1,12 +1,12 @@
 # What is BitClout?
 
-**BitClout is a new type of social network that lets you speculate on people and posts with real money, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, BitClout is a fully open-source project and there is no company behind it-- it’s just coins and code.
+**BitClout is a new type of social network that mixes speculation and social media, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, BitClout is a fully open-source project and there is no company behind it-- it’s just coins and code.
 
 ## Buying BitClout
 
 The BitClout blockchain has its own native cryptocurrency, called BitClout, that you can use to do all kinds of things on the platform, including buy a new type of asset called [“creator coins,” discussed below.](./#what-are-creator-coins)
 
-Anyone can buy the BitClout cryptocurrency with Bitcoin in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy BitClout” page](https://bitclout.com/buy-bitclout). The price of BitClout doubles for every million BitClout sold. This makes BitClout naturally scarce, resulting in 10 to 19 million BitClout minted in the long run \(less than Bitcoin’s max supply of 21 million\).
+Anyone can buy the BitClout cryptocurrency with Bitcoin in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy BitClout” page](https://bitclout.com/buy-bitclout). The supply of BitClout is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
 
 ## What are Creator Coins?
 
@@ -18,13 +18,13 @@ Every profile on the platform gets its own coin that anybody can buy and sell. W
 
 To buy someone’s coin, you simply navigate to their profile and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\). Profiles for the top 15,000 influencers from Twitter have been pre-loaded into the platform, which means you can buy and sell their coins even though they're not on the platform yet. These “reserved” profiles have a “clock” icon next to their names, indicating the owner of the profile has not joined yet.
 
-![](.gitbook/assets/image.png)
+![](.gitbook/assets/image%20%287%29%20%281%29.png)
 
 ### Tweet to Claim Your Profile
 
 The owner of a reserved profile can claim their profile by navigating to their profile and hitting a button to Tweet their BitClout public key \(shown below\). When they do this, they gain full access to the account, as well as a percentage of the creator coins associated with their profile \(see [Founder Rewards](./#founder-rewards)\). Only the owner of the Twitter account associated with a reserved profile can claim it.
 
-![](.gitbook/assets/image%20%281%29.png)
+![](.gitbook/assets/image%20%285%29.png)
 
 ### What Are Creator Coins Useful For?
 
@@ -36,15 +36,19 @@ The above being said, there are many other exciting opportunities for creator co
 
 A creator can make it so that only people who own a certain amount of their coin can participate in the comments section of their posts. This forces anyone who wants to have a voice in that creator’s content to first align themselves with the creator by buying their coin. The alignment not only reduces spam significantly, but it could bias conversations to be significantly more positive than on existing platforms. It would also create a lot of demand for one’s coin-- can you imagine if Elon Musk or Chamath did an AMA with a minimum threshold for buying their coin in order to participate? Or if they answered questions in order of coin holdings?
 
+#### Premium Messages
+
+Most creators get a torrent of spam in their message inbox on social media. With BitClout they could make it so that only people who own a certain amount of their coin can message them, or they could simply rank and prioritize messages from the largest holders of their coin. Alternatively, they can make it so that a certain amount of their coin must be paid to them directly in order for the message to actually enter their inbox. All of this would increase demand for their coin while helping to minimize spam for the creator.
+
 #### Sponsored Posts
 
-A creator can make it so that only people who own a certain amount of their coin can participate in the comments section of their posts. This forces anyone who wants to have a voice in that creator’s content to first align themselves with the creator by buying their coin. The alignment not only reduces spam significantly, but it could bias conversations to be significantly more positive than on existing platforms. It would also create a lot of demand for one’s coin-- can you imagine if Elon Musk or Chamath did an AMA with a minimum threshold for buying their coin in order to participate? Or if they answered questions in order of coin holdings?
+Creators can have an “inbox” where anyone can “bid” to have them repost \(aka “retweet”\) a particular post. If you want Kim Kardashian to retweet your fashion brand, you can submit an entry into her inbox, and if she retweets it then she keeps your money. The bids can all be made using the creator’s own coin, thus significantly increasing the demand for the coin.
 
 #### Premium Content
 
-A new way to prioritize messages. Most creators get a torrent of spam in their message inbox on social media. With BitClout they could make it so that only people who own a certain amount of their coin can message them, or they could simply rank and prioritize messages from the largest holders of their coin. Alternatively, they can make it so that a certain amount of their coin must be paid to them directly in order for the message to actually enter their inbox. All of this would increase demand for their coin while helping to minimize spam for the creator.
+People who own a certain amount of a creator’s coin get access to special content. Or, alternatively, people must pay a monthly subscription in the form of the creator’s coin in order to get premium content.
 
-#### Distributions and Engagement 
+#### Distributions and Engagement
 
 Creators can also use their coins to distribute scarce resources to the largest holders of their coins. For example, imagine if a famous celebrity offered to have lunch with whoever held the most of their coin at a particular date. Or imagine if they were going to offer 1,000 signed posters to their 1,000 largest holders. This is just the beginning of how creators can engage with their fans using their coins, and all such ideas could increase demand for their coin significantly.
 
@@ -72,19 +76,19 @@ When you create a profile, there are initially zero coins in existence and thus 
 
 Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a BitClout price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1zBEQBBoS12ZhFpPbB13-GTZ8keDVlstRG3l2If78pWM/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
 
-|  **Creator Coins in Circulation** |  **Creator Coin Price \(USD\)** |  **USD Locked in Profile** |
+| **Creator Coins in Circulation** | **Creator Coin Price \(USD\)** | **USD Locked in Profile** |
 | :--- | :--- | :--- |
-|  5 |  $1.20 |  $2 |
-|  10 |  $4.80 |  $16 |
-|  20 |  $19.20 |  $128 |
-|  40 |  $76.80 |  $1,024 |
-|  80 |  $307.20 |  $8,192 |
-|  160 |  $1,228.80 |  $65,536 |
-|  320 |  $4,915.20 |  $524,288 |
-|  640 |  $19,660.80 |  $4,194,304 |
-|  1280 |  $78,643.20 |  $33,554,432 |
+| 5 | $1.20 | $2 |
+| 10 | $4.80 | $16 |
+| 20 | $19.20 | $128 |
+| 40 | $76.80 | $1,024 |
+| 80 | $307.20 | $8,192 |
+| 160 | $1,228.80 | $65,536 |
+| 320 | $4,915.20 | $524,288 |
+| 640 | $19,660.80 | $4,194,304 |
+| 1280 | $78,643.20 | $33,554,432 |
 
-![](.gitbook/assets/image%20%282%29.png)
+![](.gitbook/assets/image%20%286%29%20%281%29.png)
 
 ### Founder Rewards
 

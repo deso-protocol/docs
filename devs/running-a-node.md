@@ -55,7 +55,7 @@ Running a node currently requires a modest amount of technical know-how. For the
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
-![](../.gitbook/assets/image%20%286%29.png)
+![](../.gitbook/assets/image%20%287%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
 Once your node is synced, you have access to the full firehose of BitClout data in real time! Below are some tips on how take full advantage of your node.
 
@@ -63,6 +63,7 @@ Once your node is synced, you have access to the full firehose of BitClout data 
 * Try to whitelist some posts in the Admin tab and see that they've made their way onto your global feed.
 * Read through the flags available in the [dev.env](https://github.com/bitclout/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
 * Set `ADMIN_PUBLIC_KEYS` to your public key so that the Admin tab is only visible to your username.
+* Set `SUPER_ADMIN_PUBLIC_KEYS` to your public key so that the Super Admin tab is only visible to your username.
 * Whitelist some posts and verify that they show up on the global feed.
 * Deploy your node on any cloud provider with a static IP to make it accessible to anyone on the internet.
 * Set a `PASSWORDS_FILE` if you want to restrict read access to your node.
@@ -75,7 +76,7 @@ Once your node is synced, you have access to the full firehose of BitClout data 
 
 To manage your feed, start by navigating to the Admin tab as shown below. The Admin tab shows the full firehose of posts in real time, with a button next to each one that allows you to add it to the global feed. You can also sort the posts by clout. These are all the same tools that the bitclout.com mods have, now at your fingertips through the power of decentralization.
 
-![](../.gitbook/assets/image%20%285%29.png)
+![](../.gitbook/assets/image%20%288%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
 You can also add any post from anyone's profile to the global feed simply by hitting the dropdown at the top-right of the post. You can also pin posts to your feed, which is a good way of communicating announcements to your user-base.
 
@@ -92,6 +93,38 @@ When you run a node, you act as a moderator and have a variety of superpowers th
 
 When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes visible only to you. This is a critical step in securing your node. Not doing this would make it so that all your users can add posts to the global feed.
 
+## Super Admin Public Keys
+
+Within the Admin Panel, there is a `Super` tab which is only accessible by Super Admins.   Super Admin can manage user verification and $CLOUT purchasing behavior from the `Super` tab.
+
+### Username Verification
+
+![](../.gitbook/assets/verify-users.png)
+
+Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`.  Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
+
+### Buy $CLOUT Management
+
+Any node can sell $CLOUT if they set the following flags appropriately. Super Admins can set two values in the `Super` tab to manage the price at which $CLOUT is sold on their node: `USD-to-BitClout Reserve Price`and `Buy BitClout Fee Rate`.
+
+![](../.gitbook/assets/buy-bitclout-settings.png)
+
+#### USD-to-BitClout Reserve Price
+
+This is the minimum price at which you are willing to sell $CLOUT on your node. If the price retrieved from exchange APIs is lower than this amount, your node will sell $CLOUT at this reserve price instead of the API price.  Additionally, the price in the right sidebar will appear the reserve price in the event that the price from the API dips below the reserve price.
+
+#### Buy BitClout Fee Rate
+
+This is a percentage-based fee applied to all $CLOUT purchased on your node. If the current price of $CLOUT in USD is $100 and the `Buy BitClout Fee Rate` is 5%, the buyer will pay $105 per $CLOUT and the node operator has earned $5 net. For more details on configuring your node to sell $CLOUT, please read the section titled `Sell $CLOUT on your node`.
+
+## Sell $CLOUT on your node
+
+To simplify the on-boarding experience for new users on your node, you can sell $CLOUT for Bitcoin directly to users.  To configure  your node to sell $CLOUT, please set the following flags:
+
+* `BUY_BITCLOUT_SEED`: This is a seed phrase for the public key that contains $CLOUT that you will sell to users.  As with all seed phrases, keep this secret and share it with nobody. Take extra precautions to not commit it to version control and quickly move funds if this seed is ever compromised.
+  * You will need to deposit $CLOUT to the public key for this seed phrase.  All $CLOUT purchases on your node will send $CLOUT from this wallet.
+* `BUY_BITCLOUT_BTC_ADDRESS`: This is a Bitcoin address you control. When users purchased $CLOUT with Bitcoin, the Bitcoin will arrive at this address. 
+
 ## How Users Login
 
 When a user logs in on your node, they have the ability to sign in with their BitClout identity, without having to re-enter their seed phrase. Once a user signs in, your node can sign transactions on their behalf with varying levels of approval required depending on what kind of permission the user granted. This creates a login mechanism for node operators that is as easy for users as "login with Facebook," but it unlocks a wallet in addition to a user's identity.
@@ -102,7 +135,7 @@ Answers to common questions and issues about running your own node:
 
 ### What are the minimum requirements for syncing a node?
 
-We recommend having a machine with at least 32GB of RAM and 50GB of storage.
+We recommend having a machine with at least 32GB of RAM and 350GB of storage (as at 21 July 2021).  If TXIndex is disabled, then you need about 200GB in total. The Blockchain DB takes up about 90 GB, and the TXIndex takes up 160 GB. THe DB+TXindex size grows by about 50GB a month currently.
 
 ### How do I configure SSL?
 
@@ -131,9 +164,9 @@ Both records should point to the IP address of your node.
 
 If you do not create both records you will be unable to use a custom domain.
 
-### Can my node write-back to the mainnet?
+### Can my node write back to the mainnet?
 
-At this time this is not possible but more information will be given soon.
+Yes! Every transaction is broadcast to all other nodes on the network, and should eventually be mined into a block.
 
 ### What does Twilio provide to my node?
 
