@@ -2,7 +2,7 @@
 
 The DeSo Identity service provides a convenient and secure way for users to login to many different DeSo nodes and applications. When using DeSo Identity, users' private key material never leaves the browser. All signing happens in a secured `iframe` and transaction approvals occur in a pop-up window.
 
-The developer community highly recommends node operators and app developers integrate with [identity.bitclout.com](https://identity.bitclout.com) to provide users with consistent log in, sign up, and account management experiences. Identity currently integrates most smoothly with web-based applications. The developer community is working on creating libraries for integrating with iOS and Android.
+The developer community highly recommends node operators and app developers integrate with [identity.deso.org](https://identity.deso.org) to provide users with consistent log in, sign up, and account management experiences. Identity currently integrates most smoothly with web-based applications. The developer community is working on creating libraries for integrating with iOS and Android.
 
 ## Message Protocol
 
@@ -43,13 +43,13 @@ The first message Identity sends to the parent when it loads in is `initialize`.
 Opening Identity using window.open allows an application to send and receive messages to the newly opened tab or pop-up. A new Identity window can be opened at many paths:
 
 ```javascript
-const login   = window.open('https://identity.bitclout.com/log-in');
-const signUp  = window.open('https://identity.bitclout.com/sign-up');
-const logout  = window.open('https://identity.bitclout.com/logout?publicKey=BC123');
-const approve = window.open('https://identity.bitclout.com/approve?tx=0abf35a');
+const login   = window.open('https://identity.deso.org/log-in');
+const signUp  = window.open('https://identity.deso.org/sign-up');
+const logout  = window.open('https://identity.deso.org/logout?publicKey=BC123');
+const approve = window.open('https://identity.deso.org/approve?tx=0abf35a');
 
 // Can be added to any path for testnet bitclout and bitcoin addresses
-const testnet = window.open('https://identity.bitclout.com/log-in?testnet=true');
+const testnet = window.open('https://identity.deso.org/log-in?testnet=true');
 ```
 
 Only one Identity window should be opened at a time.
@@ -112,7 +112,7 @@ The iframe is responsible for signing and decryption. The iframe is usually enti
 <iframe
   id="identity"
   frameborder="0"
-  src="https://identity.bitclout.com/embed"
+  src="https://identity.deso.org/embed"
   style="height: 100vh; width: 100vw;"
   [style.display]="requestingStorageAccess ? 'block' : 'none'"
 ></iframe>

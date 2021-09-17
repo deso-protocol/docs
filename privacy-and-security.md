@@ -26,7 +26,7 @@ We apologize for the inconvenience here. We know this process is not ideal, we'r
 
 ## How does DeSo Identity work?
 
-DeSo Identity, located at [identity.bitclout.com](https://identity.bitclout.com), safely stores your sensitive account information in your browser's local storage. To protect private key material the identity service has minimal dependencies, a strict content security policy, and is audited by multiple security firms. **For now, the developer community does not recommend entering your seed phrase anywhere other than identity.bitclout.com.** Always check the URL bar to verify you are using identity.bitclout.com.
+DeSo Identity, located at [identity.deso.org](https://identity.deso.org), safely stores your sensitive account information in your browser's local storage. To protect private key material the identity service has minimal dependencies, a strict content security policy, and is audited by multiple security firms. **For now, the developer community does not recommend entering your seed phrase anywhere other than identity.deso.org.** Always check the URL bar to verify you are using identity.deso.org.
 
 The DeSo Identity Service aims to make it easy for users to use a wide array of community projects safely and securely. Apps and nodes can integrate with DeSo Identity to onboard users without requiring them to enter private key material. Users can easily grant different levels of access on a per-account basis. The developer community is working on complete documentation for integrating with the DeSo Identity Service.
 

@@ -1,6 +1,6 @@
 # Exchange Listing API
 
-**The dev community recommends using the open source Rosetta API implementation for integrating DeSo on an exchange:** [**https://github.com/deso-project/rosetta-deso**](https://github.com/deso-project/rosetta-deso)**. The other APIs in this doc are less supported than the Rosetta APIs.**
+**The dev community recommends using the open source Rosetta API implementation for integrating DeSo on an exchange:** [**https://github.com/bitclout/deso-rosetta**](https://github.com/bitclout/rosetta-deso)**. The other APIs in this doc are less supported than the Rosetta APIs.**
 
 Multiple major crypto exchanges have expressed interest in listing DeSo. The dev community is working closely with several of these, but, now that anyone in the world can run a DeSo node, we thought we'd democratize and decentralize this effort by publishing a simple public API that any crypto exchange in the world could follow to integrate DeSo.
 
@@ -36,11 +36,11 @@ What we will use in our examples:
 
 All of the commands and examples in this guide will assume that you have a DeSo node running on your local machine. To set one up, simply follow the instructions in the open-source /run repository. If you run into any trouble, the [nodes-discussion](https://discord.com/channels/820740896181452841/835273317773869086) Discord channel is always available to help you:
 
-* [https://github.com/deso-project/run](https://github.com/deso-project/run)
+* [https://github.com/bitclout/deso-run](https://github.com/bitclout/deso-run)
 
 Note that the node software is cross-platform and should run on Linux, Mac, and Windows. However, it seems as though people have had the most success with Linux and Mac machines with at least 32GB of RAM and at least 100GB of free disk space.
 
-_NOTE: You must set `READ_ONLY_MODE` to false in_ [_dev.env_](https://github.com/deso-project/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L265) _in order for some API calls to work. However, at the time of this writing, it is not yet recommended to deploy a production node with `READ_ONLY_MODE` set to false. This should change shortly, though. Keep an eye on the_ [_README_](https://github.com/deso-project/run/tree/190a2380b278689a4db844bb52a31d0450db7d46) _for updates._
+_NOTE: You must set `READ_ONLY_MODE` to false in_ [_dev.env_](https://github.com/bitclout/deso-run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L265) _in order for some API calls to work. However, at the time of this writing, it is not yet recommended to deploy a production node with `READ_ONLY_MODE` set to false. This should change shortly, though. Keep an eye on the_ [_README_](https://github.com/bitclout/deso-run/tree/190a2380b278689a4db844bb52a31d0450db7d46) _for updates._
 
 ### Check Node Sync Status
 
@@ -138,7 +138,7 @@ Notes:
 * A transaction ID is a sha256 hash of a transaction, encoded using base58 check encoding, that uniquely identifies a transaction.
 * This gets all the transaction IDs for a particular public key ordered from oldest to newest.
   * To fetch full transactions rather than just the IDs, simply set `IDsOnly` to `false` rather than `true` or leave it out of the request entirely.
-* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/deso-project/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
+* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/bitclout/deso-run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
   * You must also wait for your `TXINDEX` to generate, which can take a few hours. Grep your logs for UpdateTxIndex to monitor its progress.
 * See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint to see what information will be returned by this endpoint.
 
@@ -155,7 +155,7 @@ curl --header "Content-Type: application/json" --request POST --data '{
 Notes:
 
 * This is the same endpoint as the one used to lookup the transactions for a public key. When a `PublicKeyBase58Check` param is set, the `TransactionIDBase58Check` param is expected to be unset and is ignored.
-* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/deso-project/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
+* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/bitclout/deso-run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
 * See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint to see what information will be returned by this endpoint.
 
 ### **Get Block For Block Hash or Height**
