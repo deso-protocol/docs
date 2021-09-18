@@ -1,6 +1,6 @@
 # Table of contents
 
-* [DeSo: The Decentralized Social Network kdsflj](README.md)
+* [DeSo: The Decentralized Social Network](README.md)
 * [The Vision](the-vision.md)
 * [DeSo NFT's](deso-nfts.md)
 
