@@ -203,7 +203,7 @@ If you are using raw seed phrases to login, see [this doc](https://docs.bitclout
 
 Message text is end-to-end encrypted with your private key, which never leaves your device.
 
-[**🚨**](https://emojipedia.org/police-car-light/) **\*\*However, similar to how the Bitcoin blockchain publicly stores** who you’ve sent money to ****and when**, the DeSo blockchain publicly stores** who you’ve messaged and when**. \*\***[**🚨**](https://emojipedia.org/police-car-light/)
+[**🚨**](https://emojipedia.org/police-car-light/) **\*\*However, similar to how the Bitcoin blockchain publicly stores** who you’ve sent money to **\*\*and when**, the DeSo blockchain publicly stores **who you’ve messaged and when**. \*\***\[**🚨\*\*\]\([https://emojipedia.org/police-car-light/](https://emojipedia.org/police-car-light/)\)
 
 We are working on a fix to this, but the engineering is nontrivial. In the meantime, if you want total DM privacy, we recommend putting your Telegram username in your bio to have people contact you there.
 

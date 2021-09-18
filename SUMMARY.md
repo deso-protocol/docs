@@ -1,6 +1,6 @@
 # Table of contents
 
-* [What is DeSo?](README.md)
+* [DeSo: The Decentralized Social Network](README.md)
 * [The Vision](the-vision.md)
 * [DeSo NFT's](deso-nfts.md)
 
