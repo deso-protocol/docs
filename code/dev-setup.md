@@ -113,5 +113,3 @@ In order to point your browser at your local identity service rather than at ide
 
 ![](../.gitbook/assets/image%20%2815%29.png)
 
-
-

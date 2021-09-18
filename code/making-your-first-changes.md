@@ -30,14 +30,14 @@ The backend repo runs an API that the frontend Angular app queries to get all of
 * With the backend repo loaded in Goland, find the `post.go` file, which defines one of the API endpoints queried by the frontend. Hint: You can use SHIFT+SHIFT to navigate to it.
 * In that file, find a function called `GetPostsStateless`. Modify the response at the end of the function as follows to customize the content:
   * ```text
-    	if len(postEntryResponses) > 0 {
-    		postEntryResponses[0].Body = "This is some content"
-    	}
+        if len(postEntryResponses) > 0 {
+            postEntryResponses[0].Body = "This is some content"
+        }
 
-    	// Return the posts found.
-    	res := &GetPostsStatelessResponse{
-    		PostsFound: postEntryResponses,
-    	}
+        // Return the posts found.
+        res := &GetPostsStatelessResponse{
+            PostsFound: postEntryResponses,
+        }
     ```
 * Save the file and restart n0\_test. When you make changes to anything in backend or core, you need to restart your node for them to take effect.
 

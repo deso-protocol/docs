@@ -47,6 +47,6 @@ In order to be eligible to receive a bounty you must fully disclose an exploit t
   * Disclosing your exploit publicly in less than 60 days could not only result in harm to users, but it will also make you ineligible for the bounty.
 * Once your exploit is verified you will be asked for a DeSo or Bitcoin address to receive payment.
 
-We understand that the disclosure process described above requires you to put some faith in the judgement of the DeSo developer community. For some reports it may not be clear how severe the exploit is or how much of a reward the reporter should receive. In these instances, we ask that you are patient with us as we refine the scope of exploits we're looking for and trust that we will be generous when an exploit is in a grey area.[  
+We understand that the disclosure process described above requires you to put some faith in the judgement of the DeSo developer community. For some reports it may not be clear how severe the exploit is or how much of a reward the reporter should receive. In these instances, we ask that you are patient with us as we refine the scope of exploits we're looking for and trust that we will be generous when an exploit is in a grey area.[    
 ](https://app.gitbook.com/@bitclout-1/s/diamondhands-drafts/~/drafts/-MZB-mxH8AxjI0n9wGYd/)
 

@@ -25,6 +25,6 @@
 
 ## 中文
 
-* [什么是DeSo? \(What is DeSo?\)](zhong-wen/shen-me-shi-deso-what-is-deso.md)
+* [什么是DeSo? \(What is DeSo?\)](zhong-wen/shi-mo-shi-deso-what-is-deso.md)
 * [愿景 \(The Vision\)](zhong-wen/yuan-jing-the-vision.md)
 

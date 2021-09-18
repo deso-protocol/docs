@@ -196,12 +196,12 @@ Under the hood, DeSo takes the BIP39 mnemonic and generates the public/private k
 PATH: /api/v1/key-pair
 METHOD: POST
 POST PARAMS:
-	// A BIP39 mnemonic and extra text. Mnemonic can be 12 words or
-	// 24 words. ExtraText is optional.
-	Mnemonic  string
-	ExtraText string
-	// The index of the public/private key pair to generate
-	Index uint32
+    // A BIP39 mnemonic and extra text. Mnemonic can be 12 words or
+    // 24 words. ExtraText is optional.
+    Mnemonic  string
+    ExtraText string
+    // The index of the public/private key pair to generate
+    Index uint32
 RETURNS:
   // Blank if successful. Otherwise, contains a description of the
   // error that occurred.
@@ -310,21 +310,21 @@ The maximum amount of DeSo can be sent by specifying a negative amount when call
 PATH: /api/v1/transfer-deso
 METHOD: POST
 POST PARAMS:
-	// A DeSo private key encoded using base58 check encoding (starts
-	// with "bc").
-	SenderPrivateKeyBase58Check string
-	// A DeSo public key encoded using base58 check encoding (starts
-	// with “BC”) that will receive the DeSo being sent.
-	RecipientPublicKeyBase58Check string
-	// The amount of DeSo to send in “nanos.” Note that “1 DeSo” is equal to
-	// 1e9 nanos, so to send 1 DeSo, this value would need to be set to 1e9.
-	AmountNanos int64
-	// The fee rate to use for this transaction. If left unset, a default fee rate
-	// will be used. This can be checked using the “DryRun” parameter below.
-	MinFeeRateNanosPerKB int64
-	// When set to true, the transaction is returned in the response but not
-	// actually broadcast to the network. Useful for testing.
-	DryRun bool
+    // A DeSo private key encoded using base58 check encoding (starts
+    // with "bc").
+    SenderPrivateKeyBase58Check string
+    // A DeSo public key encoded using base58 check encoding (starts
+    // with “BC”) that will receive the DeSo being sent.
+    RecipientPublicKeyBase58Check string
+    // The amount of DeSo to send in “nanos.” Note that “1 DeSo” is equal to
+    // 1e9 nanos, so to send 1 DeSo, this value would need to be set to 1e9.
+    AmountNanos int64
+    // The fee rate to use for this transaction. If left unset, a default fee rate
+    // will be used. This can be checked using the “DryRun” parameter below.
+    MinFeeRateNanosPerKB int64
+    // When set to true, the transaction is returned in the response but not
+    // actually broadcast to the network. Useful for testing.
+    DryRun bool
 RETURNS:
   // Blank if successful. Otherwise, contains a description of the
   // error that occurred.
@@ -421,7 +421,6 @@ RETURNS
       // IDsOnly is unset or false.
       ...
   }, ... ]
-
 ```
 
 ### /api/v1/node-info
@@ -435,18 +434,18 @@ RETURNS
   DeSoStatus {
     // A summary of what the node is currently doing.
     State string
-    
+
     // We generally track the latest header we have and the latest block we have
     // separately since headers-first synchronization can cause the latest header
     // to diverge slightly from the latest block.
     LatestHeaderHeight     uint32
     LatestHeaderHash       string
     LatestHeaderTstampSecs uint32
-    
+
     LatestBlockHeight     uint32
     LatestBlockHash       string
     LatestBlockTstampSecs uint32
-    
+
     // This is non-zero unless the main header chain is fully current. It can be
     // an estimate in cases where we don't know exactly what the tstamp of the
     // current main chain is.

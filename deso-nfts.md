@@ -26,7 +26,7 @@ Popular NFT marketplaces:
 * [SuperRare](https://superrare.co/)
 * [Zora](https://zora.co/)
 * [Foundation](https://foundation.app/)
-* [Valuables by Cent](v.cent.co)
+* [Valuables by Cent](https://github.com/bitclout/deso-docs/tree/fbaa50bb5f33de0987f3841ac62b98c67fdf57ce/v.cent.co)
 
 ## Why NFTs on DeSo?
 
@@ -138,8 +138,8 @@ The NFT Showcase is a curated feed on DeSo.com where NFTs from different NFT art
 
 It's possible to apply for your work to be featured in the NFT Showcase. It's easy as 1-2-3:
 
-* Mint an NFT and Reclout with #CLOUTNFT
-* Cross-post to Twitter or Instagram (recommend @oneclout(https://bitclout.com/u/oneclout) for cross-posting)
+* Mint an NFT and Reclout with \#CLOUTNFT
+* Cross-post to Twitter or Instagram \(recommend @oneclout\([https://bitclout.com/u/oneclout](https://bitclout.com/u/oneclout)\) for cross-posting\)
 
 And if you don't make it into this drop, don't worry! Any NFT you mint always gets shown to all of your followers, it's visible on your profile, and it can even make the global feed. Every now an then we are doing a new drop of NFTs on DeSo.com so that new artists are continuously featured, and we hope to make this even more frequent in the future. Lastly, don't forget that new nodes are spinning up every day that offer superior experiences to DeSo.com, and your NFTs will automatically be available in all of these new nodes as well.
 

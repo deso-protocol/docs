@@ -95,13 +95,13 @@ When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes 
 
 ## Super Admin Public Keys
 
-Within the Admin Panel, there is a `Super` tab which is only accessible by Super Admins.   Super Admin can manage user verification and $DESO purchasing behavior from the `Super` tab.
+Within the Admin Panel, there is a `Super` tab which is only accessible by Super Admins. Super Admin can manage user verification and $DESO purchasing behavior from the `Super` tab.
 
 ### Username Verification
 
 ![](../.gitbook/assets/verify-users.png)
 
-Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`.  Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
+Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`. Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
 
 ### Buy $DESO Management
 
@@ -111,7 +111,7 @@ Any node can sell $DESO if they set the following flags appropriately. Super Adm
 
 #### USD-to-DeSo Reserve Price
 
-This is the minimum price at which you are willing to sell $DESO on your node. If the price retrieved from exchange APIs is lower than this amount, your node will sell $DESO at this reserve price instead of the API price.  Additionally, the price in the right sidebar will appear the reserve price in the event that the price from the API dips below the reserve price.
+This is the minimum price at which you are willing to sell $DESO on your node. If the price retrieved from exchange APIs is lower than this amount, your node will sell $DESO at this reserve price instead of the API price. Additionally, the price in the right sidebar will appear the reserve price in the event that the price from the API dips below the reserve price.
 
 #### Buy DeSo Fee Rate
 
@@ -119,7 +119,7 @@ This is a percentage-based fee applied to all $DESO purchased on your node. If t
 
 ## Sell $DESO on your node
 
-To simplify the on-boarding experience for new users on your node, you can sell $DESO for Bitcoin directly to users.  To configure  your node to sell $DESO, please set the following flags:
+To simplify the on-boarding experience for new users on your node, you can sell $DESO for Bitcoin directly to users. To configure your node to sell $DESO, please set the following flags:
 
 * `BUY_DESO_SEED`: This is a seed phrase for the public key that contains $DESO that you will sell to users.  As with all seed phrases, keep this secret and share it with nobody. Take extra precautions to not commit it to version control and quickly move funds if this seed is ever compromised.
   * You will need to deposit $DESO to the public key for this seed phrase.  All $DESO purchases on your node will send $DESO from this wallet.
@@ -135,7 +135,7 @@ Answers to common questions and issues about running your own node:
 
 ### What are the minimum requirements for syncing a node?
 
-We recommend having a machine with at least 32GB of RAM and 350GB of storage (as at 21 July 2021).  If TXIndex is disabled, then you need about 200GB in total. The Blockchain DB takes up about 90 GB, and the TXIndex takes up 160 GB. THe DB+TXindex size grows by about 50GB a month currently.
+We recommend having a machine with at least 32GB of RAM and 350GB of storage \(as at 21 July 2021\). If TXIndex is disabled, then you need about 200GB in total. The Blockchain DB takes up about 90 GB, and the TXIndex takes up 160 GB. THe DB+TXindex size grows by about 50GB a month currently.
 
 ### How do I configure SSL?
 

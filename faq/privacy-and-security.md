@@ -10,7 +10,7 @@ Your seed phrase is the password that controls your entire account. **Your seed 
 
 ## **How do I keep my account safe?**
 
-**For maximum security, the developer community recommends you use mobile browsers or the DeSo desktop app to access bitclout.com.** 
+**For maximum security, the developer community recommends you use mobile browsers or the DeSo desktop app to access bitclout.com.**
 
 Both mobile browsers and the DeSo desktop app are secured, sandboxed environments that cannot be easily compromised by third party attackers.
 

@@ -8,8 +8,8 @@ The DeSo project is a decentralized, blockchain-based, [open source](https://git
 
 Back in 2009, Paul Graham wrote about [Twitter as an open protocol](http://www.paulgraham.com/twitter.html) that was run by a private company that had been “slow to monetize” and hadn’t “tried to control it too much”. Due to this openness, people built many applications on the Twitter API, including applications like [Tweetdeck](https://en.wikipedia.org/wiki/TweetDeck) that replicated the full functionality of Twitter. Then Twitter very much asserted itself as a private company, shutting off API access to countless developers \([1](https://readwrite.com/2011/02/11/twitter_kills_the_api_whitelist_what_it_means_for/), [2](https://techcrunch.com/2011/05/18/twitter-revokes-automatic-3rd-party-dm-access-gives-users-more-details-on-app-permissions/), [3](https://www.theverge.com/2012/7/9/3135406/twitter-api-open-closed-facebook-walled-garden), [4](https://www.theverge.com/2012/8/20/3250218/developers-react-twitter-api-rules), [5](https://www.networkworld.com/article/2200143/twitter-whacks-ubertwitter-company-so-hard-it-s-changing-app-s-name-to-ubersocial.html), [6](https://readwrite.com/2011/02/22/twitter_puts_the_smack_down_on_another_popular_app), [7](https://mashable.com/archive/twitter-killing-tweetdeck), [8](https://venturebeat.com/2015/10/22/10-reasons-why-twitter-ceo-jack-dorsey-apologized-to-developers/), [9](https://thenextweb.com/news/developers-bracing-themselves-for-twitter-api-retrictions-call-todays-post-ominous), [10](https://www.infoworld.com/article/2908869/twitters-firehose-shut-off-is-the-newest-hazard-of-the-api-economy.html)\), deplatforming direct competitors like [Meerkat](https://techcrunch.com/2015/05/06/meerkat-founder-on-getting-the-kill-call-from-twitter/), and generally becoming a Facebook-like [walled garden](https://www.theverge.com/2012/7/9/3135406/twitter-api-open-closed-facebook-walled-garden). This is now far enough in the past that 20-something developers often don’t even know about this history.
 
-Twitter didn’t cut off API access because it was “evil”. Fundamentally, the reason this happened is because \(a\) Twitter was a private company that needed to provide returns to its employees/investors and \(b\) Twitter could not monetize via its API as well as it could via ads run on Twitter.com itself. The incentives of Twitter-the-company, Twitter-the-platform, Twitter developers, and Twitter users were not economically aligned. And so the background issues that Paul Graham had presciently noted — namely that Twitter was a private company that hadn’t tried to monetize or assert control over its API — came to the foreground.  
-  
+Twitter didn’t cut off API access because it was “evil”. Fundamentally, the reason this happened is because \(a\) Twitter was a private company that needed to provide returns to its employees/investors and \(b\) Twitter could not monetize via its API as well as it could via ads run on Twitter.com itself. The incentives of Twitter-the-company, Twitter-the-platform, Twitter developers, and Twitter users were not economically aligned. And so the background issues that Paul Graham had presciently noted — namely that Twitter was a private company that hadn’t tried to monetize or assert control over its API — came to the foreground.
+
 But what if we could build an open source social protocol, based on a blockchain, that aligned all parties behind a different form of innate monetization, and that delegated control back to its users, nodes, and developers? That’s what we’re trying to do with DeSo.
 
 ### **What is the difference between DeSo, Bitclout.com, the DeSo Blockchain, the CLOUT cryptocurrency, and individual creator coins?**
@@ -25,14 +25,13 @@ Let’s give detail on each of these.
 
 #### The DeSo Blockchain
 
-DeSo’s backend is structured as a blockchain. It is already [open source](https://github.com/bitclout/deso-core#example-1-a-deso-website-aka-desocom) and more decentralized than closed social networks like Twitter. 
+DeSo’s backend is structured as a blockchain. It is already [open source](https://github.com/bitclout/deso-core#example-1-a-deso-website-aka-desocom) and more decentralized than closed social networks like Twitter.
 
 To prove this, note that right now you can [run a node](https://docs.bitclout.com/devs/running-a-node) and download the entire DeSo blockchain. Any engineer can then run [simple commands](https://github.com/andrewarrow/cloutcli#quick-start-demo) to print out the entire history of all DeSo messages, visualize the full social graph, search all clouts, send mass DMs to users, and in general gain full access to the entire DeSo backend as you would with any other public blockchain. These actions would be impossible on twitter.com without [corporate permission](https://developer.twitter.com/en/docs/twitter-api/enterprise/historical-powertrack-api/overview) from Twitter.
 
 For this reason we think DeSo as a whole is _already_ significantly more decentralized than Twitter or Facebook. That said, there are still parts of the DeSo project that are centralized or semi-centralized, like [identity.deso.org](https://docs.bitclout.com/devs/identity-api) and [images.bitclout.com](https://bitclout.com/posts/db5f007e1c6a3b018bba98362fe5f8488f29f51676aa90ebf0bc2b702aec0f26), which we plan to phase out over time. You can read more about the technical roadmap for progressive decentralization below.
 
-The main difference between DeSo and most previous public blockchains is that DeSo focuses on _social_ rather than financial transactions, like [updating a profile](https://github.com/bitclout/deso-core/blob/main/lib/network.go#L211) or [buying a creator coin](https://github.com/bitclout/deso-core/blob/27426de8fd6dfb5d0d0e98a2f6b82773d92a6288/lib/network.go#L215). Just to make that clear, here’s a [screenshot](https://www.bitcloutpulse.com/explorer/blocks/00000000000099a0306c0bd5b8bbb5eb6e2e716be4a929e20157d2af18189661) of a recent DeSo block from a third party block explorer called bitcloutpulse.com. Note that you can see individual social transaction types, such as `BLOCK_REWARD`, `SUBMIT_POST`, `FOLLOW`, `LIKE`, and so on.  
-
+The main difference between DeSo and most previous public blockchains is that DeSo focuses on _social_ rather than financial transactions, like [updating a profile](https://github.com/bitclout/deso-core/blob/main/lib/network.go#L211) or [buying a creator coin](https://github.com/bitclout/deso-core/blob/27426de8fd6dfb5d0d0e98a2f6b82773d92a6288/lib/network.go#L215). Just to make that clear, here’s a [screenshot](https://www.bitcloutpulse.com/explorer/blocks/00000000000099a0306c0bd5b8bbb5eb6e2e716be4a929e20157d2af18189661) of a recent DeSo block from a third party block explorer called bitcloutpulse.com. Note that you can see individual social transaction types, such as `BLOCK_REWARD`, `SUBMIT_POST`, `FOLLOW`, `LIKE`, and so on.
 
 ![](../.gitbook/assets/image%20%282%29.png)
 
@@ -194,7 +193,7 @@ If you use the “Login with Google” signup flow, then no storage is needed. Y
 
 If you are using raw seed phrases to login, see [this doc](https://docs.bitclout.com/faq/privacy-and-security) for information on how to manage them securely.
 
-### When should I enter my seed phrase? 
+### When should I enter my seed phrase?
 
 **You should never enter your seed phrase on any site other than the one that generated it \(typically identity.deso.org\).**
 
@@ -204,7 +203,7 @@ If you are using raw seed phrases to login, see [this doc](https://docs.bitclout
 
 Message text is end-to-end encrypted with your private key, which never leaves your device.
 
-[**🚨**](https://emojipedia.org/police-car-light/) ****However, similar to how the Bitcoin blockchain publicly stores **who you’ve sent money to** **and when**, the DeSo blockchain publicly stores **who you’ve messaged and when**. ****[**🚨**](https://emojipedia.org/police-car-light/)
+[**🚨**](https://emojipedia.org/police-car-light/) **\*\*However, similar to how the Bitcoin blockchain publicly stores** who you’ve sent money to ****and when**, the DeSo blockchain publicly stores** who you’ve messaged and when**. \*\***[**🚨**](https://emojipedia.org/police-car-light/)
 
 We are working on a fix to this, but the engineering is nontrivial. In the meantime, if you want total DM privacy, we recommend putting your Telegram username in your bio to have people contact you there.
 
@@ -304,7 +303,7 @@ The math below walks through DeSo's scalability at each stage:
 
 ### **Is there obfuscated code in the DeSo blockchain miner?**
 
-No. The DeSo reference implementation contains a fully open-source CPU miner with good comments [here](https://github.com/bitclout/deso-core/blob/main/lib/miner.go). 
+No. The DeSo reference implementation contains a fully open-source CPU miner with good comments [here](https://github.com/bitclout/deso-core/blob/main/lib/miner.go).
 
 Some independent developers offered obfuscated binaries tailored to GPU mining, offering faster hash rates using proprietary software, but the DeSo core developers were not involved in this \(and we take no issue with this since it allows third-party developers to make money off of their IP\). Moreover, awesome developers like @lobovkin have since [open-sourced their GPU code](https://github.com/lobovkin/BitPoolMiner)!
 
@@ -330,7 +329,7 @@ Each individual node on the DeSo network has its own distinct moderation policy.
 
 We believe this model of “node-level” moderation presents a significantly more decentralized approach to curating public discourse than what is offered by existing social media today. This is because the barrier to entry for running a node is so low, that we can expect thousands of them to exist, and thus a wide range of diversity in how discourse is curated.
 
-See [running a node](https://docs.bitclout.com/devs/running-a-node). Also see [here]().
+See [running a node](https://docs.bitclout.com/devs/running-a-node). Also see [here](deso-faq.md).
 
 ### **Can I view, sell, and access my $DESO and creator coins on another DeSo node if my profile was removed at Bitclout.com?**
 
@@ -407,7 +406,7 @@ But we need to write it up and run it by the community first :\)
 
 #### Was DeSo originally intended to focus on coin price, gains, trading ? And what consideration was given to this maybe encouraging bad behavior and bad actors by design? \(@GeneGMB\)
 
-It was intended to promote positivity and unity over division and toxicity, while also allowing creators to earn more per follower than on any other platform. Coin price, gains, and trading, to the extent they are a big part of DeSo, are a means to that end. 
+It was intended to promote positivity and unity over division and toxicity, while also allowing creators to earn more per follower than on any other platform. Coin price, gains, and trading, to the extent they are a big part of DeSo, are a means to that end.
 
 #### Will there be a function to lock-up an X part of your coin for an X part of time in our profile? \(@Nigels\)
 
