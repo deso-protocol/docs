@@ -34,7 +34,7 @@ With your help, we hope to build the DeSo blockchain into an enduring positive f
 
 ## How Does DeSo Work?
 
-In terms of architecture, a good way to understand DeSo is to imagine a Bitcoin node, only evolved to be able to handle a much wider array of transaction types than just sending/receiving money, with a vast amount of custom storage and indexing logic tailor-made to support social features at scale using bare metal.
+In terms of architecture, a good way to understand DeSo is to imagine a Bitcoin node, only evolved to be able to handle a much wider array of transaction types than just sending/receiving money, with a vast amount of custom storage and indexing logic tailor-made to support social features at scale.
 
 For non-developers, the best way to understand DeSo's architecture and its advantages is to continue to the next section, which explains things in high-level terms. However, for developers who are interested in diving into the lower-level specifics, the full list of transaction types can be found [here](https://github.com/bitclout/core/blob/6fc331f7afa954432d849fb030e6321e28083fa9/lib/network.go#L228) as a starting point, and this [code walkthrough](https://docs.bitclout.com/code/walkthrough) is the best way to fully internalize on how everything fits together. It may look dense, but it is written in plain English, and shouldn't take more than an hour or two to fully internalize.
 
