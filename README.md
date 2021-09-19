@@ -1,6 +1,6 @@
 # DeSo: The Decentralized Social Network
 
-## Introduction: Why DeSo?
+## Introduction
 
 Today, social media is even more centralized than the financial industry was prior to the creation of Bitcoin. A handful of private companies effectively control public discourse, and these companies earn monopoly profits off of content that they don't even create. Meanwhile, the creators who actually produce the content are underpaid, under-engaged, and  under-monetized thanks to an outdated ads-driven business model. On top of all of this, the ads-driven business model also forces social media companies to keep a walled garden around their data that prevents external developers from innovating or building apps on top of it.
 
@@ -34,37 +34,290 @@ With your help, we hope to build the DeSo blockchain into an enduring positive f
 
 ## How Does DeSo Work?
 
-### The Problem With General-Purpose Blockchains
+In terms of architecture, a good way to understand DeSo is to imagine a Bitcoin node, only evolved to be able to handle a much wider array of transaction types than just sending/receiving money, with a vast amount of custom storage and indexing logic tailor-made to support social features at scale using bare metal.
 
-While traditional blockchains like Ethereum are very good for creating open ecosystems, we believe they won't scale to handle the requirements of competitive social media applications. In particular, we see social media as a special use-case that needs to be unbundled in order to be properly served.
+For non-developers, the best way to understand DeSo's architecture and its advantages is to continue to the next section, which explains things in high-level terms. However, for developers who are interested in diving into the lower-level specifics, the full list of transaction types can be found [here](https://github.com/bitclout/core/blob/6fc331f7afa954432d849fb030e6321e28083fa9/lib/network.go#L228) as a starting point, and this [code walkthrough](https://docs.bitclout.com/code/walkthrough) is the best way to fully internalize on how everything fits together. It may look dense, but it is written in plain English, and shouldn't take more than an hour or two to fully internalize.
 
-The biggest problems are storage and indexing. For example, the cost to store just one megabyte on Ethereum today is [approximately $338,654](https://justpaste.it/1oa4o)! Even with four orders of magnitude of improvement on this, the cost would still be ~$33 to upload a relatively small image. On top of that, because traditional blockchains aren't set up to index the data you store on them, there is no way to easily query this data.
+### Social Features on Bare Metal
 
-This means that general-purpose blockchains will generally always require highly-centralized components in order to serve social use-cases, mitigating the benefits of an open data ecosystem in the first place. After all, if all the posts are stored on a single entity's centralized server then nothing stops the operator of that server from becoming the new gatekeeper.
-
-### The Advantages of Bare Metal
+While traditional blockchains like Ethereum are very good for creating open ecosystems, we believe they won't scale to handle the storage and indexing requirements of competitive social media applications. In particular, we see social media as a special use-case that needs to be unbundled, and given its own dedicated architecture, in order to be properly served.
 
 DeSo's biggest advantage lies in the fact that it is, in fact, _not_ a general-purpose blockchain. Instead, it supports a narrow set of social-oriented features that it implements on bare metal, using custom indexes that every node builds during consensus when it syncs from its peers. In contrast, general-purpose blockchains must run all functions through a virtual machine, which is typically orders of magnitude slower than running on bare metal, and even then they cannot build custom indexes for querying as they sync.
 
-As a simple example, consider displaying a simple list of a user's most recent posts. Because general-purpose blockchains do not generally support ordered lists, this is not even possible without building an off-chain index. In contrast, DeSo natively supports indexes such as posts ordered by timestamp, profiles ordered by the value of their coin, NFT bids organized by which NFT they're associated with, and much more, and all of these indexes can scale as the user-base grows. This significantly reduces the complexity of running a node, which in turn can significantly increase the decentralization of the ecosystem, and the number of apps that can be built on top of DeSo.
+As a very simple example, consider a transaction that updates one's username. A node needs to check that the username is not currently held by another user before it allows this transaction to go through. Simple, right? Except that when you have just a million users, this lookup becomes prohibitively expensive on even the most advanced general-purpose blockchains today. In contrast, because DeSo can support this lookup with access to bare metal, it can cheaply and efficiently create a simple key-value index that is as fast as can possibly be, and that can even be sharded across multiple disks or nodes as the user-base grows. The advantages of bare metal only increase as usage increases and as more use-cases are considered, such as checking that a parent post exists before allowing someone to reply, or even checking that an NFT is for sale before allowing someone to place a bid \(noting that Ethereum's lack of support for on-chain bidding has caused significant centralization and concentration to occur around NFT marketplaces\).
 
-As another very simple example, consider a transaction that updates one's username. A node needs to check that the username is not currently held by another user before it allows this transaction to go through. Simple, right? Except that when you have just a few thousand users, this lookup becomes prohibitively expensive on even the most advanced general-purpose blockchains today because of the overhead of their virtual machine, and the overhead in how they implement large key-value maps. In contrast, because DeSo can support this lookup with access to bare metal, it can cheaply and efficiently create a simple key-value index that is as fast as can possibly be, and that can even be sharded across multiple disks or nodes as the user-base grows. The advantages of bare metal only increase as more use-cases are supported, such as checking that a parent post exists before allowing someone to reply, or even checking that an NFT is for sale before allowing someone to place a bid \(noting that Ethereum's lack of support for on-chain bidding has caused significant centralization and concentration to occur around NFT marketplaces\).
+As another simple example, consider displaying a simple list of a user's most recent posts. Because general-purpose blockchains do not generally support ordered lists, this is not even possible without building an off-chain index. In contrast, DeSo natively supports indexes such as posts ordered by timestamp, profiles ordered by the value of their coin, NFT bids organized by which NFT they're associated with, and much more, and all of these indexes can scale as the user-base grows. This significantly reduces the complexity of running a node, which in turn can significantly increase the decentralization of the ecosystem, and the number of apps that can be built on top of DeSo.
+
+As one final example, even the mempool of DeSo nodes was written from scratch to support queries for social data, without requiring users to have to wait for blocks to mine. This seemingly minor optimization is critical in order for DeSo apps to feel "instant," and we believe DeSo would not be competitive with traditional centralized social apps without it.
 
 ### The Importance of Storing Everything On-Chain
 
-Some would argue that social applications can get by without storing everything on-chain. For example, one could imagine an Ethereum-based app that registers a user's public key on the blockchain initially, but then stores all posts on a centralized server. The problem with such an app is that whoever is running the centralized server has significant incentive to, eventually, become a gatekeeper just like the social juggernauts we have today. This is especially true if the app is structured as a for-profit company, as it most likely would be, since its fiduciary duty to its shareholders will inevitably accelerate its transformation into a closed walled garden of content.
+Some would argue that social applications can get by without storing everything on-chain. For example, one could imagine an Ethereum-based app that registers a user's public key on the blockchain initially, but then stores all posts on a centralized server. The problem with such an app is that whoever is running the centralized server has significant incentive to, eventually, become a gatekeeper just like the social juggernauts we have today. This is especially true if the app is structured as a for-profit company, since its fiduciary duty to its shareholders will inevitably accelerate its transformation into a closed walled garden of content. Moreover, this risk means that developers building on top of this ecosystem will be deterred from ever investing in it, and even those that do will have trouble raising money. In contrast, we have seen the exact opposite play out with DeSo: [Over a hundred projects](https://bithunt.com/explore) are building on the blockchain, many former-YC founders, many backed by blue-chip venture capitalists like TQ Ventures, and we know first-hand that none of them would have been funded without DeSo's credible commitment to open on-chain data.
 
-Thus, with DeSo, we believe it is tantamount to store every piece of data we possibly can on the blockchain, and to adjust the architecture of the chain by whatever means necessary to maintain this
+Thus, with DeSo, we believe it is tantamount to store every piece of data we possibly can on the blockchain, and to adjust the architecture of the chain by whatever means necessary to maintain this. In the long-term, we believe this value will prove critical not only in ensuring that DeSo's growth surpasses that of other networks, but also in ensuring that DeSo's end-state does not mirror the closed, highly-centralized social ecosystem we have today.
 
-### The Road to Proof of Stake
+To be concrete, below is a list of everything the DeSo is currently equipped to store on-chain:
 
-### Architecture Overview
+* All profiles
+* All posts and comments
+* All private messages between users, which are end-to-end encrypted
+* All likes and follows
+* All social token activity
+* All social tipping activity
+* All NFT activity, including NFT bids
+* All $DESO transfer activity
+* Links to all rich media, such as video and images
+* All profile verifications via a new verification paradigm called "associations" \(coming soon\)
+* Exceptions:
+  * Raw images and videos are stored in centralized but publicly-accessible and easily-replicable repositories, making the on-chain links sufficient to guarantee access into perpetuity.
+  * Emails and phone numbers are stored by individual node operators in order to protect users' privacy. We do not think this presents a significant centralization risk; however, if this proves incorrect then this information can be encrypted and stored with the profile in a privacy-preserving fashion relatively easily.
+  * Decisions about what profiles to show or hide, or how to curate content, lie with node operators. However, we think this is a positive force for decentralization, as we will discuss when we cover moderation.
 
-### Scaling
+As more features are added to DeSo, we will continue to ensure that all data that could pose a centralization risk lives on-chain. Moreover, we believe very strongly that this value will come to separate DeSo from other more centralized efforts in terms of the value that can be created.
 
-### The Future of Moderation
+## Buying $DESO
 
-### Bicameral Consensus
+The DeSo blockchain has its own native cryptocurrency, called $DESO, that you can use to do all kinds of things on the platform, including buy a new type of asset called [“creator coins,” discussed below.](./#what-are-creator-coins)
+
+Anyone can buy the DeSo cryptocurrency with Bitcoin in minutes through the blockchain., available on [the “Buy DeSo” page](https://buy.deso.org). The supply of DeSo is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
+
+## Blockchain-Native Social Features
+
+At launch, the DeSo blockchain supports not only traditional social features like creating profiles and posts, but also novel blockchain-native features like social tokens, tipping, and NFTs. These features alone enable vast new categories of money-enabled products, from social NFT experiences to influencer stock markets. These products in turn can allow creators to earn orders of magnitude more money on DeSo-enabled apps than on traditional social networks, while maintaining a more direct relationship with their followers. Moreover, creators aren't locked-in to a handful of centralized apps with DeSo because the business model of DeSo revolves around transactions flowing through a decentralized network of potentially thousands of third-party apps, similar to how Ethereum works today for DeFi applications. We believe this more decentralized business model can come to replace the traditional ads-driven business model for social media, which inherently requires concentrating users into a few highly-centralized apps in order to maximize profit.
+
+## What are Social Tokens? \(aka Creator Coins\)
+
+### Everyone Has a Coin
+
+Every profile on the DeSo gets its own coin that anybody can buy and sell. We call these coins “creator coins,” and you can have your own coin too simply by creating a profile. The price of each coin goes up when people buy and goes down when people sell.
+
+### You Can Buy Your Favorite Person’s Coin
+
+To buy someone’s coin, you simply navigate to their profile on any DeSo app, such as bitclout.com, and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\).
+
+![](.gitbook/assets/image%20%287%29%20%281%29.png)
+
+### What Are Creator Coins Useful For?
+
+Creator coins are a new type of asset class that is tied to the reputation of an individual, rather than to a company or commodity. They are truly the first tool we have as a society to trade “social clout” as an asset. If people understand this, then the value of someone’s coin should be correlated to that person’s standing in society. For example, if Elon Musk succeeds in landing the first person on Mars, his coin price should theoretically go up. And if, in contrast, he makes a racial slur during a press conference, his coin price should theoretically go down. Thus, people who believe in someone’s potential can buy their coin and succeed with them financially when that person realizes their potential. And traders can make money buying and selling the ups and downs.
+
+The above being said, there are many other exciting opportunities for creator coins that we hope will be integrated in the very near future:
+
+#### **The Stakeholder Meeting**
+
+A creator can make it so that only people who own a certain amount of their coin can participate in the comments section of their posts. This forces anyone who wants to have a voice in that creator’s content to first align themselves with the creator by buying their coin. The alignment not only reduces spam significantly, but it could bias conversations to be significantly more positive than on existing platforms. It would also create a lot of demand for one’s coin-- can you imagine if Elon Musk or Chamath did an AMA with a minimum threshold for buying their coin in order to participate? Or if they answered questions in order of coin holdings?
+
+#### Premium Messages
+
+Most creators get a torrent of spam in their message inbox on social media. With DeSo they could make it so that only people who own a certain amount of their coin can message them, or they could simply rank and prioritize messages from the largest holders of their coin. Alternatively, they can make it so that a certain amount of their coin must be paid to them directly in order for the message to actually enter their inbox. All of this would increase demand for their coin while helping to minimize spam for the creator.
+
+#### Sponsored Posts
+
+Creators can have an “inbox” where anyone can “bid” to have them repost \(aka “retweet”\) a particular post. If you want Kim Kardashian to retweet your fashion brand, you can submit an entry into her inbox, and if she retweets it then she keeps your money. The bids can all be made using the creator’s own coin, thus significantly increasing the demand for the coin.
+
+#### Premium Content
+
+People who own a certain amount of a creator’s coin get access to special content. Or, alternatively, people must pay a monthly subscription in the form of the creator’s coin in order to get premium content.
+
+#### Distributions and Engagement
+
+Creators can also use their coins to distribute scarce resources to the largest holders of their coins. For example, imagine if a famous celebrity offered to have lunch with whoever held the most of their coin at a particular date. Or imagine if they were going to offer 1,000 signed posters to their 1,000 largest holders. This is just the beginning of how creators can engage with their fans using their coins, and all such ideas could increase demand for their coin significantly.
+
+#### Money Likes
+
+Likes can be re-imagined as purchases of the creator’s coin. So it costs money to like something, but you get that person’s coin when you do so \(effectively as a shortcut to buying their coin that’s associated directly with their content\). Such a feature could serve as a stronger signal on what content is high quality as well.
+
+#### Emergent Phenomena
+
+What can happen when you give people the ability to speculate on a person’s reputation? We can’t know for sure, but one of the features that has emerged is what we call “buy and retweet.” Ordinarily, retweeting someone gives you nothing. If that person becomes a superstar because you boosted them, you’ll be lucky if they even remember your name in a few years. In contrast, with DeSo you can buy someone’s coin and then retweet them, which makes it so that you’re not only along for the ride financially if they blow up, but you also get bragging rights. Imagine the difference between being able to say “I retweeted her early on” vs being able to say “I bought her coin when it was $0.50 and now it’s $500-- and by the way I’ve done this hundreds of times, and I can prove it because my track record is on the blockchain.” The latter is clearly a very different game. Moreover, it’s not just a famous person’s game. If you know someone with a lot of clout, or if you know someone who knows someone, you can buy a coin and send it to someone else so that they can buy and retweet them. And thus the incentives go many layers deep. The interesting thing about this mechanic is that it wasn’t even something consciously designed into the product. It exists as an “emergent” phenomenon off of the core creator coin mechanic. What other dynamics could exist that we haven’t yet thought of?
+
+### The Creator Coin Supply Curve
+
+Creator coins are naturally scarce, with generally fewer than 100 to 1,500 coins in existence for each profile. This is because as more people buy a profile’s creator coin, the price of the coin goes up automatically at a faster and faster rate. This means that, eventually, it would take billions of dollars to mint even one more coin.
+
+The formula or “curve” for determining the price of a creator’s coin is as follows. Note that creator coins are normally bought and sold with the DeSo cryptocurrency, but we provide a dollar version of the formula for easy calculating:
+
+$$
+price\_in\_deso = .003 \times creator\_coins\_in\_circulation^2
+\\
+price\_in\_usd = .003 \times creator\_coins\_in\_circulation^2 \times bitclout\_price\_in\_usd
+$$
+
+When you create a profile, there are initially zero coins in existence and thus the price is zero. If you want to buy coins from the profile, it will happily mint them out of thin air and sell them to you according to the price curve above, making it more and more expensive as more coins are purchased. The money you use to buy the coins gets “locked” in the profile in exchange for the coins. On the flipside, if you want to sell coins, the profile will happily buy them from you according to the curve using the money locked from previous buys. And so buying **creates** coins while pushing the price **up** and **locking** money into the profile, while selling **destroys** coins while pushing the price **down** and **unlocking** money from the profile. This is often referred to as an “automated market-maker,” and it’s the same concept that powers protocols like Uniswap and Bancor.
+
+Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a DeSo price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1zBEQBBoS12ZhFpPbB13-GTZ8keDVlstRG3l2If78pWM/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
+
+| **Creator Coins in Circulation** | **Creator Coin Price \(USD\)** | **USD Locked in Profile** |
+| :--- | :--- | :--- |
+| 5 | $1.20 | $2 |
+| 10 | $4.80 | $16 |
+| 20 | $19.20 | $128 |
+| 40 | $76.80 | $1,024 |
+| 80 | $307.20 | $8,192 |
+| 160 | $1,228.80 | $65,536 |
+| 320 | $4,915.20 | $524,288 |
+| 640 | $19,660.80 | $4,194,304 |
+| 1280 | $78,643.20 | $33,554,432 |
+
+![](.gitbook/assets/image%20%286%29%20%281%29.png)
+
+### Founder Rewards
+
+Every profile allows the creator to keep a certain percentage of the coins that are created as a “founder reward.” For example, if someone sets their founder reward percentage to 10% and then someone buys 100 DeSo of their coin, then 10 DeSo would be used to buy the creator’s coin, and those coins would go to the creator’s wallet rather than the purchaser’s.
+
+The above being said, we think the better way for creators to own a piece of the upside of their coin is simply to buy their coin up-front when they create their profile, and then set their founder reward percentage to zero. This works because the coins are cheapest at the beginning of the curve, and it has the upshot of reducing friction on subsequent purchases of their coin. Nevertheless, the founder reward percentage being 10% is a “sane default” that guarantees creators will maintain a certain percentage of their coin even if they do nothing.
+
+## What are Social NFTs?
+
+Non-Fungible Tokens \(NFTs\) are digital assets that can be bought and sold, typically representing a piece of digital content. For example, an artist can publish a digital image as an NFT, and put it up for sale to the highest bidder. When they do this, the history of who owns the image can be tracked on the blockchain as a way of showing the art piece's provenance. And even though anyone in the world can typically see the image, there is only one person who provably owns it, just as if the piece were a painting hanging in a museum.
+
+The easiest way to really understand NFTs, though, is to actually look at some examples. Below we list examples of popular NFT concepts, as well as popular NFT platforms, all of which served as the inspiration for the DeSo NFTs product. **Importantly, because DeSo is an inherently social platform, we anticipate the use-cases for NFTs will extend far beyond just digital content, and we discuss this in detail in the next section.**
+
+Examples of popular NFT concepts:
+
+* [Beeple's collage](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million)
+* [CryptoPunks](https://www.larvalabs.com/cryptopunks)
+* [Bored Apes](https://boredapeyachtclub.com/)
+* [CryptoKitties](https://www.cryptokitties.co/)
+* [NBA Topshots](https://nbatopshot.com/)
+
+Popular NFT marketplaces:
+
+* [OpenSea](https://opensea.io/)
+* [Nifty Gateway](https://superrare.co/)
+* [Rarible](https://rarible.com/)
+* [SuperRare](https://superrare.co/)
+* [Zora](https://zora.co/)
+* [Foundation](https://foundation.app/)
+* [Valuables by Cent](https://github.com/bitclout/deso-docs/tree/fbaa50bb5f33de0987f3841ac62b98c67fdf57ce/v.cent.co)
+
+### The DeSo Advantage: Mixing NFTs and Social Media
+
+When someone buys a piece of art or a collectible item, they do so in part because it brings them personal joy, but in part because they want to show it off. A major superpower DeSo has is that every feature that's added to it has an inherent social component built-in, and NFTs are no exception.
+
+In the case of DeSo NFTs, we have an opportunity to show off a user's NFT collection on their profile, and to allow users to engage around their NFTs via comments, likes, diamonds, and more. Suddenly, the act of buying an NFT shifts from a purely personal and/or economic motive to an inherently social one. In addition, because DeSo has a native concept of identity in the form of a user's profile, the reputation of the issuer is tied into the NFT in a much more meaningful way, especially for celebrities and superstars with pre-existing brands. This not only increases the value of DeSo NFTs, but we think it will also lead to all kinds of interesting dynamics that mix collecting, flexing, and social.
+
+Below are just some examples of the possibilities...
+
+#### **New NFT Use Cases**
+
+* **Collectible ticket stubs.** If you were to sell tickets to a concert in the form of DeSo NFTs, then every attendee would automatically get a virtual ticket stub on their profile commemorating the event that their friends would get to see \(not to mention the extra promo you'll get from your coin-holders!\). Could you imagine if [@3LAU](https://bitclout.com/u/3LAU) sold his tickets as DeSo NFTs? This mechanic could also be used to sell tickets to exclusive events like the premier of a movie or an exclusive gala.
+* **Physical memorabilia: The digital collector's room**. Imagine selling a physical piece of memorabilia, like a prop from a movie set, with an NFT attached, issued by the original seller, that the
+
+  buyer gets to flex on their profile. This turns a user's profile into an inventory of their collector's room, where you can see all of the cool things they own, both in the digital and physical world, with
+
+  NFTs serving as certificates of authenticity issued and signed directly by the original seller. Could you imagine if someone like [@GeorgeTakei](https://bitclout.com/u/georgetakei) from Star Trek cleaned out his closet one day using DeSo NFTs?
+
+* **Exclusive experiences.** Selling experiences as NFTs makes unique sense on DeSo. For example, creators with large followings can offer to have dinner or to host a Q&A with a handful of their biggest fans by minting and selling a "one of 10" NFT. With DeSo, because NFTs are inherently social, the creator can engage their followers by asking them to comment explaining why they want to join before they place a bid. The creator then has full control over determining the winners, and those winners not only get to meet the creator, but they also get to sport the fact that they did on their
+
+  profiles forever. Maybe [@wolfofwallst](https://bitclout.com/u/wolfofwallst) could give Warren Buffet's charity lunch some competition!
+
+* **Exclusive unlockable digital content.** DeSo NFTs have an "unlockable" portion that only the winner of the NFT gets to see. This creates interesting use-cases around selling hyper-exclusive digital goods. For example, an artist can drop an album a week early as an unlockable 1/10,000 NFT such that only her true fans who win the NFT are able to listen to it ahead of time. This would result in extra cashflow for the artist while still allowing them to capture the same streaming revenues a week later. Could you imagine getting early access to [@thechainsmokers](https://bitclout.com/u/thechainsmokers)' next album, and getting an NFT along with it?
+* **Exclusive chat groups.** Creators can offer exclusive chat groups using DeSo NFTs to gate
+
+  access. For example, a creator can sell a 1/100 NFT such that any current owner of the NFT is able
+
+  to participate in an exclusive Telegram group, weekly Zoom call, etc... We already saw this happening with creators like [@craig](https://bitclout.com/u/craig), but it also makes sense for sports insiders like [@adamschefter](https://bitclout.com/u/adamschefter).
+
+* **Interactive content.** For content creators, DeSo NFTs can be used as a way to solicit feedback from fans, or to guide the direction of content. For example, the creator of a podcast can sell an NFT where the winner gets to decide what their next episode is going to be about. The creator can solicit comments from users before they place their bids, and they have ultimate control over whom they choose as the winner. Alternatively, music artists can offer to put an NFT winner's name in a song or include them in a music video, and the winner would have the NFT on their profile to commemorate the experience. The creator of a movie or short film could sell producer credits in the final cut as NFTs. Could you imagine if the winner of a DeSo NFT could decide the topic for [@shaanvp](https://bitclout.com/u/shaanvp)'s next show, or win a shoutout at the end of a [@jakepaul](https://bitclout.com/u/jakepaul) or [@loganpaul](https://bitclout.com/u/loganpaul) fight? How about a Clubhouse AMA with [@alexisohanian](https://bitclout.com/u/alexisohanian), where the winners of a "one of 10" NFT get to come on-stage first? Or maybe we can finally get [@BennyBlanco](https://bitclout.com/u/BennyBlanco) to finally bring us that DeSo Boys single we've all been waiting for, as gloriously sought-after NFT.
+* **Counterfeit-proof Rolexes, Chanel handbags, etc...** Major brands have a big problem with
+
+  counterfeiting: A real Rolex is worth much more than a knockoff, but knockoffs can often be
+
+  so good that it's difficult to tell them apart. Now, imagine a solution based on DeSo NFTs
+
+  whereby a luxury brand creates an official DeSo profile, and offers an NFT associated with
+
+  every single sale of their products. Now, a user not only gets digital, unforgeable proof that
+
+  they own a real item, but they also simultaneously get to show off their purchase on their profile that all of their friends can see. Then, if they ever resell their Rolex, they can transfer the NFT along with it, allowing it to serve as a certificate of authenticity issued and digitally-signed directly by the brand, and that tracks the provenance of the item for its entire lifetime.
+
+* **Digital trading cards.** Any sufficiently-well-known creator can create digital trading cards of themselves simply by issuing a "one of N" NFT. All they need to do is create a unique piece of artwork, like a [cryptopunk](https://www.larvalabs.com/cryptopunks) drawing of themselves, and their biggest fans can sport it on their profiles. Notably, each DeSo NFT has a serial number, so each one will be special, even within the same issue. [@ab84](https://bitclout.com/u/ab84), could you be the first DeSo NFT trading card!
+* **Fine art.** Major artists have shown that NFTs are going to be a big part of the future of fine art. They not only allow anyone to enjoy the artist's work, but they also do a much better job of tracking the ownership of a piece, which means the provenance can't be forged. The fact that DeSo also incorporates the artist's identity, via their profile, into the minting of an NFT should, we hope, further increase the value and utility of NFTs issued by artists. Artists on DeSo have already been innovating extremely fast, and we're so excited to take things to the next level with DeSo NFTs. Maybe we can even get [@beeple](https://bitclout.com/u/beeple) to finally claim his profile!
+* **The future of Charity.** Charities can create profiles on DeSo, just like ordinary people. When they do this, anyone can elect to send them DeSo as part of the sale of their NFT. For example, someone could auction off a dinner with themselves, but specify that all the proceeds will go to The Red Cross. They would then be able to digitally prove that the funds went to that charity. Alternatively, a charity can participate in the fun directly by issuing NFTs of their own. For example, a charity could issue NFTs where each one represents a particular acre of trees that will be planted. This allows the owner to show off their contribution to any cause they care deeply about, which could significantly increase the amounts people are willing to give. It's a bit surprising that social media and charity aren't more closely linked today-- but we believe DeSo can finally change that, and make giving easier and more fun than ever before.
+* **Owning a piece of history.** On DeSo, any post that a user makes can also be minted
+
+  as an NFT and sold. The user who "owns" the resulting NFT can be seen as owning a piece of
+
+  history. For example, if a sitting US president theoretically joined DeSo in the future and
+
+  used it to make a monumental announcement, like the end of US COVID lockdowns, someone could
+
+  own that very special post, and all proceeds could be donated to a charity of the president's
+
+  choice. We'll also settle for another shirtless pic of [@chamath](https://bitclout.com/u/chamath), though, just to be clear.
+
+The above list is just the beginning; it's just what we've come up with so far. We can't wait to see what the community produces once DeSo NFTs are actually out in the world.
+
+![](.gitbook/assets/image.png)
+
+In the past, NFTs and social media have been separate: You mint an NFT on some platform, and then post about it on social media. Now they can come together, as they were always meant to be, increasing engagement, reach, value, and monetization for creators.
+
+### NFT Cashflows to Coin-Holders
+
+Creator coins are a major DeSo superpower that we are taking to the next level with the launch of NFTs. On DeSo, a percentage of the sale of each NFT can be sent back to a creator's coin-holders as a cashflow \(including on secondary sales\). With this key feature, DeSo NFTs "close the loop" between a creator's activities on DeSo and the value of their coin.
+
+**Suddenly, creator coins are no longer objects of pure speculation; rather, they are directly linked to a creator's activity on the platform. This means that, for the first time, followers can participate in a creator's growth rather than watching from the sidelines as they rise to stardom.** This has never been possible before, and it changes the relationship between a creator and their fans, from one in which fans pay for their work, to one in which they invest in the creator, and grow together.
+
+Moreover, tying cashflows to creator coins makes it so that any creator who wants to market a new piece of content has a whole army of coin-holders that are invested in their success, and will help them spread the word. Distribution is no longer solely the creator's job, and they don't need to sign their life away to a corporation in order to get it. Your fans are your investors and your distributors at the same time because they're economically aligned with you in a way that wasn't possible before DeSo.
+
+Finally, and perhaps most interestingly, these cashflows do not ultimately inhere to the creator themselves; rather, in the same way a Picasso painting continues to fetch a high price after its original primary sale, a creator's NFTs on DeSo can continue to trade and produce cashflows for creator coins long after the creator is gone. **Thus, in some sense, tying cashflows to creator coins makes owning them analogous to owning a percentage of every sale of every piece of work the creator has or will ever produce on DeSo. Could you imagine if Picasso had a creator coin linked to all of his works?**
+
+### How DeSo NFTs Work
+
+The easiest way to see how DeSo NFTs work is to try and ceate one on a DeSo app like bitclout.com.
+
+Very simply, the steps to minting and selling a DeSo NFT are as follows:
+
+* Create a post, which consists of a snippet of text and an embedded image or video. All
+
+  NFTs on DeSo start as posts, and you can turn any pre-existing post into an NFT.
+
+* Hit "Mint NFT" and select from the options:
+  * You can mint either a "one of a kind" or "one of N" NFT. In the latter case, there will be multiple winners of the same piece of content.
+  * The creator can set a creator royalty and a coin-holder royalty. This is a percentage of the sale that will go to the creator and to the creator's coin-holders as a cashflow. This cashflow hits on every **secondary sale** of the NFT as well. The DeSo platform does not take a fee. Note we are working on allowing arbitrary public keys to be specified as a means of programmatically  distributing proceeds to other accounts, such as charity accounts.
+  * Optionally, the creator can set a piece of unlockable content that only the winner of the NFT will get access to. This feature enables hyper-exclusive experiences to be built on DeSo NFTs, like one of a kind songs that only the winner can listen to.
+* Once an NFT is minted, users can bid on the NFT. They must have enough in their wallet to cover the bid, but nothing is withdrawn from their wallet until the auction is closed by the creator. This allows users to bid on as many things as they like.
+* Whenever the creator is ready, they can close the auction by selecting a winner, or winners in the case of a "one of N" NFT. Importantly, the creator has full control over who gets to own their work; they don't have to give it to the highest bidder.
+* Once the auction is over, the winner\(s\) get to show off the NFT on their profile. It shows up in their NFTs tab, and it can be pinned to their main page.
+
+We didn't want to over-complicate things, and we believe this simple set of features enables all of the interesting use-cases described previously.
+
+Finally, as a means of concentrating liquidity around certain NFTs, we have designed a system that allows node operators to schedule "showcases." Showcases work as follows:
+
+* A node operator selects a collection of NFTs that they want to showcase.
+* The node operator schedules these NFTs to "drop" at a certain time.
+* At the scheduled time, the new NFTs are showcased on the Home page in their own tab.
+
+Using this system, a node operator can curate a collection of NFTs every week, or even more frequently, and engage the community around them. **This, in some sense, allows node operators to serve as the curators of their own digital galleries, with each drop introducing a new exhibition.**
+
+## What is Social Tipping?
+
+Because DeSo is money-native, it can tie tipping with content in ways that no other social network can. On DeSo, the core mechanic introduced is called "diamonds," and it functions as a like, only it allows users to give variable amounts of money to content that they really like.
+
+![](.gitbook/assets/image%20%286%29.png)
+
+In the screenshot above, a single diamond is a penny while a six-diamond is ~$362. All of this is instant, and the receiver of the tip immediately gets $DESO in their wallet for their content. Many users already earn thousands of dollars a week off of this feature alone, and as DeSo scales, the economics will only get better.
+
+Just to do some math, imagine a post with 1 million likes gets 100,000 diamonds, worth on average ten cents each. That's $100,000 in pure cash from _just_ the tips! Moreover, users typically get a higher ratio of likes to diamonds, but we wanted to be conservative in our calculations.
+
+## Proof of Stake
+
+Today, DeSo runs a hybrid Proof of Work consensus mechanism that allows it to use far less energy than Bitcoin or Ethereum while remaining secure against 51% attacks. Its current power consumption can be estimated via websites such as bitpool.me, and we believe it to be significantly less than 500 Kilowatts.
+
+This being said, the core development team behind DeSo has invested significant resources into developing a groundbreaking proof of stake proposal that we expect to reveal in the coming weeks, and that we expect to launch before the end of the year 2021. Importantly, this proposal, like everything else with DeSo, will be especially well-suited to supporting the unique constraints of social applications.
+
+## The Future of Moderation
+
+Moderation of content is an absolutely critical topic when it comes to building a decentralized social network, and it is probably the topic we have spent the most time on outside of engineering design.
+
+First, because all of the data on DeSo is open, an ecosystem around moderation can develop that is more robust than what can be achieved with a traditional company. For example, because the data is open, the best machine learning researchers at the best academic institutions in the world can build API’s that label all of the content on the blockchain in a way they can’t today, which can then be consumed by all node operators that want to remain compliant. This would create an economy of scale around moderation that we believe can be more robust than what’s possible within the confines of a single corporate entity. All of the data being open also allows the Federal government to better analyze the spread of misinformation, and be more involved in preventing it, than they can be when all of the content people are seeing is locked up in a corporate walled garden.
+
+Moreover, at a high level, we start by considering a spectrum of how decentralized the internet can be. Right now we are on the very “centralized” side of the spectrum, where small moderation teams at a few companies control the vast majority of public discourse. We think this is too far on one end of the spectrum, but we also think that the opposite end, where there is total anarchy with regard to content, is even worse. DeSo sits in the middle: It leverages the same moderation scheme that governed the pre-Facebook internet, which we think deters harmful content without stifling innovation and competition.
+
+Any website that displays harmful content is subject to both federal and civil litigation, whether its content comes from a blockchain or from a USB drive. This is what prevents harmful content from seeing the light of day on the internet today, even though there are many people who could theoretically serve it. It’s also largely how the pre-Facebook internet was kept in check, and it’s the same mechanism that prevents nodes on the DeSo network from serving harmful content.
+
+On bitclout.com, a node we operate, we are exposing a subset of all of the posts on the blockchain and, obviously, for content that is harmful or illegal we will never show it on bitclout.com. Every node that runs on top of the DeSo blockchain, including apps like Flick or CloutFeed, can expose whatever subset of the posts that they want. This being said, showing illegal or harmful content would not only subject them to copious amounts of litigation, but it would also likely make it such that nobody would want to use them . That content will still technically be on the blockchain but it won’t be practically accessible.
 
 ## Running a Node
 
@@ -224,10 +477,6 @@ Twilio provides an SMS API that allows you to confirm user phone numbers and thu
 
 Twilio pricing can be reviewed [here](https://www.twilio.com/sms/pricing/us).
 
-## Blockchain-Native Social Features
-
-At launch, the DeSo blockchain supports not only traditional social features like creating profiles and posts, but also novel blockchain-native features like social tokens, tipping, and NFTs. These features alone enable vast new categories of money-enabled products, from social NFT experiences to influencer stock markets. These products in turn can allow creators to earn orders of magnitude more money on DeSo-enabled apps than on traditional social networks, while maintaining a more direct relationship with their followers. Moreover, creators aren't locked-in to a handful of centralized apps with DeSo because the business model of DeSo revolves around transactions flowing through a decentralized network of potentially thousands of third-party apps, similar to how Ethereum works today for DeFi applications. We believe this more decentralized business model can come to replace the traditional ads-driven business model for social media, which inherently requires concentrating users into a few highly-centralized apps in order to maximize profit.
-
 
 
 
@@ -249,100 +498,6 @@ Recently, much research has been invested into general-purpose blockchains like 
 
 
 **DeSo is a new type of social network that mixes speculation and social media, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, DeSo is a fully open-source project and there is no company behind it-- it’s just coins and code.
-
-## Buying DeSo
-
-The DeSo blockchain has its own native cryptocurrency, called DeSo, that you can use to do all kinds of things on the platform, including buy a new type of asset called [“creator coins,” discussed below.](./#what-are-creator-coins)
-
-Anyone can buy the DeSo cryptocurrency with Bitcoin in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy DeSo” page](https://bitclout.com/buy-deso). The supply of DeSo is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
-
-## What are Creator Coins?
-
-### Everyone Has a Coin
-
-Every profile on the platform gets its own coin that anybody can buy and sell. We call these coins “creator coins,” and you can have your own coin too simply by creating a profile. The price of each coin goes up when people buy and goes down when people sell.
-
-### You Can Buy Your Favorite Person’s Coin
-
-To buy someone’s coin, you simply navigate to their profile and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\). Profiles for the top 15,000 influencers from Twitter have been pre-loaded into the platform, which means you can buy and sell their coins even though they're not on the platform yet. These “reserved” profiles have a “clock” icon next to their names, indicating the owner of the profile has not joined yet.
-
-![](.gitbook/assets/image%20%287%29%20%281%29.png)
-
-### Tweet to Claim Your Profile
-
-The owner of a reserved profile can claim their profile by navigating to their profile and hitting a button to Tweet their DeSo public key \(shown below\). When they do this, they gain full access to the account, as well as a percentage of the creator coins associated with their profile \(see [Founder Rewards](./#founder-rewards)\). Only the owner of the Twitter account associated with a reserved profile can claim it.
-
-![](.gitbook/assets/image%20%285%29.png)
-
-### What Are Creator Coins Useful For?
-
-Creator coins are a new type of asset class that is tied to the reputation of an individual, rather than to a company or commodity. They are truly the first tool we have as a society to trade “social clout” as an asset. If people understand this, then the value of someone’s coin should be correlated to that person’s standing in society. For example, if Elon Musk succeeds in landing the first person on Mars, his coin price should theoretically go up. And if, in contrast, he makes a racial slur during a press conference, his coin price should theoretically go down. Thus, people who believe in someone’s potential can buy their coin and succeed with them financially when that person realizes their potential. And traders can make money buying and selling the ups and downs.
-
-The above being said, there are many other exciting opportunities for creator coins that we hope will be integrated in the very near future:
-
-#### **The Stakeholder Meeting**
-
-A creator can make it so that only people who own a certain amount of their coin can participate in the comments section of their posts. This forces anyone who wants to have a voice in that creator’s content to first align themselves with the creator by buying their coin. The alignment not only reduces spam significantly, but it could bias conversations to be significantly more positive than on existing platforms. It would also create a lot of demand for one’s coin-- can you imagine if Elon Musk or Chamath did an AMA with a minimum threshold for buying their coin in order to participate? Or if they answered questions in order of coin holdings?
-
-#### Premium Messages
-
-Most creators get a torrent of spam in their message inbox on social media. With DeSo they could make it so that only people who own a certain amount of their coin can message them, or they could simply rank and prioritize messages from the largest holders of their coin. Alternatively, they can make it so that a certain amount of their coin must be paid to them directly in order for the message to actually enter their inbox. All of this would increase demand for their coin while helping to minimize spam for the creator.
-
-#### Sponsored Posts
-
-Creators can have an “inbox” where anyone can “bid” to have them repost \(aka “retweet”\) a particular post. If you want Kim Kardashian to retweet your fashion brand, you can submit an entry into her inbox, and if she retweets it then she keeps your money. The bids can all be made using the creator’s own coin, thus significantly increasing the demand for the coin.
-
-#### Premium Content
-
-People who own a certain amount of a creator’s coin get access to special content. Or, alternatively, people must pay a monthly subscription in the form of the creator’s coin in order to get premium content.
-
-#### Distributions and Engagement
-
-Creators can also use their coins to distribute scarce resources to the largest holders of their coins. For example, imagine if a famous celebrity offered to have lunch with whoever held the most of their coin at a particular date. Or imagine if they were going to offer 1,000 signed posters to their 1,000 largest holders. This is just the beginning of how creators can engage with their fans using their coins, and all such ideas could increase demand for their coin significantly.
-
-#### Money Likes
-
-Likes can be re-imagined as purchases of the creator’s coin. So it costs money to like something, but you get that person’s coin when you do so \(effectively as a shortcut to buying their coin that’s associated directly with their content\). Such a feature could serve as a stronger signal on what content is high quality as well.
-
-#### Emergent Phenomena
-
-What can happen when you give people the ability to speculate on a person’s reputation? We can’t know for sure, but one of the features that has emerged is what we call “buy and retweet.” Ordinarily, retweeting someone gives you nothing. If that person becomes a superstar because you boosted them, you’ll be lucky if they even remember your name in a few years. In contrast, with DeSo you can buy someone’s coin and then retweet them, which makes it so that you’re not only along for the ride financially if they blow up, but you also get bragging rights. Imagine the difference between being able to say “I retweeted her early on” vs being able to say “I bought her coin when it was $0.50 and now it’s $500-- and by the way I’ve done this hundreds of times, and I can prove it because my track record is on the blockchain.” The latter is clearly a very different game. Moreover, it’s not just a famous person’s game. If you know someone with a lot of clout, or if you know someone who knows someone, you can buy a coin and send it to someone else so that they can buy and retweet them. And thus the incentives go many layers deep. The interesting thing about this mechanic is that it wasn’t even something consciously designed into the product. It exists as an “emergent” phenomenon off of the core creator coin mechanic. What other dynamics could exist that we haven’t yet thought of?
-
-### The Creator Coin Supply Curve
-
-Creator coins are naturally scarce, with generally fewer than 100 to 1,500 coins in existence for each profile. This is because as more people buy a profile’s creator coin, the price of the coin goes up automatically at a faster and faster rate. This means that, eventually, it would take billions of dollars to mint even one more coin.
-
-The formula or “curve” for determining the price of a creator’s coin is as follows. Note that creator coins are normally bought and sold with the DeSo cryptocurrency, but we provide a dollar version of the formula for easy calculating:
-
-$$
-price\_in\_deso = .003 \times creator\_coins\_in\_circulation^2
-\\
-price\_in\_usd = .003 \times creator\_coins\_in\_circulation^2 \times bitclout\_price\_in\_usd
-$$
-
-When you create a profile, there are initially zero coins in existence and thus the price is zero. If you want to buy coins from the profile, it will happily mint them out of thin air and sell them to you according to the price curve above, making it more and more expensive as more coins are purchased. The money you use to buy the coins gets “locked” in the profile in exchange for the coins. On the flipside, if you want to sell coins, the profile will happily buy them from you according to the curve using the money locked from previous buys. And so buying **creates** coins while pushing the price **up** and **locking** money into the profile, while selling **destroys** coins while pushing the price **down** and **unlocking** money from the profile. This is often referred to as an “automated market-maker,” and it’s the same concept that powers protocols like Uniswap and Bancor.
-
-Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a DeSo price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1zBEQBBoS12ZhFpPbB13-GTZ8keDVlstRG3l2If78pWM/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
-
-| **Creator Coins in Circulation** | **Creator Coin Price \(USD\)** | **USD Locked in Profile** |
-| :--- | :--- | :--- |
-| 5 | $1.20 | $2 |
-| 10 | $4.80 | $16 |
-| 20 | $19.20 | $128 |
-| 40 | $76.80 | $1,024 |
-| 80 | $307.20 | $8,192 |
-| 160 | $1,228.80 | $65,536 |
-| 320 | $4,915.20 | $524,288 |
-| 640 | $19,660.80 | $4,194,304 |
-| 1280 | $78,643.20 | $33,554,432 |
-
-![](.gitbook/assets/image%20%286%29%20%281%29.png)
-
-### Founder Rewards
-
-Every profile allows the creator to keep a certain percentage of the coins that are created as a “founder reward.” For example, if someone sets their founder reward percentage to 10% and then someone buys 100 DeSo of their coin, then 10 DeSo would be used to buy the creator’s coin, and those coins would go to the creator’s wallet rather than the purchaser’s.
-
-The above being said, we think the better way for creators to own a piece of the upside of their coin is simply to buy their coin up-front when they create their profile, and then set their founder reward percentage to zero. This works because the coins are cheapest at the beginning of the curve, and it has the upshot of reducing friction on subsequent purchases of their coin. Nevertheless, the founder reward percentage being 10% is a “sane default” that guarantees creators will maintain a certain percentage of their coin even if they do nothing.
 
 ## The Power of Decentralization
 

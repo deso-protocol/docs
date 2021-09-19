@@ -1,12 +1,9 @@
 # Table of contents
 
 * [DeSo: The Decentralized Social Network](README.md)
-* [The Vision](the-vision.md)
-* [DeSo NFT's](deso-nfts.md)
 
 ## FAQ
 
-* [DeSo FAQ](faq/deso-faq.md)
 * [Privacy and Security](faq/privacy-and-security.md)
 
 ## The DeSo Code <a id="code"></a>
