@@ -475,31 +475,3 @@ Yes! Every transaction is broadcast to all other nodes on the network, and shoul
 
 Twilio provides an SMS API that allows you to confirm user phone numbers and thus send them currency from your seed wallet set inside the `dev.env` file. If you do not have this set users will be unable to verify a phone number.
 
-Twilio pricing can be reviewed [here](https://www.twilio.com/sms/pricing/us).
-
-
-
-
-
-But what happens if, instead of giving all of our data up to these companies, we put all of our data into a public, globally-accessible pool? Now, suddenly, anyone can use this content to create a competitive app that challenges these companies. Anybody can curate a feed using the content, so that we get less mono-culture.
-
-
-
-
-
-In contrast, imagine for a moment if there was a way to have all of the content created by users be public rather than privately-held by these companies. 
-
-
-
-
-
-Recently, much research has been invested into general-purpose blockchains like Ethereum or Solana, but relatively little has been invested in vertical-focused blockchains, even though the latter is likely what's required to scale blockchain-based applications to one billion users.
-
-
-
-**DeSo is a new type of social network that mixes speculation and social media, and it’s built from the ground up as its own custom blockchain.** Its architecture is similar to Bitcoin, only it can support complex social network data like posts, profiles, follows, speculation features, and much more at significantly higher throughput and scale. Like Bitcoin, DeSo is a fully open-source project and there is no company behind it-- it’s just coins and code.
-
-## The Power of Decentralization
-
-Just like Bitcoin, anyone on the internet can run a DeSo “node” that serves the DeSo content, and every node on the network stores a full copy of all the data. This means that anybody can build apps on top of the DeSo data without the risk of being de-platformed, and they can even create their own feed algorithm. When you visit bitclout.com, you’re using our node, but there are already dozens of nodes on the network, all run by people like you. In the long run there will likely be hundreds or thousands of other nodes you could visit to get access to the same content, each with their own moderation policy. It also means that your login on bitclout.com can be used on any domain that runs a DeSo node. In the same way that you can move Bitcoin from one wallet to another, DeSo makes it so that you can move your “clout” in the form of your followers, posts, creator coin balances, etc anywhere as well. Thus, in some sense, DeSo is decentralizing social media in much the same way as Bitcoin is decentralizing the financial system.
-
