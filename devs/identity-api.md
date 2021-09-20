@@ -40,7 +40,7 @@ The first message Identity sends to the parent when it loads in is `initialize`.
 
 ## `window.open` context
 
-Opening Identity using window.open allows an application to send and receive messages to the newly opened tab or pop-up. A new Identity window can be opened at many paths:
+Opening Identity using `window.open` allows an application to send and receive messages to the newly opened tab or pop-up. A new Identity window can be opened at many paths:
 
 ```javascript
 const login   = window.open('https://identity.deso.org/log-in');
@@ -48,7 +48,7 @@ const signUp  = window.open('https://identity.deso.org/sign-up');
 const logout  = window.open('https://identity.deso.org/logout?publicKey=BC123');
 const approve = window.open('https://identity.deso.org/approve?tx=0abf35a');
 
-// Can be added to any path for testnet bitclout and bitcoin addresses
+// Can be added to any path for testnet deso and bitcoin addresses
 const testnet = window.open('https://identity.deso.org/log-in?testnet=true');
 ```
 
