@@ -423,6 +423,8 @@ Running a node currently requires a modest amount of technical know-how. For the
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
+![](.gitbook/assets/image-6-.png)
+
 Once your node is synced, you have access to the full firehose of DeSo data in real-time! Below are some tips on how to take full advantage of your node.
 
 * Go to your Admin tab and watch the unfiltered feed update as your node syncs. It's like a time machine!
@@ -442,7 +444,11 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 To manage your feed, start by navigating to the Admin tab as shown below. The Admin tab shows the full firehose of posts in real-time, with a button next to each one that allows you to add it to the global feed. You can also sort the posts by clout. These are all the same tools that the bitclout.com mods have, now at your fingertips through the power of decentralization.
 
+![](.gitbook/assets/image-5-.png)
+
 You can also add any post from anyone's profile to the global feed simply by hitting the dropdown at the top-right of the post. You can also pin posts to your feed, which is a good way of communicating announcements to your user base.
+
+![](.gitbook/assets/image%20%285%29.png)
 
 When you run a node, you act as a moderator and have a variety of superpowers that help you manage spam and harmful content.
 
@@ -450,6 +456,8 @@ When you run a node, you act as a moderator and have a variety of superpowers th
 * **Graylisting** a profile removes it from the leaderboard, removes it from search, removes its comments from threads, and removes its posts from the Admin panel.
 * **Whitelisting** a profile makes that user's posts show up on the global feed automatically with some frequency \(currently it allows five posts per day\).
 * Finally, a mod can allow a phone number to be re-used to claim starter $DESO. This is useful for various testing situations.
+
+![](.gitbook/assets/image-1-.png)
 
 When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes visible only to you. This is a critical step in securing your node. Not doing this would make it so that all your users can add posts to the global feed.
 
@@ -461,9 +469,13 @@ Within the Admin Panel, there is a `Super` tab that is only accessible by Super 
 
 Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`. Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
 
+![](.gitbook/assets/verify-users%20%282%29.png)
+
 #### Buy $DESO Management
 
 Any node can sell $DESO if they set the following flags appropriately. Super Admins can set two values in the `Super` tab to manage the price at which $DESO is sold on their node: `USD-to-DeSo Reserve Price`and `Buy DeSo Fee Rate`.
+
+![](.gitbook/assets/buy-deso-settings.png)
 
 **USD-to-DeSo Reserve Price**
 
