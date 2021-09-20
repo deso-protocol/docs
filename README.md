@@ -97,7 +97,7 @@ Every profile on the DeSo gets its own coin that anybody can buy and sell. We ca
 
 To buy someone’s coin, you simply navigate to their profile on any DeSo app, such as bitclout.com, and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\).
 
-![](.gitbook/assets/image%20%287%29%20%281%29.png)
+![](.gitbook/assets/screenshot-from-2021-09-20-14-46-05.png)
 
 ### What Are Creator Coins Useful For?
 
@@ -327,7 +327,6 @@ The math below walks through DeSo scalability at each stage:
 1. Proof of Stake
    1. While PoS is not strictly required in order to scale DeSo, it is a top priority regardless, and so it will either precede or happen in parallel with the other scaling steps.
 2. Bigger blocks
-
    * The average DeSo blockchain post size is **218 bytes**.
    * There are 10 other [transaction types](https://github.com/bitclout/deso-core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.
 
@@ -339,7 +338,6 @@ The math below walks through DeSo scalability at each stage:
    * For comparison, Twitter has approximately [6000 posts/second](https://www.dsayce.com/social-media/tweets-day/#:~:text=Every%20second%2C%20on%20average%2C%20around%206%2C000%20tweets%20are%20tweeted%20on,August%202014%20with%20661%20million.) on average with 300M users.
    * So, at 80 posts per second, we should be able to roughly accommodate about 80/6000 = 1.33% of 300M users, or **4M users**.
    * That’s where we can get with a basic block size increase alone. But we have a few other cards to play.
-
 3. Warp sync
    * With an Ethereum-like [warp or snap sync](https://blog.ethereum.org/2021/03/03/geth-v1-10-0/), we loosen a key constraint, which is the need for all nodes to always validate the entire history of transactions. \(You can still run an archival node, but this won’t be necessary for normal operations.\)
      * As a concrete example, if all you're downloading is the current creator coin balances for each user, then all that user's trades are effectively compressed into a few integers because you don't care about the history \(only the end state\).

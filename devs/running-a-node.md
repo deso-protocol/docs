@@ -80,7 +80,7 @@ To manage your feed, start by navigating to the Admin tab as shown below. The Ad
 
 You can also add any post from anyone's profile to the global feed simply by hitting the dropdown at the top-right of the post. You can also pin posts to your feed, which is a good way of communicating announcements to your user-base.
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](../.gitbook/assets/image%20%285%29.png)
 
 When you run a node, you act as a moderator and have a variety of superpowers that help you manage spam and harmful content.
 
@@ -89,7 +89,7 @@ When you run a node, you act as a moderator and have a variety of superpowers th
 * **Whitelisting** a profile makes that user's posts show up on the global feed automatically with some frequency \(currently it allows five posts per day\).
 * Finally, a mod can allow a phone number to be re-used to claim starter DeSo. This is useful for various testing situations.
 
-![](../.gitbook/assets/image%20%284%29.png)
+![](../.gitbook/assets/image%20%284%29%20%281%29.png)
 
 When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes visible only to you. This is a critical step in securing your node. Not doing this would make it so that all your users can add posts to the global feed.
 
@@ -99,7 +99,7 @@ Within the Admin Panel, there is a `Super` tab which is only accessible by Super
 
 ### Username Verification
 
-![](../.gitbook/assets/verify-users.png)
+![](../.gitbook/assets/verify-users%20%282%29%20%282%29.png)
 
 Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`. Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
 
