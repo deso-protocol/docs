@@ -479,7 +479,7 @@ To simplify the onboarding experience for new users on your node, you can sell $
 
 * `BUY_DESO_SEED`: This is a seed phrase for the public key that contains $DESO that you will sell to users. As with all seed phrases, keep this secret and share it with nobody. Take extra precautions to not commit it to version control and quickly move funds if this seed is ever compromised.
   * You will need to deposit $DESO to the public key for this seed phrase. All $DESO purchases on your node will send $DESO from this wallet.
-* `BUY_DESO_BTC_ADDRESS`:  This is a Bitcoin address you control. When users purchased $DESO with Bitcoin, the Bitcoin will arrive at this address.
+* `BUY_DESO_BTC_ADDRESS`: This is a Bitcoin address you control. When users purchased $DESO with Bitcoin, the Bitcoin will arrive at this address.
 
 ### How Users Login
 
