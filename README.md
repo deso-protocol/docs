@@ -6,7 +6,7 @@
 
 The BitClout blockchain has its own native cryptocurrency, called BitClout, that you can use to do all kinds of things on the platform, including buy a new type of asset called [“creator coins,” discussed below.](./#what-are-creator-coins)
 
-Anyone can buy the BitClout cryptocurrency with Bitcoin in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy BitClout” page](https://bitclout.com/buy-bitclout). The supply of BitClout is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
+Anyone can buy the BitClout cryptocurrency with Bitcoin, Ethereum or fiat in minutes through the app’s built-in decentralized “atomic swap” mechanism, available on [the “Buy BitClout” page](https://bitclout.com/buy-bitclout). The supply of BitClout is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
 
 ## What are Creator Coins?
 
