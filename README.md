@@ -38,7 +38,7 @@ With your help, we hope to build the DeSo blockchain into an enduring positive f
 
 In terms of architecture, a good way to understand DeSo is to imagine a Bitcoin node, only evolved to be able to handle a much wider array of transaction types than just sending/receiving money, with a vast amount of custom storage and indexing logic tailor-made to support social features at scale.
 
-For non-developers, the best way to understand DeSo's architecture and its advantages is to continue to the next section, which explains things in high-level terms. However, for developers who are interested in diving into the lower-level specifics, [this developer quide](https://docs.bitclout.com/code/dev-setup) is a good starting point, and this [code walkthrough](https://docs.bitclout.com/code/walkthrough) is the best way to fully internalize how everything fits together. It may look dense, but it is written in plain English, and shouldn't take more than an hour or two to fully internalize.
+For non-developers, the best way to understand DeSo's architecture and its advantages is to continue to the next section, which explains things in high-level terms. However, for developers who are interested in diving into the lower-level specifics, [this developer quide](https://docs.bitclout.com/code/dev-setup) is a good starting point, and this [code walkthrough](https://docs.deso.org/code/walkthrough) is the best way to fully internalize how everything fits together. It may look dense, but it is written in plain English, and shouldn't take more than an hour or two to fully internalize.
 
 ### Social Features on Bare Metal
 
@@ -147,7 +147,7 @@ $$
 
 When you create a profile, there are initially zero coins in existence and thus the price is zero. If you want to buy coins from the profile, it will happily mint them out of thin air and sell them to you according to the price curve above, making it more and more expensive as more coins are purchased. The money you use to buy the coins gets “locked” in the profile in exchange for the coins. On the flipside, if you want to sell coins, the profile will happily buy them from you according to the curve using the money locked from previous buys. And so buying **creates** coins while pushing the price **up** and **locking** money into the profile, while selling **destroys** coins while pushing the price **down** and **unlocking** money from the profile. This is often referred to as an “automated market-maker,” and it’s the same concept that powers protocols like Uniswap and Bancor.
 
-Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a DeSo price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1zBEQBBoS12ZhFpPbB13-GTZ8keDVlstRG3l2If78pWM/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
+Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a DeSo price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1ecMscQTY4rhmfrAn-5SRspiZqhhttVo1Pj880A4EDuo/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
 
 | **Creator Coins in Circulation** | **Creator Coin Price \(USD\)** | **USD Locked in Profile** |
 | :--- | :--- | :--- |
@@ -186,12 +186,12 @@ Examples of popular NFT concepts:
 Popular NFT marketplaces:
 
 * [OpenSea](https://opensea.io/)
-* [Nifty Gateway](https://superrare.co/)
+* [Nifty Gateway](https://niftygateway.com/)
 * [Rarible](https://rarible.com/)
 * [SuperRare](https://superrare.co/)
 * [Zora](https://zora.co/)
 * [Foundation](https://foundation.app/)
-* [Valuables by Cent](https://github.com/bitclout/deso-docs/tree/fbaa50bb5f33de0987f3841ac62b98c67fdf57ce/v.cent.co)
+* [Valuables by Cent](https://v.cent.co/)
 
 ### The DeSo Advantage: Mixing NFTs and Social Media
 
@@ -234,7 +234,7 @@ Below are just some examples of the possibilities...
 
   they own a real item, but they also simultaneously get to show off their purchase on their profile that all of their friends can see. Then, if they ever resell their Rolex, they can transfer the NFT along with it, allowing it to serve as a certificate of authenticity issued and digitally-signed directly by the brand, and that tracks the provenance of the item for its entire lifetime.
 
-* **Digital trading cards.** Any sufficiently well-known creator can create digital trading cards of themselves simply by issuing a "one of N" NFT. All they need to do is create a unique piece of artwork, like a [cryptopunk](https://www.larvalabs.com/cryptopunks) drawing of themselves, and their biggest fans can sport it on their profiles. Notably, each DeSo NFT has a serial number, so each one will be special, even within the same issue. [@ab84](https://bitclout.com/u/ab84), could you be the first DeSo NFT trading card!
+* **Digital trading cards.** Any sufficiently well-known creator can create digital trading cards of themselves simply by issuing a "one of N" NFT. All they need to do is create a unique piece of artwork, like a [cryptopunk](https://www.larvalabs.com/cryptopunks) drawing of themselves, and their biggest fans can sport it on their profiles. Notably, each DeSo NFT has a serial number, so each one will be special, even within the same issue. [@ab](https://bitclout.com/u/ab), could you be the first DeSo NFT trading card!
 * **Fine art.** Major artists have shown that NFTs are going to be a big part of the future of fine art. They not only allow anyone to enjoy the artist's work, but they also do a much better job of tracking the ownership of a piece, which means the provenance can't be forged. The fact that DeSo also incorporates the artist's identity, via their profile, into the minting of an NFT should, we hope, further increase the value and utility of NFTs issued by artists. Artists on DeSo have already been innovating extremely fast, and we're so excited to take things to the next level with DeSo NFTs. Maybe we can even get [@beeple](https://bitclout.com/u/beeple) to finally claim his profile!
 * **The future of Charity.** Charities can create profiles on DeSo, just like ordinary people. When they do this, anyone can elect to send them DeSo as part of the sale of their NFT. For example, someone could auction off a dinner with themselves, but specify that all the proceeds will go to The Red Cross. They would then be able to digitally prove that the funds went to that charity. Alternatively, a charity can participate in the fun directly by issuing NFTs of their own. For example, a charity could issue NFTs where each one represents a particular acre of trees that will be planted. This allows the owner to show off their contribution to any cause they care deeply about, which could significantly increase the amounts people are willing to give. It's a bit surprising that social media and charity aren't more closely linked today-- but we believe DeSo can finally change that, and make giving easier and more fun than ever before.
 * **Owning a piece of history.** On DeSo, any post that a user makes can also be minted
@@ -329,7 +329,7 @@ The math below walks through DeSo scalability at each stage:
 2. Bigger blocks
 
    * The average DeSo blockchain post size is **218 bytes**.
-   * There are 10 other [transaction types](https://github.com/bitclout/core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.
+   * There are 10 other [transaction types](https://github.com/bitclout/deso-core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.
 
      ![](https://lh4.googleusercontent.com/YSLyEVtV0Ynx--mta7IP3QS5aVrZiq7MBVmIc9h9bZwbCrLXXTIIDzO2Gm9RYOjaqQONhOju-F7RvaTIVO6vWJ5AMASXIYHMI4z9sjK3acpoXOmhRHX99-35qS4I54KBl2C3zjnH)
 
@@ -391,7 +391,7 @@ We're just scratching the surface here-- it's now up to you, the community, to f
 
 ### Add social to your platform
 
-Suppose you're a platform with millions of users like Coinbase or Robinhood, or even traditional media companies like ESPN. Your users would probably love it if you could integrate a social component into your products-- but you can't because Twitter and Facebook don't allow it. They [closed down their APIs](https://www.google.com/url?q=https://www.theverge.com/2018/8/16/17699626/twitter-third-party-apps-streaming-api-deprecation&sa=D&source=editors&ust=1618805849171000&usg=AOvVaw3zPqxFdHzfISpMoiBG_Yi0) a long time ago because they realized that third-party integrations eat into their ad revenue. Every user who engages on a third-party platform is a user who's engaging less on Twitter and Facebook.
+Suppose you're a platform with millions of users like Coinbase or Robinhood, or even traditional media companies like ESPN. Your users would probably love it if you could integrate a social component into your products-- but you can't because Twitter and Facebook don't allow it. They [closed down their APIs](https://theverge.com/2018/8/16/17699626/twitter-third-party-apps-streaming-api-deprecation) a long time ago because they realized that third-party integrations eat into their ad revenue. Every user who engages on a third-party platform is a user who's engaging less on Twitter and Facebook.
 
 Enter BitClout. With BitClout, you don't need to build a billion-user data moat in order to be able to add social features to your platform. All you need to do is run a BitClout node, and use its API to expose whatever content you want. Suddenly, with just one engineer's worth of effort, any major platform can spin up a social product that's adjacent to its core business. Moreover, it's possible that the best feeds will come from existing publishers that have already built a competency in a particular area. For example, ESPN might be the best entity to run the sports-focused feed because of their relationships and connections, and now they can.
 
@@ -419,7 +419,7 @@ The above mechanisms don't even factor in profits that could be derived from aug
 
 Running a node currently requires a modest amount of technical know-how. For the full instructions on how to run a node, check out this GitHub repository:
 
-* [https://github.com/bitclout/run](https://github.com/bitclout/run)
+* [https://github.com/bitclout/deso-run](https://github.com/bitclout/deso-run)
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
@@ -429,7 +429,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 * Go to your Admin tab and watch the unfiltered feed update as your node syncs. It's like a time machine!
 * Try to whitelist some posts in the Admin tab and see that they've made their way onto your global feed.
-* Read through the flags available in the [dev.env](https://github.com/bitclout/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
+* Read through the flags available in the [dev.env](https://github.com/bitclout/deso-run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
 * Set `ADMIN_PUBLIC_KEYS` to your public key so that the Admin tab is only visible to your username.
 * Set `SUPER_ADMIN_PUBLIC_KEYS` to your public key so that the Super Admin tab is only visible to your username.
 * Whitelist some posts and verify that they show up on the global feed.
