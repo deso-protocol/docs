@@ -1,8 +1,8 @@
 # Identity API
 
-The BitClout Identity service provides a convenient and secure way for users to login to many different BitClout nodes and applications. When using BitClout Identity, users' private key material never leaves the browser. All signing happens in a secured `iframe` and transaction approvals occur in a pop-up window.
+The DeSo Identity service provides a convenient and secure way for users to login to many different DeSo nodes and applications. When using DeSo Identity, users' private key material never leaves the browser. All signing happens in a secured `iframe` and transaction approvals occur in a pop-up window.
 
-The developer community highly recommends node operators and app developers integrate with [identity.bitclout.com](https://identity.bitclout.com) to provide users with consistent log in, sign up, and account management experiences. Identity currently integrates most smoothly with web-based applications. The developer community is working on creating libraries for integrating with iOS and Android.
+The developer community highly recommends node operators and app developers integrate with [identity.deso.org](https://identity.deso.org) to provide users with consistent log in, sign up, and account management experiences. Identity currently integrates most smoothly with web-based applications. The developer community is working on creating libraries for integrating with iOS and Android.
 
 ## Message Protocol
 
@@ -40,16 +40,16 @@ The first message Identity sends to the parent when it loads in is `initialize`.
 
 ## `window.open` context
 
-Opening Identity using window.open allows an application to send and receive messages to the newly opened tab or pop-up. A new Identity window can be opened at many paths:
+Opening Identity using `window.open` allows an application to send and receive messages to the newly opened tab or pop-up. A new Identity window can be opened at many paths:
 
 ```javascript
-const login   = window.open('https://identity.bitclout.com/log-in');
-const signUp  = window.open('https://identity.bitclout.com/sign-up');
-const logout  = window.open('https://identity.bitclout.com/logout?publicKey=BC123');
-const approve = window.open('https://identity.bitclout.com/approve?tx=0abf35a');
+const login   = window.open('https://identity.deso.org/log-in');
+const signUp  = window.open('https://identity.deso.org/sign-up');
+const logout  = window.open('https://identity.deso.org/logout?publicKey=BC123');
+const approve = window.open('https://identity.deso.org/approve?tx=0abf35a');
 
-// Can be added to any path for testnet bitclout and bitcoin addresses
-const testnet = window.open('https://identity.bitclout.com/log-in?testnet=true');
+// Can be added to any path for testnet deso and bitcoin addresses
+const testnet = window.open('https://identity.deso.org/log-in?testnet=true');
 ```
 
 Only one Identity window should be opened at a time.
@@ -112,7 +112,7 @@ The iframe is responsible for signing and decryption. The iframe is usually enti
 <iframe
   id="identity"
   frameborder="0"
-  src="https://identity.bitclout.com/embed"
+  src="https://identity.deso.org/embed"
   style="height: 100vh; width: 100vw;"
   [style.display]="requestingStorageAccess ? 'block' : 'none'"
 ></iframe>
@@ -120,7 +120,7 @@ The iframe is responsible for signing and decryption. The iframe is usually enti
 
 ### `info`
 
-The iframe responds to `info` messages which helps Identity support Safari and Chrome on iOS. Apple's Intelligent Tracking Prevention \(ITP\) places strict limitations on cross-domain data storage and access. This means the Identity `iframe` must request storage access every time the page reloads. When a user visits a BitClout application in Safari they will see a "Tap anywhere to unlock your wallet" prompt which is a giant button in the `iframe`. When the `info` message returns `hasStorageAccess: false`, an application should make the `iframe` take over the entire page. Above, this means setting `requestingStorageAccess = true`.
+The iframe responds to `info` messages which helps Identity support Safari and Chrome on iOS. Apple's Intelligent Tracking Prevention \(ITP\) places strict limitations on cross-domain data storage and access. This means the Identity `iframe` must request storage access every time the page reloads. When a user visits a DeSo application in Safari they will see a "Tap anywhere to unlock your wallet" prompt which is a giant button in the `iframe`. When the `info` message returns `hasStorageAccess: false`, an application should make the `iframe` take over the entire page. Above, this means setting `requestingStorageAccess = true`.
 
 The `info` message also detects if a user has disabled third party cookies. Third party cookies are required for Identity to securely sign transactions. If `info` returns `browserSupported: false` an application should inform the user they will not be able to use Identity to sign or decrypt anything.
 
