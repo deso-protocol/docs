@@ -295,13 +295,13 @@ Using this system, a node operator can curate a collection of NFTs every week, o
 
 ## What is Social Tipping?
 
-Because DeSo is money-native, it can tie tipping with content in ways that no other social network can. On DeSo, the core mechanic introduced is called "diamonds," and it functions as a like, only it allows users to give variable amounts of money to content that they really like.
+Because DeSo is money-native, it can tie tipping with content in ways that no other social network can. On DeSo, the core mechanic introduced is called "diamonds," and it functions as a like, only it allows users to give variable amounts of money to content.
 
 ![](.gitbook/assets/image%20%286%29.png)
 
 In the screenshot above, a single diamond is a penny while a six-diamond is ~$362. All of this is instant, and the receiver of the tip immediately gets $DESO in their wallet for their content. Many users already earn thousands of dollars a week off of this feature alone, and as DeSo scales, the economics will only get better.
 
-Just to do some math, imagine a post with 1 million likes gets 100,000 diamonds, worth on average ten cents each. That's $100,000 in pure cash from _just_ the tips! Moreover, users typically get a higher ratio of likes to diamonds, but we wanted to be conservative in our calculations.
+Just to do some math, imagine a post with 1 million likes gets 100,000 diamonds, worth on average ten cents each. That's $100,000 in pure cash from _just_ the diamonds! Moreover, users typically get a higher ratio of likes to diamonds, but we wanted to be conservative in our calculations.
 
 ## Proof of Stake
 
