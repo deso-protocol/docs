@@ -70,7 +70,7 @@ DeSo区块链有自己的原生代币，叫DeSo, 用户可以使用它在平台�
 
 price\_in\_deso （以DeSo为基准代币价格） = .003 x creator\_coins\_in\_circulation^2 （创作者代币流通数量）
 
-`price_in_usd（以美元为基准代币价格） = .003 x creator_coins_in_circulation^2 （创作者代币流通数量）x bitclout_price_in_usd （DeSo代币的美元价值）`
+`price_in_usd（以美元为基准代币价格） = .003 x creator_coins_in_circulation^2 （创作者代币流通数量）x deso_price_in_usd （DeSo代币的美元价值）`
 
 当您创建一个用户资料时，其初始代币数量和价格是零。您如果想购买这个账户的代币，那么根据上面的价格曲线，系统会自动铸造代币并出售给您。并且随着购买代币的数量增多，它的价格也越来越高，相应地您用来购买代币的资金用来兑换这些代币。另一方面，如果您想要出售代币，账户会自动从之前锁定的资金依据曲线购买您手中的代币。因此，购买代币推高代币价格，并且锁定资金在账户中；卖出代币销毁代币降低代币价格释放锁定资金，这也被通常称做“自动做市商”，Uniswap和Bancor等协议也由同样概念驱动。
 

@@ -36,7 +36,7 @@ With your help, we hope to build the DeSo blockchain into an enduring positive f
 
 In terms of architecture, a good way to understand DeSo is to imagine a Bitcoin node, only evolved to be able to handle a much wider array of transaction types than just sending/receiving money, with a vast amount of custom storage and indexing logic tailor-made to support social features at scale.
 
-For non-developers, the best way to understand DeSo's architecture and its advantages is to continue to the next section, which explains things in high-level terms. However, for developers who are interested in diving into the lower-level specifics, [this developer quide](https://docs.bitclout.com/code/dev-setup) is a good starting point, and this [code walkthrough](https://docs.deso.org/code/walkthrough) is the best way to fully internalize how everything fits together. It may look dense, but it is written in plain English, and shouldn't take more than an hour or two to fully internalize.
+For non-developers, the best way to understand DeSo's architecture and its advantages is to continue to the next section, which explains things in high-level terms. However, for developers who are interested in diving into the lower-level specifics, [this developer quide](https://docs.deso.org/code/dev-setup) is a good starting point, and this [code walkthrough](https://docs.deso.org/code/walkthrough) is the best way to fully internalize how everything fits together. It may look dense, but it is written in plain English, and shouldn't take more than an hour or two to fully internalize.
 
 ### Social Features on Bare Metal
 
@@ -326,7 +326,7 @@ The math below walks through DeSo scalability at each stage:
    1. While PoS is not strictly required in order to scale DeSo, it is a top priority regardless, and so it will either precede or happen in parallel with the other scaling steps.
 2. Bigger blocks
    * The average DeSo blockchain post size is **218 bytes**.
-   * There are 10 other [transaction types](https://github.com/deso-project/core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.
+   * There are 10 other [transaction types](https://github.com/deso-protocol/core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.
 
      ![](https://lh4.googleusercontent.com/YSLyEVtV0Ynx--mta7IP3QS5aVrZiq7MBVmIc9h9bZwbCrLXXTIIDzO2Gm9RYOjaqQONhOju-F7RvaTIVO6vWJ5AMASXIYHMI4z9sjK3acpoXOmhRHX99-35qS4I54KBl2C3zjnH)
 
@@ -415,7 +415,7 @@ The above mechanisms don't even factor in profits that could be derived from aug
 
 Running a node currently requires a modest amount of technical know-how. For the full instructions on how to run a node, check out this GitHub repository:
 
-* [https://github.com/deso-project/run](https://github.com/deso-project/run)
+* [https://github.com/deso-protocol/run](https://github.com/deso-protocol/run)
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
@@ -425,7 +425,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 * Go to your Admin tab and watch the unfiltered feed update as your node syncs. It's like a time machine!
 * Try to whitelist some posts in the Admin tab and see that they've made their way onto your global feed.
-* Read through the flags available in the [dev.env](https://github.com/deso-project/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
+* Read through the flags available in the [dev.env](https://github.com/deso-protocol/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
 * Set `ADMIN_PUBLIC_KEYS` to your public key so that the Admin tab is only visible to your username.
 * Set `SUPER_ADMIN_PUBLIC_KEYS` to your public key so that the Super Admin tab is only visible to your username.
 * Whitelist some posts and verify that they show up on the global feed.
@@ -459,7 +459,7 @@ When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes 
 
 ### Super Admin Public Keys
 
-Within the Admin Panel, there is a `Super` tab that is only accessible by Super Admins. Super Admin can manage user verification and $CLOUT purchasing behavior from the `Super` tab.
+Within the Admin Panel, there is a `Super` tab that is only accessible by Super Admins. Super Admin can manage user verification and $DESO purchasing behavior from the `Super` tab.
 
 #### Username Verification
 
