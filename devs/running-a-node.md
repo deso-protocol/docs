@@ -51,7 +51,7 @@ The above mechanisms don't even factor in profits that could be derived from aug
 
 Running a node currently requires a modest amount of technical know-how. For the full instructions on how to run a node, check out this GitHub repository:
 
-* [https://github.com/deso-project/run](https://github.com/deso-project/run)
+* [https://github.com/deso-protocol/run](https://github.com/deso-protocol/run)
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
@@ -61,7 +61,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 * Go to your Admin tab and watch the unfiltered feed update as your node syncs. It's like a time machine!
 * Try to whitelist some posts in the Admin tab and see that they've made their way onto your global feed.
-* Read through the flags available in the [dev.env](https://github.com/deso-project/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
+* Read through the flags available in the [dev.env](https://github.com/deso-protocol/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
 * Set `ADMIN_PUBLIC_KEYS` to your public key so that the Admin tab is only visible to your username.
 * Set `SUPER_ADMIN_PUBLIC_KEYS` to your public key so that the Super Admin tab is only visible to your username.
 * Whitelist some posts and verify that they show up on the global feed.
@@ -74,7 +74,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 ## Managing Your Feed
 
-To manage your feed, start by navigating to the Admin tab as shown below. The Admin tab shows the full firehose of posts in real time, with a button next to each one that allows you to add it to the global feed. You can also sort the posts by clout. These are all the same tools that the bitclout.com mods have, now at your fingertips through the power of decentralization.
+To manage your feed, start by navigating to the Admin tab as shown below. The Admin tab shows the full firehose of posts in real time, with a button next to each one that allows you to add it to the global feed. You can also sort the posts by DESO. These are all the same tools that the bitclout.com mods have, now at your fingertips through the power of decentralization.
 
 ![](../.gitbook/assets/image%20%288%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
