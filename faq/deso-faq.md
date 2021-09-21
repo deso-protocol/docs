@@ -514,7 +514,7 @@ The VCs bought off the bonding curve just like everyone else, so technically no.
 
 #### Why does the transaction ID of genesis block reward not show up as an input for transactions spending DESO from genesis block? \(@carsenk @tijn\)
 
-It's a bug. I think it's fixed in the deso-rosetta repo but I can't remember if we merged the change back into core.
+It's a bug. I think it's fixed in the rosetta-deso repo but I can't remember if we merged the change back into core.
 
 #### DeSo wallet contains over 4k BTC from DESO sales prior to genesis, and after. What is its purpose / role ? \(@Davidsun @Tijn\)
 
