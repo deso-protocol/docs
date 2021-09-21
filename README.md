@@ -440,11 +440,11 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 To manage your feed, start by navigating to the Admin tab as shown below. The Admin tab shows the full firehose of posts in real-time, with a button next to each one that allows you to add it to the global feed. You can also sort the posts by clout. These are all the same tools that the bitclout.com mods have, now at your fingertips through the power of decentralization.
 
-![](.gitbook/assets/image-deso-8-1-2-2-2-2-%20%282%29.png)
+![](.gitbook/assets/image-deso-2-8-1-2-2-2-2-.png)
 
 You can also add any post from anyone's profile to the global feed simply by hitting the dropdown at the top-right of the post. You can also pin posts to your feed, which is a good way of communicating announcements to your user base.
 
-![](.gitbook/assets/image-deso-3-.png)
+![](.gitbook/assets/image-deso-2-3-.png)
 
 When you run a node, you act as a moderator and have a variety of superpowers that help you manage spam and harmful content.
 
