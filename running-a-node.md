@@ -51,7 +51,7 @@ The above mechanisms don't even factor in profits that could be derived from aug
 
 Running a node currently requires a modest amount of technical know-how. For the full instructions on how to run a node, check out this GitHub repository:
 
-* [https://github.com/bitclout/deso-run](https://github.com/bitclout/deso-run)
+* [https://github.com/deso-project/run](https://github.com/deso-project/run)
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
@@ -61,7 +61,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 * Go to your Admin tab and watch the unfiltered feed update as your node syncs. It's like a time machine!
 * Try to whitelist some posts in the Admin tab and see that they've made their way onto your global feed.
-* Read through the flags available in the [dev.env](https://github.com/bitclout/deso-run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
+* Read through the flags available in the [dev.env](https://github.com/deso-project/run/blob/main/dev.env) file. You can adjust these flags however you want, but note that we strongly recommend keeping your node in read-only mode for now. Turning read-only mode off could cause users who visit your node to make transactions that are not ultimately confirmed.
 * Set `ADMIN_PUBLIC_KEYS` to your public key so that the Admin tab is only visible to your username.
 * Whitelist some posts and verify that they show up on the global feed.
 * Deploy your node on any cloud provider with a static IP to make it accessible to anyone on the internet.

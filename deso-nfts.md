@@ -26,7 +26,7 @@ Popular NFT marketplaces:
 * [SuperRare](https://superrare.co/)
 * [Zora](https://zora.co/)
 * [Foundation](https://foundation.app/)
-* [Valuables by Cent](https://github.com/bitclout/deso-docs/tree/fbaa50bb5f33de0987f3841ac62b98c67fdf57ce/v.cent.co)
+* [Valuables by Cent](https://github.com/deso-project/docs/tree/fbaa50bb5f33de0987f3841ac62b98c67fdf57ce/v.cent.co)
 
 ## Why NFTs on DeSo?
 

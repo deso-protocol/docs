@@ -4,7 +4,7 @@
 
 ### **What is DeSo?**
 
-The DeSo project is a decentralized, blockchain-based, [open source](https://github.com/bitclout/deso-core#about-this-repo) social network. It is not a competitor to Bitcoin or Ethereum, but to existing closed social networks like Twitter and Facebook. And to understand why we built it, it helps to understand the history of these social networks.
+The DeSo project is a decentralized, blockchain-based, [open source](https://github.com/deso-project/core#about-this-repo) social network. It is not a competitor to Bitcoin or Ethereum, but to existing closed social networks like Twitter and Facebook. And to understand why we built it, it helps to understand the history of these social networks.
 
 Back in 2009, Paul Graham wrote about [Twitter as an open protocol](http://www.paulgraham.com/twitter.html) that was run by a private company that had been “slow to monetize” and hadn’t “tried to control it too much”. Due to this openness, people built many applications on the Twitter API, including applications like [Tweetdeck](https://en.wikipedia.org/wiki/TweetDeck) that replicated the full functionality of Twitter. Then Twitter very much asserted itself as a private company, shutting off API access to countless developers \([1](https://readwrite.com/2011/02/11/twitter_kills_the_api_whitelist_what_it_means_for/), [2](https://techcrunch.com/2011/05/18/twitter-revokes-automatic-3rd-party-dm-access-gives-users-more-details-on-app-permissions/), [3](https://www.theverge.com/2012/7/9/3135406/twitter-api-open-closed-facebook-walled-garden), [4](https://www.theverge.com/2012/8/20/3250218/developers-react-twitter-api-rules), [5](https://www.networkworld.com/article/2200143/twitter-whacks-ubertwitter-company-so-hard-it-s-changing-app-s-name-to-ubersocial.html), [6](https://readwrite.com/2011/02/22/twitter_puts_the_smack_down_on_another_popular_app), [7](https://mashable.com/archive/twitter-killing-tweetdeck), [8](https://venturebeat.com/2015/10/22/10-reasons-why-twitter-ceo-jack-dorsey-apologized-to-developers/), [9](https://thenextweb.com/news/developers-bracing-themselves-for-twitter-api-retrictions-call-todays-post-ominous), [10](https://www.infoworld.com/article/2908869/twitters-firehose-shut-off-is-the-newest-hazard-of-the-api-economy.html)\), deplatforming direct competitors like [Meerkat](https://techcrunch.com/2015/05/06/meerkat-founder-on-getting-the-kill-call-from-twitter/), and generally becoming a Facebook-like [walled garden](https://www.theverge.com/2012/7/9/3135406/twitter-api-open-closed-facebook-walled-garden). This is now far enough in the past that 20-something developers often don’t even know about this history.
 
@@ -25,19 +25,19 @@ Let’s give detail on each of these.
 
 #### The DeSo Blockchain
 
-DeSo’s backend is structured as a blockchain. It is already [open source](https://github.com/bitclout/deso-core#example-1-a-deso-website-aka-desocom) and more decentralized than closed social networks like Twitter.
+DeSo’s backend is structured as a blockchain. It is already [open source](https://github.com/deso-project/core#example-1-a-deso-website-aka-desocom) and more decentralized than closed social networks like Twitter.
 
 To prove this, note that right now you can [run a node](https://docs.bitclout.com/devs/running-a-node) and download the entire DeSo blockchain. Any engineer can then run [simple commands](https://github.com/andrewarrow/cloutcli#quick-start-demo) to print out the entire history of all DeSo messages, visualize the full social graph, search all clouts, send mass DMs to users, and in general gain full access to the entire DeSo backend as you would with any other public blockchain. These actions would be impossible on twitter.com without [corporate permission](https://developer.twitter.com/en/docs/twitter-api/enterprise/historical-powertrack-api/overview) from Twitter.
 
 For this reason we think DeSo as a whole is _already_ significantly more decentralized than Twitter or Facebook. That said, there are still parts of the DeSo project that are centralized or semi-centralized, like [identity.deso.org](https://docs.bitclout.com/devs/identity-api) and [images.bitclout.com](https://bitclout.com/posts/db5f007e1c6a3b018bba98362fe5f8488f29f51676aa90ebf0bc2b702aec0f26), which we plan to phase out over time. You can read more about the technical roadmap for progressive decentralization below.
 
-The main difference between DeSo and most previous public blockchains is that DeSo focuses on _social_ rather than financial transactions, like [updating a profile](https://github.com/bitclout/deso-core/blob/main/lib/network.go#L211) or [buying a creator coin](https://github.com/bitclout/deso-core/blob/27426de8fd6dfb5d0d0e98a2f6b82773d92a6288/lib/network.go#L215). Just to make that clear, here’s a [screenshot](https://www.bitcloutpulse.com/explorer/blocks/00000000000099a0306c0bd5b8bbb5eb6e2e716be4a929e20157d2af18189661) of a recent DeSo block from a third party block explorer called bitcloutpulse.com. Note that you can see individual social transaction types, such as `BLOCK_REWARD`, `SUBMIT_POST`, `FOLLOW`, `LIKE`, and so on.
+The main difference between DeSo and most previous public blockchains is that DeSo focuses on _social_ rather than financial transactions, like [updating a profile](https://github.com/deso-project/core/blob/main/lib/network.go#L211) or [buying a creator coin](https://github.com/deso-project/core/blob/27426de8fd6dfb5d0d0e98a2f6b82773d92a6288/lib/network.go#L215). Just to make that clear, here’s a [screenshot](https://www.bitcloutpulse.com/explorer/blocks/00000000000099a0306c0bd5b8bbb5eb6e2e716be4a929e20157d2af18189661) of a recent DeSo block from a third party block explorer called bitcloutpulse.com. Note that you can see individual social transaction types, such as `BLOCK_REWARD`, `SUBMIT_POST`, `FOLLOW`, `LIKE`, and so on.
 
 ![](../.gitbook/assets/image%20%282%29.png)
 
 #### The Bitclout.com Frontend
 
-The first frontend UI to the DeSo Blockchain is at bitclout.com. Like the DeSo Blockchain, this is also [open source](https://github.com/bitclout/deso-frontend) and anyone can download and modify it.
+The first frontend UI to the DeSo Blockchain is at bitclout.com. Like the DeSo Blockchain, this is also [open source](https://github.com/deso-project/frontend) and anyone can download and modify it.
 
 And people have. While [Bitclout.com](http://bitclout.com) was the first major node on the DeSo network, and maintains a significant portion of the traffic at the time of this writing, other major nodes have matured recently. Some of them include:
 
@@ -80,10 +80,10 @@ bitclout.com's only official Twitter account is @bitclout \([twitter.com/bitclou
 
 All of the code for the DeSo reference implementation, as well as tools and other libraries, can be found in the DeSo GitHub project at [github.com/deso-project](https://github.com/deso-project). The key repositories are:
 
-* [github.com/bitclout/deso-core](https://github.com/bitclout/deso-core)
-* [github.com/bitclout/deso-backend](https://github.com/bitclout/deso-backend)
-* [github.com/bitclout/deso-frontend](https://github.com/bitclout/deso-frontend)
-* [github.com/bitclout/deso-identity](https://github.com/bitclout/deso-identity)
+* [github.com/deso-project/core](https://github.com/deso-project/core)
+* [github.com/deso-project/backend](https://github.com/deso-project/backend)
+* [github.com/deso-project/frontend](https://github.com/deso-project/frontend)
+* [github.com/deso-project/identity](https://github.com/deso-project/identity)
 
 If you're an engineer, read the [developer docs](https://docs.bitclout.com/code/dev-setup) for how to clone these repositories, synchronize the DeSo blockchain locally, and stand up your own instance of a DeSo node.
 
@@ -117,7 +117,7 @@ Then, as an added benefit to the people for whom they reserved these profiles, t
 
 The dev team then made it possible for anyone on Twitter to claim their profile by Tweeting out their public key. This conveniently solved an authentication issue, where you need to be sure that the person who’s reaching out to claim the profile is really the person they say they are.
 
-Once a profile is claimed, the dev team transfers the profile to the public key contained in the Tweet. The dev team created these profiles, and so they then transfer these profiles — including control over the reserved creator coin assets — to the party claiming the profile using the [SWAP\_IDENTITY](https://github.com/bitclout/deso-core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type on the blockchain.
+Once a profile is claimed, the dev team transfers the profile to the public key contained in the Tweet. The dev team created these profiles, and so they then transfer these profiles — including control over the reserved creator coin assets — to the party claiming the profile using the [SWAP\_IDENTITY](https://github.com/deso-project/core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type on the blockchain.
 
 ### How do I claim my profile at bitclout.com, if it was reserved?
 
@@ -163,21 +163,21 @@ When a user signs in with Google, the user's private keys are backed up to an is
 
 For more information on how DeSo private key storage works, see [here](https://docs.bitclout.com/faq/privacy-and-security).
 
-Note: Although a user's private keys never touch bitclout.com's servers, it is important to mention that profiles and creator coins \(not $DESO\) can be recovered by certain ParamUpdater public keys using a [SWAP\_IDENTITY](https://github.com/bitclout/deso-core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type that the core dev team intends to remove after an initial bootstrapping phase. This transaction type has only been used to transfer profiles and recover profiles for high-profile accounts that lost their seed phrase prior to the "Login with Google" update.
+Note: Although a user's private keys never touch bitclout.com's servers, it is important to mention that profiles and creator coins \(not $DESO\) can be recovered by certain ParamUpdater public keys using a [SWAP\_IDENTITY](https://github.com/deso-project/core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type that the core dev team intends to remove after an initial bootstrapping phase. This transaction type has only been used to transfer profiles and recover profiles for high-profile accounts that lost their seed phrase prior to the "Login with Google" update.
 
 ### Can Bitclout.com access my private keys, if I’m a reserved user?
 
 The private keys for reserved profiles are controlled by the core developers until the profiles are transferred over to the users who claim them. After this transfer is complete, the user fully controls these profiles with their private keys, which never leave their browser.
 
-Note: Although a user's private keys never touch bitclout.com's servers, it is important to mention that profiles and creator coins \(not $DESO\) can be recovered by certain ParamUpdater public keys using a [SWAP\_IDENTITY](https://github.com/bitclout/deso-core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type that the core dev team intends to remove after an initial bootstrapping phase. This transaction type has only been used to transfer profiles and recover profiles for high-profile accounts that lost their seed phrase prior to the "Login with Google" update.
+Note: Although a user's private keys never touch bitclout.com's servers, it is important to mention that profiles and creator coins \(not $DESO\) can be recovered by certain ParamUpdater public keys using a [SWAP\_IDENTITY](https://github.com/deso-project/core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type that the core dev team intends to remove after an initial bootstrapping phase. This transaction type has only been used to transfer profiles and recover profiles for high-profile accounts that lost their seed phrase prior to the "Login with Google" update.
 
 ### Can developers using identity.deso.org access my private keys?
 
-No. identity.deso.org only exists as a means of isolating key material to an iFrame in the user’s browser. This isolation not only makes bitclout.com more secure, but it also provides a means for third-party developers to leverage accounts created on other nodes by including identity.deso.org as a dependency. Notably, anyone can spin up a clone of identity.deso.org since it is [fully open-source](https://github.com/bitclout/deso-identity), and we expect this to be an opportunity for exchanges to custody users’ identities in the future. For more information about DeSo’s identity API, see [here](https://docs.bitclout.com/devs/identity-api).
+No. identity.deso.org only exists as a means of isolating key material to an iFrame in the user’s browser. This isolation not only makes bitclout.com more secure, but it also provides a means for third-party developers to leverage accounts created on other nodes by including identity.deso.org as a dependency. Notably, anyone can spin up a clone of identity.deso.org since it is [fully open-source](https://github.com/deso-project/identity), and we expect this to be an opportunity for exchanges to custody users’ identities in the future. For more information about DeSo’s identity API, see [here](https://docs.bitclout.com/devs/identity-api).
 
 ### Can anyone create an account on the DeSo blockchain without going through Bitclout.com?
 
-Yes, absolutely. Apps such as bitcloutpulse.com and Flick already allow this. Users can also create accounts programmatically by broadcasting the proper transactions to the blockchain. This [toolslib](https://github.com/bitclout/deso-backend/tree/main/scripts/tools/toolslib) directory is useful for that.
+Yes, absolutely. Apps such as bitcloutpulse.com and Flick already allow this. Users can also create accounts programmatically by broadcasting the proper transactions to the blockchain. This [toolslib](https://github.com/deso-project/backend/tree/main/scripts/tools/toolslib) directory is useful for that.
 
 ### Can random DeSo Blockchain users access my private keys?
 
@@ -211,13 +211,13 @@ We are working on a fix to this, but the engineering is nontrivial. In the meant
 
 ### Is Bitclout.com open-source?
 
-Yes, 100% of the code that powers bitclout.com is public [here](https://github.com/deso-project). And we mean 100%. This includes all the code required to [run a node](https://docs.bitclout.com/devs/running-a-node) and to [run the frontend](https://github.com/bitclout/deso-frontend).
+Yes, 100% of the code that powers bitclout.com is public [here](https://github.com/deso-project). And we mean 100%. This includes all the code required to [run a node](https://docs.bitclout.com/devs/running-a-node) and to [run the frontend](https://github.com/deso-project/frontend).
 
 Moreover, all of the DeSo data is stored publicly on the blockchain, such that anyone who runs and syncs a node can instantly build on the full firehose of data \(there are multiple popular third-party block explorers such as [explorer.cloutangel.com](https://explorer.cloutangel.com) and [bitcloutpulse.com](https://www.bitcloutpulse.com/explorer)\). This property in particular has the potential to turn social media from a walled garden controlled by a handful of companies to a utility that anyone in the world can build and innovate on.
 
 ### **Is the DeSo Blockchain open-source?**
 
-Yes, the code that powers the DeSo blockchain is mainly the core repo [here](https://github.com/bitclout/deso-core).
+Yes, the code that powers the DeSo blockchain is mainly the core repo [here](https://github.com/deso-project/core).
 
 ### **What is the difference between Bitclout.com and the DeSo Blockchain?**
 
@@ -234,8 +234,8 @@ All code is public, and nearly all data utilized by bitclout.com is publicly sto
 * **Emails and phones.** Emails and phone numbers are not stored on-chain for privacy reasons currently. However, we are working on storing them in an encrypted fashion to support features like sharing one’s email or phone number with other users on other nodes.
 * **Images and videos.** Although the DeSo blockchain stores all text posts directly, images and videos are stored in a centralized fashion at images.bitclout.com such that only links to the images are actually stored on the blockchain. This is because images and videos are still too large to efficiently store on blockchains currently, though technologies like IPFS and Arweave are promising.
 * **Identity iFrame \(for now\).** identity.deso.org is currently the dominant domain used to serve a DeSo Identity app. However, we expect this to decentralize more as exchanges enter the Identity game.
-* In consensus, there are two transaction types that are temporarily only executable by certain [ParamUpdater public keys](https://github.com/bitclout/deso-core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/constants.go#L449). They are [UpdateGlobalParams](https://github.com/bitclout/deso-core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/network.go#L217) \(for fees\) and [SwapIdentity](https://github.com/bitclout/deso-core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/network.go#L216) \(for reserved profiles\).
-  * UpdateGlobalParams is a tool that can be used to set a global transaction "fee rate." This is useful for when the network is getting spam attacked, as it allows [a global fee rate](https://github.com/bitclout/deso-core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/block_view.go#L287) to be increased fairly quickly \(in contrast to other chains where node operators must individually adjust their fees, leading to consensus issues\). It also allows for the adjustment of [CreateProfileFeeNanos](https://github.com/bitclout/deso-core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/block_view.go#L284), which is the fee required in order to create a profile on the DeSo blockchain. The core devs hope to make both of these parameters override-able in the near future.
+* In consensus, there are two transaction types that are temporarily only executable by certain [ParamUpdater public keys](https://github.com/deso-project/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/constants.go#L449). They are [UpdateGlobalParams](https://github.com/deso-project/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/network.go#L217) \(for fees\) and [SwapIdentity](https://github.com/deso-project/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/network.go#L216) \(for reserved profiles\).
+  * UpdateGlobalParams is a tool that can be used to set a global transaction "fee rate." This is useful for when the network is getting spam attacked, as it allows [a global fee rate](https://github.com/deso-project/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/block_view.go#L287) to be increased fairly quickly \(in contrast to other chains where node operators must individually adjust their fees, leading to consensus issues\). It also allows for the adjustment of [CreateProfileFeeNanos](https://github.com/deso-project/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/block_view.go#L284), which is the fee required in order to create a profile on the DeSo blockchain. The core devs hope to make both of these parameters override-able in the near future.
   * SwapIdentity is used to transfer reserved profiles from the core devs to the users who are claiming them. It is also useful in restoring someone's account if they lost their private key. It transfers creator coin holdings but, importantly, **it does not affect DeSo balances --** _**nothing can change DeSo balances without a user's signature**_**.** Soon, this will be usable by anyone, not just the ParamUpdater public key holders, to implement things like third party marketplaces for usernames. Once this happens, the ParamUpdater public keys will no longer have the ability to transfer arbitrary profiles.
 
 ### **How decentralized is the DeSo Blockchain, and what is the roadmap for further decentralization?**
@@ -249,7 +249,7 @@ Today, the DeSo blockchain is fully replicated across dozens of independent node
 
 Additionally, although we don’t track the number of nodes currently running, it is important to mention that the node Docker images have been downloaded over 10,000 times, and we have seen hundreds of nodes on the network at any given time.
 
-DeSo’s model differs from pure proof of work, however, in that it allows node operators to specify a set of [trusted block producers](https://github.com/bitclout/deso-core/blob/27426de8fd6dfb5d0d0e98a2f6b82773d92a6288/cmd/run.go#L165). When a node sets a set of trusted block producers, it will only accept blocks if they have been signed by at least one of the block producers in the set. So, for example, all the major exchanges could include each others’ public keys as trusted block producers. If they did this, then the network would be more centralized, but it would also be more robust to censorship by miners.
+DeSo’s model differs from pure proof of work, however, in that it allows node operators to specify a set of [trusted block producers](https://github.com/deso-project/core/blob/27426de8fd6dfb5d0d0e98a2f6b82773d92a6288/cmd/run.go#L165). When a node sets a set of trusted block producers, it will only accept blocks if they have been signed by at least one of the block producers in the set. So, for example, all the major exchanges could include each others’ public keys as trusted block producers. If they did this, then the network would be more centralized, but it would also be more robust to censorship by miners.
 
 In the short term, this mechanism is useful in preventing 51% attacks while DeSo is in such an early stage. When bootstrapping a proof of work network, there is a problem whereby early in the network’s development, the hash power is not high enough for it to be secure against 51% attacks. Thus, proof of work networks generally suffer from a chicken and egg problem: They can’t get enough hash power to defend against 51% attacks. When, instead, blocks require both miners and block producers to agree on each block, the system is safe as long as at least one of the two groups is behaving. And if either group starts misbehaving, then the other group can fork it out. For this reason, the core developers don’t operate any mining hardware; it is fully community-run, and the hash power can be tracked on [bitpool.me](http://bitpool.me) \(which is also completely unaffiliated with the core devs\).
 
@@ -272,7 +272,7 @@ The math below walks through DeSo's scalability at each stage:
 
 1. Bigger blocks
    * The average DeSo blockchain post size is **218 bytes**.
-   * There are 10 other [transaction types](https://github.com/bitclout/deso-core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.  ![](https://lh4.googleusercontent.com/YSLyEVtV0Ynx--mta7IP3QS5aVrZiq7MBVmIc9h9bZwbCrLXXTIIDzO2Gm9RYOjaqQONhOju-F7RvaTIVO6vWJ5AMASXIYHMI4z9sjK3acpoXOmhRHX99-35qS4I54KBl2C3zjnH)
+   * There are 10 other [transaction types](https://github.com/deso-project/core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.  ![](https://lh4.googleusercontent.com/YSLyEVtV0Ynx--mta7IP3QS5aVrZiq7MBVmIc9h9bZwbCrLXXTIIDzO2Gm9RYOjaqQONhOju-F7RvaTIVO6vWJ5AMASXIYHMI4z9sjK3acpoXOmhRHX99-35qS4I54KBl2C3zjnH)
    * The DeSo blockchain currently produces up to 2MB blocks every 5 minutes, as you can see from [bitcloutpulse.com/explorer](https://bitcloutpulse.com/explorer).
    * So it can scale to ~30 transactions per second, **which is ~10 posts per second** \(= 2e6 bytes/block / \(218 bytes/post \* 60 seconds/minute \* 5 minutes/block\) \* 1 post / 3 transactions\).
    * If we increase the block size to 16MB blocks every five minutes, we can roughly extrapolate that it scales to ~240 transactions per second = **~80 posts per second**.
@@ -303,13 +303,13 @@ The math below walks through DeSo's scalability at each stage:
 
 ### **Is there obfuscated code in the DeSo blockchain miner?**
 
-No. The DeSo reference implementation contains a fully open-source CPU miner with good comments [here](https://github.com/bitclout/deso-core/blob/main/lib/miner.go).
+No. The DeSo reference implementation contains a fully open-source CPU miner with good comments [here](https://github.com/deso-project/core/blob/main/lib/miner.go).
 
 Some independent developers offered obfuscated binaries tailored to GPU mining, offering faster hash rates using proprietary software, but the DeSo core developers were not involved in this \(and we take no issue with this since it allows third-party developers to make money off of their IP\). Moreover, awesome developers like @lobovkin have since [open-sourced their GPU code](https://github.com/lobovkin/BitPoolMiner)!
 
 ### **Why does signing transactions have to go through an iframe at identity.deso.org, and is there a roadmap for local /offline signing?**
 
-It doesn’t have to, and the DeSo core devs provide [a whole suite of tools](https://github.com/bitclout/deso-backend/tree/main/scripts/tools/toolslib) that allow independent developers to construct and sign transactions without needing to rely on identity.deso.org. Moreover, web clients can use whatever identity provider they want since all the code that powers identity.deso.org is open-source.
+It doesn’t have to, and the DeSo core devs provide [a whole suite of tools](https://github.com/deso-project/backend/tree/main/scripts/tools/toolslib) that allow independent developers to construct and sign transactions without needing to rely on identity.deso.org. Moreover, web clients can use whatever identity provider they want since all the code that powers identity.deso.org is open-source.
 
 ### **How does code for the DeSo blockchain get updated?**
 
@@ -317,7 +317,7 @@ Below are the steps to update nodes on the DeSo network, as it exists today:
 
 * Code is merged on [GitHub](https://github.com/deso-project).
 * A release tag is updated to some commit by the core devs.
-* All node operators who are running Docker images that point to the github.com/bitclout/deso-&lt;repo&gt; reboot to pick up the updates.
+* All node operators who are running Docker images that point to the github.com/deso-project/&lt;repo&gt; reboot to pick up the updates.
 
 This process is relatively centralized, but it’s how most other chains work currently. The check against centralization is the fact that _**any group of sufficiently-motivated developers can hard fork all of the code and data at any time because both the code and data are totally open.**_
 
@@ -363,13 +363,13 @@ Yes! The DeSo cryptocurrency recently listed on [exchange.blockchain.com](http:/
 
 ### **Why are there so many coins in the Genesis Block?**
 
-This is a commonly-misunderstood issue, and it is due to the fact that there was a hard fork in March 2021 that compressed all transactions between November 2020 and March 2021 into a single block. This made it look as though the DeSo core developers gifted coins to early purchasers, when in reality everyone bought right off the bonding curve defined in [supply.go](https://github.com/bitclout/deso-core/blob/738005f9746454374121224b6ca646ce4d0ffb68/lib/supply.go#L1).
+This is a commonly-misunderstood issue, and it is due to the fact that there was a hard fork in March 2021 that compressed all transactions between November 2020 and March 2021 into a single block. This made it look as though the DeSo core developers gifted coins to early purchasers, when in reality everyone bought right off the bonding curve defined in [supply.go](https://github.com/deso-project/core/blob/738005f9746454374121224b6ca646ce4d0ffb68/lib/supply.go#L1).
 
 ### **What happens to the BTC people use to buy $DESO?**
 
-Today, node operators can specify a [CLOUT wallet](https://github.com/bitclout/deso-backend/blob/527751f1358aae19b13450cad2c0d270b9ba226b/cmd/run.go#L129) and a [Bitcoin wallet](https://github.com/bitclout/deso-backend/blob/527751f1358aae19b13450cad2c0d270b9ba226b/cmd/run.go#L128) and allow their users to seamlessly purchase CLOUT for Bitcoin through their node. The node operator can then use the Bitcoin they accumulate purchase CLOUT from an exchange to refill their CLOUT wallet and earn a "slippage fee" for this service \(basically acting as a market maker\).
+Today, node operators can specify a [CLOUT wallet](https://github.com/deso-project/backend/blob/527751f1358aae19b13450cad2c0d270b9ba226b/cmd/run.go#L129) and a [Bitcoin wallet](https://github.com/deso-project/backend/blob/527751f1358aae19b13450cad2c0d270b9ba226b/cmd/run.go#L128) and allow their users to seamlessly purchase CLOUT for Bitcoin through their node. The node operator can then use the Bitcoin they accumulate purchase CLOUT from an exchange to refill their CLOUT wallet and earn a "slippage fee" for this service \(basically acting as a market maker\).
 
-Prior to the [Deflation Bomb](https://bitclout.com/posts/3a13a7e4342148e76e1de957f22775a4f6916ed809a90e77a035bb7cefaaaf44?feedTab=Global), CLOUT was purchased via a [BitcoinExchange](https://github.com/bitclout/deso-core/blob/31735a82b8446421176df151dd5f80d9dac2eabd/lib/network.go#L208) transaction on the DeSo blockchain, which resulted in BTC accumulating in a treasury wallet. For security reasons, we cannot publicly explain exactly how these funds are custodied. This being said, the core dev team is working on clarifying the governance around this wallet and should have some updates very soon.
+Prior to the [Deflation Bomb](https://bitclout.com/posts/3a13a7e4342148e76e1de957f22775a4f6916ed809a90e77a035bb7cefaaaf44?feedTab=Global), CLOUT was purchased via a [BitcoinExchange](https://github.com/deso-project/core/blob/31735a82b8446421176df151dd5f80d9dac2eabd/lib/network.go#L208) transaction on the DeSo blockchain, which resulted in BTC accumulating in a treasury wallet. For security reasons, we cannot publicly explain exactly how these funds are custodied. This being said, the core dev team is working on clarifying the governance around this wallet and should have some updates very soon.
 
 ## 5. Community Questions
 
