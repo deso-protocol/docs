@@ -536,7 +536,3 @@ Yes! Every transaction is broadcast to all other nodes on the network, and shoul
 
 Twilio provides an SMS API that allows you to confirm user phone numbers and thus send them currency from your seed wallet set inside the `dev.env` file. If you do not have this set users will be unable to verify a phone number.
 
-
-
-test
-
