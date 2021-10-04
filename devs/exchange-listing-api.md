@@ -1,15 +1,15 @@
 # Exchange Listing API
 
-**The dev community recommends using the open source Rosetta API implementation for integrating BitClout on an exchange:** [**https://github.com/bitclout/rosetta-bitclout**](https://github.com/bitclout/rosetta-bitclout)**. The other APIs in this doc are less supported than the Rosetta APIs.**
+**The dev community recommends using the open source Rosetta API implementation for integrating DeSo on an exchange:** [**https://github.com/deso-protocol/rosetta-deso**](https://github.com/deso-protocol/rosetta-deso)**. The other APIs in this doc are less supported than the Rosetta APIs.**
 
-Multiple major crypto exchanges have expressed interest in listing BitClout. The dev community is working closely with several of these, but, now that anyone in the world can run a BitClout node, we thought we'd democratize and decentralize this effort by publishing a simple public API that any crypto exchange in the world could follow to integrate BitClout.
+Multiple major crypto exchanges have expressed interest in listing DeSo. The dev community is working closely with several of these, but, now that anyone in the world can run a DeSo node, we thought we'd democratize and decentralize this effort by publishing a simple public API that any crypto exchange in the world could follow to integrate DeSo.
 
-This guide will cover all of the API endpoints that are needed in order to list BitClout, with detailed descriptions and examples. This includes:
+This guide will cover all of the API endpoints that are needed in order to list DeSo, with detailed descriptions and examples. This includes:
 
 * Setting up a node.
 * Using the Exchange API to create unlimited public/private key pairs.
-* Using the Exchange API to check the balance of BitClout public keys.
-* Using the Exchange API to transfer BitClout between public keys.
+* Using the Exchange API to check the balance of DeSo public keys.
+* Using the Exchange API to transfer DeSo between public keys.
 * Using the Exchange API to query for transactions by transaction ID.
 * Using the Exchange API to query for transactions by public key.
 * Using the Exchange API to query for node sync status.
@@ -17,13 +17,13 @@ This guide will cover all of the API endpoints that are needed in order to list 
 
 The [Quick Start](exchange-listing-api.md#quick-start) section provides examples of all of the above using the “curl” command. The [Full API Guide](exchange-listing-api.md#full-api-guide) section provides more detail on each API endpoint shown in the examples.
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use in-browser signing such that your seed phrase never leaves your browser \(**_[_**learn more**_](https://docs.bitclout.com/privacy-and-security)_**\). In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use in-browser signing such that your seed phrase never leaves your browser \(**_[_**learn more**_](https://docs.deso.org/privacy-and-security)_**\). In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 ## Quick Start
 
 ### **Generate a Seed Mnemonic**
 
-To get started, you need to generate a standard [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) mnemonic seed that will be used to generate public/private key pairs. If you don't require that your keys be generated on an air-gapped computer, then you can use the [bitclout.com](https://bitclout.com) signup flow to generate your mnemonic. Note that your seed _never_ leaves your browser when you generate it on bitclout.com. See [Privacy and Security](https://docs.bitclout.com/privacy-and-security) for more details on this process.
+To get started, you need to generate a standard [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) mnemonic seed that will be used to generate public/private key pairs. If you don't require that your keys be generated on an air-gapped computer, then you can use the [bitclout.com](https://bitclout.com) signup flow to generate your mnemonic. Note that your seed _never_ leaves your browser when you generate it on bitclout.com. See [Privacy and Security](https://docs.deso.org/privacy-and-security) for more details on this process.
 
 If you need your seed to be generated in an offline fashion, then we recommend that you use [this tool](https://iancoleman.io/bip39/). Either a 12 or 24-word mnemonic should be fine, and standard Bitcoin mnemonics work as well.
 
@@ -34,13 +34,13 @@ What we will use in our examples:
 
 ### Run a Node
 
-All of the commands and examples in this guide will assume that you have a BitClout node running on your local machine. To set one up, simply follow the instructions in the open-source /run repository. If you run into any trouble, the [nodes-discussion](https://discord.com/channels/820740896181452841/835273317773869086) Discord channel is always available to help you:
+All of the commands and examples in this guide will assume that you have a DeSo node running on your local machine. To set one up, simply follow the instructions in the open-source /run repository. If you run into any trouble, the [nodes-discussion](https://discord.com/channels/820740896181452841/835273317773869086) Discord channel is always available to help you:
 
-* [https://github.com/bitclout/run](https://github.com/bitclout/run)
+* [https://github.com/deso-protocol/run](https://github.com/deso-protocol/run)
 
 Note that the node software is cross-platform and should run on Linux, Mac, and Windows. However, it seems as though people have had the most success with Linux and Mac machines with at least 32GB of RAM and at least 100GB of free disk space.
 
-_NOTE: You must set `READ_ONLY_MODE` to false in_ [_dev.env_](https://github.com/bitclout/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L265) _in order for some API calls to work. However, at the time of this writing, it is not yet recommended to deploy a production node with `READ_ONLY_MODE` set to false. This should change shortly, though. Keep an eye on the_ [_README_](https://github.com/bitclout/run/tree/190a2380b278689a4db844bb52a31d0450db7d46) _for updates._
+_NOTE: You must set `READ_ONLY_MODE` to false in_ [_dev.env_](https://github.com/deso-protocol/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L265) _in order for some API calls to work. However, at the time of this writing, it is not yet recommended to deploy a production node with `READ_ONLY_MODE` set to false. This should change shortly, though. Keep an eye on the_ [_README_](https://github.com/deso-protocol/run/tree/190a2380b278689a4db844bb52a31d0450db7d46) _for updates._
 
 ### Check Node Sync Status
 
@@ -71,9 +71,9 @@ curl --header "Content-Type: application/json" --request POST --data '{
 Notes:
 
 * Under the hood, every public/private key pair maps to derivation path m/44'/0'/0'/0/{index}. **Thus they would be identical to what is generated by any Bitcoin wallet using the same mnemonic, passphrase, and derivation path.**
-* The public and private keys returned by this function will be encoded using base58 check encoding described in more detail in the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint. For now, all that you need to know is that you can pass the public/private key strings to other API endpoints to check balances, spend BitClout, etc…
-  * BitClout public keys that are encoded with base58 always start with the prefix “BC”. BitClout private keys that are encoded with base58 always start with the prefix “bc” \(lower-case\).
-* Example of BitClout public/private key pair returned by this function. Note that Error being empty string means the endpoint succeeded.
+* The public and private keys returned by this function will be encoded using base58 check encoding described in more detail in the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint. For now, all that you need to know is that you can pass the public/private key strings to other API endpoints to check balances, spend DeSo, etc…
+  * DeSo public keys that are encoded with base58 always start with the prefix “BC”. DeSo private keys that are encoded with base58 always start with the prefix “bc” \(lower-case\).
+* Example of DeSo public/private key pair returned by this function. Note that Error being empty string means the endpoint succeeded.
   * ```text
     {
         "Error": "",
@@ -87,7 +87,7 @@ Notes:
 
 _**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
-### Check Balance of BitClout Public Key
+### Check Balance of DeSo Public Key
 
 ```text
 curl --header "Content-Type: application/json" --request POST --data '{
@@ -97,10 +97,10 @@ curl --header "Content-Type: application/json" --request POST --data '{
 
 Notes:
 
-* This will return the balance in “nanos,” where 1 BitClout = 1,000,000,000 “nanos.” For example, if the balance for this public key was “1 BitClout” then this endpoint will return 1,000,000,000 \(or 1e9 nanos\).
+* This will return the balance in “nanos,” where 1 DeSo = 1,000,000,000 “nanos.” For example, if the balance for this public key was “1 DeSo” then this endpoint will return 1,000,000,000 \(or 1e9 nanos\).
 * This endpoint also returns UTXO's, but this likely won't be useful to most node operators.
 
-### Transfer BitClout Using a Public/Private Key-Pair
+### Transfer DeSo Using a Public/Private Key-Pair
 
 ```text
 curl --header "Content-Type: application/json" --request POST --data '{
@@ -108,14 +108,14 @@ curl --header "Content-Type: application/json" --request POST --data '{
     "SenderPrivateKeyBase58Check":"bc6EmekhAbzn2V9BchgRLMRMZW1m8mo7kmvdwjZRB5nnKpgQhWSf4", 
     "RecipientPublicKeyBase58Check":"BC1YLgU67opDhT9bTPsqvue9QmyJLDHRZrSj77cF3P4yYDndmad9Wmx", 
     "AmountNanos": 1000000000
-}' http://localhost:17001/api/v1/transfer-bitclout | python -m json.tool
+}' http://localhost:17001/api/v1/transfer-deso | python -m json.tool
 ```
 
 Notes:
 
-* This example will fail unless you send BitClout to the `SenderPublicKeyBase58Check`.
-  * You can buy BitClout on bitclout.com and then use the "Send BitClout" page to get some BitClout for testing purposes.
-* The amount must be specified in "nanos," where 1 BitClout = 1e9 nanos. This example transfers 1 BitClout from public key `BC1YLgAJ2kZ7Q4fZp7KzK2Mzr9zyuYPaQ1evEWG4s968sChRBPKbSV1` to public key `BC1YLgU67opDhT9bTPsqvue9QmyJLDHRZrSj77cF3P4yYDndmad9Wmx`
+* This example will fail unless you send DeSo to the `SenderPublicKeyBase58Check`.
+  * You can buy DeSo on bitclout.com and then use the "Send DeSo" page to get some DeSo for testing purposes.
+* The amount must be specified in "nanos," where 1 DeSo = 1e9 nanos. This example transfers 1 DeSo from public key `BC1YLgAJ2kZ7Q4fZp7KzK2Mzr9zyuYPaQ1evEWG4s968sChRBPKbSV1` to public key `BC1YLgU67opDhT9bTPsqvue9QmyJLDHRZrSj77cF3P4yYDndmad9Wmx`
   * To do a "dry run" of the transaction without broadcasting it, simply add `DryRun: true` to the params.
 * Setting “AmountNanos” to a negative value like -1 will send the maximum amount possible.
   * To implement a UI with a “Max” button, we recommend hitting this endpoint with a negative AmountNanos with DryRun set to true, grabbing the resultant “spend amount,” which will be net of fees, and displaying that to the user.
@@ -138,13 +138,13 @@ Notes:
 * A transaction ID is a sha256 hash of a transaction, encoded using base58 check encoding, that uniquely identifies a transaction.
 * This gets all the transaction IDs for a particular public key ordered from oldest to newest.
   * To fetch full transactions rather than just the IDs, simply set `IDsOnly` to `false` rather than `true` or leave it out of the request entirely.
-* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/bitclout/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
+* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/deso-protocol/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
   * You must also wait for your `TXINDEX` to generate, which can take a few hours. Grep your logs for UpdateTxIndex to monitor its progress.
 * See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint to see what information will be returned by this endpoint.
 
 ### Look Up Transaction Using Transaction ID
 
-Get information for a specific transaction using that transaction’s transaction ID. You can get a transaction ID from other endpoints like the [transfer-bitclout endpoint](exchange-listing-api.md#api-v-1-transfer-bitclout) described previously.
+Get information for a specific transaction using that transaction’s transaction ID. You can get a transaction ID from other endpoints like the [transfer-deso endpoint](exchange-listing-api.md#api-v-1-transfer-deso) described previously.
 
 ```text
 curl --header "Content-Type: application/json" --request POST --data '{
@@ -155,7 +155,7 @@ curl --header "Content-Type: application/json" --request POST --data '{
 Notes:
 
 * This is the same endpoint as the one used to lookup the transactions for a public key. When a `PublicKeyBase58Check` param is set, the `TransactionIDBase58Check` param is expected to be unset and is ignored.
-* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/bitclout/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
+* This endpoint will only work if the node was started with the [TXINDEX flag](https://github.com/deso-protocol/run/blob/190a2380b278689a4db844bb52a31d0450db7d46/dev.env#L123) set to true, which is the default.
 * See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint to see what information will be returned by this endpoint.
 
 ### **Get Block For Block Hash or Height**
@@ -190,41 +190,41 @@ You can generate public/private keypairs with a standard BIP39 mnemonic. Each pu
 
 All public/private keys are inter-operable as Bitcoin public/private keys. Meaning they represent a point on the secp256k1 curve \(same as what is used by Bitcoin\).
 
-Under the hood, BitClout takes the BIP39 mnemonic and generates the public/private key pairs using the BIP32 derivation path m/44'/0'/0'/0/{index}, where "index" is the index of the public/private key being generated. This means that BitClout public/private key pair generated by the node will always line up with the public/private key pairs generated by [this Ian Coleman tool](https://iancoleman.io/bip39/). An engineer can therefore “sanity check” that things are working by generating a mnemonic using bitclout.com or Ian Coleman, creating a key pair with that mnemonic, and then verifying that the public/private key pairs generated line up with what is shown on bitclout.com or Ian Coleman.
+Under the hood, DeSo takes the BIP39 mnemonic and generates the public/private key pairs using the BIP32 derivation path m/44'/0'/0'/0/{index}, where "index" is the index of the public/private key being generated. This means that DeSo public/private key pair generated by the node will always line up with the public/private key pairs generated by [this Ian Coleman tool](https://iancoleman.io/bip39/). An engineer can therefore “sanity check” that things are working by generating a mnemonic using bitclout.com or Ian Coleman, creating a key pair with that mnemonic, and then verifying that the public/private key pairs generated line up with what is shown on bitclout.com or Ian Coleman.
 
 ```text
 PATH: /api/v1/key-pair
 METHOD: POST
 POST PARAMS:
-	// A BIP39 mnemonic and extra text. Mnemonic can be 12 words or
-	// 24 words. ExtraText is optional.
-	Mnemonic  string
-	ExtraText string
-	// The index of the public/private key pair to generate
-	Index uint32
+    // A BIP39 mnemonic and extra text. Mnemonic can be 12 words or
+    // 24 words. ExtraText is optional.
+    Mnemonic  string
+    ExtraText string
+    // The index of the public/private key pair to generate
+    Index uint32
 RETURNS:
   // Blank if successful. Otherwise, contains a description of the
   // error that occurred.
   Error string
-  // The BitClout public key encoded using base58 check encoding with
+  // The DeSo public key encoded using base58 check encoding with
   // prefix = [3]byte{0x11, 0xc2, 0x0}
   // This public key can be passed in subsequent API calls to check
-  // balance, among other things. All encoded BitClout public keys start
+  // balance, among other things. All encoded DeSo public keys start
   // with the characters “BC”
   PublicKeyBase58Check string
-  // The BitClout public key encoded as a plain hex string. This should
+  // The DeSo public key encoded as a plain hex string. This should
   // match the public key with the corresponding index generated by the
   // Ian Coleman tool.
   // This should not be passed to subsequent API calls, it is only provided
   // as a reference, mainly as a sanity-check.
   PublicKeyHex string
-  // The BitClout private key encoded using base58 check encoding with
+  // The DeSo private key encoded using base58 check encoding with
   // prefix = [3]byte{0x4f, 0x6, 0x1b}
-  // This private key can be passed in subsequent API calls to spend BitClout,
-  // among other things. All BitClout private keys start with
+  // This private key can be passed in subsequent API calls to spend DeSo,
+  // among other things. All DeSo private keys start with
   // the characters “bc”
   PrivateKeyBase58Check string
-  // The BitClout private key encoded as a plain hex string. Note that
+  // The DeSo private key encoded as a plain hex string. Note that
   // this will not directly match what is produced by the Ian Coleman
   // tool because the tool shows the private key encoded using
   // Bitcoin’s WIF format rather than as raw hex. To convert this raw hex
@@ -245,7 +245,7 @@ Spent transaction outputs are not returned by this endpoint. To perform operatio
 PATH: /api/v1/balance
 METHOD: POST
 POST PARAMS:
-  // A BitClout public key encoded using base58 check encoding (starts
+  // A DeSo public key encoded using base58 check encoding (starts
   // with “BC”). When this field is provided, the other params are
   // ignored.
   PublicKeyBase58Check string
@@ -258,13 +258,13 @@ RETURNS:
   // error that occurred.
   Error string
   // The balance of the public key queried in “nanos.” Note 
-  // there are 1e9 “nanos” per BitClout, so if the balance were “1 BitClout” then
+  // there are 1e9 “nanos” per DeSo, so if the balance were “1 DeSo” then
   // this value would be set to 1e9.
   ConfirmedBalanceNanos int64
   // The unconfirmed balance of the public key queried in “nanos.” This field
   // is set to zero if Confirmations is set to a value greater than zero.
   UnconfirmedBalanceNanos int64
-  // BitClout uses a UTXO model similar to Bitcoin. As such, querying
+  // DeSo uses a UTXO model similar to Bitcoin. As such, querying
   // the balance returns all of the UTXOs for a particular public key for
   // convenience. Note that a UTXO is simply a reference to a particular
   // output index in a previous transaction
@@ -277,7 +277,7 @@ RETURNS:
     // The index within this transaction that corresponds to an output
     // spendable by the passed-in public key.
     Index int64
-    // The amount that is spendable by this UTXO in “nanos” = 1e9 BitClout.
+    // The amount that is spendable by this UTXO in “nanos” = 1e9 DeSo.
     AmountNanos uint64
     // The pulic key entitled to spend the amount stored in this UTXO.
     PublicKeyBase58Check string
@@ -289,42 +289,42 @@ RETURNS:
   }, ... ]
 ```
 
-### /api/v1/transfer-bitclout
+### /api/v1/transfer-deso
 
-BitClout can be transferred from one public key to another using this simple API call. To transfer BitClout, one must either provide a public/private key pair.
+DeSo can be transferred from one public key to another using this simple API call. To transfer DeSo, one must either provide a public/private key pair.
 
-BitClout uses a UTXO model like Bitcoin but BitClout transactions are generally simpler than Bitcoin transactions because BitClout always uses the “from public key” as the “change” public key \(meaning that it does not “rotate” keys by default\). For example, if a transaction sends 10 BitClout from PubA to PubB with 5 BitClout in “change” and 1 BitClout as a “miner fee,” then the transaction would look as follows:
+DeSo uses a UTXO model like Bitcoin but DeSo transactions are generally simpler than Bitcoin transactions because DeSo always uses the “from public key” as the “change” public key \(meaning that it does not “rotate” keys by default\). For example, if a transaction sends 10 DeSo from PubA to PubB with 5 DeSo in “change” and 1 DeSo as a “miner fee,” then the transaction would look as follows:
 
 ```text
-Input: 16 BitClout (10 BitClout to send, 5 BitClout in change, and 1 BitClout as a fee)
-PubB: 10 BitClout (the amount being sent from A to B)
-PubA: 5 BitClout (change returned to A)
+Input: 16 DeSo (10 DeSo to send, 5 DeSo in change, and 1 DeSo as a fee)
+PubB: 10 DeSo (the amount being sent from A to B)
+PubA: 5 DeSo (change returned to A)
 
-Implicit 1 BitClout is paid as a fee to the miner. The miner fee is implicitly
+Implicit 1 DeSo is paid as a fee to the miner. The miner fee is implicitly
 computed as (total input – total output) just like in Bitcoin.
 ```
 
-The maximum amount of BitClout can be sent by specifying a negative amount when calling the endpoint. We recommend running the endpoint once with `DryRun` set to `true`, inspecting the output, and then running it with `DryRun` set to `false`, which will actually broadcast the transaction.
+The maximum amount of DeSo can be sent by specifying a negative amount when calling the endpoint. We recommend running the endpoint once with `DryRun` set to `true`, inspecting the output, and then running it with `DryRun` set to `false`, which will actually broadcast the transaction.
 
 ```text
-PATH: /api/v1/transfer-bitclout
+PATH: /api/v1/transfer-deso
 METHOD: POST
 POST PARAMS:
-	// A BitClout private key encoded using base58 check encoding (starts
-	// with "bc").
-	SenderPrivateKeyBase58Check string
-	// A BitClout public key encoded using base58 check encoding (starts
-	// with “BC”) that will receive the BitClout being sent.
-	RecipientPublicKeyBase58Check string
-	// The amount of BitClout to send in “nanos.” Note that “1 BitClout” is equal to
-	// 1e9 nanos, so to send 1 BitClout, this value would need to be set to 1e9.
-	AmountNanos int64
-	// The fee rate to use for this transaction. If left unset, a default fee rate
-	// will be used. This can be checked using the “DryRun” parameter below.
-	MinFeeRateNanosPerKB int64
-	// When set to true, the transaction is returned in the response but not
-	// actually broadcast to the network. Useful for testing.
-	DryRun bool
+    // A DeSo private key encoded using base58 check encoding (starts
+    // with "bc").
+    SenderPrivateKeyBase58Check string
+    // A DeSo public key encoded using base58 check encoding (starts
+    // with “BC”) that will receive the DeSo being sent.
+    RecipientPublicKeyBase58Check string
+    // The amount of DeSo to send in “nanos.” Note that “1 DeSo” is equal to
+    // 1e9 nanos, so to send 1 DeSo, this value would need to be set to 1e9.
+    AmountNanos int64
+    // The fee rate to use for this transaction. If left unset, a default fee rate
+    // will be used. This can be checked using the “DryRun” parameter below.
+    MinFeeRateNanosPerKB int64
+    // When set to true, the transaction is returned in the response but not
+    // actually broadcast to the network. Useful for testing.
+    DryRun bool
 RETURNS:
   // Blank if successful. Otherwise, contains a description of the
   // error that occurred.
@@ -348,7 +348,7 @@ RETURNS:
     Outputs [
       // A transaction output is simply a public key and the
       // amount that is being allocated to that public key in
-      // “nanos” where 1 BitClout = 1e9 nanos.
+      // “nanos” where 1 DeSo = 1e9 nanos.
       {
         PublicKeyBase58Check string
         AmountNanos int64
@@ -385,7 +385,7 @@ RETURNS:
 
 ### /api/v1/transaction-info
 
-If one has a TransactionIDBase58Check, e.g. from calling the “transfer-bitclout” endpoint, one can get the corresponding human-readable “Transaction object” by passing this transaction id to a node. Note that this endpoint will error if `TXINDEX` is set to false. If `TXINDEX` was passed to the node but it has not finished syncing the blockchain yet, this endpoint may return incomplete results. The `/node-info` endpoint can be used to check where a node is in its sync process \(generally, syncing takes only a minute or two\).
+If one has a TransactionIDBase58Check, e.g. from calling the “transfer-deso” endpoint, one can get the corresponding human-readable “Transaction object” by passing this transaction id to a node. Note that this endpoint will error if `TXINDEX` is set to false. If `TXINDEX` was passed to the node but it has not finished syncing the blockchain yet, this endpoint may return incomplete results. The `/node-info` endpoint can be used to check where a node is in its sync process \(generally, syncing takes only a minute or two\).
 
 If one has a PublicKeyBase58Check \(starts with “BC”\), one can get all of the TransactionIDs associated with that public key sorted by oldest to newest \(this will include transactions where the address is a sender and a receiver\). One can also optionally get the full Transaction objects for all of the transactions in the same call.
 
@@ -394,12 +394,12 @@ PATH: /api/v1/transaction-info
 METHOD: POST
 POST PARAMS:
   // A string that uniquely identifies this transaction. E.g. from a previous
-  // call to “transfer-bitclout”. Ignored when PublicKeyBase58Check is set.
+  // call to “transfer-deso”. Ignored when PublicKeyBase58Check is set.
   // When a transaction is looked up using its ID directly, we also scan the
   // mempool for it. This makes it so that a “block explorer” can easily
   // surface transactions associated with a particular ID.
   TransactionIDBase58Check string
-  // A BitClout public key encoded using base58 check encoding (starts
+  // A DeSo public key encoded using base58 check encoding (starts
   // with “BC”) to get transaction IDs for. When set,
   // TransactionIDBase58Check is ignored.
   PublicKeyBase58Check string
@@ -421,32 +421,31 @@ RETURNS
       // IDsOnly is unset or false.
       ...
   }, ... ]
-
 ```
 
 ### /api/v1/node-info
 
-General information about the node’s blockchain and sync state can be queried using this endpoint. The blockchain does a “headers-first” sync, meaning it first downloads all BitClout headers and then downloads all blocks. This means that, when the node is first syncing, the tip of the best “header chain” may be ahead of of its most recently downloaded block. In addition to syncing BitClout headers and BitClout blocks, a BitClout node will also sync all of the latest Bitcoin headers to power its built-in decentralized Bitcoin &lt;&gt; BitClout swap mechanism. For this reason, the endpoint also returns information on the node’s best Bitcoin header chain, which is distinct from its BitClout chain.
+General information about the node’s blockchain and sync state can be queried using this endpoint. The blockchain does a “headers-first” sync, meaning it first downloads all DeSo headers and then downloads all blocks. This means that, when the node is first syncing, the tip of the best “header chain” may be ahead of of its most recently downloaded block. In addition to syncing DeSo headers and DeSo blocks, a DeSo node will also sync all of the latest Bitcoin headers to power its built-in decentralized Bitcoin &lt;&gt; DeSo swap mechanism. For this reason, the endpoint also returns information on the node’s best Bitcoin header chain, which is distinct from its DeSo chain.
 
 ```text
 PATH: /api/v1/node-info
 METHOD: POST
 RETURNS
-  BitCloutStatus {
+  DeSoStatus {
     // A summary of what the node is currently doing.
     State string
-    
+
     // We generally track the latest header we have and the latest block we have
     // separately since headers-first synchronization can cause the latest header
     // to diverge slightly from the latest block.
     LatestHeaderHeight     uint32
     LatestHeaderHash       string
     LatestHeaderTstampSecs uint32
-    
+
     LatestBlockHeight     uint32
     LatestBlockHash       string
     LatestBlockTstampSecs uint32
-    
+
     // This is non-zero unless the main header chain is fully current. It can be
     // an estimate in cases where we don't know exactly what the tstamp of the
     // current main chain is.
@@ -457,24 +456,24 @@ RETURNS
   }
   BitcoinStatus {
     // We download Bitcoin headers in order to power the decentralized
-    // Bitcoin <> BitClout swap built-in to the app,
-    // which allows users to convert Bitcoin into BitClout without needing
+    // Bitcoin <> DeSo swap built-in to the app,
+    // which allows users to convert Bitcoin into DeSo without needing
     // to trust third-parties.
     //
-    // This part of the response has the same schema as BitCloutStatus, only 
+    // This part of the response has the same schema as DeSoStatus, only 
     // the block information won’t be populated since we only download
     // Bitcoin headers not full Bitcoin blocks.
   }
-  BitCloutOutboundPeers []PeerResponse {
+  DeSoOutboundPeers []PeerResponse {
     IP           string
     ProtocolPort uint16
     JSONPort     uint16
     IsSyncPeer   bool
   }
-  BitCloutInboundPeers []PeerResponse{
+  DeSoInboundPeers []PeerResponse{
     // Same schema as above
   }
-  BitCloutUnconnectedPeers []PeerResponse{
+  DeSoUnconnectedPeers []PeerResponse{
     // Same schema as above
   }
   BitcoinSyncPeer []PeerResponse{

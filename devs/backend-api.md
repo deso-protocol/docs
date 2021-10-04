@@ -8,7 +8,7 @@
 GET /
 ```
 
-Basic endpoint to test if your BitClout node is running.
+Basic endpoint to test if your DeSo node is running.
 
 **Parameters**
 
@@ -17,7 +17,7 @@ None
 **Response**
 
 ```text
-Your BitClout node is running!
+Your DeSo node is running!
 ```
 
 ### Health Check
@@ -26,7 +26,7 @@ Your BitClout node is running!
 GET /api/v0/health-check
 ```
 
-Check if your BitClout node is synced
+Check if your DeSo node is synced
 
 **Parameters:**
 
@@ -46,7 +46,7 @@ If node is synced and received all transactions.
 GET /api/v0/get-exchange-rate
 ```
 
-Get BitClout exchange rate, total amount of nanos sold, and Bitcoin exchange rate.
+Get DeSo exchange rate, total amount of nanos sold, and Bitcoin exchange rate.
 
 **Parameters:**
 
@@ -56,7 +56,7 @@ None
 
 ```text
 {
-    "SatoshisPerBitCloutExchangeRate":498484,
+    "SatoshisPerDeSoExchangeRate":498484,
     "NanosSold":8491518125648433,
     "USDCentsPerBitcoinExchangeRate":3608200
 }
@@ -68,11 +68,11 @@ None
 POST /api/v0/get-app-state
 ```
 
-Get state of BitClout App, such as cost of profile creation and diamond level map. Example use in the [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1106) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/base.go#L86).
+Get state of DeSo App, such as cost of profile creation and diamond level map. Example use in the [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1106) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/base.go#L86).
 
 **Parameters**
 
-None; however, you need to send an empty JSON `{ }`. Otherwise, you will get 400 - Bad Request. More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/base.go#L63).
+None; however, you need to send an empty JSON `{ }`. Otherwise, you will get 400 - Bad Request. More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/base.go#L63).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -88,7 +88,7 @@ None; however, you need to send an empty JSON `{ }`. Otherwise, you will get 400
     "IsTestnet": false,
     "SupportEmail": "node.admin@protonmail.com",
     "ShowProcessingSpinners": true,
-    "HasStarterBitCloutSeed": false,
+    "HasStarterDeSoSeed": false,
     "HasTwilioAPIKey": false,
     "CreateProfileFeeNanos": 10000000,
     "CompProfileCreation": false,
@@ -115,11 +115,11 @@ None; however, you need to send an empty JSON `{ }`. Otherwise, you will get 400
 POST /api/v0/get-txn
 ```
 
-Check if Txn is currently in mempool. Example use in the [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/app.component.ts#L291) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L34).
+Check if Txn is currently in mempool. Example use in the [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/app.component.ts#L291) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L34).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L25).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L25).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -139,11 +139,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/submit-transaction
 ```
 
-Submit transaction to BitClout blockchain. Example use in [frontend](https://github.com/bitclout/docs/tree/48edcd8f15f30a527a2d6d927e87c83bf10becdb/devs/%60https:/github.com/bitclout/frontend/blob/96bdf0c40e05010ec62a1b1cdc78bf0d0fb2ef44/src/app/backend-api.service.ts#L496%60) and endpoint implementation in [backend](https://github.com/bitclout/docs/tree/48edcd8f15f30a527a2d6d927e87c83bf10becdb/devs/%60https:/github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L81%60).
+Submit transaction to DeSo blockchain. Example use in [frontend](https://github.com/deso-protocol/docs/tree/48edcd8f15f30a527a2d6d927e87c83bf10becdb/devs/%60https:/github.com/deso-protocol/frontend/blob/96bdf0c40e05010ec62a1b1cdc78bf0d0fb2ef44/src/app/backend-api.service.ts#L496%60) and endpoint implementation in [backend](https://github.com/deso-protocol/docs/tree/48edcd8f15f30a527a2d6d927e87c83bf10becdb/devs/%60https:/github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L81%60).
 
 **Parameters**
 
-Read more on transaction format [here](https://github.com/bitclout/docs/blob/main/code/walkthrough.md#transaction-format). More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L69).
+Read more on transaction format [here](https://github.com/deso-protocol/docs/blob/main/code/walkthrough.md#transaction-format). More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L69).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -183,11 +183,11 @@ Read more on transaction format [here](https://github.com/bitclout/docs/blob/mai
 POST /api/v0/update-profile
 ```
 
-Update profile fields and receive corresponding Txn. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L816) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L247).
+Update profile fields and receive corresponding Txn. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L816) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L247).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L214).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L214).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -236,17 +236,17 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 
 TODO
 
-### Send BitClout
+### Send DeSo
 
 ```text
-POST /api/v0/send-bitclout
+POST /api/v0/send-deso
 ```
 
-Prepare transaction for sending BitClout. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L470) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L837).
+Prepare transaction for sending DeSo. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L470) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L837).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L817).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L817).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -293,11 +293,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/submit-post
 ```
 
-Prepare transaction for submiting a post. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L644) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1100).
+Prepare transaction for submiting a post. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L644) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1100).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1061).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1061).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -306,7 +306,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 | ParentStakeID | string | \(optional\) |
 | Title | string | \(optional\) |
 | BodyObj | json | {Body: STRING, ImageURLs: \[\]} |
-| RecloutedPostHashHex | string | \(optional\) hash of post to modify |
+| RepostedPostHashHex | string | \(optional\) hash of post to modify |
 | PostExtraData | json | \(optional\) extra data, values must be strings |
 | IsHidden | bool |  |
 | MinFeeRateNanosPerKB | uint64 | Rate per KB |
@@ -349,11 +349,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/create-follow-txn-stateless
 ```
 
-Prepare a follow/unfollow transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L855) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1331).
+Prepare a follow/unfollow transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L855) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1331).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1314).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1314).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -398,11 +398,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/create-like-stateless
 ```
 
-Prepare a like/unlike transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L936) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1002).
+Prepare a like/unlike transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L936) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1002).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L985).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L985).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -447,21 +447,21 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/buy-or-sell-creator-coin
 ```
 
-Prepare transaction for buying/selling creator coin. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1012) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1454).
+Prepare transaction for buying/selling creator coin. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1012) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1454).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1401).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1401).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | UpdaterPublicKeyBase58Check | string | Public key of updater |
 | CreatorPublicKeyBase58Check | string | Public key of creator |
 | OperationType | string | "buy" or "sell" |
-| BitCloutToSellNanos | uint64 | Amount of BitClout to spend |
+| DeSoToSellNanos | uint64 | Amount of DeSo to spend |
 | CreatorCoinToSellNanos | uint64 | Amount of Creator Coin to spend |
-| BitCloutToAddNanos | uint64 | 0 |
-| MinBitCloutExpectedNanos | uint64 | 0 |
+| DeSoToAddNanos | uint64 | 0 |
+| MinDeSoExpectedNanos | uint64 | 0 |
 | MinCreatorCoinExpectedNanos | uint64 | 0 |
 | MinFeeRateNanosPerKB | uint64 | Rate per KB |
 
@@ -469,7 +469,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 
 ```text
 {
-    ExpectedBitCloutReturnedNanos: 0,
+    ExpectedDeSoReturnedNanos: 0,
     ExpectedCreatorCoinReturnedNanos: 220387140
     FounderRewardGeneratedNanos: 0,
     FounderRewardGeneratedNanos    0
@@ -507,11 +507,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/transfer-creator-coin
 ```
 
-Prepare transaction for transfering creator coin. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1042) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1615).
+Prepare transaction for transfering creator coin. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1042) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1615).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1587).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1587).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -559,11 +559,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/send-diamonds
 ```
 
-Prepare transaction for sending diamonds 💎. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L954) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1750).
+Prepare transaction for sending diamonds 💎. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L954) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1750).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/transaction.go#L1739).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1739).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -613,11 +613,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/get-users-stateless
 ```
 
-Get information about users. Request contains a list of public keys of users to fetch. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L520) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L34).
+Get information about users. Request contains a list of public keys of users to fetch. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L520) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L34).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L21).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L21).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -657,7 +657,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/delete-identities
 ```
 
-Temporary route to wipe [seedinfo cookies](https://github.com/bitclout/docs/blob/main/code/walkthrough.md#seed-creation-and-transaction-construction). This endpoint relies on [identity api](https://github.com/bitclout/docs/blob/main/devs/identity-api.md). Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L408) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L424).
+Temporary route to wipe [seedinfo cookies](https://github.com/deso-protocol/docs/blob/main/code/walkthrough.md#seed-creation-and-transaction-construction). This endpoint relies on [identity api](https://github.com/deso-protocol/docs/blob/main/devs/identity-api.md). Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L408) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L424).
 
 **Parameters**
 
@@ -673,11 +673,11 @@ None
 POST /api/v0/get-profiles
 ```
 
-Get user profile information. Default number of returned profiles is 20. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L723) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L513).
+Get user profile information. Default number of returned profiles is 20. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L723) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L513).
 
 **Parameters**
 
-OrderBy possible values: `{"influencer_stake", "influencer_post_stake", "newest_last_post", "newest_last_comment", "influencer_coin_price"}`. More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L455).
+OrderBy possible values: `{"influencer_stake", "influencer_post_stake", "newest_last_post", "newest_last_comment", "influencer_coin_price"}`. More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L455).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -709,12 +709,12 @@ OrderBy possible values: `{"influencer_stake", "influencer_post_stake", "newest_
             Posts: null,
             CoinEntry: {
                 CreatorBasisPoints: 1000,
-                BitCloutLockedNanos: 0,
+                DeSoLockedNanos: 0,
                 NumberOfHolders: 0,
                 CoinsInCirculationNanos: 0,
                 CoinWatermarkNanos: 0
             },
-            CoinPriceBitCloutNanos: 0,
+            CoinPriceDeSoNanos: 0,
             StakeMultipleBasisPoints: 12500,
             StakeEntryStats: {
                 TotalStakeNanos: 0, 
@@ -736,11 +736,11 @@ OrderBy possible values: `{"influencer_stake", "influencer_post_stake", "newest_
 POST /api/v0/get-single-profile
 ```
 
-Get information about single profile. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L736) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L935).
+Get information about single profile. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L736) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L935).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L923).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L923).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -764,12 +764,12 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
             Posts: null,
             CoinEntry: {
                 CreatorBasisPoints: 1000,
-                BitCloutLockedNanos: 0,
+                DeSoLockedNanos: 0,
                 NumberOfHolders: 0,
                 CoinsInCirculationNanos: 0,
                 CoinWatermarkNanos: 0
             },
-            CoinPriceBitCloutNanos: 0,
+            CoinPriceDeSoNanos: 0,
             StakeMultipleBasisPoints: 12500,
             StakeEntryStats: {
                 TotalStakeNanos: 0, 
@@ -791,11 +791,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/get-hodlers-for-public-key
 ```
 
-Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L736) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1030).
+Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L736) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1030).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L996).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L996).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -830,11 +830,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/get-diamonds-for-public-key
 ```
 
-Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L970) and implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1171).
+Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L970) and implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1171).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1158).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1158).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -865,11 +865,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/get-follows-stateless
 ```
 
-Get followers. Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L839) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1440).
+Get followers. Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L839) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1440).
 
 **Parameters**
 
-Either publickey or username can be set. More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1288).
+Either publickey or username can be set. More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1288).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -896,12 +896,12 @@ Either publickey or username can be set. More info on the request [here](https:/
             Posts: null,
             CoinEntry: {
                 CreatorBasisPoints: 1000,
-                BitCloutLockedNanos: 0,
+                DeSoLockedNanos: 0,
                 NumberOfHolders: 0,
                 CoinsInCirculationNanos: 0,
                 CoinWatermarkNanos: 0
             },
-            CoinPriceBitCloutNanos: 0,
+            CoinPriceDeSoNanos: 0,
             StakeMultipleBasisPoints: 12500,
             StakeEntryStats: {
                 TotalStakeNanos: 0, 
@@ -923,11 +923,11 @@ Either publickey or username can be set. More info on the request [here](https:/
 POST /api/v0/get-user-global-metadata
 ```
 
-Get user metadata such as email and phone. This endpoint relies on [identity api](https://github.com/bitclout/docs/blob/main/devs/identity-api.md). Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1131) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1523).
+Get user metadata such as email and phone. This endpoint relies on [identity api](https://github.com/deso-protocol/docs/blob/main/devs/identity-api.md). Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1131) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1523).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1507).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1507).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -957,11 +957,11 @@ TODO
 POST /api/v0/get-notifications
 ```
 
-Get user notifications. This endpoint relies on [identity api](https://github.com/bitclout/docs/blob/main/devs/identity-api.md). Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1099) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1670).
+Get user notifications. This endpoint relies on [identity api](https://github.com/deso-protocol/docs/blob/main/devs/identity-api.md). Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1099) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1670).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1655).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1655).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -1004,12 +1004,12 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
             Posts: null,
             CoinEntry: {
                 CreatorBasisPoints: 1000,
-                BitCloutLockedNanos: 0,
+                DeSoLockedNanos: 0,
                 NumberOfHolders: 0,
                 CoinsInCirculationNanos: 0,
                 CoinWatermarkNanos: 0
             },
-            CoinPriceBitCloutNanos: 0,
+            CoinPriceDeSoNanos: 0,
             StakeMultipleBasisPoints: 12500,
             StakeEntryStats: {
                 TotalStakeNanos: 0, 
@@ -1028,7 +1028,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
             ParentStakeID : "",
             Body: "...",
             ImageURLs: [],
-            RecloutedPostEntryResponse: null,
+            RepostedPostEntryResponse: null,
             CreatorBasisPoints: 1000,
             StakeMultipleBasisPoints: 12500,
             TimestampNanos: 1623010583195063300,
@@ -1045,7 +1045,7 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
             IsPinned: false,
             PostExtraData: {...},
             CommentCount: 0,
-            RecloutCount: 0,
+            RepostCount: 0,
             ParentPosts: null,
             DiamondsFromSender: 0
         }
@@ -1059,11 +1059,11 @@ More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a
 POST /api/v0/block-public-key
 ```
 
-Block user. This endpoint relies on [identity api](https://github.com/bitclout/docs/blob/main/devs/identity-api.md). Example use in [frontend](https://github.com/bitclout/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1099) and endpoint implementation in [backend](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L1670).
+Block user. This endpoint relies on [identity api](https://github.com/deso-protocol/docs/blob/main/devs/identity-api.md). Example use in [frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L1099) and endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L1670).
 
 **Parameters**
 
-More info on the request [here](https://github.com/bitclout/backend/blob/47bcc8a/routes/user.go#L2153).
+More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L2153).
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
