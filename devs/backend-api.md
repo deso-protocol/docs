@@ -611,7 +611,7 @@ More info on the request [here](https://github.com/deso-protocol/backend/blob/47
 POST /api/v0/authorize-derived-key
 ```
 
-Prepare transaction for authorizing a derived key. The payload for this endpoint should be taken from the identity `derive` flow. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Note: before signing any transactions with the derived key, you need to place the derived public key in compressed byte format (33 bytes array) in transaction's `ExtraData["DerivedPublicKey"]`. Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/764d71/routes/transaction.go#L2094).
+Prepare transaction for authorizing a derived key. The payload for this endpoint should be taken from the identity `derive` flow. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. This transaction can be signed by a "first-time" derived key. Note: before signing any transactions with the derived key, you need to place the derived public key in compressed byte format (33 bytes array) in transaction's `ExtraData["DerivedPublicKey"]`. Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/764d71/routes/transaction.go#L2094).
 
 **Parameters**
 
