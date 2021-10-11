@@ -114,7 +114,7 @@ const derive = window.open('https://identity.deso.org/derive');
 
 Once user completes the flow, you'll receive a response including the derived keypair. The response contains `derivedSeedHex` which you can use to sign transactions on behalf of the `publicKey` owner.
 
-A derived key needs to be activated first by submitting an [authorizeDerivedKey transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKey`, `expirationBlock`, and `publicKey`. The authorize transaction can be signed by the derived key right away. Note: before signing any transaction with the derived key, you need to place the derived public key in transaction's `ExtraData["DerivedPublicKey"]`.
+A derived key needs to be activated first by submitting an [authorizeDerivedKey transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKey`, `expirationBlock`, and `publicKey`. The authorize transaction can be signed by the derived key right away. Note: before signing any transaction with the derived key, you need to place the derived public key in compressed byte format (33 bytes array) in transaction's `ExtraData["DerivedPublicKey"]`.
 
 #### Response
 ```javascript
