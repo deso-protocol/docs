@@ -104,6 +104,32 @@ An application should store the current `publicKey` and `users` objects in its l
 }
 ```
 
+### Derive
+In case your application requires offline signing e.g. when you're a mobile client, identity can accommodate you with safe derived key material.
+
+To get a derived key for a user, launch an identity window with:
+```javascript
+const derive = window.open('https://identity.deso.org/derive');
+```
+
+Once user completes the flow, you'll receive a response including the derived keypair. The response contains `derivedSeedHex` which you can use to sign transactions on behalf of the `publicKey` owner.
+
+A derived key needs to be activated first by submitting an [authorizeDerivedKey transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKey`, `expirationBlock`, and `publicKey`. The authorize transaction can be signed by the derived key right away. Note: before signing any transaction with the derived key, you need to place the derived public key in transaction's `ExtraData["DerivedPublicKey"]`.
+
+#### Response
+```javascript
+{
+    accessSignature: "30440220314ccf7a747922ddb6f8c26821c6f0dc65f0227e15014fb5e728f96abed841e2022033aace1f75eb35479d07273ff8bf1a959af75209743ced23939210f824d5321f",
+    derivedJwt: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzM5Mjg0MjgsImV4cCI6MTYzNjUyMDQyOH0.dvbNwcOUz2bzEMC79nyxzIJGI_3NoMUw59VAI6qdLGNy6x5YC9u0MsFcrDhuL-i8Y66gIQXq0VzgeIzNThxisg",
+    derivedPublicKey: "tBCKUx3cYyUcPnXyqLYuAfpChQHzcbzvhLTF6Xujuu5CA8hKaHPwTo",
+    derivedSeedHex: "e4c515c30479d116757c56b4224022a5558af243946c075cff6ae2ec67fd3748",
+    expirationBlock: 12024,
+    jwt: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzM5Mjg0MjgsImV4cCI6MTYzNjUyMDQyOH0.4zyR0kgXIeO6P94TuGWbxxr3fHUoIyJWv4GGMAxP6gfz6UMwSSej85ZJe_N5JYYcvk_vHWhnj0CcXfGQtNMQ8Q",
+    network: "testnet",
+    publicKey: "tBCKWiTPdkGAiSd2jTx58hRh1TAGVnpeDE78eYqsghEeVFpjkGYNLk",
+}
+```
+
 ## `iframe` context
 
 The iframe is responsible for signing and decryption. The iframe is usually entirely invisible to the user. However, the iframe does need to render when the user needs to grant storage access on Safari.

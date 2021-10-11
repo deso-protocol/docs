@@ -605,6 +605,59 @@ More info on the request [here](https://github.com/deso-protocol/backend/blob/47
 }
 ```
 
+### Authorize Derived Key
+
+```text
+POST /api/v0/authorize-derived-key
+```
+
+Prepare transaction for authorizing a derived key. The payload for this endpoint should be taken from the identity `derive` flow. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect. Note: before signing any transactions with the derived key, you need to place the derived public key in transaction's `ExtraData["DerivedPublicKey"]`. Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/764d71/routes/transaction.go#L2094).
+
+**Parameters**
+
+More info on the request [here](https://github.com/deso-protocol/backend/blob/764d71/routes/transaction.go#L2063).
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| OwnerPublicKeyBase58Check | string | The original public key of the derived key owner |
+| DerivedPublicKeyBase58Check | string | The derived public key |
+| ExpirationBlock | uint64 | The expiration block of the derived key pair |
+| AccessSignature | string | The signature of hash(derived key + expiration block) made by the owner |
+| DeleteKey | bool | The intended operation on the derived key |
+| MinFeeRateNanosPerKB | uint64 | Rate per KB |
+
+**Response**
+
+```text
+{
+    SpendAmountNanos: 0,
+    TotalInputNanos    355031025
+    ChangeAmountNanos    355030764
+    FeeNanos    261
+    Transaction: {
+        TxInputs : [
+            {
+                TxID: [...],
+                Index: 0
+            } , ...
+        ],
+        TxOutputs : [
+            {
+                PublicKey: "...",
+                AmountNanos: 999420
+            }, ...
+        ],
+        TxnMeta : {...},
+        PublicKey: "...",
+        ExtraData: {...},
+        Signature: {...},
+        TxnTypeJSON: 6
+    },
+    TransactionHex: "...",
+    TxnHashHex: "..."
+}
+```
+
 ## User Endpoints
 
 ### Get Users Stateless
