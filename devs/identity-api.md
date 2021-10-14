@@ -105,17 +105,12 @@ An application should store the current `publicKey` and `users` objects in its l
 ```
 
 ### Derive
-In case your application requires offline signing e.g. when you're a mobile client, identity can accommodate you with safe derived key material.
-
-To get a derived key for a user, launch an identity window with:
+In case your application requires offline signing e.g. when you're a mobile client, identity can accommodate you with safe derived key material. To get a derived key for a user, launch an identity window with:
 ```javascript
 const derive = window.open('https://identity.deso.org/derive');
 ```
 
-Once user completes the flow, you'll receive a response including the derived keypair. The response contains `derivedSeedHex` which you can use to sign transactions on behalf of the `publicKey` owner.
-
-A derived key needs to be activated first by submitting an [authorizeDerivedKey transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKey`, `expirationBlock`, and `publicKey`. The authorize transaction can be signed by the derived key right away. Note: before signing any transaction with the derived key, you need to place the derived public key in compressed byte format (33 bytes array) in transaction's `ExtraData["DerivedPublicKey"]`.
-
+Once the user completes the identity flow, you'll receive a response containing the derived keypair.
 #### Response
 ```javascript
 {
@@ -129,6 +124,30 @@ A derived key needs to be activated first by submitting an [authorizeDerivedKey 
     publicKey: "tBCKWiTPdkGAiSd2jTx58hRh1TAGVnpeDE78eYqsghEeVFpjkGYNLk",
 }
 ```
+Let's take a look at these values:
+* `accessSignature` is a proof of access, equal to an owner-signed digest of `sha256(derivedPublicKey + expirationBlock)`
+* `derivedJwt` is a JWT token with a month-long timeout signed by the derived key
+* `derivedPublicKey` and `derivedSeedHex` is the derived keypair
+* `expirationBlock` is a future block height, and represents the expiration "date" (block) of the derived key
+* `jwt` is a JWT token with a month-long timeout signed by the owner `publicKey`  
+
+The private key embeded in the response -- `derivedSeedHex` -- can be used to sign transactions on behalf of the `publicKey` owner. To achieve this, you should construct transactions as if made by the owner's public key. You then need to append a field to transaction's `ExtraData` with a key `"DerivedPublicKey"` and value of the derived public key in compressed byte format (33 bytes array) encoded as hex string, [example](https://github.com/deso-protocol/identity/blob/d8752b4ffe1ababba899be919f17b2dfc4ee2e26/src/app/crypto.service.ts#L154). 
+
+If you have trouble de/serializing transactions to add the "DerivedPublicKey" to ExtraData, you can use a backend endpoint `/append-extra-data` and pass the hex of the transaction and the derived public key like this:
+#### Request
+```javascript
+{
+    "TransactionHex": "01049434a060acca8c05af65207c019e1052f3e29dc677125ce8a1833ac72e2b2d010102a7af43768408e8b8f5bacc8d0658f36bb27c7ecb81b88e210d7be4e54861a40bcf980c0a21669d2ac6caefa5af9c6bb60d28b30f78d918d5b5b9ee3b5ae986818dc07eee84012102a7af43768408e8b8f5bacc8d0658f36bb27c7ecb81b88e210d7be4e54861a40b0000",
+    "ExtraData": { 
+        "DerivedPublicKey": "03f6f5470d8df61160ccf364851c77b8b803131d3f1e8092301178e2fdcec15206"
+    }
+}
+```
+Once you have the transaction hex with the derived key in ExtraData, you can sign the trasaction with the `derivedSeedHex` you've received from identity. You can find this [example implementation](https://github.com/deso-protocol/backend/blob/f70d89a196cfc42ca3e32a1b80ed9935380a91be/routes/admin_transaction.go#L349) of signing with a derived key corresponding to the admin backend endpoint `/admin/test-sign-transaction-with-derived-key`. The endpoint can be used for testing and development, but you should not be using it in production. Note that we didn't need to communicate with identity at any point in this process.
+
+Before any signing can happen, a derived key must first be activated by submitting an [authorizeDerivedKey transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKey`, `expirationBlock`, and `publicKey`. The authorize transaction can be signed by the derived key right away. Keep in mind you need to place the derived public key in transaction's `ExtraData["DerivedPublicKey"]`. If everything worked, you should see the derived key after a post request to the `/get-user-derived-keys` [endpoint](https://github.com/deso-protocol/backend/blob/f70d89a/routes/user.go#L2559) with a payload of `PublicKeyBase58Check` set to owner public key.
+
+The model requires the owner account to have some balance to execute the `authorizeDerivedKey` transaction. This poses a limitation as the derived key might not be immediately available after promting the user with the identity window. The argument here is that the user doesn't need a derived key until they have some non-zero balance in their account. One possible authorization flow is to send the authorizeDerivedKey transaction right when user has/receives sufficient balance. This simple background mechanism should mitigate most UX issues.
 
 ## `iframe` context
 
