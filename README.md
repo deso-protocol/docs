@@ -2,13 +2,13 @@
 
 ## Introduction: The Value of Decentralizing Social Media
 
+In this paper, we introduce DeSo, short for "decentralized social," the first and only blockchain custom-built from the ground up to power and scale a new category of decentralized social applications to one billion users. While much research has been dedicated to scaling "decentralized finance" or "DeFi" applications, relatively little has been invested in building blockchains that can scale social media applications, even though the latter category is arguably just as large, if not larger, and holds just as much promise for value creation. Moreover, while several general-purpose blockchains tout their ability to scale to tens of thousands of transactions per second, scaling up _posts per second_ is a very different problem, and none of these blockchains is currently equipped to handle the storage and indexing requirements of social media applications at scale. To use an analogy from the centralized world, the infrastructure that powers the New York Stock Exchange today is vastly different from that which powers Facebook, Instagram, or Twitter -- they have completely different architectures tailored to support their respective applications at a massive scale. Similarly, our thesis with DeSo is that a blockchain that can scale decentralized social applications to one billion users will likely look vastly different than a blockchain that can scale DeFi apps to the same level. Thus, we believe the future of crypto does not consist of a single general-purpose blockchain that rules them all, but rather a series of dominant, specialized blockchains, each tailored to a particular category of applications. DeSo represents a more than two-year effort to create a blockchain capable of decentralizing the social media category, and we believe it presents the first clear path to solving the existing problems that plague social media today.
+
 Today, social media is even more centralized than the financial industry was prior to the creation of Bitcoin. A handful of private companies effectively control public discourse, and earn monopoly profits off of content that they don't even create. Meanwhile, the creators who actually produce this content are underpaid, under-engaged, and under-monetized thanks to an outdated ads-driven business model. In addition to all of this, the ads-driven business model also forces social media companies to keep a walled garden around content created on their platforms, preventing external developers from innovating or building apps on top of it, and giving users and creators no choice but to continue using apps that solely they control.
 
 These problems stem from the fact that the data and content created by users today is privately owned by a handful of companies, rather than publicly accessible as an open utility. Because only a handful of companies have access to the content, only these companies can curate competitive feeds, only these companies can build competitive new features and apps, and only these companies can monetize this content-- content that isn't even created by these companies in the first place. We're stuck in a loop: Users have to use these companies' apps because they have a monopoly on the content, and because of this, creators are forced into continuing to give their content up to them in order to get reach, in a vicious cycle that continues to empower these companies at the expense of creators and society as a whole. These companies have managed to create a global network effect around a private pool of content that they solely monopolize. Moreover, this centralization of content seems unavoidable: There's value in combining all of the content into a single pool, since it allows for curation at a global scale, but whoever we put in charge of maintaining the pool is ultimately going to become a centralized gatekeeper like what we have today. A solution would arise if we had a way to shift the network effect to a public pool of content that no individual entity controls-- but can it be done?
 
 We believe all of these problems can be solved by decentralizing social media in the same way Bitcoin and Ethereum are decentralizing the financial system. In particular, Bitcoin created a way to store transactions on a public ledger that no individual entity can monopolize, which has led to the disruption of the financial industry, and we believe this technology can now be extended, for the first time, to run a social network without needing to rely on a centralized gatekeeper. Bitcoin and Ethereum have shown that dominant platforms can be built around open code and open data, rather than around private companies that monopolize their data and benefit shareholders at the expense of everyone else. Bitcoin and Ethereum don't have data moats to protect. In fact, the more open they are and the more people that build on top of them, the more value accrues to Bitcoin and Ethereum holders. This open model for software is already disrupting financial institutions all over the world, from banks to exchanges, and we think, for the first time, this model can be extended to disrupt the social media giants and their outdated ads-driven business models. If we can start putting social media content into a public blockchain, rather than giving it to a handful of private companies to monopolize, we believe we can create an economy of scale around that blockchain that is powerful enough to rival, and ultimately surpass, what the traditional social media giants have created. In some sense, we can solve a collective action problem among independent publishers by making it individually rational for them to contribute their content to a new globally-shared pool that they can never be di-intermediated from and that, for the first time, isn't controlled by a single company.
-
-In this paper, we introduce DeSo, short for "decentralized social," the first and only blockchain custom-built from the ground up to power and scale a new category of decentralized social applications to one billion users. While much research has been dedicated to scaling "decentralized finance" or "DeFi" applications, relatively little has been invested in building blockchains that can scale social media applications, even though the latter category is arguably just as large, if not larger, and holds just as much promise for value creation. Moreover, while several general-purpose blockchains tout their ability to scale to tens of thousands of transactions per second, none of these blockchains is currently equipped to handle the unique storage and indexing requirements of social media applications at scale. To use an analogy from the centralized world, the infrastructure that powers the New York Stock Exchange today is vastly different from that which powers Facebook, Instagram, or Twitter -- they have completely different architectures tailored to support their respective applications at a massive scale. Similarly, our thesis with DeSo is that a blockchain that can scale decentralized social applications to one billion users will likely look vastly different than a blockchain that can scale DeFi apps to the same level. Thus, we believe the future of crypto does not consist of a single general-purpose blockchain that rules them all, but rather a series of dominant, specialized blockchains, each tailored to a particular category of applications. DeSo represents a more than two-year effort to create a blockchain capable of decentralizing the social media category, and we believe it presents the first clear path to solving the existing problems that plague social media today.
 
 ## The Ultimate Vision
 
@@ -44,7 +44,7 @@ While traditional blockchains like Ethereum are extraordinary for creating open 
 
 DeSo's biggest advantage lies in the fact that it is _not_ a general-purpose blockchain. Instead, it supports a narrow set of social-oriented features that it implements on bare metal, using custom indexes that every node builds during consensus when it syncs from its peers. In contrast, general-purpose blockchains must run all functions through a virtual machine, which is typically orders of magnitude slower than running on bare metal, and even then they cannot build custom indexes for querying as they sync.
 
-As a very simple example, consider a social transaction that updates one's username. A node needs to check that the username is not currently held by another user before it allows this transaction to go through. Simple, right? Except that when you have just a million users, this lookup becomes prohibitively expensive on even the most advanced general-purpose blockchains today. In contrast, because DeSo can support this lookup with access to bare metal, it can cheaply and efficiently create a simple key-value index that is as fast as it would be for a centralized social application, and that can even be sharded across multiple disks or nodes as the user-base grows. The advantages of bare metal only increase as usage increases and as more use-cases are considered, such as checking that a parent post exists before allowing someone to reply, or even checking that an NFT is for sale before allowing someone to place a bid \(noting that Ethereum's lack of support for on-chain bidding has caused significant centralization and concentration to occur around NFT marketplaces\).
+As a very simple example, consider a social transaction that updates one's username. A node needs to check that the username is not currently held by another user before it allows this transaction to go through. Simple, right? Except that when you have just a million users, this lookup becomes prohibitively expensive on even the most advanced general-purpose blockchains today. In contrast, because DeSo can support this lookup with access to bare metal, it can cheaply and efficiently create a simple key-value index that is as fast as it would be for a centralized social application, and that can even be sharded across multiple disks or nodes as the user-base grows. The advantages of bare metal only increase as usage increases and as more use-cases are considered, such as checking that a parent post exists before allowing someone to reply, or even checking that an NFT is for sale before allowing someone to place a bid (noting that Ethereum's lack of support for on-chain bidding has caused significant centralization and concentration to occur around NFT marketplaces).
 
 As another simple example, consider displaying a simple list of a user's most recent posts. Because general-purpose blockchains do not generally support ordered lists, this is not even possible without building an off-chain index. In contrast, DeSo natively supports indexes such as posts ordered by timestamp, profiles ordered by the value of their coin, NFT bids organized by which NFT they're associated with, and much more, and all of these indexes can scale as the user-base grows. This significantly reduces the complexity of running a node, which in turn can significantly increase the decentralization of the ecosystem, and the number of apps that can be built on top of DeSo.
 
@@ -67,7 +67,7 @@ To be concrete, below is a complete list of everything that DeSo is currently eq
 * All NFT activity, including NFT bids
 * All $DESO transfer activity
 * Links to all rich media, such as video and images
-* All profile verifications via a new verification paradigm called "associations" \(coming soon\)
+* All profile verifications via a new verification paradigm called "associations" (coming soon)
 * Exceptions:
   * Raw images and videos are stored in centralized but publicly accessible and easily replicable repositories, making the on-chain links sufficient to guarantee access into perpetuity.
   * Emails and phone numbers are stored by individual node operators in order to protect users' privacy. We do not think this presents a significant centralization risk; however, if this proves incorrect then this information can be encrypted and stored with the profile in a privacy-preserving fashion relatively easily.
@@ -85,7 +85,7 @@ The DeSo blockchain has its own native cryptocurrency, called $DESO, that you ca
 
 Anyone can buy the DeSo cryptocurrency with Bitcoin in minutes through the blockchain., available on [the “Buy DeSo” page](https://buy.deso.org). The supply of DeSo is capped at [approximately 10.8 million](https://bitclout.com/posts/7bf4cfb5a9328c0f42c74454479ce4f889938157ae8208ae9d8120bf5b0f3ffc), roughly half that of Bitcoin, making it naturally scarce.
 
-## What are Social Tokens? \(aka Creator Coins\)
+## What are Social Tokens? (aka Creator Coins)
 
 ### Everyone Has a Coin
 
@@ -93,7 +93,7 @@ Every profile on the DeSo gets its own coin that anybody can buy and sell. We ca
 
 ### You Can Buy Your Favorite Person’s Coin
 
-To buy someone’s coin, you simply navigate to their profile on any DeSo app, such as bitclout.com, and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard \(shown below\).
+To buy someone’s coin, you simply navigate to their profile on any DeSo app, such as bitclout.com, and hit “Buy.” You can find someone’s profile either by searching for it or by visiting the creator coin leaderboard (shown below).
 
 ![](.gitbook/assets/screenshot-from-2021-09-20-14-46-05.png)
 
@@ -113,7 +113,7 @@ Most creators get a torrent of spam in their social media message inboxes. With 
 
 #### Sponsored Posts
 
-Creators can have an “inbox” where anyone can “bid” to have them repost \(aka “retweet”\) a particular post. If you want Kim Kardashian to retweet your fashion brand, you can submit an entry into her inbox, and if she retweets it then she keeps your money. The bids can all be made using the creator’s own coin, thus significantly increasing the demand for the coin.
+Creators can have an “inbox” where anyone can “bid” to have them repost (aka “retweet”) a particular post. If you want Kim Kardashian to retweet your fashion brand, you can submit an entry into her inbox, and if she retweets it then she keeps your money. The bids can all be made using the creator’s own coin, thus significantly increasing the demand for the coin.
 
 #### Premium Content
 
@@ -125,7 +125,7 @@ Creators can also use their coins to distribute scarce resources to the largest 
 
 #### Money Likes
 
-Likes can be re-imagined as purchases of the creator’s coin. So it costs money to like something, but you get that person’s coin when you do so \(effectively as a shortcut to buying their coin that’s associated directly with their content\). Such a feature could serve as a stronger signal on what content is high quality as well.
+Likes can be re-imagined as purchases of the creator’s coin. So it costs money to like something, but you get that person’s coin when you do so (effectively as a shortcut to buying their coin that’s associated directly with their content). Such a feature could serve as a stronger signal on what content is high quality as well.
 
 #### Emergent Phenomena
 
@@ -145,21 +145,21 @@ $$
 
 When you create a profile, there are initially zero coins in existence and thus the price is zero. If you want to buy coins from the profile, it will happily mint them on-chain and sell them to you according to the price curve above, making it more and more expensive as more coins are purchased. The money you use to buy the coins gets “locked” in the profile in exchange for the coins. On the flipside, if you want to sell coins, the profile will happily buy them from you according to the curve using the money locked from previous buys. And so buying **creates** coins while pushing the price **up** and **locking** money into the profile, while selling **destroys** coins while pushing the price **down** and **unlocking** money from the profile. This is often referred to as an “automated market-maker,” and it’s the same concept that powers protocols like Uniswap and Bancor.
 
-Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a DeSo price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin \(included as the third column of the table\). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1ecMscQTY4rhmfrAn-5SRspiZqhhttVo1Pj880A4EDuo/edit?usp=sharing) \(make a copy to edit it\). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
+Below is a graph of what the creator coin price curve looks like as a function of how many creator coins are in circulation for a given profile. We also include a table that shows some of these values. Both of these assume a DeSo price of $16. Note also that “integrating” the price curve yields the amount of money “locked” in a profile, which is equal to the “net” amount of money that has flowed into that particular creator coin (included as the third column of the table). If you’d like to play with the numbers yourself, you can do so using [this sheet](https://docs.google.com/spreadsheets/d/1ecMscQTY4rhmfrAn-5SRspiZqhhttVo1Pj880A4EDuo/edit?usp=sharing) (make a copy to edit it). You can also learn more about bonding curves [here](https://yos.io/2018/11/10/bonding-curves).
 
-| **Creator Coins in Circulation** | **Creator Coin Price \(USD\)** | **USD Locked in Profile** |
-| :--- | :--- | :--- |
-| 5 | $1.20 | $2 |
-| 10 | $4.80 | $16 |
-| 20 | $19.20 | $128 |
-| 40 | $76.80 | $1,024 |
-| 80 | $307.20 | $8,192 |
-| 160 | $1,228.80 | $65,536 |
-| 320 | $4,915.20 | $524,288 |
-| 640 | $19,660.80 | $4,194,304 |
-| 1280 | $78,643.20 | $33,554,432 |
+| **Creator Coins in Circulation** | **Creator Coin Price (USD)** | **USD Locked in Profile** |
+| -------------------------------- | ---------------------------- | ------------------------- |
+| 5                                | $1.20                        | $2                        |
+| 10                               | $4.80                        | $16                       |
+| 20                               | $19.20                       | $128                      |
+| 40                               | $76.80                       | $1,024                    |
+| 80                               | $307.20                      | $8,192                    |
+| 160                              | $1,228.80                    | $65,536                   |
+| 320                              | $4,915.20                    | $524,288                  |
+| 640                              | $19,660.80                   | $4,194,304                |
+| 1280                             | $78,643.20                   | $33,554,432               |
 
-![](.gitbook/assets/image%20%286%29%20%281%29.png)
+![](<.gitbook/assets/image (6) (1).png>)
 
 ### Founder Rewards
 
@@ -169,7 +169,7 @@ The above being said, we think the better way for creators to own a piece of the
 
 ## What are Social NFTs?
 
-Non-Fungible Tokens \(NFTs\) are digital assets that can be bought and sold, typically representing a piece of digital content. For example, an artist can publish a digital image as an NFT, and put it up for sale to the highest bidder. When they do this, the history of who owns the image can be tracked on the blockchain as a way of showing the art piece's provenance. And even though anyone in the world can typically see the image, there is only one person who provably owns it, just as if the piece were a painting hanging in a museum.
+Non-Fungible Tokens (NFTs) are digital assets that can be bought and sold, typically representing a piece of digital content. For example, an artist can publish a digital image as an NFT, and put it up for sale to the highest bidder. When they do this, the history of who owns the image can be tracked on the blockchain as a way of showing the art piece's provenance. And even though anyone in the world can typically see the image, there is only one person who provably owns it, just as if the piece were a painting hanging in a museum.
 
 The easiest way to really understand NFTs, though, is to actually look at some examples. Below we list examples of popular NFT concepts, as well as popular NFT platforms, all of which served as the inspiration for the DeSo NFTs product. **Importantly, because DeSo is an inherently social platform, we anticipate the use-cases for NFTs will extend far beyond just digital content, and we discuss this in detail in the next section.**
 
@@ -177,19 +177,19 @@ Examples of popular NFT concepts:
 
 * [Beeple's collage](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million)
 * [CryptoPunks](https://www.larvalabs.com/cryptopunks)
-* [Bored Apes](https://boredapeyachtclub.com/)
-* [CryptoKitties](https://www.cryptokitties.co/)
-* [NBA Topshots](https://nbatopshot.com/)
+* [Bored Apes](https://boredapeyachtclub.com)
+* [CryptoKitties](https://www.cryptokitties.co)
+* [NBA Topshots](https://nbatopshot.com)
 
 Popular NFT marketplaces:
 
-* [OpenSea](https://opensea.io/)
-* [Nifty Gateway](https://niftygateway.com/)
-* [Rarible](https://rarible.com/)
-* [SuperRare](https://superrare.co/)
-* [Zora](https://zora.co/)
-* [Foundation](https://foundation.app/)
-* [Valuables by Cent](https://v.cent.co/)
+* [OpenSea](https://opensea.io)
+* [Nifty Gateway](https://niftygateway.com)
+* [Rarible](https://rarible.com)
+* [SuperRare](https://superrare.co)
+* [Zora](https://zora.co)
+* [Foundation](https://foundation.app)
+* [Valuables by Cent](https://v.cent.co)
 
 ### The DeSo Advantage: Mixing NFTs and Social Media
 
@@ -201,51 +201,47 @@ Below are just some examples of the possibilities...
 
 #### **New NFT Use Cases**
 
-* **Collectible ticket stubs.** If you were to sell tickets to a concert in the form of DeSo NFTs, then every attendee would automatically get a virtual ticket stub on their profile commemorating the event that their friends would get to see \(not to mention the extra promo you'll get from your coin-holders!\). Could you imagine if [@3LAU](https://bitclout.com/u/3LAU) sold his tickets as DeSo NFTs? This mechanic could also be used to sell tickets to exclusive events like the premiere of a movie or an exclusive gala.
-* **Physical memorabilia: The digital collector's room**. Imagine selling a physical piece of memorabilia, like a prop from a movie set, with an NFT attached, issued by the original seller, that the
+* **Collectible ticket stubs.** If you were to sell tickets to a concert in the form of DeSo NFTs, then every attendee would automatically get a virtual ticket stub on their profile commemorating the event that their friends would get to see (not to mention the extra promo you'll get from your coin-holders!). Could you imagine if [@3LAU](https://bitclout.com/u/3LAU) sold his tickets as DeSo NFTs? This mechanic could also be used to sell tickets to exclusive events like the premiere of a movie or an exclusive gala.
+*   **Physical memorabilia: The digital collector's room**. Imagine selling a physical piece of memorabilia, like a prop from a movie set, with an NFT attached, issued by the original seller, that the
 
-  buyer gets to flex on their profile. This turns a user's profile into an inventory of their collector's room, where you can see all of the cool things they own, both in the digital and physical world, with
+    buyer gets to flex on their profile. This turns a user's profile into an inventory of their collector's room, where you can see all of the cool things they own, both in the digital and physical world, with
 
-  NFTs serving as certificates of authenticity issued and signed directly by the original seller. Could you imagine if someone like [@GeorgeTakei](https://bitclout.com/u/georgetakei) from Star Trek cleaned out his closet one day using DeSo NFTs?
+    NFTs serving as certificates of authenticity issued and signed directly by the original seller. Could you imagine if someone like [@GeorgeTakei](https://bitclout.com/u/georgetakei) from Star Trek cleaned out his closet one day using DeSo NFTs?
+*   **Exclusive experiences.** Selling experiences as NFTs makes unique sense on DeSo. For example, creators with large followings can offer to have dinner or to host a Q\&A with a handful of their biggest fans by minting and selling a "one of 10" NFT. With DeSo, because NFTs are inherently social, the creator can engage their followers by asking them to comment explaining why they want to join before they place a bid. The creator then has full control over determining the winners, and those winners not only get to meet the creator, but they also get to sport the fact that they did on their
 
-* **Exclusive experiences.** Selling experiences as NFTs makes unique sense on DeSo. For example, creators with large followings can offer to have dinner or to host a Q&A with a handful of their biggest fans by minting and selling a "one of 10" NFT. With DeSo, because NFTs are inherently social, the creator can engage their followers by asking them to comment explaining why they want to join before they place a bid. The creator then has full control over determining the winners, and those winners not only get to meet the creator, but they also get to sport the fact that they did on their
-
-  profiles forever. Maybe [@wolfofwallst](https://bitclout.com/u/wolfofwallst) could give Warren Buffet's charity lunch some competition!
-
+    profiles forever. Maybe [@wolfofwallst](https://bitclout.com/u/wolfofwallst) could give Warren Buffet's charity lunch some competition!
 * **Exclusive unlockable digital content.** DeSo NFTs have an "unlockable" portion that only the winner of the NFT gets to see. This creates interesting use-cases around selling hyper-exclusive digital goods. For example, an artist can drop an album a week early as an unlockable 1/10,000 NFT such that only her true fans who win the NFT are able to listen to it ahead of time. This would result in extra cash flow for the artist while still allowing them to capture the same streaming revenues a week later. Could you imagine getting early access to [@thechainsmokers](https://bitclout.com/u/thechainsmokers)' next album, and getting an NFT along with it?
-* **Exclusive chat groups.** Creators can offer exclusive chat groups using DeSo NFTs to gate
+*   **Exclusive chat groups.** Creators can offer exclusive chat groups using DeSo NFTs to gate
 
-  access. For example, a creator can sell a 1/100 NFT such that any current owner of the NFT is able
+    access. For example, a creator can sell a 1/100 NFT such that any current owner of the NFT is able
 
-  to participate in an exclusive Telegram group, weekly Zoom call, etc... We already saw this happening with creators like [@craig](https://bitclout.com/u/craig), but it also makes sense for sports insiders like [@adamschefter](https://bitclout.com/u/adamschefter).
-
+    to participate in an exclusive Telegram group, weekly Zoom call, etc... We already saw this happening with creators like [@craig](https://bitclout.com/u/craig), but it also makes sense for sports insiders like [@adamschefter](https://bitclout.com/u/adamschefter).
 * **Interactive content.** For content creators, DeSo NFTs can be used as a way to solicit feedback from fans, or to guide the direction of content. For example, the creator of a podcast can sell an NFT where the winner gets to decide what their next episode is going to be about. The creator can solicit comments from users before they place their bids, and they have ultimate control over whom they choose as the winner. Alternatively, music artists can offer to put an NFT winner's name in a song or include them in a music video, and the winner would have the NFT on their profile to commemorate the experience. The creator of a movie or short film could sell producer credits in the final cut as NFTs. Could you imagine if the winner of a DeSo NFT could decide the topic for [@shaanvp](https://bitclout.com/u/shaanvp)'s next show, or win a shoutout at the end of a [@jakepaul](https://bitclout.com/u/jakepaul) or [@loganpaul](https://bitclout.com/u/loganpaul) fight? How about a Clubhouse AMA with [@alexisohanian](https://bitclout.com/u/alexisohanian), where the winners of a "one of 10" NFT get to come on-stage first? Or maybe we can finally get [@BennyBlanco](https://bitclout.com/u/BennyBlanco) to bring us that DeSo Boys single we've all been waiting for, as a gloriously sought-after NFT.
-* **Counterfeit-proof Rolexes, Chanel handbags, etc...** Major brands have a big problem with
+*   **Counterfeit-proof Rolexes, Chanel handbags, etc...** Major brands have a big problem with
 
-  counterfeiting: A real Rolex is worth much more than a knockoff, but knockoffs can often be
+    counterfeiting: A real Rolex is worth much more than a knockoff, but knockoffs can often be
 
-  so good that it's difficult to tell them apart. Now, imagine a solution based on DeSo NFTs
+    so good that it's difficult to tell them apart. Now, imagine a solution based on DeSo NFTs
 
-  whereby a luxury brand creates an official DeSo profile and offers an NFT associated with
+    whereby a luxury brand creates an official DeSo profile and offers an NFT associated with
 
-  every single sale of their products. Now, a user not only gets digital, unforgeable proof that
+    every single sale of their products. Now, a user not only gets digital, unforgeable proof that
 
-  they own a real item, but they also simultaneously get to show off their purchase on their profile that all of their friends can see. Then, if they ever resell their Rolex, they can transfer the NFT along with it, allowing it to serve as a certificate of authenticity issued and digitally-signed directly by the brand, and that tracks the provenance of the item for its entire lifetime.
-
+    they own a real item, but they also simultaneously get to show off their purchase on their profile that all of their friends can see. Then, if they ever resell their Rolex, they can transfer the NFT along with it, allowing it to serve as a certificate of authenticity issued and digitally-signed directly by the brand, and that tracks the provenance of the item for its entire lifetime.
 * **Digital trading cards.** Any sufficiently well-known creator can create digital trading cards of themselves simply by issuing a "one of N" NFT. All they need to do is create a unique piece of artwork, like a [cryptopunk](https://www.larvalabs.com/cryptopunks) drawing of themselves, and their biggest fans can sport it on their profiles. Notably, each DeSo NFT has a serial number, so each one will be special, even within the same issue. [@ab](https://bitclout.com/u/ab), could you be the first DeSo NFT trading card!
 * **Fine art.** Major artists have shown that NFTs are going to be a big part of the future of fine art. They not only allow anyone to enjoy the artist's work, but they also do a much better job of tracking the ownership of a piece, which means the provenance can't be forged. The fact that DeSo also incorporates the artist's identity, via their profile, into the minting of an NFT should, we hope, further increase the value and utility of NFTs issued by artists. Artists on DeSo have already been innovating extremely fast, and we're so excited to take things to the next level with DeSo NFTs. Maybe we can even get [@beeple](https://bitclout.com/u/beeple) to finally claim his profile!
 * **The future of Charity.** Charities can create profiles on DeSo, just like ordinary people. When they do this, anyone can elect to send them DeSo as part of the sale of their NFT. For example, someone could auction off a dinner with themselves, but specify that all the proceeds will go to The Red Cross. They would then be able to digitally prove that the funds went to that charity. Alternatively, a charity can participate in the fun directly by issuing NFTs of their own. For example, a charity could issue NFTs where each one represents a particular acre of trees that will be planted. This allows the owner to show off their contribution to any cause they care deeply about, which could significantly increase the amounts people are willing to give. It's a bit surprising that social media and charity aren't more closely linked today-- but we believe DeSo can finally change that, and make giving easier and more fun than ever before.
-* **Owning a piece of history.** On DeSo, any post that a user makes can also be minted
+*   **Owning a piece of history.** On DeSo, any post that a user makes can also be minted
 
-  as an NFT and sold. The user who "owns" the resulting NFT can be seen as owning a piece of
+    as an NFT and sold. The user who "owns" the resulting NFT can be seen as owning a piece of
 
-  history. For example, if a sitting US president theoretically joined DeSo in the future and
+    history. For example, if a sitting US president theoretically joined DeSo in the future and
 
-  used it to make a monumental announcement, like the end of US COVID lockdowns, someone could
+    used it to make a monumental announcement, like the end of US COVID lockdowns, someone could
 
-  own that very special post, and all proceeds could be donated to a charity of the president's
+    own that very special post, and all proceeds could be donated to a charity of the president's
 
-  choice. We'll also settle for another shirtless pic of [@chamath](https://bitclout.com/u/chamath), though, just to be clear.
+    choice. We'll also settle for another shirtless pic of [@chamath](https://bitclout.com/u/chamath), though, just to be clear.
 
 The above list is just the beginning; it's just what we've come up with so far. We can't wait to see what else the community can produce with DeSo NFTs.
 
@@ -255,7 +251,7 @@ In the past, NFTs and social media have been separate: You mint an NFT on some p
 
 ### NFT Cashflows to Coin-Holders
 
-Creator coins are a major DeSo superpower that we are taking to the next level with NFTs. On DeSo, a percentage of the sale of each NFT can be sent back to a creator's coin-holders as a cashflow \(including on secondary sales\). With this key feature, DeSo NFTs "close the loop" between a creator's activities on DeSo and the value of their coin.
+Creator coins are a major DeSo superpower that we are taking to the next level with NFTs. On DeSo, a percentage of the sale of each NFT can be sent back to a creator's coin-holders as a cashflow (including on secondary sales). With this key feature, DeSo NFTs "close the loop" between a creator's activities on DeSo and the value of their coin.
 
 **Suddenly, creator coins are no longer objects of pure speculation; rather, they are directly linked to a creator's activity on the platform. This means that, for the first time, followers can participate in a creator's growth rather than watching from the sidelines as they rise to stardom.** This has never been possible before, and it changes the relationship between a creator and their fans, from one in which fans pay for their work, to one in which they invest in the creator, and grow together.
 
@@ -269,17 +265,16 @@ The easiest way to see how DeSo NFTs work is to try and create one on a DeSo app
 
 Very simply, the steps to minting and selling a DeSo NFT are as follows:
 
-* Create a post, which consists of a snippet of text and an embedded image or video. All
+*   Create a post, which consists of a snippet of text and an embedded image or video. All
 
-  NFTs on DeSo start as posts, and you can turn any pre-existing post into an NFT.
-
+    NFTs on DeSo start as posts, and you can turn any pre-existing post into an NFT.
 * Hit "Mint NFT" and select from the options:
   * You can mint either a "one of a kind" or "one of N" NFT. In the latter case, there will be multiple winners of the same piece of content.
   * The creator can set a creator royalty and a coin-holder royalty. This is a percentage of the sale that will go to the creator and to the creator's coin-holders as a cashflow. This cashflow hits on every **secondary sale** of the NFT as well. The DeSo platform does not take a fee. Note we are working on allowing arbitrary public keys to be specified as a means of programmatically distributing proceeds to other accounts, such as charity accounts.
   * Optionally, the creator can set a piece of unlockable content that only the winner of the NFT will get access to. This feature enables hyper-exclusive experiences to be built on DeSo NFTs, like one-of-a-kind songs that only the winner can listen to.
 * Once an NFT is minted, users can bid on the NFT. They must have enough in their wallet to cover the bid, but nothing is withdrawn from their wallet until the auction is closed by the creator. This allows users to bid on as many things as they like.
 * Whenever the creator is ready, they can close the auction by selecting a winner, or winners in the case of a "one of N" NFT. Importantly, the creator has full control over who gets to own their work; they don't have to give it to the highest bidder.
-* Once the auction is over, the winner\(s\) get to show off the NFT on their profile. It shows up in their NFTs tab, and it can be pinned to their main page.
+* Once the auction is over, the winner(s) get to show off the NFT on their profile. It shows up in their NFTs tab, and it can be pinned to their main page.
 
 We didn't want to over-complicate things, and we believe this simple set of features enables all of the interesting use-cases described previously.
 
@@ -295,9 +290,9 @@ Using this system, a node operator can curate a collection of NFTs every week, o
 
 Because DeSo is money-native, it can tie tipping with content in ways that no other social network can. On DeSo, the core mechanic introduced is called "diamonds," and it functions as a like, only it allows users to give variable amounts of money to content.
 
-![](.gitbook/assets/image%20%286%29.png)
+![](<.gitbook/assets/image (6).png>)
 
-In the screenshot above, a single diamond is a penny while a six-diamond is ~$362. All of this is instant, and the receiver of the tip immediately gets $DESO in their wallet for their content. Many users already earn thousands of dollars a week off of this feature alone, and as DeSo scales, the economics will only get better.
+In the screenshot above, a single diamond is a penny while a six-diamond is \~$362. All of this is instant, and the receiver of the tip immediately gets $DESO in their wallet for their content. Many users already earn thousands of dollars a week off of this feature alone, and as DeSo scales, the economics will only get better.
 
 Just to do some math, imagine a post with 1 million likes gets 100,000 diamonds, worth on average ten cents each. That's $100,000 in pure cash from _just_ the diamonds! Moreover, users typically get a higher ratio of likes to diamonds, but we wanted to be conservative in our calculations.
 
@@ -326,34 +321,33 @@ The math below walks through DeSo scalability at each stage:
    1. While PoS is not strictly required in order to scale DeSo, it is a top priority regardless, and so it will either precede or happen in parallel with the other scaling steps.
 2. Bigger blocks
    * The average DeSo blockchain post size is **218 bytes**.
-   * There are 10 other [transaction types](https://github.com/deso-protocol/core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.
+   *   There are 10 other [transaction types](https://github.com/deso-protocol/core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.
 
-     ![](https://lh4.googleusercontent.com/YSLyEVtV0Ynx--mta7IP3QS5aVrZiq7MBVmIc9h9bZwbCrLXXTIIDzO2Gm9RYOjaqQONhOju-F7RvaTIVO6vWJ5AMASXIYHMI4z9sjK3acpoXOmhRHX99-35qS4I54KBl2C3zjnH)
-
+       ![](https://lh4.googleusercontent.com/YSLyEVtV0Ynx--mta7IP3QS5aVrZiq7MBVmIc9h9bZwbCrLXXTIIDzO2Gm9RYOjaqQONhOju-F7RvaTIVO6vWJ5AMASXIYHMI4z9sjK3acpoXOmhRHX99-35qS4I54KBl2C3zjnH)
    * The DeSo blockchain currently produces up to 2MB blocks every 5 minutes, as you can see from [bitcloutpulse.com/explorer](https://bitcloutpulse.com/explorer).
-   * So it can scale to ~30 transactions per second, **which is ~10 posts per second** \(= 2e6 bytes/block / \(218 bytes/post \* 60 seconds/minute \* 5 minutes/block\) \* 1 post / 3 transactions\).
-   * If we increase the block size to 16MB blocks every five minutes, we can roughly extrapolate that it scales to ~240 transactions per second = **~80 posts per second**.
-   * For comparison, Twitter has approximately [6000 posts/second](https://www.dsayce.com/social-media/tweets-day/#:~:text=Every%20second%2C%20on%20average%2C%20around%206%2C000%20tweets%20are%20tweeted%20on,August%202014%20with%20661%20million.) on average with 300M users.
+   * So it can scale to \~30 transactions per second, **which is \~10 posts per second** (= 2e6 bytes/block / (218 bytes/post \* 60 seconds/minute \* 5 minutes/block) \* 1 post / 3 transactions).
+   * If we increase the block size to 16MB blocks every five minutes, we can roughly extrapolate that it scales to \~240 transactions per second = **\~80 posts per second**.
+   * For comparison, Twitter has approximately [6000 posts/second](https://www.dsayce.com/social-media/tweets-day/#:\~:text=Every%20second%2C%20on%20average%2C%20around%206%2C000%20tweets%20are%20tweeted%20on,August%202014%20with%20661%20million.) on average with 300M users.
    * So, at 80 posts per second, we should be able to roughly accommodate about 80/6000 = 1.33% of 300M users, or **4M users**.
    * That’s where we can get with a basic block size increase alone. But we have a few other cards to play.
 3. Warp sync
-   * With an Ethereum-like [warp or snap sync](https://blog.ethereum.org/2021/03/03/geth-v1-10-0/), we loosen a key constraint, which is the need for all nodes to always validate the entire history of transactions. \(You can still run an archival node, but this won’t be necessary for normal operations.\)
-     * As a concrete example, if all you're downloading is the current creator coin balances for each user, then all that user's trades are effectively compressed into a few integers because you don't care about the history \(only the end state\).
+   * With an Ethereum-like [warp or snap sync](https://blog.ethereum.org/2021/03/03/geth-v1-10-0/), we loosen a key constraint, which is the need for all nodes to always validate the entire history of transactions. (You can still run an archival node, but this won’t be necessary for normal operations.)
+     * As a concrete example, if all you're downloading is the current creator coin balances for each user, then all that user's trades are effectively compressed into a few integers because you don't care about the history (only the end state).
    * Instead, we move to a model where nodes by default first sync and validate a snapshot of the current blockchain state and then sync only a few week's worth of blocks on top of that.
-   * Generally, the bottleneck to blockchain performance is validation speed. With DeSo, we've run tests that indicate a node running on an Intel Xeon E-2276M can validate transactions at the rate of **~12MB/s = 1.04TB/day = ~55,000 txns per second**.
-   * So, if we start by just downloading the state with minimal validation, how big can it be? To download 10TB at 10gbps = 10e12/10e9\*8/60/60 takes about ~2.2h. To download 100TB at 10gbps = 10e12/10e9\*8/60/60 is about **~22.2h to download the state**. 
+   * Generally, the bottleneck to blockchain performance is validation speed. With DeSo, we've run tests that indicate a node running on an Intel Xeon E-2276M can validate transactions at the rate of **\~12MB/s = 1.04TB/day = \~55,000 txns per second**.
+   * So, if we start by just downloading the state with minimal validation, how big can it be? To download 10TB at 10gbps = 10e12/10e9\*8/60/60 takes about \~2.2h. To download 100TB at 10gbps = 10e12/10e9\*8/60/60 is about **\~22.2h to download the state**.&#x20;
    * With warp sync, the block size can be increased beyond 16MB because the number of blocks required to get a node up-to-date can be reduced to only one week's worth of blocks rather than the entire history of blocks from the beginning of time.
-   * Let’s suppose then that using warp sync we increase the block size further to 120MB blocks. How many transactions per second \(TPS\) would 120MB blocks every 5 minutes facilitate? If we assume 218 bytes per transaction \(which is what the value is per post\), then \(120e6 bytes / \(5 minutes \* 60 seconds/min\)\) / \(218 bytes/txn\) =  **~1,800 transactions per second**.
+   * Let’s suppose then that using warp sync we increase the block size further to 120MB blocks. How many transactions per second (TPS) would 120MB blocks every 5 minutes facilitate? If we assume 218 bytes per transaction (which is what the value is per post), then (120e6 bytes / (5 minutes \* 60 seconds/min)) / (218 bytes/txn) =  **\~1,800 transactions per second**.
    * How much bandwidth would it take to synchronize one week of 120MB blocks appearing every 5 minutes, and how long would it take in wall clock time?
-     * Bandwidth would be roughly \(120e6 bytes/block \* 1 block/5 minutes \* 60 minutes/hour \* 24 hours/day \* 7 days/week\) / 1e9 bytes/GB = 238GB/ week
-     * At the aforementioned validation speed of 12MB/s on an Intel Xeon E-2276M, it would take approximately 238e9 bytes/week / \(12e6 validated bytes / second \* 60 seconds/minute \* 60 minutes/hour\) = **5.5-6 hours to download and validate one week of 120MB blocks** at a validation speed of 12MB/s on good hardware.
-   * Under these assumptions, This means that the warp upgrade can allow us to sync a node in ~5.5h while maintaining 1,800 transactions per second \(TPS\) long-term.
-     * 1,811 tps vs Twitter with 6,000 posts per second and 300M users \(assume only posts, no likes\)
-     * Users = 300M \* 1,811 / 6000 / 3 txns per post = **~30M users.**
+     * Bandwidth would be roughly (120e6 bytes/block \* 1 block/5 minutes \* 60 minutes/hour \* 24 hours/day \* 7 days/week) / 1e9 bytes/GB = 238GB/ week
+     * At the aforementioned validation speed of 12MB/s on an Intel Xeon E-2276M, it would take approximately 238e9 bytes/week / (12e6 validated bytes / second \* 60 seconds/minute \* 60 minutes/hour) = **5.5-6 hours to download and validate one week of 120MB blocks** at a validation speed of 12MB/s on good hardware.
+   * Under these assumptions, This means that the warp upgrade can allow us to sync a node in \~5.5h while maintaining 1,800 transactions per second (TPS) long-term.
+     * 1,811 tps vs Twitter with 6,000 posts per second and 300M users (assume only posts, no likes)
+     * Users = 300M \* 1,811 / 6000 / 3 txns per post = **\~30M users.**
 4. Sharding
    * All transactions can then be write-sharded to make syncing a node parallelizable, thus providing multiple orders of magnitude in speedup. For example, we could do a very simple optimization, which is to shard all posts into their own sub-chain, and then shard other transactions across two of their own sub-chains.
-   * This would result in a node being capable of syncing 3x faster, meaning that we could support **~90M users without an increase in sync time**.
-   * Ultimately, all transactions can be sharded into sub-chains by user ID, which would allow for virtually unlimited parallelization. For example, with thirty shards, we achieve another ~10x multiplier on the TPS without an increase in sync time, thus achieving **~1 billion users**.
+   * This would result in a node being capable of syncing 3x faster, meaning that we could support **\~90M users without an increase in sync time**.
+   * Ultimately, all transactions can be sharded into sub-chains by user ID, which would allow for virtually unlimited parallelization. For example, with thirty shards, we achieve another \~10x multiplier on the TPS without an increase in sync time, thus achieving **\~1 billion users**.
    * This number can be scaled further by increasing the number of shards.
 
 ## The Future of Moderation
@@ -440,7 +434,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 To manage your feed, start by navigating to the Admin tab as shown below. The Admin tab shows the full firehose of posts in real-time, with a button next to each one that allows you to add it to the global feed. You can also sort the posts by clout. These are all the same tools that the bitclout.com mods have, now at your fingertips through the power of decentralization.
 
-![](.gitbook/assets/image-deso-2-8-1-2-2-2-2-%20%282%29.png)
+![](<.gitbook/assets/image-deso-2-8-1-2-2-2-2- (2).png>)
 
 You can also add any post from anyone's profile to the global feed simply by hitting the dropdown at the top-right of the post. You can also pin posts to your feed, which is a good way of communicating announcements to your user base.
 
@@ -450,10 +444,10 @@ When you run a node, you act as a moderator and have a variety of superpowers th
 
 * **Blacklisting** a profile removes it everywhere except peoples' wallet pages. This makes it so that anyone who was holding the blacklisted profile can sell out of their holdings.
 * **Graylisting** a profile removes it from the leaderboard, removes it from search, removes its comments from threads, and removes its posts from the Admin panel.
-* **Whitelisting** a profile makes that user's posts show up on the global feed automatically with some frequency \(currently it allows five posts per day\).
+* **Whitelisting** a profile makes that user's posts show up on the global feed automatically with some frequency (currently it allows five posts per day).
 * Finally, a mod can allow a phone number to be re-used to claim starter $DESO. This is useful for various testing situations.
 
-![](.gitbook/assets/image-deso-4-%20%281%29.png)
+![](<.gitbook/assets/image-deso-4- (1).png>)
 
 When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes visible only to you. This is a critical step in securing your node. Not doing this would make it so that all your users can add posts to the global feed.
 
@@ -463,7 +457,7 @@ Within the Admin Panel, there is a `Super` tab that is only accessible by Super 
 
 #### Username Verification
 
-Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`. Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
+Super Admins can grant verification badges (on their node) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`. Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
 
 ![](.gitbook/assets/verify-users-image-deso.png)
 
@@ -499,7 +493,7 @@ Answers to common questions and issues about running your own node:
 
 #### What are the minimum requirements for syncing a node?
 
-We recommend having a machine with at least 32GB of RAM and 350GB of storage \(as at 21 July 2021\). If TXIndex is disabled, then you need about 200GB in total. The Blockchain DB takes up about 90 GB, and the TXIndex takes up 160 GB. THe DB+TXindex size grows by about 50GB a month currently.
+We recommend having a machine with at least 32GB of RAM and 350GB of storage (as at 21 July 2021). If TXIndex is disabled, then you need about 200GB in total. The Blockchain DB takes up about 90 GB, and the TXIndex takes up 160 GB. THe DB+TXindex size grows by about 50GB a month currently.
 
 #### How do I configure SSL?
 
@@ -507,7 +501,7 @@ There is an example SSL configuration in `nginx.dev`.
 
 #### How do I use the BlockCypher API?
 
-BlockCypher will help prevent double-spends in the mempool. You can signup for a [BlockCypher](https://www.blockcypher.com/) account on the BlockCypher website. BlockCypher does offer a free amount of API calls.
+BlockCypher will help prevent double-spends in the mempool. You can signup for a [BlockCypher](https://www.blockcypher.com) account on the BlockCypher website. BlockCypher does offer a free amount of API calls.
 
 Once you have signed up for an account you may copy a token from the [tokens](https://accounts.blockcypher.com/tokens) section of the dashboard.
 
@@ -521,10 +515,10 @@ Both records should point to the IP address of your node.
 
 **Example DNS Records:**
 
-| Hostname | Type | TTL | Priority | Content |
-| :--- | :--- | :--- | :--- | :--- |
-| node.`DOMAIN`.com | A | 299 |  | `IPADDRESS` |
-| api.`DOMAIN`.com | A | 299 |  | `IPADDRESS` |
+| Hostname          | Type | TTL | Priority | Content     |
+| ----------------- | ---- | --- | -------- | ----------- |
+| node.`DOMAIN`.com | A    | 299 |          | `IPADDRESS` |
+| api.`DOMAIN`.com  | A    | 299 |          | `IPADDRESS` |
 
 If you do not create both records you will be unable to use a custom domain.
 
@@ -535,4 +529,3 @@ Yes! Every transaction is broadcast to all other nodes on the network, and shoul
 #### What does Twilio provide to my node?
 
 Twilio provides an SMS API that allows you to confirm user phone numbers and thus send them currency from your seed wallet set inside the `dev.env` file. If you do not have this set users will be unable to verify a phone number.
-
