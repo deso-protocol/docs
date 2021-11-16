@@ -622,7 +622,7 @@ More info on the request [here](https://github.com/deso-protocol/backend/blob/47
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | PublicKeysBase58Check | \[\]string | list of public keys |
-| SkipHodlings | bool | HODL |
+| SkipForLeaderboard | bool | Skips UsersYouHODL entry |
 
 **Response**
 
