@@ -45,7 +45,7 @@ npm install
 # The following command will serve the frontend on localhost:4200 with
 # auto-reloading on changes. You must run a node before the site will
 # actually work however (see next section).
-npx ng serve
+npm start
 ```
 
 ### Running the node in testnet mode
