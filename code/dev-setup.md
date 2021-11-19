@@ -8,6 +8,8 @@ To run the frontend repo, you will need to be running Node v13.13.0 and NPM 6.14
 
 We will also assume that you have [Goland](https://www.jetbrains.com/go/) installed. This is the recommended IDE for developing on DeSo since most of the code is Go code.
 
+Another prerequisite is [vips](https://github.com/libvips/libvips) which can be installed with [homebrew](https://brew.sh/) – `brew install vips` – or `apt install libvips-tools` on Ubuntu.
+
 ## Setup
 
 First, you must checkout all repos into the same directory. Some of these repos are technically optional, but checking them all out allows you to hop around the code more easily.
@@ -43,7 +45,7 @@ npm install
 # The following command will serve the frontend on localhost:4200 with
 # auto-reloading on changes. You must run a node before the site will
 # actually work however (see next section).
-ng serve
+npm start
 ```
 
 ### Running the node in testnet mode
@@ -59,6 +61,7 @@ cd backend/scripts/nodes
 # in the arguments. This gives you funds that you can test with. You can see 
 # the status of the node by going to the Admin tab after logging in with an
 # account and then going to the Network subtab.
+export CGO_CFLAGS_ALLOW="-Xpreprocessor"
 ./n0_test
 
 # Once n0_test is running, you must navigate to the following URL. 4200 is the
