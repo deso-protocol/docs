@@ -19,7 +19,7 @@ So use them as examples and Do Your Own Research before running these.
 
 ## SDKs / Libraries 
 
-* [Pythton Package](https://pypi.org/project/bitclout/) which supports various api functions: 
+* [Python Package](https://pypi.org/project/deso/) which supports various api functions: 
 
     - Get DESO price
     - Get user info via publickey or username 
@@ -34,7 +34,13 @@ So use them as examples and Do Your Own Research before running these.
     - Buy creator coin for a user
     - Sell creator coin for a user
     - Create a post
+    - Uploading image on images.bitclout.com
+    - Posting image on arweave
+    - Minting NFT on DESO
     - Send a direct message
+    - Getting NFT entries for NFT postHash
+    - Getting (recent) Transaction info of public key
+    - Getting Notifications of user through public Key
 
 * [Dart SDK](https://github.com/DeverseSocial/deso_sdk) - Supporting all API endpoints
 
