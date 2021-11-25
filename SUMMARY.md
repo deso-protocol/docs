@@ -19,6 +19,7 @@
 * [Backend API](devs/backend-api.md)
 * [Identity API](devs/identity-api.md)
 * [Exchange Listing API](devs/exchange-listing-api.md)
+* [Resources & Examples](devs/resources.md)
 
 ## 中文
 
