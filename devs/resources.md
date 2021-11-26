@@ -19,7 +19,7 @@ So use them as examples and Do Your Own Research before running these.
 
 ## SDKs / Libraries 
 
-* [Pythton Package](https://pypi.org/project/deso/) 
+* [Python Package](https://pypi.org/project/deso/) 
 
     - Supports all DeSo Backend api functions
     - Upload image to images.bitclout.org
