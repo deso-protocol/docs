@@ -19,24 +19,15 @@ So use them as examples and Do Your Own Research before running these.
 
 ## SDKs / Libraries 
 
-* [Pythton Package](https://pypi.org/project/bitclout/) which supports various api functions: 
+* [Python Package](https://pypi.org/project/deso/) 
 
-    - Get DESO price
-    - Get user info via publickey or username 
-    - Get user profile picture
-    - Get user wallet
-    - Get coin holders
-    - Get list of users blocked by a user
-    - Get posts by a user
-    - Get post information
-    - Get diamond information
-    - Get deleted posts by user
-    - Buy creator coin for a user
-    - Sell creator coin for a user
-    - Create a post
-    - Send a direct message
+    - Supports all DeSo Backend api functions
+    - Upload image to images.bitclout.org
+    - Upload image to [Arweave](https://arweave.org)
 
-* [Dart SDK](https://github.com/DeverseSocial/deso_sdk) - Supporting all API endpoints
+* [Dart SDK](https://github.com/DeverseSocial/deso_sdk) 
+
+    - Supports all DeSo Backend api functions
 
 * [Typescript SDK](https://github.com/bitclouthunt/bitclout-sdk):
 
@@ -60,7 +51,7 @@ So use them as examples and Do Your Own Research before running these.
     - [Javascript](https://github.com/mubashariqbal/login-with-bitclout)
     - [React](https://github.com/BogdanDidenko/react-bitclout-login) 
     - [Svelte](https://github.com/mvanhalen/bitclout-identity-window-svelte) 
-    - [Deno](https://github.com/PrismWeb3/deso-web-identity) 
+    - [Javascript](https://github.com/PrismWeb3/deso-web-identity) 
     - [Python](https://github.com/neonstoic/BitcloutPythonIdentityExample) 
 
 * [Sign a transaction in NodeJS with seedHex and txnHex](https://gist.github.com/chafreaky/09296ff58b937056d362b69c2ef59a47)
