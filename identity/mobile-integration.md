@@ -10,7 +10,7 @@ A derived key is a pair of public and private cryptographic keys that are author
 
 The flow of using the derived keys is as follows:
 
-1. Generate a derived key by making a call to [#derive](window-api.md#derive "mention") window API endpoint
+1. Generate a derived key by making a call to [#derive](window-api/#derive "mention") window API endpoint
 2. Construct a `AuthorizeDerivedKey` transaction via Backend API through `/api/v0/authorize-derived-key`
 3. Sign the `AuthorizeDerivedKey` transaction with the derived key
 4. Submit signed `AuthorizeDerivedKey` transaction via `/api/v0/submit-transaction`
@@ -18,7 +18,7 @@ The flow of using the derived keys is as follows:
 
 ### Generate Derived Key
 
-In case your application requires offline signing e.g. when you’re a mobile client, identity can accommodate you with derived key material. To get a derived key for a user, launch the [#derive](window-api.md#derive "mention") window API endpoint with a callback at:
+In case your application requires offline signing e.g. when you’re a mobile client, identity can accommodate you with derived key material. To get a derived key for a user, launch the [#derive](window-api/#derive "mention") window API endpoint with a callback at:
 
 ```javascript
 const derive = window.open('https://identity.deso.org/derive?callback=...');
@@ -76,7 +76,7 @@ Because of intricacies with transaction fees and ExtraData, you should increase 
 
 ### Messages
 
-You can use derived keys to encrypt/decrypt messages on the DeSo blockchain. For more information on our messaging protocol check out the [#messages](identity-api.md#messages "mention") section. In order to encrypt/decrypt messages you will need to get shared secrets for each messaging partner of your user. To get the shared secrets, you can submit requests to the [#get-shared-secrets](window-api.md#get-shared-secrets "mention") endpoint in the window API. Once you get the shared secrets you can use them to encrypt/decrypt messages. To help you code this flow, we made a [node.js code snippet](https://github.com/deso-protocol/examples/tree/main/identity/messages-shared-secret) in the examples repository which displays our messaging protocol.
+You can use derived keys to encrypt/decrypt messages on the DeSo blockchain. For more information on our messaging protocol check out the [#messages](identity.md#messages "mention") section. In order to encrypt/decrypt messages you will need to get shared secrets for each messaging partner of your user. To get the shared secrets, you can submit requests to the [#get-shared-secrets](window-api/#get-shared-secrets "mention") endpoint in the window API. Once you get the shared secrets you can use them to encrypt/decrypt messages. To help you code this flow, we made a [node.js code snippet](https://github.com/deso-protocol/examples/tree/main/identity/messages-shared-secret) in the examples repository which displays our messaging protocol.
 
 ## Webview support
 

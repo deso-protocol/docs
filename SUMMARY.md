@@ -14,9 +14,14 @@
 
 ## Identity
 
-* [Introduction](identity/identity-api.md)
-* [Window API](identity/window-api.md)
-* [iframe API](identity/iframe-api.md)
+* [Introduction](identity/identity.md)
+* [Concepts](identity/concepts.md)
+* [Window API](identity/window-api/README.md)
+  * [Basics](identity/window-api/basics.md)
+  * [Endpoints](identity/window-api/endpoints.md)
+* [iframe API](identity/iframe-api/README.md)
+  * [Basics](identity/iframe-api/basics.md)
+  * [Endpoints](identity/iframe-api/endpoints.md)
 * [Mobile Integration](identity/mobile-integration.md)
 
 ## Developer Docs <a href="#devs" id="devs"></a>

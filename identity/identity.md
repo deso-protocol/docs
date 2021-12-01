@@ -8,7 +8,9 @@ If you're looking to build a Web3 app on the DeSo blockchain, you will most like
 
 Blockchains involve a lot of public key cryptography. This is because every interaction on a blockchain occurs on a peer-to-peer basis, without relying on some central authority such as in traditional Web2 applications. As a result, blockchains are based on communication models that eliminate trust from the equation and substitute it for the mathematical confidence of public key cryptography. In such systems, each user has a pair of public and private keys. Drawing an analogy from traditional infrastructures, public keys are like usernames, and private keys work similarly to passwords. Typically, integrating these cryptographic primitives into a web or mobile application would have required a significant software overhead and technical knowledge. However, we believe that building Web3 applications should be as simple as possible, and no more complicated than building apps on the centralized web. And so, we created the DeSo Identity service.
 
-The DeSo Identity service provides a convenient and secure way to manage user credentials (key pairs) in web and mobile applications built on the DeSo blockchain. In fact, you've probably already encountered the Identity app when using applications powered by the DeSo blockchain. Identity acts as a secured container that can be queried through Identity API to handle all the functionality related to users' key material. The Identity API is located under [`https://identity.deso.org`](https://identity.deso.org). Currently, it integrates most smoothly with web applications. Integrations with iOS and Android can be done through derived keys or webview, as explained in our [mobile-integration.md](mobile-integration.md "mention") guide. For simpler communication, the DeSo Identity Service will henceforth be referred to as Identity in this documentation.&#x20;
+The DeSo Identity service provides a convenient and secure way to manage user credentials (key pairs) in web and mobile applications built on the DeSo blockchain. In fact, you've probably already encountered the Identity app when using applications powered by the DeSo blockchain. Identity acts as a secured container that can be queried through Identity API to handle all the functionality related to users' key material. The Identity API is located under [`https://identity.deso.org`](https://identity.deso.org). Currently, it integrates most smoothly with web applications, which can be accomplished using our [window-api](window-api/ "mention") and [#storage-access](iframe-api/#storage-access "mention"). Integrations with iOS and Android can be done through derived keys or webview, as explained in our [mobile-integration.md](mobile-integration.md "mention") guide. For simpler communication, the DeSo Identity Service will henceforth be referred to as Identity in this documentation.
+
+**Now check out the** [concepts.md](concepts.md "mention") **guide to get started integrating with the DeSo Identity Service.**
 
 ## Basics
 
@@ -56,10 +58,10 @@ event.source.postMessage({
     id: '21e02080-0ef4-4056-a319-a66403f33768',
     service: 'identity',
     payload: {},
-}, "*");
+}, "https://identity.deso.org");
 ```
 
-The `id` field should be set to match the  `id` value present in the `initialize` message. We set the `id` field as a string in the above code snippet, but you should set `id: event.data.id` in your code. Make sure to either add the "\*" target origin at the end of the `postMessage()` call, alternatively, you can set it to `https://identity.deso.org` which is safer. For simplicity, we will stick to `"*"` in the documentation.
+The `id` field should be set to match the  `id` value present in the `initialize` message. We set the `id` field as a string in the above code snippet, but you should set `id: event.data.id` in your code. You may have noticed that in the example above we've added the string `"https://identity.deso.org"` at the end of the `postMessage()` call. This specifies the target origin, or the accepted URL for the destination of the `postMessage`. We can alternatively pass the wildcard `"*"` to accept any URL, which is less safe, but we will use it throughout this documentation for simplicity. However, we recommend setting `"https://identity.deso.org"` for better security.&#x20;
 
 
 
@@ -69,13 +71,13 @@ A few quick notes about message formats:
 * Messages with an `id` and no `method` are responses to requests.
 * Messages without an `id` do not expect a response.
 
-Keep this in mind as you read through [window-api.md](window-api.md "mention") and [iframe-api.md](iframe-api.md "mention").&#x20;
+Keep this in mind as you read through [window-api](window-api/ "mention") and [iframe-api](iframe-api/ "mention").&#x20;
 
 ## Accounts
 
-The DeSo Identity Service implements account management such as login, signup, and logout. Identity takes care of all cryptographic complexities related to blockchain accounts. In addition, we don't have to deal with passwords or any sensitive data when using the DeSo Identity. All account-related actions are performed via the `window` context API. For now, we will solely focus on the general intuition about account management, and leave the details of each API endpoint for the guide on the [window-api.md](window-api.md "mention"). The account workflow involves the following steps:
+The DeSo Identity Service implements account management such as login, signup, and logout. Identity takes care of all cryptographic complexities related to blockchain accounts. In addition, we don't have to deal with passwords or any sensitive data when using the DeSo Identity. All account-related actions are performed via the `window` context API. For now, we will solely focus on the general intuition about account management, and leave the details of each API endpoint for the guide on the [window-api](window-api/ "mention"). The account workflow involves the following steps:
 
-1. App [opens](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L99) the Identity in a `window` context, with the `/log-in` [API endpoint](window-api.md#log-in).
+1. App [opens](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L99) the Identity in a `window` context, with the `/log-in` [API endpoint](window-api/#log-in).
 2. When user completes the login flow, Identity sends a response containing [`PublicUserInfo`](https://github.com/deso-protocol/identity/blob/f211503ea2420cc6e75e48683670d278cc152d8c/src/types/identity.ts#L20) that will be used when exchanging messages with the `iframe` context.
 3. App [closes](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L196) the Identity `window` and stores the `PublicUserInfo` from step 2. into [local storage](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/global-vars.service.ts#L857) / database.
 4. App uses `PublicUserInfo` when sending messages to the `iframe` context to handle transaction [signing](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L125), message [decryption](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L144), and other methods.
@@ -123,7 +125,7 @@ Or, here's how the levels `2,3,4` (increasing downwards) look like in the DeSo I
 
 ![DeSo Identity Access Level UI](<../.gitbook/assets/Screenshot from 2021-11-22 01-13-56.png>)
 
-Access level determines which actions would require an approval from the user. Approval here means we need to launch the Identity in a `window` context so that user can review and manually confirm a transaction. The approval mechanism is explained in more detail in [#approve](window-api.md#approve "mention"). You should only require access level `4` if your app really needs it. In general, you should deliberately request the minimal permission level that fits the requirements of your application.
+Access level determines which actions would require an approval from the user. Approval here means we need to launch the Identity in a `window` context so that user can review and manually confirm a transaction. The approval mechanism is explained in more detail in [#approve](window-api/#approve "mention"). You should only require access level `4` if your app really needs it. In general, you should deliberately request the minimal permission level that fits the requirements of your application For an exhaustive list of `accessLevel` requirements for each action, check out our [iframe-api](iframe-api/ "mention") documentation.
 
 ## Transactions
 
@@ -139,7 +141,7 @@ Transactions on the DeSo blockchain have a three-step lifecycle:
 
 **Broadcast:** The signed transaction will be sent through the `/api/v0/submit-transaction` by the developer so that it can be added to the blockchain ledger.
 
-In this section, we're mostly interested in the signing step. The DeSo Identity Sevice handles the issuance of transaction signatures through both the `iframe` and `window` contexts. The `AccessLevel` you've requested in`/log-in`, as mentioned in [#access-levels](identity-api.md#access-levels "mention") will determine which transactions you can sign using the `iframe` context. The required AccessLevel for each `iframe` API is detailed in the [iframe-api.md](iframe-api.md "mention") guide. If the transaction you intend to sign matches this AccessLevel, you could simply ask the DeSo Identity Service to issue a signature in the background through the [`iframe` context](iframe-api.md#sign). This would be done by sending a `postMessage` to the `iframe` such as in line [#274](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L274).&#x20;
+In this section, we're mostly interested in the signing step. The DeSo Identity Sevice handles the issuance of transaction signatures through both the `iframe` and `window` contexts. The `AccessLevel` you've requested in`/log-in`, as mentioned in [#access-levels](identity.md#access-levels "mention"), will determine which transactions you can sign using the `iframe` context. The required AccessLevel for each `iframe` API is detailed in the [iframe-api](iframe-api/ "mention") guide. If the transaction you intend to sign matches this AccessLevel, you could simply ask the DeSo Identity Service to issue a signature in the background through the [`iframe` context](iframe-api/#sign). This would be done by sending a `postMessage` to the `iframe` such as in line [#274](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L274).&#x20;
 
 ```javascript
 this.iframe.contentWindow.postMessage(req, "*");
@@ -155,7 +157,7 @@ After receiving the `signedTransactionHex`, we can then broadcast it to the netw
 
 ## Messages
 
-A crucial component of any social network is messaging. That's why the DeSo blockchain was designed to handle messages as transactions that can be securely stored on-chain. Messages are private and can only be read by the sender and the recipient thanks to our public key cryptographic protocols. Consequently, messages are handled by Identity. As an application developer, it isn't crucial to understand the messaging scheme in-depth, but we want to share a few remarks for those crypto-savvy readers in the [Protocol](identity-api.md#protocol) subsection.
+A crucial component of any social network is messaging. That's why the DeSo blockchain was designed to handle messages as transactions that can be securely stored on-chain. Messages are private and can only be read by the sender and the recipient thanks to our public key cryptographic protocols. Consequently, messages are handled by Identity. As an application developer, it isn't crucial to understand the messaging scheme in-depth, but we want to share a few remarks for those crypto-savvy readers in the [Protocol](identity.md#protocol) subsection.
 
 ### Protocol
 
@@ -165,19 +167,19 @@ If you're working closely with DeSo messages or are a mobile app developer, you 
 * `V2`: (CURRENT) Messages encrypted to both the recipient and sender using [AES-128-CTR](https://github.com/deso-protocol/identity/blob/f211503ea2420cc6e75e48683670d278cc152d8c/src/lib/ecies/index.js#L175) scheme with shared secrets derived via [ECDH](https://github.com/deso-protocol/identity/blob/f211503ea2420cc6e75e48683670d278cc152d8c/src/lib/ecies/index.js#L100) and run through a simple [SHA256 ConcatKDF](https://github.com/deso-protocol/identity/blob/f211503ea2420cc6e75e48683670d278cc152d8c/src/lib/ecies/index.js#L23). Under `V1`, once a message was broadcasted to the blockchain, the sender of the message was unable to decrypt it on other devices. On the other hand, shared secrets are available both to the recipient and sender, so both can decrypt messages.
 * `V3`: (PLANNED) We intend to expand the `V2` scheme so it uses rotating messaging keys. Keys will be computed via HD wallet scheme with hardened derivation. Messaging keys can then be shared with third-party apps, specifically mobile clients, to simplify message handling.
 
-If you're a mobile app developer using derived keys you will most likely need to implement the message encryption and decryption yourself, or relay on an existing implementation. The best way would be to trace through the node.js example [encryption/decryption code snippet](https://github.com/deso-protocol/examples/tree/main/identity/messages-shared-secret) or look at [encryption](https://github.com/deso-protocol/identity/blob/f211503ea2420cc6e75e48683670d278cc152d8c/src/app/identity.service.ts#L203) and [decryption](https://github.com/deso-protocol/identity/blob/f211503ea2420cc6e75e48683670d278cc152d8c/src/app/identity.service.ts#L216) Identity code and recreate it in the programming language of your choosing. If you bundle your code in a library for others to use, please do share it and we'll include it in this documentation!
+If you're a mobile app developer using derived keys you will most likely need to implement the message encryption and decryption yourself, or rely on an existing implementation. The best way would be to trace through the node.js example [encryption/decryption code snippet](https://github.com/deso-protocol/examples/tree/main/identity/messages-shared-secret) or look at [encryption](https://github.com/deso-protocol/identity/blob/f211503ea2420cc6e75e48683670d278cc152d8c/src/app/identity.service.ts#L203) and [decryption](https://github.com/deso-protocol/identity/blob/f211503ea2420cc6e75e48683670d278cc152d8c/src/app/identity.service.ts#L216) Identity code and recreate it in the programming language of your choosing. If you bundle your code in a library for others to use, please do share it and we'll include it in this documentation!&#x20;
 
-Our cryptographic implementations are based on JavaScript [ECIES-Parity library](https://github.com/sigp/ecies-parity) from Sigma Prime.&#x20;
+Our cryptographic implementations are based on JavaScript [ECIES-Parity library](https://github.com/sigp/ecies-parity) from Sigma Prime. &#x20;
 
 ### Implementation
 
-Messages are primarily handled through the [`iframe` context](iframe-api.md#decrypt), with the exception of mobile clients relying on derived keys. These clients will handle messages through the `window` context. The goal of this subsection is to give you a general intuition about message handling. We leave the communication details to the section on `iframe` API.
+Messages are primarily handled through the [`iframe` context](iframe-api/#decrypt), with the exception of mobile clients relying on derived keys. These clients will handle messages through the `window` context. The goal of this subsection is to give you a general intuition about message handling. We leave the communication details to the section on `iframe` API.
 
 #### Encryption
 
 Encryption is a process of concealing information so that only some authorized parties can read it. In order to successfully encrypt and send a message transaction, the following steps should be taken:
 
-1. Message text is first encrypted through the Identity by sending a request with `method: "encrypt"` to the [`iframe` context](iframe-api.md#encrypt), as in [line #141](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L141).
+1. Message text is first encrypted through the Identity by sending a request with `method: "encrypt"` to the [`iframe` context](iframe-api/#encrypt), as in [line #141](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L141).
 2. The encrypted message is used in the Backend API to construct a message transaction via `/api/v0/send-message-stateless` endpoint.
 3. After message transaction is prepared, the `transactionHex` will finally be signed by the DeSo Identity and broadcast to the network as described in the Transactions section.
 
@@ -185,10 +187,12 @@ Encryption is a process of concealing information so that only some authorized p
 
 We previously mentioned concealing information, but what about revealing an encrypted message, or in other words, what about message decryption? In order to read a message, we will pass the encrypted message to the DeSo Identity Service which will handle the message decryption for us. This is done in a single step:
 
-1. Send the encrypted message in a request to the `iframe` context with `method: "decrypt"` , as in [line #150](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L150).
+1. Send the encrypted message in a request to the `iframe` context with `method: "decrypt"` , as in [line #150](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L150). Check out the [#decrypt](iframe-api/#decrypt "mention") API for details.
+
+Another use-case for the `decrypt` API is decrypting unlockable text in NFTs. To see how this can be done, we recommend tracing through the [`DecryptUnlockableTexts()`](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/backend-api.service.ts#L945) in the DeSo Protocol repository.
 
 ## Conclusion
 
 In this document, we've outlined all the major components of integrating with the DeSo Identity. If you've gone this far, you should have a good understanding of how the Identity works and what is required to efficiently incorporate it in your application.&#x20;
 
-Throughout this guide, we've intentionally left out many implementation details for the sake of simplicity. If things made sense to you, it means it's a good time to dive into the other guides on the DeSo Identity. Specifically, if you're making a web-based application, you should take a look our [Window API](window-api.md) and [iframe API](iframe-api.md) docs next. If you're building a mobile application, we recommend taking a look at the [Mobile integration](mobile-integration.md) guide next.
+Throughout this guide, we've intentionally left out many implementation details for the sake of simplicity. If things made sense to you, it means it's a good time to dive into the other guides on the DeSo Identity. Specifically, if you're making a web-based application, you should take a look our [Window API](window-api/) and [iframe API](iframe-api/) docs next. If you're building a mobile application, we recommend taking a look at the [Mobile integration](mobile-integration.md) guide next.
