@@ -6,6 +6,8 @@ description: Integrating with the DeSo Identity on Mobile.
 
 ## Derived Keys
 
+In the world of blockchain, user private keys are extremely sensitive information. This is because, unlike Web2 password, private keys cannot be modified, which means that if somebody gets a hold of your private key, you're potentially **forever** vulnerable to an attack and there isn't much you can do unless you move your entire account to another private key. We are firm believers that user primary keys should **never** be shared with third-party applications, regardless of their security practices, and so we created derived keys, which significantly lower attack vectors related to unauthorized access to user credentials. Derived keys are impermanent and they usually automatically expire about 30 days after being issued. Derived keys can also be de-authorized at any point, which we believe will allow for the creation of advanced security systems in the future that can mitigate the risks originating from key leakage.
+
 A derived key is a pair of public and private cryptographic keys that are authorized to sign transactions on behalf of another key pair. That is, if you hold a valid derived key of a user, you can submit a transaction signed by that derived key, and it will be regarded as a valid transaction as if it was made by that user. This is particularly useful in mobile applications because it means you only have to interact with the DeSo Identity Service once, just to get the derived key of a user. It also means that derived keys are extremely sensitive information and therefore should be handled in secure storage with utmost caution, ideally by experienced software engineers.
 
 The flow of using the derived keys is as follows:

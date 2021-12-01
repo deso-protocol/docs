@@ -6,7 +6,7 @@ description: List of DeSo Identity iframe API endpoints
 
 ## sign
 
-****[**AccessLevel**](../identity.md#access-levels)**: 3, 4 (depends on** [**transaction**](https://github.com/deso-protocol/identity/blob/9dad527dc46498b9aaa0344abd70dc8895acf246/src/app/identity.service.ts#L288)**)**
+[**AccessLevel**](../identity.md#access-levels)**: 3, 4 (depends on** [**transaction**](https://github.com/deso-protocol/identity/blob/9dad527dc46498b9aaa0344abd70dc8895acf246/src/app/identity.service.ts#L288)**)**
 
 The sign message is responsible for signing transaction hexes. If approval is required an application must call the [#approve](../window-api/#approve "mention") endpoint in the Window API to sign the transaction.
 
@@ -45,8 +45,6 @@ You will get this response if the transaction was successful signed.
   },
 }
 ```
-
-
 
 #### Response (Approval Required)
 
@@ -108,7 +106,7 @@ The encrypt API is responsible for encrypting messages. For more details check o
 
 [**AccessLevel**](../identity.md#access-levels)**: 2**
 
-The decrypt API is responsible for decrypting messages. As we mentioned in the [#messages](../identity.md#messages "mention") section, the current messaging protocol is `V2`; however, it is still possible to decrypt messages from the `V1` scheme. The decrypt API allows you to decrypt multiple messages at once by passing an array of `encryptedMessage` objects. The `decrypt` API is intended to be constructed right after calling the `/api/v0/get-messages-stateless` backend API endpoint, and so the structure of `encryptedMessage` matches the structure of the response from backend. We recommend tracing through [`GetMessages()` ](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/backend-api.service.ts#L1293)function in the DeSo Protocol frontend's `src/app/backend-api.service.ts`.&#x20;
+The decrypt API is responsible for decrypting messages. As we mentioned in the [#messages](../identity.md#messages "mention") section, the current messaging protocol is `V2`; however, it is still possible to decrypt messages from the `V1` scheme. The decrypt API allows you to decrypt multiple messages at once by passing an array of `encryptedMessage` objects. The `decrypt` API is intended to be constructed right after calling the `/api/v0/get-messages-stateless` backend API endpoint, and so the structure of `encryptedMessage` matches the structure of the response from backend. We recommend tracing through [`GetMessages()` ](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/backend-api.service.ts#L1293)function in the DeSo Protocol frontend's `src/app/backend-api.service.ts`.
 
 Assuming `message` is a taken from `OrderedContactsWithMessages.Messages` from the backend API response, `encryptedMessage` can be constructed as follows:
 
