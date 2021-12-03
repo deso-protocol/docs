@@ -28,17 +28,11 @@
 Here are a list of community Discords. These are moderated by various community members.
 
 - [Pulse](https://discord.gg/zTdSaQtmx2)
-- [Love4Src](https://discord.gg/u4nkKwEpUd)
 - [ChainSurf](https://discord.gg/9DF5CfdgYB)
+- [Love4Src](https://discord.gg/u4nkKwEpUd)
+- [DesoVoices](https://discord.gg/VANfGtVXMb)
+- [Stet](https://discord.gg/stet)
 - [CloutFeed](https://discord.gg/8xJ6tTMure)
 - [BitsTODAY](https://discord.gg/ZZUPcrqEF5)
 - [StreamClout](https://discord.gg/s4ecEAe3mq)
 - [BitHunt](https://discord.gg/sjy9egBhB6)
-
-Links to follow
-
-- [DesoVoices](https://node.deso.org/u/DeSoVoices)
-- [Stet](https://node.deso.org/u/Stet)
-- Merlin's Army
-
-
