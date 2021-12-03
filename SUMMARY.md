@@ -5,6 +5,7 @@
 ## FAQ
 
 * [Privacy and Security](faq/privacy-and-security.md)
+* [DeSo Discords](faq/discord.md)
 
 ## The DeSo Code <a href="#code" id="code"></a>
 
