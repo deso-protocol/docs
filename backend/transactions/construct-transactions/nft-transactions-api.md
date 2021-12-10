@@ -748,5 +748,3 @@ Array of
 ```
 {% endswagger-response %}
 {% endswagger %}
-
-##

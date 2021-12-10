@@ -1,3 +1,7 @@
+---
+description: Description of common data types that appear in the Blockchain Data endpoints
+---
+
 # Data Types
 
 ## ProfileEntryResponse
