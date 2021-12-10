@@ -6,7 +6,7 @@ description: Introduction to working with the DeSo Backend API
 
 #### Trying to build the next great social app on top of the DeSo blockchain or running a node and want to know the ins-and-outs of all the endpoints? This section is for you.&#x20;
 
-Compared to private, monopolized Web2 social media, all of the data on the DeSo blockchain is public and lives on-chain. This means that anybody can access this information and build their own application using that data.&#x20;
+Compared to private, monopolized Web2 social media, all of the data on the DeSo blockchain is public and lives on-chain\*. This means that anybody can access this information and build their own application using that data.&#x20;
 
 However, blockchains require transactions and cryptography to validate information. **** We know this can be a hassle, so we've build this API along with the DeSo [Broken link](broken-reference "mention") service to make it easy for you, the developer,  to focus on what matters: building your application.&#x20;
 

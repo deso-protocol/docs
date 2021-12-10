@@ -1,32 +1,36 @@
+---
+description: >-
+  Description of endpoints used to get data related to users and profiles on the
+  DeSo blockchain
+---
+
 # User Endpoints
 
-## Get Users Stateless
-
-```
-POST /api/v0/get-users-stateless
-```
-
+{% swagger method="post" path="" baseUrl="/api/v0/get-users-stateless" summary="Get Users Stateless" %}
+{% swagger-description %}
 Get information about multiple users. This endpoint is used for retrieving data about a user after they log in,  so the UI can adjust to the attributes of the user.
 
 Request contains a list of public keys of users to fetch.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L38).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Users Stateless](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L725)\
+&#x20; \- Use GetUsersStateless to [retrieve data about users upon login](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/app.component.ts#L115)\
+&#x20; \- Use GetUsersStateless to [retrieve profiles for the Bithunt community projects leaderboard](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/lib/services/bithunt/bithunt-service.ts#L77)
+{% endswagger-description %}
 
-* Make request to [Get Users Stateless](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L725)
-* Use GetUsersStateless to [retrieve data about users upon login](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/app.component.ts#L115)
-* Use GetUsersStateless to [retrieve profiles for the Bithunt community projects leaderboard](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/lib/services/bithunt/bithunt-service.ts#L77)
+{% swagger-parameter in="body" name="PublicKeysBase58Check" type="String[]" required="true" %}
+list of public keys
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" name="SkipForLeaderBoard" type="Boolean" %}
+Skips fetching all attributes other than the ProfileEntryResponse and PublicKeyBase58Check
+{% endswagger-parameter %}
 
-| Name                  | Type      | Description                                                                                | Required | Restrictions |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------ | -------- | ------------ |
-| PublicKeysBase58Check | \[]string | list of public keys                                                                        | y        |              |
-| SkipForLeaderboard    | bool      | Skips fetching all attributes other than the ProfileEntryResponse and PublicKeyBase58Check | n        |              |
-
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully return all user objects requested, param updater public keys, and the default fee" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   UserList: [
@@ -70,79 +74,186 @@ Example usages in frontend:
     BC1YLiXwGTte8oXEEVzm4zqtDpGRx44Y4rqbeFeAs5MnzsmqT5RcqkW: true,
     BC1YLj8UkNMbCsmTUTx5Z2bhtp8q86csDthRmK6zbYstjjbS5eHoGkr: true,
   } 
+}5
+```
+{% endtab %}
+
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
 }
 ```
+{% endswagger-response %}
+{% endswagger %}
 
-## Get Profiles
-
-```
-POST /api/v0/get-profiles
-```
-
+{% swagger method="post" path="" baseUrl="/api/v0/get-profiles" summary="Get Profiles" %}
+{% swagger-description %}
 Get user profiles for searching by name or for the creator leaderboard.&#x20;
 
 Default number of returned profiles is 20.&#x20;
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L599).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Profiles](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1118)\
+&#x20; \- Use GetProfiles to [search for users by username](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/search-bar/search-bar.component.ts#L94)\
+&#x20; \- Use GetProfiles to [get profiles for the creator leaderboard](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creators-leaderboard/creators-leaderboard/creators-leaderboard.component.ts#L59)
+{% endswagger-description %}
 
-* Make request to [Get Profiles](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1118)
-* Use GetProfiles to [search for users by username](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/search-bar/search-bar.component.ts#L94)
-* Use GetProfiles to [get profiles for the creator leaderboard](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creators-leaderboard/creators-leaderboard/creators-leaderboard.component.ts#L59)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" %}
+When provided, find the profile that contains the public key. The page of results returned by this endpoint will start at the profile that is next in the ordered list.
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" name="Username" type="String" %}
+When provided, find the profile that contains this username. The page of results returned by this endpoint will start at the profile that is next in the ordered list.
+{% endswagger-parameter %}
 
-OrderBy possible values: `{"newest_last_post", "newest_last_comment", "influencer_coin_price"}`. More info on the request [here](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/user.go#L455).
+{% swagger-parameter in="body" name="UsernamePrefix" type="String" %}
+username prefix. When provided, only return profiles with usernames that match this prefix
+{% endswagger-parameter %}
 
-| Name                       | Type   | Description                                                                                                                                                                                               | Required | Restrictions                                                                            |
-| -------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------- |
-| PublicKeyBase58Check       | string | When provided, find the profile that contains the public key. The page of results returned by this endpoint will start at the profile that is next in the ordered list.                                   | n        |                                                                                         |
-| Username                   | string | When provided, find the profile that contains this username. The page of results returned by this endpoint will start at the profile that is next in the ordered list.                                    | n        |                                                                                         |
-| UsernamePrefix             | string | username prefix. When provided, only return profiles with usernames that match this prefix                                                                                                                | n        |                                                                                         |
-| Description                | string | Deprecated                                                                                                                                                                                                | n        | n                                                                                       |
-| OrderBy                    | string | <p>Ordering method to be used on the result set<br><br>Must be one of <code>"newest_last_post", "newest_last_comment", "influencer_coin_price"</code></p>                                                 | n        | Must be one of "newest\_last\_post", "newest\_last\_comment", "influencer\_coin\_price" |
-| NumToFetch                 | uint32 | <p>Number of profiles to fetch. Defaults to 20.<br><br>Must be less than 100</p>                                                                                                                          | n        | Must be less than 100                                                                   |
-| ReaderPublicKeyBase58Check | string | Reader public key                                                                                                                                                                                         | n        |                                                                                         |
-| ModerationType             | string | empty string, "unrestricted", or "leaderboard". If "unrestricted", return all results. If "leaderboard", filter out both blacklisted and graylisted users. If empty string, filter out blacklisted users. | n        |                                                                                         |
-| FetchUsersThatHODL         | bool   | If single profile is requested, return a list of HODLers                                                                                                                                                  | n        |                                                                                         |
-| AddGlobalFeedBool          | bool   | If set to true posts in response will contain boolean if they are in global feed                                                                                                                          | n        |                                                                                         |
+{% swagger-parameter in="body" name="Descripton" type="String" %}
+Deprecated
+{% endswagger-parameter %}
 
-**Response**
+{% swagger-parameter in="body" name="OrderBy" type="String" %}
+Ordering method to be used on the result set
 
+\
+
+
+
+
+\
+
+
+Must be one of 
+
+`newest_last_post`
+
+, 
+
+`newest_last_comment`
+
+,  or 
+
+`influencer_coin_price`
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="NumToFetch" type="uint32" %}
+Number of profiles to fetch. Defaults to 20.
+
+\
+
+
+
+
+\
+
+
+Must be less than 100
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="ReaderPublicKeyBase58Check" type="String" %}
+Reader public key
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="ModerationType" type="String" %}
+empty string, `unrestricted`, or `leaderboard`.&#x20;
+
+
+
+If `unrestricted`, return all results. If `leaderboard`, filter out both blacklisted and graylisted users. If empty string, filter out blacklisted users.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="FetchUsersThatHODL" type="Boolean" %}
+If single profile is requested, return a list of HODLers
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="AddGlobalFeedBool" type="Boolean" %}
+If set to true posts in response will contain boolean if they are in global feed
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="List of profiles requested and a NextPublicKey to use to get the next page of results " %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
     ProfilesFound: [<ProfileEntryResponse>, <ProfileEntryResponse>], // Array of ProfileEntryResponse Objects.
     NextPublicKey: "BC1YLianxEsskKYNyL959k6b6UPYtRXfZs4MF3GkbWofdoFQzZCkJRB", // This is the PublicKeyBase58Check needed to fetch the next page of results. 
 }
 ```
+{% endtab %}
 
-## Get Single Profile
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/get-single-profile
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/get-single-profile" summary="Get Single Profile" %}
+{% swagger-description %}
 Get information about single profile.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1066).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Single Profile](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1144)\
+&#x20; \- Use GetSingleProfile to [get information to display on a user's profile page](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-details/creator-profile-details.component.ts#L170)\
+&#x20; \- Use GetSingleProfile to [search for a profile by public key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/search-bar/search-bar.component.ts#L60)
+{% endswagger-description %}
 
-* Make request to [Get Single Profile](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1144)
-* Use GetSingleProfile to [get information to display on a user's profile page](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-details/creator-profile-details.component.ts#L170)
-* Use GetSingleProfile to [search for a profile by public key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/search-bar/search-bar.component.ts#L60)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" %}
+public key of the profile to fetch
 
-**Parameters**
+\
 
-| Name                 | Type   | Description                                                                                                                       | Required                                         | Restrictions |
-| -------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------ |
-| PublicKeyBase58Check | string | public key of the profile to fetch                                                                                                | required if Username is not provided             |              |
-| Username             | string | username of the profile to fetch                                                                                                  | required if PublicKeyBase58Check is not provided |              |
-| NoErrorOnMissing     | bool   | If true, do not throw a 404 error if there is no profile found. Instead, nil will be return for the Profile in the response body. | n                                                |              |
 
-**Response**
 
+
+\
+
+
+required if Username is not provided
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="Username" type="String" %}
+username of the profile to fetch
+
+\
+
+
+
+
+\
+
+
+required if PublicKeyBase58Check is not provided
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="NoErrorOnMissing" type="Boolean" %}
+If true, do not throw a 404 error if there is no profile found. Instead, nil will be return for the Profile in the response body.
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
    Profile: <ProfileEntryResponse>, // ProfileEntryResponse for the username or public key provided.
@@ -150,126 +261,180 @@ Example usages in frontend:
    IsGraylisted: false,  // If true, this user is graylisted on this node.
 }
 ```
+{% endtab %}
 
-## Get Single Profile Picture
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-GET /api/v0/get-single-profile-picture/{PublicKeyBase58Check}
-```
+{% endswagger-response %}
 
+{% swagger-response status="404: Not Found" description="No profile found for the provided username or public key" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
+
+{% swagger method="get" path="" baseUrl="/api/v0/get-signle-profile-picture/{PublicKeyBase58Check}" summary="Get Single Profile Picture" %}
+{% swagger-description %}
 Returns the profile picture of the given public key
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1011).
 
-Example usage in frontend
+Example usage in frontend:\
+&#x20; \- Construct the [Get Single Profile Picture URL](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1158)\
+&#x20; \- Use GetSingleProfilePictureURL to [get the profile picture for a user](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/avatar/avatar.directive.ts#L36)
+{% endswagger-description %}
 
-* Construct the [Get Single Profile Picture URL](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1158)
-* Use GetSingleProfilePictureURL to [get the profile picture for a user](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/avatar/avatar.directive.ts#L36)
+{% swagger-parameter in="path" name="PublicKeyBase58Check" required="true" type="String" %}
+Public key of the user for whom we are fetching a profile picture
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="query" name="fallback" type="String" %}
+URL of the image to be used in the event that there is no profile picture for the public key provided
+{% endswagger-parameter %}
 
-| Name                 | Type   | Description                                                       | Required | Restrictions |
-| -------------------- | ------ | ----------------------------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check | string | Public key of the user for whom we are fetching a profile picture | y        |              |
+{% swagger-response status="200: OK" description="Profile picture found" %}
+Image file of the profile picture is returned
+{% endswagger-response %}
 
-**Query Parameters**&#x20;
-
-| Name     | Type   | Description                                                                                           | Required |
-| -------- | ------ | ----------------------------------------------------------------------------------------------------- | -------- |
-| fallback | string | URL of the image to be used in the event that there is no profile picture for the public key provided | n        |
-
-**Response**
-
-Returns an image
-
-## Get User Global Metadata
-
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/get-user-global-metadata
-```
+{% endswagger-response %}
 
+{% swagger-response status="404: Not Found" description="No profile picture found for public key provided" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
+
+{% swagger method="post" path="" baseUrl="/api/v0/get-user-global-metadata" summary="Get User Global Metadata: Email And Phone Number" %}
+{% swagger-description %}
 Get user metadata such as email and phone.&#x20;
 
 This endpoint requires a JWT, [which can be retrieved from Identity](../../../identity/iframe-api/endpoints.md#jwt).
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1646).
 
-Example usages in frontend:
-
-* Make request to [Get User Global Metadata](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1637)
-* Use GetUserGlobalMetadata to [fetch email address to display on settings page](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/settings/settings.component.ts#L45)
+Example usages in frontend:\
+&#x20; \- Make request to [Get User Global Metadata](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1637)\
+&#x20; \- Use GetUserGlobalMetadata to [fetch email address to display on settings page](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/settings/settings.component.ts#L45)
 
 Note: this data is not stored on-chain.
+{% endswagger-description %}
 
-**Parameters**
+{% swagger-parameter in="body" name="UserPublicKeyBase58Check" required="true" type="String" %}
+user public key
+{% endswagger-parameter %}
 
-| Name                     | Type   | Description                        | Required | Restrictions |
-| ------------------------ | ------ | ---------------------------------- | -------- | ------------ |
-| UserPublicKeyBase58Check | string | user public key                    | y        |              |
-| JWT                      | string | JSON web token authenticating user | y        |              |
+{% swagger-parameter in="body" name="JWT" required="true" type="String" %}
+JSON web token authenticating user
+{% endswagger-parameter %}
 
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved user's phone number and email address" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
     Email: "test@test.com",
     PhoneNumber: "123346789"
 }
 ```
+{% endtab %}
 
-## Update User Global Metadata
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/update-user-global-metadata
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/update-user-global-metadata" summary="Update User Global Metadata: Email and State of Messages Read" %}
+{% swagger-description %}
 Update user's email address and the state of messages that have been read.&#x20;
 
 This endpoint requires a JWT, [which can be retrieved from Identity](../../../identity/iframe-api/endpoints.md#jwt).&#x20;
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1711).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Update User Global Metadata](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1624)\
+&#x20; \- Use UpdateUserGlobalMetadata to [update email address](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/settings/settings.component.ts#L78)
+{% endswagger-description %}
 
-* Make request to [Update User Global Metadata](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1624)
-* Use UpdateUserGlobalMetadata to [update email address](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/settings/settings.component.ts#L78)
+{% swagger-parameter in="body" name="UserPublicKeyBase58Check" required="true" type="String" %}
+user public key
+{% endswagger-parameter %}
 
-Note: this data is not stored on-chain.
+{% swagger-parameter in="body" required="true" name="JWT" type="String" %}
+JSON web token authenticating user
+{% endswagger-parameter %}
 
-| Name                             | Type                                   | Description                                                                                                                                                            | Required | Restrictions                     |
-| -------------------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------------------------------- |
-| UserPublicKeyBase58Check         | string                                 | user public key                                                                                                                                                        | y        |                                  |
-| JWT                              | string                                 | JSON web token authenticating user                                                                                                                                     | y        |                                  |
-| Email                            | string                                 | new email address. If provided, an email will be sent to verify this email address                                                                                     | n        | must be of a valid email format. |
-| MessageReadStateUpdatesByContact | Object with string keys and int values | A map with keys that represent public keys that have messaged this user. The values represent the index of the message read in the conversation between the two users. | n        |                                  |
+{% swagger-parameter in="body" name="Email" type="String" %}
+new email address. If provided, an email will be sent to verify this email address
+{% endswagger-parameter %}
 
-**Response**&#x20;
+{% swagger-parameter in="body" name="MessageReadStateUpdatesByContact" type="Object with string keys and int values" %}
+A map with keys that represent public keys that have messaged this user. The values represent the index of the message read in the conversation between the two users.
+{% endswagger-parameter %}
 
-No response body. 200 status code means success.
+{% swagger-response status="200: OK" description="Successfully updated user global metadata" %}
+No response body
+{% endswagger-response %}
 
-## Get User Metadata
-
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-GET /api/v0/get-user-metadata/{PublicKeyBase58Check}
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="get" path="" baseUrl="/api/v0/get-user-metadata/{PublicKeyBase58Check}" summary="Get User Metadata" %}
+{% swagger-description %}
 Get user metadata. Typically, this endpoint is used when reaching node.deso.org to get user metadata that should be merged with user metadata from one's local node.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L438).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get User Metadata](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1667)\
+&#x20; \- Use GetUserMetadata to [get additional data about a user](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/app.component.ts#L117) to merge in with user metadata fetch from local node
+{% endswagger-description %}
 
-* Make request to [Get User Metadata](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1667)
-* Use GetUserMetadata to [get additional data about a user](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/app.component.ts#L117) to merge in with user metadata fetch from local node
+{% swagger-parameter in="path" name="PublicKeyBase58Check" type="String" required="true" %}
+Public key of the user for whom we are fetching user metadata
+{% endswagger-parameter %}
 
-**Parameters**
-
-| Name                 | Type   | Description                                                   | Required | Restrictions |
-| -------------------- | ------ | ------------------------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check | string | Public key of the user for whom we are fetching user metadata | y        |              |
-
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved user metadata from this node" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   "HasPhoneNumber": false, // Whether the user verified a phone number. Used to know whether to allow user to launch identity to get free DeSo for verifying their phone number 
@@ -284,39 +449,67 @@ Example usages in frontend:
   "JumioReturned": true // Whether Jumio returned a callback for this user.
 }
 ```
+{% endtab %}
 
-## Delete PII
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/delete-pii
-```
+{% endswagger-response %}
 
+{% swagger-response status="404: Not Found" description="Node does not expose its global state so you are unable to get user metadata from the requested node" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
+
+{% swagger method="post" path="" baseUrl="/api/v0/delete-pii" summary="Delete PII - Personal Identifiable Information" %}
+{% swagger-description %}
 Deletes email address and phone number associated with this user from the node's global state.
 
 This endpoint requires a JWT, [which can be retrieved from Identity](../../../identity/iframe-api/endpoints.md#jwt).
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L2873).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Delete PII](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1661)\
+&#x20; \- Use DeletePII to [remove user's personal information](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/settings/settings.component.ts#L119) at the user's request
+{% endswagger-description %}
 
-* Make request to [Delete PII](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1661)
-* Use DeletePII to [remove user's personal information](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/settings/settings.component.ts#L119) at the user's request.
+{% swagger-parameter in="body" required="true" name="PublicKeyBase58Check" type="String" %}
+user public key that wants to delete their PII
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" required="true" name="JWT" type="String" %}
+JSON web token authenticating user
+{% endswagger-parameter %}
 
-| Name                 | Type   | Description                                    | Required | Restrictions |
-| -------------------- | ------ | ---------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check | string | user public key that wants to delete their PII | y        |              |
-| JWT                  | string | JSON web token authenticating user             | y        |              |
+{% swagger-response status="200: OK" description="Successfully deleted personal identifiable information including phone number and email address" %}
+No response body
+{% endswagger-response %}
 
-**Response** No response body. 200 status code.
-
-## Block Public Key
-
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/block-public-key
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/block-public-key" summary="Block Public Key" %}
+{% swagger-description %}
 Block another user. Blocking a user hides that user from everything you see and the blocked user's comments on your posts will be hidden for all other users.
 
 Note: Blocks are not currently stored on chain and thus a block only applies to the node on which a user is blocked.
@@ -325,23 +518,31 @@ This endpoint requires a JWT, [which can be retrieved from Identity](../../../id
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L2585).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Block Public Key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1570)\
+&#x20; \- Use BlockPublicKey to [block a user ](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-details/creator-profile-details.component.ts#L136)as described above\
+&#x20; \- Use BlockPublicKey to [unblock a user](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-details/creator-profile-details.component.ts#L91)
+{% endswagger-description %}
 
-* Make request to [Block Public Key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1570)
-* Use BlockPublicKey to [block a user ](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-details/creator-profile-details.component.ts#L136)as described above
-* Use BlockPublicKey to [unblock a user](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-details/creator-profile-details.component.ts#L91)
+{% swagger-parameter in="body" required="true" name="PublicKeyBase58Check" type="String" %}
+user public key
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" required="true" name="JWT" type="String" %}
+JSON web token authenticating user
+{% endswagger-parameter %}
 
-| Name                      | Type   | Description                        | Required | Restrictions |
-| ------------------------- | ------ | ---------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check      | string | user public key                    | y        |              |
-| BlockPublicKeyBase58Check | string | blocked user public key            | y        |              |
-| Unblock                   | bool   | false if block, true if unblock    | n        |              |
-| JWT                       | string | JSON web token authenticating user | y        |              |
+{% swagger-parameter in="body" name="BlockPublicKeyBase58Check" type="String" required="true" %}
+blocked user public key
+{% endswagger-parameter %}
 
-**Response**
+{% swagger-parameter in="body" name="Unblock" type="Boolean" %}
+false if block, true if unblock
+{% endswagger-parameter %}
 
+{% swagger-response status="200: OK" description="Successfully blocked public key and return all public keys currently blocked by this user" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
     BlockedPublicKeys: {
@@ -349,25 +550,37 @@ Example usages in frontend:
     }
 }
 ```
+{% endtab %}
 
-## Get User Derived Keys
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/get-user-derived-keys
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/get-user-derived-keys" summary="Get User Derived Keys" %}
+{% swagger-description %}
 Get a map of derived public keys to metadata about that derived key for a given master public key.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L2810).
+{% endswagger-description %}
 
-**Parameters**
+{% swagger-parameter in="body" name="PublicKeyBase58Check" required="true" type="String" %}
+Public key for which we want to query derived keys
+{% endswagger-parameter %}
 
-| Name                 | Type   | Description                                        | Required | Restrictions |
-| -------------------- | ------ | -------------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check | string | Public key for which we want to query derived keys | y        |              |
-
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved derived keys for user" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   DerivedKeys: {
@@ -380,26 +593,39 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
   }
 }
 ```
+{% endtab %}
 
-## Delete Identities
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/delete-identities
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/delete-identities" summary="Delete Identities" %}
+{% swagger-description %}
 Temporary route to wipe [seedinfo cookies](../../../code/walkthrough.md#seed-creation-and-transaction-construction). This endpoint relies on [identity api](../../../devs/identity-api.md).&#x20;
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L498).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Delete Identities](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L597)\
+&#x20; \- Use DeleteIdentities to [clean up legacy seedinfo storage](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/app.component.ts#L360)
+{% endswagger-description %}
 
-* Make request to [Delete Identities](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L597)
-* Use DeleteIdentities to [clean up legacy seedinfo storage](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/app.component.ts#L360)
-
-**Parameters**
-
-None
-
-**Response**
-
-None
+{% swagger-response status="200: OK" description="Successfully deleted cookies" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
