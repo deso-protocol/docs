@@ -6,32 +6,50 @@ description: >-
 
 # Derived Keys Transaction API
 
-## Authorize Derived Key
-
-```
-POST /api/v0/authorize-derived-key
-```
-
+{% swagger method="post" path="" baseUrl="/api/v0/authorize-derived-key" summary="Authorize Derived Key" %}
+{% swagger-description %}
 Create an authorize derived key transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
 
 Authorize derived key transactions allows another public key to submit transaction on behalf of the owner public key.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/transaction.go#L2210).
+{% endswagger-description %}
 
-**Parameters**
+{% swagger-parameter in="body" required="true" type="String" name="OwnerPublicKeyBase58Check" %}
+Public key of the derived key owner
+{% endswagger-parameter %}
 
-| Name                        | Type               | Description                                                                                               | Required | Restrictions |
-| --------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------- | -------- | ------------ |
-| OwnerPublicKeyBase58Check   | string             | Public key of the derived key owner                                                                       | y        |              |
-| DerivedPublicKeyBase58Check | string             | The derived public key                                                                                    | y        |              |
-| ExpirationBlock             | uint64             | Height of block after which this derived key will no longer work.                                         | y        |              |
-| AccessSignature             | string             | The signature of hash(derived key + expiration block) made by the owner.                                  | y        |              |
-| DeleteKey                   | bool               | The intended operation on the derived key. If true, this derived key will no longer be valid.             | y        |              |
-| MinFeeRateNanosPerKB        | uint64             | Rate per KB                                                                                               | y        |              |
-| TransactionFees             | TransactionFees\[] | Array of Transaction Fee objects that define additional outputs that need to be added to this transaction | n        |              |
+{% swagger-parameter in="body" required="true" type="String" name="DerivedPublicKeyBase58Check" %}
+The derived public key
+{% endswagger-parameter %}
 
-**Response**
+{% swagger-parameter in="body" required="true" type="uint64" name="ExpirationBlock" %}
+Height of block after which this derived key will no longer work.
+{% endswagger-parameter %}
 
+{% swagger-parameter in="body" required="true" type="String" name="AccessSignature" %}
+The signature of hash(derived key + expiration block) made by the owner.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" required="true" type="Boolean" name="DeleteKey" %}
+The intended operation on the derived key. If true, this derived key will no longer be valid.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" required="true" type="uint64" name="MinFeeRateNanosPerKB" %}
+Rate per KB
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" type="TransactionFee[]" name="TransactionFees" %}
+Array of 
+
+[#transactionfee](../basics/data-types.md#transactionfee "mention")
+
+ objects that define additional outputs that need to be added to this transaction 
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully constructed Authorize Derived Key transaction" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   "TotalInputNanos": 49999779,
@@ -64,3 +82,19 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
   "TransactionHex": "0161b49620c72975d8397836c6b28981a0257d846e28ee74b296264bf1e2109036000102aa3dc8d299ea1e4914de66494ed3e16eda9a0d65719d523c1a9a03cbf9f60c45c6ddeb17152167f80ea6908b93cca921a2a49ef268ad373756b5ba45aff4e06bf7a31f7f20c0012102aa3dc8d299ea1e4914de66494ed3e16eda9a0d65719d523c1a9a03cbf9f60c450000"
 }
 ```
+{% endtab %}
+
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}

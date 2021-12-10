@@ -25,19 +25,6 @@
   * [Endpoints](identity/iframe-api/endpoints.md)
 * [Mobile Integration](identity/mobile-integration.md)
 
-## Developer Docs <a href="#devs" id="devs"></a>
-
-* [Running a Node](devs/running-a-node.md)
-* [Bug Bounty](devs/bug-bounty.md)
-* [Backend API](devs/backend-api.md)
-* [Exchange Listing API](devs/exchange-listing-api.md)
-* [Resources & Examples](devs/resources.md)
-
-## 中文
-
-* [什么是DeSo? (What is DeSo?)](zhong-wen/shi-mo-shi-deso-what-is-deso.md)
-* [愿景 (The Vision)](zhong-wen/yuan-jing-the-vision.md)
-
 ## Backend
 
 * [Introduction](backend/introduction.md)
@@ -65,3 +52,16 @@
     * [Tutorial Endpoints](backend/blockchain-data/api/tutorial-endpoints.md)
     * [Admin Endpoints](backend/blockchain-data/api/admin-endpoints.md)
     * [Buy DeSo Endpoints](backend/blockchain-data/api/buy-deso-endpoints.md)
+
+## Developer Docs <a href="#devs" id="devs"></a>
+
+* [Running a Node](devs/running-a-node.md)
+* [Bug Bounty](devs/bug-bounty.md)
+* [Backend API](devs/backend-api.md)
+* [Exchange Listing API](devs/exchange-listing-api.md)
+* [Resources & Examples](devs/resources.md)
+
+## 中文
+
+* [什么是DeSo? (What is DeSo?)](zhong-wen/shi-mo-shi-deso-what-is-deso.md)
+* [愿景 (The Vision)](zhong-wen/yuan-jing-the-vision.md)
