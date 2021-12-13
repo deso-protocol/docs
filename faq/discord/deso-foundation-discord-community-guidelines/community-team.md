@@ -10,14 +10,14 @@ description: >-
 
 | Discord Username | Timezone |
 | ---------------- | -------- |
-| Fede             | PST      |
-| tijn             | GMT      |
-| cfky             | GMT      |
-| doodles          | PST      |
-| bruhmoments      | EST      |
-| Kuririn          | CET      |
-| 100              | EST      |
-| Aditya           | IST      |
+| tijn#0303        | GMT      |
+| cfky#0858        | GMT      |
+| ADITYA#3780      | IST      |
+| 100#9532         | EST      |
+| doodles#4310     | PST      |
+| Kuririn#4348     | CET      |
+| Fede#8090        | PST      |
+| Da Vidci#7563    | EST      |
 
 ## DeSo Foundation Community Team
 
