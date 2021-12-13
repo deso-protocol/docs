@@ -1,64 +1,115 @@
+---
+description: Description of endpoints used to get social data on the DeSo blockchain
+---
+
 # Social Endpoints
 
-## Get Hodlers For Public Key
-
-```
-POST /api/v0/get-hodlers-for-public-key
-```
-
-Get BalanceEntryResponses of users who are holding a certain public key's creator coin.\
+{% swagger method="post" path="" baseUrl="/api/v0/get-hodlers-for-public-key" summary="Get Hodlers For Public Key" %}
+{% swagger-description %}
+Get [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention")objects for users who are holding (or held by) a certain public key's creator coin.\
 \
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1168).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Hodlers For Public Key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1208)\
+&#x20; \- Use GetHodlersForPublicKey to [show all the users who are holding a creator's coin](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-hodlers/creator-profile-hodlers.component.ts#L36)
+{% endswagger-description %}
 
-* Make request to [Get Hodlers For Public Key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1208)
-* Use GetHodlersForPublicKey to [show all the users who are holding a creator's coin](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-hodlers/creator-profile-hodlers.component.ts#L36)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" %}
+Public key for which you want to fetch hodlings or hodlers
 
-**Parameters**
+\
 
-| Name                     | Type   | Description                                                                                                                   | Required                                         | Restrictions |
-| ------------------------ | ------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------ |
-| PublicKeyBase58Check     | string | Public key for which you want to fetch hodlings or hodlers                                                                    | required if Username is not provided             |              |
-| Username                 | string | Username for which you want to fetch hodlings or hodlers                                                                      | required if PublicKeyBase58Check is not provided |              |
-| LastPublicKeyBase58Check | string | Public key of the last hodler/hodlee from the previous page. Indicates the point at which we want to start returning results. | n                                                |              |
-| NumToFetch               | uint64 | number of records to fetch                                                                                                    | n                                                |              |
-| FetchHodlings            | bool   | If true, fetch balance entries for hodlings of the user instead of balance entries for hodlers of the user's coin             | n                                                |              |
-| FetchAll                 | bool   | if true, fetch all results. Supercedes NumToFetch.                                                                            | n                                                |              |
 
-**Response**
 
+
+\
+
+
+Required only if Username is not provided
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="Username" type="String" %}
+Username for which you want to fetch hodlings or hodlers
+
+\
+
+
+
+
+\
+
+
+Required only if PublicKeyBase58Check is not provided
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="LastPublicKeyBase58Check" type="String" %}
+Public key of the last hodler/hodlee from the previous page. Indicates the point at which we want to start returning results.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="NumToFetch" type="uint64" %}
+number of records to fetch
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="FetchHodlings" type="Boolean" %}
+If true, fetch balance entries for hodlings of the user instead of balance entries for hodlers of the user's coin
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="FetchAll" type="Boolean" %}
+if true, fetch all results. Supercedes NumToFetch.
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully retrieved BalanceEntryResponses for each user who are holding/are held by the provided public key/username" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
     Hodlers: [<BalanceEntryResponse>, <BalanceEntryResponse>],
     LastPublicKeyBase58Check: "BC1YLianxEsskKYNyL959k6b6UPYtRXfZs4MF3GkbWofdoFQzZCkJRB" 
 }
 ```
+{% endtab %}
 
-## Get Diamonds for Public Key
+{% tab title="Response Field Descriptions" %}
+| Name                     | Type                                                                               | Description                                                                                                                                                                                                                                                                                                          |
+| ------------------------ | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hodlers                  | [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention")\[] | Array of [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention") objects representing the users who hold (or are held by) the provided public key or username. Each [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention") tells you how much that user is holding. |
+| LastPublicKeyBase58Check | String                                                                             | Public key of the last [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention")object from this page of results. Used to fetch the next page of results.                                                                                                                                      |
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/get-diamonds-for-public-key
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/get-diamonds-for-public-key" summary="Get Diamonds for Public Key" %}
+{% swagger-description %}
 Get a list of objects representing all the diamonds a user has given or received.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1304).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Diamonds For Public Key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1414)\
+&#x20; \- Use GetDiamondsForPublicKey to [show all users who have given a creator a diamond, how many diamonds they've given to that creator, and the highest level of diamond](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-diamonds/creator-diamonds.component.ts#L41)
+{% endswagger-description %}
 
-* Make request to [Get Diamonds For Public Key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1414)
-* Use GetDiamondsForPublicKey to [show all users who have given a creator a diamond, how many diamonds they've given to that creator, and the highest level of diamond](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-diamonds/creator-diamonds.component.ts#L41)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" required="true" %}
+Public key of the user for whom we want to fetch diamonds
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" name="FetchYouDiamonded" type="Boolean" %}
+If true, fetch diamonds this user gave out instead of diamond this user received
+{% endswagger-parameter %}
 
-| Name                 | Type   | Description                                                                      | Required | Restrictions |
-| -------------------- | ------ | -------------------------------------------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check | string | Public key of the user for whom we want to fetch diamonds                        | y        |              |
-| FetchYouDiamonded    | bool   | If true, fetch diamonds this user gave out instead of diamond this user received | n        |              |
-
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved diamonds a user gave or received" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
     DiamondSenderSummaryResponses: [
@@ -74,35 +125,80 @@ Example usages in frontend:
     TotalDiamonds: 555 // Total number of diamonds received or given by the profile that matches PublicKeyBase58Check
 }
 ```
+{% endtab %}
 
-## Get Follows Stateless
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/get-follows-stateless
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/get-follows-stateless" summary="Get Follows Stateless" %}
+{% swagger-description %}
 Get followers of a certain user/public key or get users followed by a certain user/public key and the total number of followers/followees.&#x20;
 
 Endpoint implementation in backend.
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Follows Stateless](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1274)\
+&#x20; \- Use GetFollows to show [the total number of users following a creator and the total number of users followed by a creator](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-top-card/creator-profile-top-card.component.ts#L161)\
+&#x20; \- Use GetFollows to [see all users who follow (or alternatively are followed by) a creator](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/manage-follows-page/manage-follows/manage-follows.component.ts#L54)
+{% endswagger-description %}
 
-* Make request to [Get Follows Stateless](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1274)
-* Use GetFollows to show [the total number of users following a creator and the total number of users followed by a creator](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-top-card/creator-profile-top-card.component.ts#L161)
-* Use GetFollows to [see all users who follow (or alternatively are followed by) a creator](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/manage-follows-page/manage-follows/manage-follows.component.ts#L54)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" %}
+Public key for which we want to fetch followers or followees
 
-**Parameters**
+\
 
-| Name                        | Type   | Description                                                                                                                                          | Required                                         | Restrictions |
-| --------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------ |
-| PublicKeyBase58Check        | string | Public key for which we want to fetch followers or followees                                                                                         | required if Username is not provided             |              |
-| Username                    | string | username for which we want to fetch followers or following                                                                                           | required if PublicKeyBase58Check is not provided |              |
-| GetEntriesFollowingUsername | bool   | <ul><li>If true, get entries that are following the specified user.</li><li>If false, get entries that are followed by the specified user.</li></ul> | n                                                |              |
-| LastPublicKeyBase58Check    | string | Public key of the last follower/followee from the previous page. Indicates the point at which we want to start returning results.                    | n                                                |              |
-| NumToFetch                  | uint64 | number of records to fetch                                                                                                                           | n                                                |              |
 
-**Response**
 
+
+\
+
+
+Required only if Username is not provided
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" type="String" name="Username" %}
+Username for which we want to fetch followers or following
+
+\
+
+
+
+
+\
+
+
+Required only if PublicKeyBase58Check is not provided
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="GetEntriesFollowingUsername" type="Boolean" %}
+&#x20; \- If true, get entries that are following the specified user.
+
+&#x20; \- If false, get entries that are followed by the specified user.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="LastPublicKeyBase58Check" type="String" %}
+Public key of the last follower/followee from the previous page. Indicates the point at which we want to start returning results.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="NumToFetch" type="uint64" %}
+number of records to fetch
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully retrieved the requested page of followers/followee" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   PublicKeyToProfileEntry: { // Map of public key to ProfileEntryResponse representing followers or followees
@@ -111,54 +207,105 @@ Example usages in frontend:
   NumFollowers: 17707 // Total number of followers or followees
 }
 ```
+{% endtab %}
 
-## Is Following Public Key
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/is-following-public-key
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/is-following-public-key" summary="Is Following Public Key" %}
+{% swagger-description %}
 Check if the user is following a public key.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L2669).
+{% endswagger-description %}
 
-**Parameters**
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" required="true" %}
+Public key of the user that may be following
+{% endswagger-parameter %}
 
-| Name                            | Type   | Description                                                         | Required | Restrictions |
-| ------------------------------- | ------ | ------------------------------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check            | string | Public key of the user that may be following                        | y        |              |
-| IsFollowingPublicKeyBase58Check | string | Public key of the creator we want to check if the user is following | y        |              |
+{% swagger-parameter in="body" required="true" name="IsFollowingPublicKeyBase58Check" type="String" %}
+Public key of the creator we want to check if the user is following
+{% endswagger-parameter %}
 
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved whether or not the request public key is following IsFollowingPublicKeyBase58Check" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   IsFollowing: true // true if the user is following the IsFollowingPublicKeyBase58Check. Otherwise, false.
 }
 ```
+{% endtab %}
 
-## Is Hodling Public Key
+{% tab title="Response Field Descriptions" %}
+| Name        | Type    | Description                                                                          |
+| ----------- | ------- | ------------------------------------------------------------------------------------ |
+| IsFollowing | Boolean | true if the user is following the IsFollowingPublicKeyBase58Check. Otherwise, false  |
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/is-hodling-public-key
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/is-hodling-public-key" summary="Is Hodling Public Key" %}
+{% swagger-description %}
 Check if the user holds the creator coin of a public key. If user is holding some amount of creator coin, we return the BalanceEntryResponse representing how much the user holds.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L2725).
+{% endswagger-description %}
 
-**Parameters**
+{% swagger-parameter in="body" required="true" name="PublicKeyBase58Check" type="String" %}
+Public key of the user that may be holding the creator coin of IsHodlingPublicKeyBase58Check
+{% endswagger-parameter %}
 
-| Name                          | Type   | Description                                                                                  | Required | Restrictions |
-| ----------------------------- | ------ | -------------------------------------------------------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check          | string | Public key of the user that may be holding the creator coin of IsHodlingPublicKeyBase58Check | y        |              |
-| IsHodlingPublicKeyBase58Check | string | Public key of the creator we want to check that the user is holding                          | y        |              |
+{% swagger-parameter in="body" required="true" type="String" name="IsHodlingPublicKeyBase58Check" %}
+Public key of the creator we want to check that the user is holding
+{% endswagger-parameter %}
 
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved whether PublicKeyBas58Check is hodling the creator coin of IsHodlingPublicKeyBase58Check" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   IsHodling: true, // true if the user holds the creator coin of IsHodlingPublicKeyBase58Check, Otherwise, false.
   BalanceEntry: <BalanceEntryResponse> // Balance entry that shows the amount of creator coins the user holds.
 }
 ```
+{% endtab %}
+
+{% tab title="Response Field Descriptions" %}
+| Name         | Type                                                                            | Description                                                                                                                            |
+| ------------ | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| IsHodling    | Boolean                                                                         | true if the user holds the creator coin of IsHodlingPublicKeyBase58Check, Otherwise, false.                                            |
+| BalanceEntry | [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention") | [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention") that shows the amount of creator coins the user holds. |
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
