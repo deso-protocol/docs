@@ -1,30 +1,37 @@
+---
+description: >-
+  Description of endpoints used to get data related to mining on the DeSo
+  blockchain
+---
+
 # Miner Endpoints
 
-## Get Block Template
-
-```
-POST /api/v0/get-block-template
-```
-
+{% swagger method="post" path="" baseUrl="/api/v0/get-block-template" summary="Get Block Template" %}
+{% swagger-description %}
 Get the template for the next block
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/miner.go#L56).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Block Template](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L584)\
+&#x20; \- Use GetBlockTemplate to [show stats on the next block in the admin panel](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/admin/admin.component.ts#L405)
+{% endswagger-description %}
 
-* Make request to [Get Block Template](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L584)
-* Use GetBlockTemplate to [show stats on the next block in the admin panel](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/admin/admin.component.ts#L405)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" required="true" %}
+Public key to swap in for the block reward 
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" required="true" type="int64" name="NumHeaders" %}
+Number of headers (and extra nonces) requested
+{% endswagger-parameter %}
 
-| Name                 | Type   | Description                                       | Required |   |
-| -------------------- | ------ | ------------------------------------------------- | -------- | - |
-| PublicKeyBase58Check | string | Public key to swap in for the block reward        | y        |   |
-| NumHeaders           | int64  | Number of headers (and extra nonces) requested    | y        |   |
-| HeaderVersion        | uint32 | Must be 1, version 0 headers have been deprecated | y        |   |
+{% swagger-parameter in="body" type="uint32" required="true" name="HeaderVersion" %}
+Must be 1, version 0 headers have been deprecated
+{% endswagger-parameter %}
 
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved the template for the next block" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   "BlockID": "27c0be6aba42ae4641c95d9a920399f689450f94388a7ac26c11188eb3b689b0", // Hex of latest block template hash
@@ -40,31 +47,68 @@ Example usages in frontend:
   }
 }
 ```
+{% endtab %}
 
-## Submit Block
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/submit-block
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/submit-block" summary="Submit Block" %}
+{% swagger-description %}
 Submits block to be processed by node's block producer
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/miner.go#L125).
+{% endswagger-description %}
 
-**Parameters**
+{% swagger-parameter in="body" name="PublicKeyBase58Check" required="true" type="String" %}
+Public key to swap in for the block reward 
+{% endswagger-parameter %}
 
-| Name                 | Type    | Description                                                 | Required |   |
-| -------------------- | ------- | ----------------------------------------------------------- | -------- | - |
-| PublicKeyBase58Check | string  | Public key to swap in for the block reward                  | y        |   |
-| Header               | \[]byte | Bytes of MsgDeSoHeader to be used in block                  | y        |   |
-| ExtraNonce           | uint64  | Extra data nonce to be used in the block reward transaction | y        |   |
-| BlockID              | string  | ID of block to be looked up from the block producer         | y        |   |
+{% swagger-parameter in="body" name="Header" type="Byte[]" required="true" %}
+Bytes of MsgDeSoHeader to be used in block
+{% endswagger-parameter %}
 
-**Response**
+{% swagger-parameter in="body" name="ExtraNonce" type="uint64" required="true" %}
+Extra data nonce to be used in the block reward transaction
+{% endswagger-parameter %}
 
+{% swagger-parameter in="body" name="BlockID" type="String" required="true" %}
+ID of block to be looked up from the block producer
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully submitted block to be processed" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   "IsMainChain": true, // If true, this is a block for the mainchain. If false, this is a block for testnet.
   "IsOrphan": false, // If true, this is an orphan block. If false, this block is not an orphan.
 }
 ```
+{% endtab %}
+
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
