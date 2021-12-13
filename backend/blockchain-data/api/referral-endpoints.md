@@ -1,29 +1,31 @@
+---
+description: Description of endpoints used to get referral data
+---
+
 # Referral Endpoints
 
-## Get Referral Info For User
-
-```
-POST /api/v0/get-referral-info-for-user
-```
-
+{% swagger method="post" path="" baseUrl="/api/v0/get-referral-info-for-user" summary="Get Referral Info For User" %}
+{% swagger-description %}
 Gets all data about all referral codes for this owner, including users referred by this code.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/referrals.go#L23).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Referral Info For User](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L2073)\
+&#x20; \- Use GetReferralInfoForUser to [fetch the current state of all referral links for a user upon login](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/global-vars.service.ts#L328)
+{% endswagger-description %}
 
-* Make request to [Get Referral Info For User](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L2073)
-* Use GetReferralInfoForUser to [fetch the current state of all referral links for a user upon login](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/global-vars.service.ts#L328)
+{% swagger-parameter in="body" required="true" name="PublicKeyBase58Check" type="String" %}
+user public key
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" required="true" name="JWT" type="String" %}
+JSON web token authenticating user
+{% endswagger-parameter %}
 
-| Name                 | Type   | Description                        | Required | Restrictions |
-| -------------------- | ------ | ---------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check | string | user public key                    | y        |              |
-| JWT                  | string | JSON web token authenticating user | y        |              |
-
-&#x20;**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved information about all referral codes a given user has" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   "ReferralInfoResponses": [{
@@ -46,30 +48,41 @@ Example usages in frontend:
     }]
 }
 ```
+{% endtab %}
 
-## Get Referral Info For Referral Hash
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/get-referral-info-for-referral-hash
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/get-referral-info-for-referral-hash" summary="Get Referral Info For Referral Hash" %}
+{% swagger-description %}
 Gets a summary of the current state of a single referral code. This is useful when a user arrives at your site with a referral code. It allows you to tell if the referral code is still valid and how much the user would receive if they signed up.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/referrals.go#L77).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Referral Info For Referral Hash](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L2079)\
+&#x20; \- Use GetReferralInfoForReferralHash to [show a new user the amount of money they would receive as a sign-up bonus with this referral code](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/global-vars.service.ts#L1184)
+{% endswagger-description %}
 
-* Make request to [Get Referral Info For Referral Hash](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L2079)
-* Use GetReferralInfoForReferralHash to [show a new user the amount of money they would receive as a sign-up bonus with this referral code](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/global-vars.service.ts#L1184)
+{% swagger-parameter in="body" name="ReferralHash" required="true" type="String" %}
+referral code
+{% endswagger-parameter %}
 
-**Parameters**
-
-| Name         | Type   | Description   | Required | Restrictions |
-| ------------ | ------ | ------------- | -------- | ------------ |
-| ReferralHash | string | referral code | y        |              |
-
-**Response**
-
+{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   "ReferralInfoResponse": {
@@ -83,3 +96,19 @@ Example usages in frontend:
   }
 }
 ```
+{% endtab %}
+
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
