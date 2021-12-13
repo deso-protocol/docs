@@ -162,5 +162,3 @@ For reference, `NFTEntryResponse` is defined in the backend repo [here](https://
 Objects of this type will be denoted as `<NFTCollectionResponse>` in this documentation.
 
 For reference, `NFTCollectionResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L32).
-
-##
