@@ -1,39 +1,148 @@
+---
+description: Description of endpoints used to get notification data on the DeSo blockchain
+---
+
 # Notification Endpoints
 
-## Get Notifications
-
-```
-POST /api/v0/get-notifications
-```
-
+{% swagger method="post" path="" baseUrl="/api/v0/get-notifications" summary="Get Notifications" %}
+{% swagger-description %}
 Get user notifications.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1877).
 
-Example usages in frontend:
+Example usages in frontend:\
+&#x20; \- Make request to [Get Notifications](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1605)\
+&#x20; \- Use GetNotifications to [get the next page of notifications for a user](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/notifications-page/notifications-list/notifications-list.component.ts#L46)
+{% endswagger-description %}
 
-* Make request to [Get Notifications](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1605)
-* Use GetNotifications to [get the next page of notifications for a user](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/notifications-page/notifications-list/notifications-list.component.ts#L46)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" required="true" %}
+user public key
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" name="FetchStartIndex" type="int64" %}
+Index of notification at which to start paginated lookup. Can set to -1
+{% endswagger-parameter %}
 
-| Name                              | Type             | Description                                                                                                                                    | Required | Restrictions |
-| --------------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check              | string           | user public key                                                                                                                                | y        |              |
-| FetchStartIndex                   | int64            | Index of notification at which to start paginated lookup. Can set to -1                                                                        | n        |              |
-| NumToFetch                        | int64            | Number of notifications to fetch                                                                                                               | y        |              |
-| FilteredOutNotificationCategories | map\[string]bool | map of category name to boolean indicating whether or not to include this category of transaction types. if not provided, no filtering occurs. | n        |              |
+{% swagger-parameter in="body" name="NumToFetch" type="int64" required="true" %}
+Number of notifications to fetch
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="FilteredOutNotificationCategories" type="map[string]bool" %}
+map of category name to boolean indicating whether or not to include this category of transaction types. if not provided, no filtering occurs.
+
+\
+
+
+
+
+\
+
 
 Category names and transaction types included in category:
 
-* diamond: BasicTransfer or CreatorCoinTransfer transactions that have appropriate diamond extra data.
-* transfer: BasicTransfer or CreatorCoinTransfer transactions that do not have diamond extra data OR CreatorCoin (buy or sell) transactions.
-* post: Post transactions
-* follow: Follow transactions
-* like: Like transactions
-* nft: NFTBid or AcceptNFTBid transactions
+\
 
-**Response**
+
+  \- 
+
+`diamond`
+
+: 
+
+`BasicTransfer`
+
+ or 
+
+`CreatorCoinTransfer`
+
+ transactions that have appropriate diamond extra data.
+
+\
+
+
+  \- 
+
+`transfer`
+
+: 
+
+`BasicTransfer`
+
+ or 
+
+`CreatorCoinTransfer`
+
+ transactions that do not have diamond extra data OR 
+
+`CreatorCoin`
+
+ (buy or sell) transactions.
+
+\
+
+
+  \- 
+
+`post`
+
+: 
+
+`Post`
+
+ transactions
+
+\
+
+
+  \- 
+
+`follow`
+
+: 
+
+`Follow`
+
+ transactions
+
+\
+
+
+  \- 
+
+`like`
+
+: 
+
+`Like`
+
+ transactions
+
+\
+
+
+  \- 
+
+`nft`
+
+: 
+
+`NFTBid,`
+
+ 
+
+`AcceptNFTBid`
+
+,  or 
+
+`NFTTransfer`
+
+ transactions
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully retrieved the next page of notifications" %}
+{% tabs %}
+{% tab title="Sample Response" %}
+
 
 ```json5
 {
@@ -144,30 +253,41 @@ Category names and transaction types included in category:
   }
 }
 ```
+{% endtab %}
 
-## Get Unread Notification Count
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/get-unread-notifications-count
-```
+{% endswagger-response %}
+{% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/get-unread-notifications-count" summary="Get Unread Notification Count" %}
+{% swagger-description %}
 Gets the number of unread notifications.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1795).
 
-Example usages in [diamondapp.com](https://diamondapp.com)'s frontend:
+Example usages in [diamondapp.com](https://diamondapp.com)'s frontend:\
+&#x20; \- Make request to [Get Unread Notification Count](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/backend-api.service.ts#L1706)\
+&#x20; \- Use GetUnreadNotificationCount to [display an indicator next to notifications representing the number of unread notifications ](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/global-vars.service.ts#L274)
+{% endswagger-description %}
 
-* Make request to [Get Unread Notification Count](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/backend-api.service.ts#L1706)
-* Use GetUnreadNotificationCount to [display an indicator next to notifications representing the number of unread notifications ](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/global-vars.service.ts#L274)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" required="true" %}
+Public key of the user for whom we want to get the notification count
+{% endswagger-parameter %}
 
-**Parameters**
-
-| Name                 | Type   | Description                                                           | Required | Restrictions |
-| -------------------- | ------ | --------------------------------------------------------------------- | -------- | ------------ |
-| PublicKeyBase58Check | string | Public key of the user for whom we want to get the notification count | y        |              |
-
-**Response**
-
+{% swagger-response status="200: OK" description="Successfully retrieved the number of unread notifications" %}
+{% tabs %}
+{% tab title="Sample Response" %}
 ```json5
 {
   "NotificationsCount": 2, // Number of unread notifications.
@@ -175,32 +295,69 @@ Example usages in [diamondapp.com](https://diamondapp.com)'s frontend:
   "UpdateMetadata": false // If true, the frontend should make a call to /api/v0/set-notification-metadata
 }
 ```
+{% endtab %}
 
-## Set Notification Metadata
+{% tab title="Response Field Descriptions" %}
+| Name                        | Type    | Description                                                                                                                                                                      |
+| --------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NotificationsCount          | uint64  | Number of unread notifications                                                                                                                                                   |
+| LastUnreadNotificationIndex | uint64  | Index of the last read notification                                                                                                                                              |
+| UpdateMetadata              | Boolean | if true, the frontend should make a call to [#set-notification-metadata](notification-endpoints.md#set-notification-metadata "mention")to update the state of notifications read |
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
 
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
 ```
-POST /api/v0/set-notification-metadata
-```
+{% endswagger-response %}
+{% endswagger %}
+
+{% swagger method="post" path="" baseUrl="/api/v0/set-notification-metadata" summary="Set Notification Metadata" %}
+{% swagger-description %}
+
 
 Update the number of unread notifications, the last notification seen index, and the last unread notification index.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L2050).
 
-Example usages in [diamondapp.com](https://diamondapp.com)'s frontend:
+Example usages in [diamondapp.com](https://diamondapp.com)'s frontend:\
+&#x20; \- Make a request to [Set Notification Metadata](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/backend-api.service.ts#L1691)\
+&#x20; \- Use SetNotificationMetadata [when loading the first page of notifications](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/notifications-page/notifications-list/notifications-list.component.ts#L98)
+{% endswagger-description %}
 
-* Make a request to [Set Notification Metadata](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/backend-api.service.ts#L1691)
-* Use SetNotificationMetadata [when loading the first page of notifications](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/notifications-page/notifications-list/notifications-list.component.ts#L98)
+{% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" required="true" %}
+Public key of the user for whom we are setting notification metadata
+{% endswagger-parameter %}
 
-**Parameters**
+{% swagger-parameter in="body" name="LastSeenIndex" type="int" required="true" %}
+The last notification index the user has seen
+{% endswagger-parameter %}
 
-| Name                        | Type   | Description                                                          | Required | Restrictions |   |
-| --------------------------- | ------ | -------------------------------------------------------------------- | -------- | ------------ | - |
-| PublicKeyBase58Check        | string | Public key of the user for whom we are setting notification metadata | y        |              |   |
-| LastSeenIndex               | int    | The last notification index the user has seen                        | y        |              |   |
-| LastUnreadNotificationIndex | int    | The last notification index that has been scanned                    | y        |              |   |
-| UnreadNotifications         | int    | The total count of unread notifications                              | y        |              |   |
-| JWT                         | string | JSON web token authenticating user                                   | y        |              |   |
+{% swagger-parameter in="body" required="true" type="int" name="LastUnreadNotificationIndex" %}
+The last notification index that has been scanned
+{% endswagger-parameter %}
 
-**Response**&#x20;
+{% swagger-parameter in="body" required="true" name="UnreadNotifications" type="int" %}
+The total count of unread notifications
+{% endswagger-parameter %}
 
-No response body. 200 status code.
+{% swagger-parameter in="body" required="true" name="JWT" type="String" %}
+JSON web token authenticating user
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully updated notification metadata for user" %}
+No response body
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
