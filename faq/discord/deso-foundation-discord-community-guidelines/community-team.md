@@ -23,13 +23,13 @@ description: >-
 
 | Discord Username |
 | ---------------- |
-| Dylan Lee        |
-| FastFreddie      |
-| meghanvita       |
+| Dylan Lee#7348   |
+| FastFreddie#0198 |
+| meghanvita#0917  |
 
 ## Node Support
 
 | Discord Username |
 | ---------------- |
-| topaz            |
-| sjg              |
+| topaz#8273       |
+| sjg#1144         |
