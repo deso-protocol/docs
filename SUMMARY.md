@@ -5,7 +5,11 @@
 ## FAQ
 
 * [Privacy and Security](faq/privacy-and-security.md)
-* [DeSo Discords](faq/discord.md)
+* [DeSo Discord Servers](faq/discord/README.md)
+  * [DeSo Foundation Discord - Community Guidelines](faq/discord/deso-foundation-discord-community-guidelines/README.md)
+    * [Community Team](faq/discord/deso-foundation-discord-community-guidelines/community-team.md)
+    * [Discord Roles](faq/discord/deso-foundation-discord-community-guidelines/discord-roles.md)
+    * [Community Guidelines](faq/discord/deso-foundation-discord-community-guidelines/community-guidelines.md)
 
 ## The DeSo Code <a href="#code" id="code"></a>
 
