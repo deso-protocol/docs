@@ -1,12 +1,14 @@
 # Setting Up Your Dev Environment
 
-This doc will teach you how to set up your dev environment. Although it's not a hard prerequisite, we recommend skimming the [BitClout Code Walkthrough](walkthrough.md) first, as it provides some useful context.
+This doc will teach you how to set up your dev environment. Although it's not a hard prerequisite, we recommend skimming the [DeSo Code Walkthrough](walkthrough.md) first, as it provides some useful context.
 
 ## Prerequisites
 
 To run the frontend repo, you will need to be running Node v13.13.0 and NPM 6.14.4. We recommend using NVM to set this environment up. To run the backend you'll need Go v1.15.6 installed.
 
-We will also assume that you have [Goland](https://www.jetbrains.com/go/) installed. This is the recommended IDE for developing on BitClout since most of the code is Go code.
+We will also assume that you have [Goland](https://www.jetbrains.com/go/) installed. This is the recommended IDE for developing on DeSo since most of the code is Go code.
+
+Another prerequisite is [vips](https://github.com/libvips/libvips) which can be installed with [homebrew](https://brew.sh/) – `brew install vips` – or `apt install libvips-tools` on Ubuntu.
 
 ## Setup
 
@@ -14,10 +16,10 @@ First, you must checkout all repos into the same directory. Some of these repos 
 
 ```text
 cd $WORKING_DIRECTORY
-git clone https://github.com/bitclout/core.git
-git clone https://github.com/bitclout/backend.git
-git clone https://github.com/bitclout/frontend.git
-git clone https://github.com/bitclout/identity.git
+git clone https://github.com/deso-protocol/core.git
+git clone https://github.com/deso-protocol/backend.git
+git clone https://github.com/deso-protocol/frontend.git
+git clone https://github.com/deso-protocol/identity.git
 ```
 
 Once all of these repos are checked out, we recommend importing them into a single Goland project. This allows you search across and develop on all of of the repos concurrently. To do this, open Goland, hit File &gt; Open, select a repo folder, and select "Attach" when prompted. If you do this correctly, you should have all four repos loaded into a single Goland project.
@@ -43,7 +45,7 @@ npm install
 # The following command will serve the frontend on localhost:4200 with
 # auto-reloading on changes. You must run a node before the site will
 # actually work however (see next section).
-ng serve
+npm start
 ```
 
 ### Running the node in testnet mode
@@ -59,6 +61,7 @@ cd backend/scripts/nodes
 # in the arguments. This gives you funds that you can test with. You can see 
 # the status of the node by going to the Admin tab after logging in with an
 # account and then going to the Network subtab.
+export CGO_CFLAGS_ALLOW="-Xpreprocessor"
 ./n0_test
 
 # Once n0_test is running, you must navigate to the following URL. 4200 is the
@@ -109,9 +112,7 @@ sudo npm install -g @angular/cli typescript tslint dep
 ng serve --port 4201
 ```
 
-In order to point your browser at your local identity service rather than at identity.bitclout.com, you must change a localStorage value similar to what we did to get the testnet node running. In this case, we must change `lastIdentityServiceURL` to `http://localhost:4201`. See the screenshot below:
+In order to point your browser at your local identity service rather than at identity.deso.org, you must change a localStorage value similar to what we did to get the testnet node running. In this case, we must change `lastIdentityServiceURL` to `http://localhost:4201`. See the screenshot below:
 
 ![](../.gitbook/assets/image%20%2815%29.png)
-
-
 

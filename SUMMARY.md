@@ -1,29 +1,71 @@
 # Table of contents
 
-* [What is BitClout?](README.md)
-* [The Vision](the-vision.md)
+* [DeSo: The Decentralized Social Network](README.md)
 
 ## FAQ
 
-* [BitClout FAQ](faq/bitclout-faq.md)
 * [Privacy and Security](faq/privacy-and-security.md)
+* [DeSo Discord Servers](faq/discord/README.md)
+  * [DeSo Foundation Discord - Community Guidelines](faq/discord/deso-foundation-discord-community-guidelines/README.md)
+    * [Community Team](faq/discord/deso-foundation-discord-community-guidelines/community-team.md)
+    * [Discord Roles](faq/discord/deso-foundation-discord-community-guidelines/discord-roles.md)
+    * [Community Guidelines](faq/discord/deso-foundation-discord-community-guidelines/community-guidelines.md)
 
-## The BitClout Code <a id="code"></a>
+## The DeSo Code <a href="#code" id="code"></a>
 
 * [Setting Up Your Dev Environment](code/dev-setup.md)
 * [Making Your First Changes](code/making-your-first-changes.md)
-* [BitClout Code Walkthrough](code/walkthrough.md)
+* [DeSo Code Walkthrough](code/walkthrough.md)
 
-## Developer Docs <a id="devs"></a>
+## Identity
+
+* [Introduction](identity/identity.md)
+* [Concepts](identity/concepts.md)
+* [Window API](identity/window-api/README.md)
+  * [Basics](identity/window-api/basics.md)
+  * [Endpoints](identity/window-api/endpoints.md)
+* [iframe API](identity/iframe-api/README.md)
+  * [Basics](identity/iframe-api/basics.md)
+  * [Endpoints](identity/iframe-api/endpoints.md)
+* [Mobile Integration](identity/mobile-integration.md)
+
+## Backend
+
+* [Introduction](backend/introduction.md)
+* [Transactions](backend/transactions/README.md)
+  * [Basics](backend/transactions/basics/README.md)
+    * [Data Types](backend/transactions/basics/data-types.md)
+  * [Transaction Utilities](backend/transactions/transaction-utilities.md)
+  * [Construct Transactions](backend/transactions/construct-transactions/README.md)
+    * [Social Transactions API](backend/transactions/construct-transactions/social-transactions-api.md)
+    * [NFT Transactions API](backend/transactions/construct-transactions/nft-transactions-api.md)
+    * [Financial Transactions API](backend/transactions/construct-transactions/financial-transactions-api.md)
+    * [Derived Keys Transaction API](backend/transactions/construct-transactions/derived-keys-transaction-api.md)
+* [Blockchain Data](backend/blockchain-data/README.md)
+  * [Basics](backend/blockchain-data/basics/README.md)
+    * [Data Types](backend/blockchain-data/basics/data-types.md)
+  * [API](backend/blockchain-data/api/README.md)
+    * [User Endpoints](backend/blockchain-data/api/user-endpoints.md)
+    * [Post Endpoints](backend/blockchain-data/api/post-endpoints.md)
+    * [NFT Endpoints](backend/blockchain-data/api/nft-endpoints.md)
+    * [Social Endpoints](backend/blockchain-data/api/social-endpoints.md)
+    * [Media Endpoints](backend/blockchain-data/api/media-endpoints.md)
+    * [Notification Endpoints](backend/blockchain-data/api/notification-endpoints.md)
+    * [Referral Endpoints](backend/blockchain-data/api/referral-endpoints.md)
+    * [Miner Endpoints](backend/blockchain-data/api/miner-endpoints.md)
+    * [Tutorial Endpoints](backend/blockchain-data/api/tutorial-endpoints.md)
+    * [Admin Endpoints](backend/blockchain-data/api/admin-endpoints.md)
+    * [Buy DeSo Endpoints](backend/blockchain-data/api/buy-deso-endpoints.md)
+
+## Developer Docs <a href="#devs" id="devs"></a>
 
 * [Running a Node](devs/running-a-node.md)
 * [Bug Bounty](devs/bug-bounty.md)
 * [Backend API](devs/backend-api.md)
-* [Identity API](devs/identity-api.md)
 * [Exchange Listing API](devs/exchange-listing-api.md)
+* [Resources & Examples](devs/resources.md)
 
 ## 中文
 
-* [什么是BitClout? \(What is BitClout?\)](zhong-wen/shen-me-shi-bitclout-what-is-bitclout.md)
-* [愿景 \(The Vision\)](zhong-wen/yuan-jing-the-vision.md)
-
+* [什么是DeSo? (What is DeSo?)](zhong-wen/shi-mo-shi-deso-what-is-deso.md)
+* [愿景 (The Vision)](zhong-wen/yuan-jing-the-vision.md)
