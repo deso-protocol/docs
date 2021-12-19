@@ -24,10 +24,10 @@ Every public key on the DeSo blockchain can have a profile that describes who th
     "NumberOfHolders": 2, // Number of users who hold this creator coin.
     "CoinsInCirculationNanos": 2203171427, // Total number of creator coin nanos in circulation.
     "CoinWatermarkNanos": 2203171427, // CoinWatermarkNanos is the highest amount of nanos that have ever been locked in this profile at a single point in time.
-    "BitCloutLockedNanos": 110694117 // Deprecated - use DeSoLockedNanos
+    "DeSoLockedNanos": 110694117 // Deprecated - use DeSoLockedNanos
   },
   "CoinPriceDeSoNanos": 150729253, // CoinPriceDeSoNanos is the price of this creator's coin in nanos.
-  "CoinPriceBitCloutNanos": 150729253, // Deprecated - use CoinPriceDeSoNanos
+  "CoinPriceDeSoNanos": 150729253, // Deprecated - use CoinPriceDeSoNanos
   "UsersThatHODL": [{ // Array of all hodlers of this creator's coin in the form of BalanceEntryResponses (described below). This is not always included.
     "HODLerPublicKeyBase58Check": "tBCKVERmG9nZpHTk2AVPqknWc1Mw9HHAnqrTpW1RnXpXMQ4PsQgnmV", // Public key of user who is holding this creator's coin.
     "CreatorPublicKeyBase58Check": "tBCKW665XZnvVZcCfcEmyeecSZGKAdaxwV2SH9UFab6PpSRikg4EJ2", // Public Key of the creator
