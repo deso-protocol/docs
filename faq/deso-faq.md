@@ -29,7 +29,7 @@ DeSo’s backend is structured as a blockchain. It is already [open source](http
 
 To prove this, note that right now you can [run a node](https://docs.deso.org/devs/running-a-node) and download the entire DeSo blockchain. Any engineer can then run [simple commands](https://github.com/andrewarrow/cloutcli#quick-start-demo) to print out the entire history of all DeSo messages, visualize the full social graph, search all posts, send mass DMs to users, and in general gain full access to the entire DeSo backend as you would with any other public blockchain. These actions would be impossible on twitter.com without [corporate permission](https://developer.twitter.com/en/docs/twitter-api/enterprise/historical-powertrack-api/overview) from Twitter.
 
-For this reason we think DeSo as a whole is _already_ significantly more decentralized than Twitter or Facebook. That said, there are still parts of the DeSo project that are centralized or semi-centralized, like [identity.deso.org](https://docs.deso.org/devs/identity-api) and [images.bitclout.com](https://bitclout.com/posts/db5f007e1c6a3b018bba98362fe5f8488f29f51676aa90ebf0bc2b702aec0f26), which we plan to phase out over time. You can read more about the technical roadmap for progressive decentralization below.
+For this reason we think DeSo as a whole is _already_ significantly more decentralized than Twitter or Facebook. That said, there are still parts of the DeSo project that are centralized or semi-centralized, like [identity.deso.org](https://docs.deso.org/devs/identity-api) and [images.diamondapp.com](https://diamondapp.com/posts/db5f007e1c6a3b018bba98362fe5f8488f29f51676aa90ebf0bc2b702aec0f26), which we plan to phase out over time. You can read more about the technical roadmap for progressive decentralization below.
 
 The main difference between DeSo and most previous public blockchains is that DeSo focuses on _social_ rather than financial transactions, like [updating a profile](https://github.com/deso-protocol/core/blob/main/lib/network.go#L211) or [buying a creator coin](https://github.com/deso-protocol/core/blob/27426de8fd6dfb5d0d0e98a2f6b82773d92a6288/lib/network.go#L215). Just to make that clear, here’s a [screenshot](https://www.bitcloutpulse.com/explorer/blocks/00000000000099a0306c0bd5b8bbb5eb6e2e716be4a929e20157d2af18189661) of a recent DeSo block from a third party block explorer called bitcloutpulse.com. Note that you can see individual social transaction types, such as `BLOCK_REWARD`, `SUBMIT_POST`, `FOLLOW`, `LIKE`, and so on.
 
@@ -39,14 +39,14 @@ The main difference between DeSo and most previous public blockchains is that De
 
 The first frontend UI to the DeSo Blockchain is at bitclout.com. Like the DeSo Blockchain, this is also [open source](https://github.com/deso-protocol/frontend) and anyone can download and modify it.
 
-And people have. While [Bitclout.com](http://bitclout.com) was the first major node on the DeSo network, and maintains a significant portion of the traffic at the time of this writing, other major nodes have matured recently. Some of them include:
+And people have. While [diamondapp.com](http://diamondapp.com) was the first major node on the DeSo network, and maintains a significant portion of the traffic at the time of this writing, other major nodes have matured recently. Some of them include:
 
 * [bitcloutpulse.com](http://bitcloutpulse.com), which provides analytics tools for the DeSo blockchain
-* [Flick](https://www.flickapp.com/bitclout), which serves the dominant iOS and Android apps for DeSo
+* [Flick](https://www.flickapp.com/), which serves the dominant iOS and Android apps for DeSo
 * [Blockchain.com](http://exchange.blockchain.com), which lists the DESO cryptocurrency for trading
 * And the many apps building on top of DeSo, listed at [bithunt.com](http://bithunt.com), many of which run their own full nodes
 
-Notably, everything that is not bitclout.com is operated as its own independent entity, and in the roughly three months since the launch of the DeSo project, several of these entities have already raised capital from blue-chip VC firms. For example, Flick was founded by [Nigel Eccles](https://www.youtube.com/watch?v=QM1Bz_eB2Ec), who was formerly the founder of FanDuel, a billion-dollar sports betting company.
+Notably, everything that is not diamondapp.com is operated as its own independent entity, and in the roughly three months since the launch of the DeSo project, several of these entities have already raised capital from blue-chip VC firms. For example, Flick was founded by [Nigel Eccles](https://www.youtube.com/watch?v=QM1Bz_eB2Ec), who was formerly the founder of FanDuel, a billion-dollar sports betting company.
 
 These nodes are to the DeSo blockchain what entities like Etherscan and Coinbase are to the Ethereum blockchain. Just like block explorers or exchanges, they allow you to view and interact with the DeSo blockchain. DeSo interactions tend to be social rather than mainly financial, of course.
 
@@ -66,15 +66,15 @@ In general, every application written on the DeSo blockchain can make use of DES
 
 In addition to DESO, the overall currency of the platform, each individual user on DeSo has their own creator coin. Creator coins are described more fully in [this explainer](https://docs.deso.org/#what-are-creator-coins), but in brief they allow users to support their favorite creators by buying their coin, a little like a combination of AngelList and Patreon. Creator coins can be thought of as the simplest way to issue a token for an individual, and individual creators can add value to their creator coins in many ways. For example:
 
-* [Bitcloutmembers](https://bitclout.com/u/cloutmembers) is Substack for DeSo. You need to hold a certain amount of a creator coin before you can see the creator’s premium posts.
-* [Hyped](https://bitclout.com/u/hyped) is Eventbrite for DeSo. You need to hold a certain amount of creator coins to enter the creator’s live event.
-* [Paywithbitclout](https://bitclout.com/u/paywithbitclout) is Gumroad for DeSo. You use creator coins or DESO to buy digital goods.
+* [Bitcloutmembers](https://diamondapp.com/u/cloutmembers) is Substack for DeSo. You need to hold a certain amount of a creator coin before you can see the creator’s premium posts.
+* [Hyped](https://diamondapp.com/u/hyped) is Eventbrite for DeSo. You need to hold a certain amount of creator coins to enter the creator’s live event.
+* [Paywithbitclout](https://diamondapp.com/u/paywithbitclout) is Gumroad for DeSo. You use creator coins or DESO to buy digital goods.
 
 The reason we have creator coins in addition to DESO is that creators can add creator-specific utility to their individual coins. As with DESO, creator coins are stored on the DeSo Blockchain.
 
 ### **What is DeSo’s Twitter account?**
 
-bitclout.com's only official Twitter account is @bitclout \([twitter.com/bitclout](https://twitter.com/bitclout)\). We posted proof of this on the DeSo blockchain [here](https://bitclout.com/posts/d61106b2b0f4fabe621909dbd297b9d7d659c49ba9c76ec2400eca97321033ae).
+DeSo Foundation's only official Twitter account is @desoprotocol \([twitter.com/desoprotocol](https://twitter.com/desoprotocol)\).
 
 ### **What is DeSo’s GitHub account?**
 
@@ -87,31 +87,31 @@ All of the code for the DeSo reference implementation, as well as tools and othe
 
 If you're an engineer, read the [developer docs](https://docs.deso.org/code/dev-setup) for how to clone these repositories, synchronize the DeSo blockchain locally, and stand up your own instance of a DeSo node.
 
-## **2. Bitclout.com Profiles, Seed Phrases, Identity, and Messaging**
+## **2. diamondapp.com Profiles, Seed Phrases, Identity, and Messaging**
 
-### What is a bitclout.com profile?
+### What is a diamondapp.com profile?
 
-To first order, a bitclout.com profile is similar to a Twitter profile. You can see one here: [bitclout.com/u/diamondhands](https://bitclout.com/u/diamondhands) and read more about profiles [here](https://docs.deso.org/#tweet-to-claim-your-profile).
+To first order, a diamondapp.com profile is similar to a Twitter profile. You can see one here: [diamondapp.com/u/diamondhands](https://diamondapp.com/u/diamondhands) and read more about profiles [here](https://docs.deso.org/#tweet-to-claim-your-profile).
 
-But there are some key differences between bitclout.com profiles and Twitter profiles. Among them:
+But there are some key differences between diamondapp.com profiles and Twitter profiles. Among them:
 
-1. Recall that bitclout.com is just one client to the DeSo blockchain. Other clients include [bitcloutpulse.com](https://bitcloutpulse.com), [flickapp.com](https://www.flickapp.com/bitclout), and many others listed at [bithunt.com](https://bithunt.com). So a profile can be removed from bitclout.com while the underlying user data is _still present_ on the DeSo blockchain. By contrast, when Twitter [suspends](https://help.twitter.com/en/managing-your-account/suspended-twitter-accounts) a user, that user has no way of gaining access to their messages, followers, or other user data without Twitter's consent.
-2. In particular, because the underlying user data for any bitclout.com profile \(including access to funds\) is present on the DeSo blockchain, a user whose profile is removed from bitclout.com retains access to their funds through their seed phrase \(see below\).
-3. Moreover, the developers who run individual DeSo clients like bitcloutpulse.com and flickapp.com can decide whether to show or hide any given profile at any given time, independent of bitclout.com's decision.
+1. Recall that diamondapp.com is just one client to the DeSo blockchain. Other clients include [bitcloutpulse.com](https://bitcloutpulse.com), [flickapp.com](https://www.flickapp.com/), and many others listed at [bithunt.com](https://bithunt.com). So a profile can be removed from bitclout.com while the underlying user data is _still present_ on the DeSo blockchain. By contrast, when Twitter [suspends](https://help.twitter.com/en/managing-your-account/suspended-twitter-accounts) a user, that user has no way of gaining access to their messages, followers, or other user data without Twitter's consent.
+2. In particular, because the underlying user data for any diamondapp.com profile \(including access to funds\) is present on the DeSo blockchain, a user whose profile is removed from diamondapp.com retains access to their funds through their seed phrase \(see below\).
+3. Moreover, the developers who run individual DeSo clients like bitcloutpulse.com and flickapp.com can decide whether to show or hide any given profile at any given time, independent of DeSo Foundation's decision.
 
-Put another way, a Twitter profile like twitter.com/bitclout is a view of data that is stored in the closed Twitter database. But a bitclout.com profile is a URL like bitclout.com/u/diamondhands which is a view of data that is stored on the [_public_](https://bitcloutpulse.com/explorer) DeSo blockchain. Anyone else can code a different view, and hide or show different users.
+Put another way, a Twitter profile like twitter.com/desoprotocol is a view of data that is stored in the closed Twitter database. But a diamondapp.com profile is a URL like diamondapp.com/u/diamondhands which is a view of data that is stored on the [_public_](https://bitcloutpulse.com/explorer) DeSo blockchain. Anyone else can code a different view, and hide or show different users.
 
 ### What is a DeSo seed phrase?
 
-Your DeSo seed phrase is a series of 12 words that is the password to your entire account. It's not just the password to your bitclout.com profile, but to the funds and the data stored on the DeSo blockchain. Your seed phrase can never be changed and sharing your seed phrase with anyone could result in a loss of funds. Read more [here](https://docs.deso.org/faq/privacy-and-security).
+Your DeSo seed phrase is a series of 12 words that is the password to your entire account. It's not just the password to your diamondapp.com profile, but to the funds and the data stored on the DeSo blockchain. Your seed phrase can never be changed and sharing your seed phrase with anyone could result in a loss of funds. Read more [here](https://docs.deso.org/faq/privacy-and-security).
 
-### How do I create a bitclout.com profile and seed phrase?
+### How do I create a diamondapp.com profile and seed phrase?
 
-For 99% of users, you can simply follow the signup flow on [bitclout.com](https://bitclout.com). However, if you are one of the ~15,000 users with reserved profiles, read on.
+For 99% of users, you can simply follow the signup flow on [diamondapp.com](https://diamondapp.com). However, if you are one of the ~15,000 users with reserved profiles, read on.
 
 ### What is a reserved profile and how does it work?
 
-In March of 2021, the DeSo core dev team reserved bitclout.com profiles for thousands of people, mainly to prevent squatting and impersonation of those handles. These were just ordinary profiles created by the dev team in the same way ordinary users create profiles \(namely by broadcasting transactions to the DeSo blockchain\).
+In March of 2021, the DeSo core dev team reserved profiles for thousands of people, mainly to prevent squatting and impersonation of those handles. These were just ordinary profiles created by the dev team in the same way ordinary users create profiles \(namely by broadcasting transactions to the DeSo blockchain\).
 
 Then, as an added benefit to the people for whom they reserved these profiles, the dev team also funded these profiles with DeSo to give them some of their own coin.
 
@@ -119,31 +119,31 @@ The dev team then made it possible for anyone on Twitter to claim their profile 
 
 Once a profile is claimed, the dev team transfers the profile to the public key contained in the Tweet. The dev team created these profiles, and so they then transfer these profiles — including control over the reserved creator coin assets — to the party claiming the profile using the [SWAP\_IDENTITY](https://github.com/deso-protocol/core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type on the blockchain.
 
-### How do I claim my profile at bitclout.com, if it was reserved?
+### How do I claim my profile at diamondapp.com, if it was reserved?
 
-Simply create an account on [bitclout.com](https://bitclout.com), navigate to your reserved profile, and hit the button to claim your profile. This will draft a Tweet with your public key in it that support can use to transfer your profile to you.
+Simply create an account on [diamondapp.com](https://diamondapp.com), navigate to your reserved profile, and hit the button to claim your profile. This will draft a Tweet with your public key in it that support can use to transfer your profile to you.
 
 ![](../.gitbook/assets/image%20%281%29.png)
 
-### How do I remove my profile from bitclout.com, if it was reserved?
+### How do I remove my profile from diamondapp.com, if it was reserved?
 
-Simply DM @bitclout on Twitter from the account with the same handle as the reserved account. This is required in order to verify that you own the Twitter account associated with the reserved profile.
+Simply DM @desoprotocol on Twitter from the account with the same handle as the reserved account. This is required in order to verify that you own the Twitter account associated with the reserved profile.
 
-Importantly, removing your account from bitclout.com does not remove it from the underlying DeSo blockchain. This means your profile may still show up on other nodes, such as [bitcloutsignal.com](https://bitcloutsignal.com) or [prosperclout.com](https://prosperclout.com). They may decide to follow bitclout.com or make their own moderation decisions.
+Importantly, removing your account from diamondapp.com does not remove it from the underlying DeSo blockchain. This means your profile may still show up on other nodes, such as [bitcloutsignal.com](https://bitcloutsignal.com) or [prosperclout.com](https://prosperclout.com). They may decide to follow diamondapp.com or make their own moderation decisions.
 
-An account can be removed from bitclout.com either by request or by the admin of the bitclout.com node. Only the owner of the account can request removal; accounts cannot be removed by anyone other than the owner or the admin of the bitclout.com node.
+An account can be removed from diamondapp.com either by request or by the admin of the diamondapp.com node. Only the owner of the account can request removal; accounts cannot be removed by anyone other than the owner or the admin of the diamondapp.com node.
 
-### How do I un-remove my profile from bitclout.com?
+### How do I un-remove my profile from diamondapp.com?
 
-Importantly, profiles cannot be removed from the blockchain, and so this question refers solely to hiding profiles on bitclout.com.
+Importantly, profiles cannot be removed from the blockchain, and so this question refers solely to hiding profiles on diamondapp.com.
 
-If the account was removed from bitclout.com by the owner, the owner can email [node.admin@protonmail.com](mailto:node.admin@protonmail.com) to request it be unhidden on bitclout.com. They may be asked to provide proof that they control the private keys of the account.
+If the account was removed from diamondapp.com by the owner, the owner can email [node.admin@protonmail.com](mailto:node.admin@protonmail.com) to request it be unhidden on diamondapp.com. They may be asked to provide proof that they control the private keys of the account.
 
-The bitclout.com node admin also has the discretion to hide profiles. In such cases, the profile cannot be unhidden by the owner. This does not affect how other nodes like DeSo Pulse, ProsperClout, DeSo Signal, or Flick show the profile.
+The diamondapp.com node admin also has the discretion to hide profiles. In such cases, the profile cannot be unhidden by the owner. This does not affect how other nodes like DeSo Pulse, ProsperClout, DeSo Signal, or Flick show the profile.
 
 ### Can reserved profiles be removed prior to being claimed?
 
-Yes. As described in [this answer](deso-faq.md#what-is-a-reserved-profile-and-how-does-it-work), reserved profiles are controlled by the DeSo core developers until they are transferred over to the corresponding Twitter users who claim them. This means that the core developers can choose to remove reserved profiles if this is in the best interests of the community. If this happens, users can still message @bitclout to claim their handles, but they will not receive the pre-purchased coins that the core developers allocated to their names. Anyone who holds coins in this profile can still access this profile in their wallet and sell their coins.
+Yes. As described in [this answer](deso-faq.md#what-is-a-reserved-profile-and-how-does-it-work), reserved profiles are controlled by the DeSo core developers until they are transferred over to the corresponding Twitter users who claim them. This means that the core developers can choose to remove reserved profiles if this is in the best interests of the community. If this happens, users can still message team@deso.org to claim their handles, but they will not receive the pre-purchased coins that the core developers allocated to their names. Anyone who holds coins in this profile can still access this profile in their wallet and sell their coins.
 
 In the past, reserved profiles have been removed when it appears as though the person claiming them is going to either immediately sell the pre-purchased coins that the core developers allocated to them, or "rug-pull" on their holders. This is because rug-pulls are not only harmful to the holders of the reserved user’s coins, but also because they promote a short-term mindset that is harmful to the community more generally.
 
@@ -155,27 +155,27 @@ Seed phrases were used as a mechanism to log users in prior to the introduction 
 
 Currently, we don't have a migration path for people who logged in with a seed phrase and want to "import" that seed phrase into their Google account. We hope to have a fix for this soon so that everyone who wants to use Google to login can import their seed phrase and have the benefit of 2FA and secure storage of their seed phrase. The dev community is working aggressively on improving DeSo Identity to add this, especially the Flick team, which creates the top DeSo mobile apps.
 
-### Can Bitclout.com access my private keys, if I’m a normal user?
+### Can diamondapp.com access my private keys, if I’m a normal user?
 
-No. A user who signs up at bitclout.com fully controls their profiles with their private keys. When a user signs up with a seed phrase, their private keys _never_ leave the browser.
+No. A user who signs up at diamondapp.com fully controls their profiles with their private keys. When a user signs up with a seed phrase, their private keys _never_ leave the browser.
 
 When a user signs in with Google, the user's private keys are backed up to an isolated part of that user's Google Drive that nobody can access other than that user.
 
 For more information on how DeSo private key storage works, see [here](https://docs.deso.org/faq/privacy-and-security).
 
-Note: Although a user's private keys never touch bitclout.com's servers, it is important to mention that profiles and creator coins \(not $DESO\) can be recovered by certain ParamUpdater public keys using a [SWAP\_IDENTITY](https://github.com/deso-protocol/core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type that the core dev team intends to remove after an initial bootstrapping phase. This transaction type has only been used to transfer profiles and recover profiles for high-profile accounts that lost their seed phrase prior to the "Login with Google" update.
+Note: Although a user's private keys never touch DeSo servers, it is important to mention that profiles and creator coins \(not $DESO\) can be recovered by certain ParamUpdater public keys using a [SWAP\_IDENTITY](https://github.com/deso-protocol/core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type that the core dev team intends to remove after an initial bootstrapping phase. This transaction type has only been used to transfer profiles and recover profiles for high-profile accounts that lost their seed phrase prior to the "Login with Google" update.
 
-### Can Bitclout.com access my private keys, if I’m a reserved user?
+### Can DeSo apps access my private keys, if I’m a reserved user?
 
 The private keys for reserved profiles are controlled by the core developers until the profiles are transferred over to the users who claim them. After this transfer is complete, the user fully controls these profiles with their private keys, which never leave their browser.
 
-Note: Although a user's private keys never touch bitclout.com's servers, it is important to mention that profiles and creator coins \(not $DESO\) can be recovered by certain ParamUpdater public keys using a [SWAP\_IDENTITY](https://github.com/deso-protocol/core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type that the core dev team intends to remove after an initial bootstrapping phase. This transaction type has only been used to transfer profiles and recover profiles for high-profile accounts that lost their seed phrase prior to the "Login with Google" update.
+Note: Although a user's private keys never touch DeSo servers, it is important to mention that profiles and creator coins \(not $DESO\) can be recovered by certain ParamUpdater public keys using a [SWAP\_IDENTITY](https://github.com/deso-protocol/core/blob/2252c71379d9e7d0872c7e4844413134b5d7393c/lib/network.go#L216) transaction type that the core dev team intends to remove after an initial bootstrapping phase. This transaction type has only been used to transfer profiles and recover profiles for high-profile accounts that lost their seed phrase prior to the "Login with Google" update.
 
 ### Can developers using identity.deso.org access my private keys?
 
-No. identity.deso.org only exists as a means of isolating key material to an iFrame in the user’s browser. This isolation not only makes bitclout.com more secure, but it also provides a means for third-party developers to leverage accounts created on other nodes by including identity.deso.org as a dependency. Notably, anyone can spin up a clone of identity.deso.org since it is [fully open-source](https://github.com/deso-protocol/identity), and we expect this to be an opportunity for exchanges to custody users’ identities in the future. For more information about DeSo’s identity API, see [here](https://docs.deso.org/devs/identity-api).
+No. identity.deso.org only exists as a means of isolating key material to an iFrame in the user’s browser. This isolation not only makes DeSo apps more secure, but it also provides a means for third-party developers to leverage accounts created on other nodes by including identity.deso.org as a dependency. Notably, anyone can spin up a clone of identity.deso.org since it is [fully open-source](https://github.com/deso-protocol/identity), and we expect this to be an opportunity for exchanges to custody users’ identities in the future. For more information about DeSo’s identity API, see [here](https://docs.deso.org/devs/identity-api).
 
-### Can anyone create an account on the DeSo blockchain without going through Bitclout.com?
+### Can anyone create an account on the DeSo blockchain without going through diamondapp.com?
 
 Yes, absolutely. Apps such as bitcloutpulse.com and Flick already allow this. Users can also create accounts programmatically by broadcasting the proper transactions to the blockchain. This [toolslib](https://github.com/deso-protocol/backend/tree/main/scripts/tools/toolslib) directory is useful for that.
 
@@ -209,9 +209,9 @@ We are working on a fix to this, but the engineering is nontrivial. In the meant
 
 ## **3. DeSo Blockchain, Decentralization, Open Source, and Scaling**
 
-### Is Bitclout.com open-source?
+### Is DeSo open-source?
 
-Yes, 100% of the code that powers bitclout.com is public [here](https://github.com/deso-protocol). And we mean 100%. This includes all the code required to [run a node](https://docs.deso.org/devs/running-a-node) and to [run the frontend](https://github.com/deso-protocol/frontend).
+Yes, 100% of the code that powers DeSo blockchain is public [here](https://github.com/deso-protocol). And we mean 100%. This includes all the code required to [run a node](https://docs.deso.org/devs/running-a-node) and to [run the frontend](https://github.com/deso-protocol/frontend).
 
 Moreover, all of the DeSo data is stored publicly on the blockchain, such that anyone who runs and syncs a node can instantly build on the full firehose of data \(there are multiple popular third-party block explorers such as [explorer.cloutangel.com](https://explorer.cloutangel.com) and [bitcloutpulse.com](https://www.bitcloutpulse.com/explorer)\). This property in particular has the potential to turn social media from a walled garden controlled by a handful of companies to a utility that anyone in the world can build and innovate on.
 
@@ -219,20 +219,20 @@ Moreover, all of the DeSo data is stored publicly on the blockchain, such that a
 
 Yes, the code that powers the DeSo blockchain is mainly the core repo [here](https://github.com/deso-protocol/core).
 
-### **What is the difference between Bitclout.com and the DeSo Blockchain?**
+### **What is the difference between diamondapp.com and the DeSo Blockchain?**
 
-Bitclout.com is a DeSo node, which means it downloads all transactions from its peers and writes transactions to the blockchain.
+diamondapp.com is a DeSo node, which means it downloads all transactions from its peers and writes transactions to the blockchain.
 
-The DeSo blockchain is the set of all transactions that have occurred on the DeSo network, which is a superset of the transactions that happened on bitclout.com, which is just one node on the network.
+The DeSo blockchain is the set of all transactions that have occurred on the DeSo network, which is a superset of the transactions that happened on diamondapp.com, which is just one node on the network.
 
-### **What parts of DeSo are centralized at bitclout.com and what parts are decentralized on the DeSo Blockchain, and what parts of the DeSo Blockchain are still semi-centralized?**
+### **What parts of DeSo are centralized at diamondapp.com and what parts are decentralized on the DeSo Blockchain, and what parts of the DeSo Blockchain are still semi-centralized?**
 
-All code is public, and nearly all data utilized by bitclout.com is publicly stored on the blockchain.com. There are some exceptions, however, for good reasons:
+All code is public, and nearly all data utilized by diamondapp.com is publicly stored on the blockchain.com. There are some exceptions, however, for good reasons:
 
-* **Removals.** Which profiles have been removed from bitclout.com is not stored on the chain. This is intentional in order to prevent bitclout.com from having the power to unilaterally deplatform someone from the DeSo network. It means that decisions about what profiles should and shouldn’t be exposed from the blockchain are made at the node level, creating a significantly more decentralized approach to moderation than the status quo for social media provides today.
+* **Removals.** Which profiles have been removed from diamondapp.com is not stored on the chain. This is intentional in order to prevent diamondapp.com from having the power to unilaterally deplatform someone from the DeSo network. It means that decisions about what profiles should and shouldn’t be exposed from the blockchain are made at the node level, creating a significantly more decentralized approach to moderation than the status quo for social media provides today.
 * **Verifications.** Verified checkmarks are not stored on the blockchain. This is for the same reason that removed profiles aren’t. Instead, the core dev team has plans to introduce an “association” primitive that will allow profiles to associate with one another, effectively creating a more decentralized version of the blue checkmark. For example, your profile can list associations with universities or workplaces that have been cryptographically signed.
 * **Emails and phones.** Emails and phone numbers are not stored on-chain for privacy reasons currently. However, we are working on storing them in an encrypted fashion to support features like sharing one’s email or phone number with other users on other nodes.
-* **Images and videos.** Although the DeSo blockchain stores all text posts directly, images and videos are stored in a centralized fashion at images.bitclout.com such that only links to the images are actually stored on the blockchain. This is because images and videos are still too large to efficiently store on blockchains currently, though technologies like IPFS and Arweave are promising.
+* **Images and videos.** Although the DeSo blockchain stores all text posts directly, images and videos are stored in a centralized fashion at images.diamondapp.com such that only links to the images are actually stored on the blockchain. This is because images and videos are still too large to efficiently store on blockchains currently, though technologies like IPFS and Arweave are promising.
 * **Identity iFrame \(for now\).** identity.deso.org is currently the dominant domain used to serve a DeSo Identity app. However, we expect this to decentralize more as exchanges enter the Identity game.
 * In consensus, there are two transaction types that are temporarily only executable by certain [ParamUpdater public keys](https://github.com/deso-protocol/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/constants.go#L449). They are [UpdateGlobalParams](https://github.com/deso-protocol/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/network.go#L217) \(for fees\) and [SwapIdentity](https://github.com/deso-protocol/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/network.go#L216) \(for reserved profiles\).
   * UpdateGlobalParams is a tool that can be used to set a global transaction "fee rate." This is useful for when the network is getting spam attacked, as it allows [a global fee rate](https://github.com/deso-protocol/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/block_view.go#L287) to be increased fairly quickly \(in contrast to other chains where node operators must individually adjust their fees, leading to consensus issues\). It also allows for the adjustment of [CreateProfileFeeNanos](https://github.com/deso-protocol/core/blob/5ce03b9318b6b447f895cc9db7d61de54736c1a6/lib/block_view.go#L284), which is the fee required in order to create a profile on the DeSo blockchain. The core devs hope to make both of these parameters override-able in the near future.
@@ -242,7 +242,7 @@ All code is public, and nearly all data utilized by bitclout.com is publicly sto
 
 Today, the DeSo blockchain is fully replicated across dozens of independent nodes all over the world. [Anyone can run a node](https://docs.deso.org/devs/running-a-node) and join the network, and because it is currently based on proof of work, anyone can mine blocks as well. This has already resulted in [hundreds of apps](http://bithunt.com) being built on the DeSo blockchain, including:
 
-* [Flick](https://www.flickapp.com/bitclout) is an amazing DeSo iOS and Android app that was created by @nigeleccles, who co-founded FanDuel previously. They and others like [Cloutfeed](https://bitclout.com/u/cloutfeed) and [Cloutie](https://bitclout.com/u/CloutieApp) did such a good job that core devs will never build an app. Third-party apps are first-party apps on DeSo.
+* [Flick](https://www.flickapp.com/) is an amazing DeSo iOS and Android app that was created by @nigeleccles, who co-founded FanDuel previously. They and others like [Cloutfeed](https://diamondapp.com/u/cloutfeed) and [Cloutie](https://diamondapp.com/u/CloutieApp) did such a good job that core devs will never build an app. Third-party apps are first-party apps on DeSo.
 * [DeSo Pulse](http://bitcloutpulse.com) is an awesome "Bloomberg Terminal" for DeSo. [DeSo Signal](https://bitcloutsignal.com) is amazing for transaction history and analytics as well. They both built timeseries tech that the core devs couldn't, and they blow the reference implementation’s indexes out of the water.
 * Our favorite block explorer is NOT the one we built, it's [explorer.cloutangel.com](http://explorer.cloutangel.com). Just compare it to our block explorer at [explorer.deso.org](https://explorer.deso.org). Head to head, ours is a joke. CloutAngel is better in literally every way.
 * And then of course there's [Moonbounce](https://getmoonbounce.com/), which is creating amazing engagement tools for creators on DeSo that will unlock new behaviors and interactions between creators and their followers.
@@ -259,7 +259,7 @@ Importantly, in the long run, which is likely a matter of months, DeSo intends t
 
 The technical project of scaling centralized social networks occurred about 10-15 years ago, during the mid/late 2000s, when social networks rose from ~0 to 1B users. It’s now been about 10 years since that hypergrowth phase. With the lessons learned, we think it may now be feasible to scale a decentralized social network.
 
-In the following discussion, an important point is that DeSo gives strong incentives for people and companies to run full DeSo nodes with significant hardware resources, because they can run custom frontends on top of the nodes \(essentially their own versions of bitclout.com\) and monetize them through fees and added features.
+In the following discussion, an important point is that DeSo gives strong incentives for people and companies to run full DeSo nodes with significant hardware resources, because they can run custom frontends on top of the nodes \(essentially their own versions of diamondapp.com\) and monetize them through fees and added features.
 
 We have four phases currently planned for scaling DeSo.
 
@@ -321,9 +321,9 @@ Below are the steps to update nodes on the DeSo network, as it exists today:
 
 This process is relatively centralized, but it’s how most other chains work currently. The check against centralization is the fact that _**any group of sufficiently-motivated developers can hard fork all of the code and data at any time because both the code and data are totally open.**_
 
-### **How does Bitclout.com moderate content?**
+### **How does diamondapp.com moderate content?**
 
-All users have the right to post, like, comment, message and do all basic DeSo functions forever, as long as they are willing to pay mining fees for their transactions. This is because anybody in the world can [run a DeSo node](https://docs.deso.org/devs/running-a-node), which means anybody in the world can access the full range of social network features at all times. Users can also choose from a [long list](https://bithunt.com/explore) of nodes other than bitclout.com such as [bitcloutpulse.com](https://bitcloutpulse.com) and Flick, which have their own distinct moderation policies.
+All users have the right to post, like, comment, message and do all basic DeSo functions forever, as long as they are willing to pay mining fees for their transactions. This is because anybody in the world can [run a DeSo node](https://docs.deso.org/devs/running-a-node), which means anybody in the world can access the full range of social network features at all times. Users can also choose from a [long list](https://bithunt.com/explore) of nodes other than diamondapp.com such as [bitcloutpulse.com](https://bitcloutpulse.com) and Flick, which have their own distinct moderation policies.
 
 Each individual node on the DeSo network has its own distinct moderation policy. If you want full freedom, you can run your own node fairly easily; however, if you’re using someone else’s node then you are subject to their moderation.
 
@@ -331,15 +331,15 @@ We believe this model of “node-level” moderation presents a significantly mo
 
 See [running a node](https://docs.deso.org/devs/running-a-node). Also see [here](deso-faq.md).
 
-### **Can I view, sell, and access my $DESO and creator coins on another DeSo node if my profile was removed at Bitclout.com?**
+### **Can I view, sell, and access my $DESO and creator coins on another DeSo node if my profile was removed at diamondapp.com?**
 
 Yes. With DeSo, all profiles and posts are stored on the blockchain forever. You cannot remove a profile or post from the blockchain once it has been created and mined into a block.
 
 Individual nodes are responsible for serving their own curated “view” over the blockchain, and they can choose what content they want to show at the node level.
 
-bitclout.com is one node on the network, but there are already many others that do their own totally distinct moderation, such as bitcloutpulse.com, bitcloutsignal.com, prosperclout.com, and tijn.club. The decisions behind what bitclout.com shows do not affect these other nodes.
+diamondapp.com is one node on the network, but there are already many others that do their own totally distinct moderation, such as bitcloutpulse.com, bitcloutsignal.com, prosperclout.com, and tijn.club. The decisions behind what diamondapp.com shows do not affect these other nodes.
 
-For example, bitclout.com does not surface all profiles in its UI; it filters out certain profiles that are spamming, scamming, or impersonating legitimate users. To see any profile that is not available on bitclout.com, you can generally just go to any node that is not bitclout.com. For example, any of the following nodes currently show all profiles:
+For example, diamondapp.com does not surface all profiles in its UI; it filters out certain profiles that are spamming, scamming, or impersonating legitimate users. To see any profile that is not available on diamondapp.com, you can generally just go to any node that is not diamondapp.com. For example, any of the following nodes currently show all profiles:
 
 * [https://bitcloutsignal.com/history](https://bitcloutsignal.com/history) 
 * [https://www.prosperclout.com](https://www.prosperclout.com) 
@@ -349,11 +349,11 @@ Note that reserved profiles are controlled by the core devs until they are trans
 
 ### How does the global feed work?
 
-Every node operator gets to curate what shows up on their own global feed, as described and shown [here](https://docs.deso.org/devs/running-a-node#managing-your-feed). This means that, in the very near future, we will have many feeds, not just the global feed on bitclout.com, as described in more detail [here](https://docs.deso.org/devs/running-a-node#running-your-own-feed).
+Every node operator gets to curate what shows up on their own global feed, as described and shown [here](https://docs.deso.org/devs/running-a-node#managing-your-feed). This means that, in the very near future, we will have many feeds, not just the global feed on diamondapp.com, as described in more detail [here](https://docs.deso.org/devs/running-a-node#running-your-own-feed).
 
 In addition, the follow feed will _always_ shows you every post from all the people you follow, which reduces the reliance on node-level curation. Once you're following enough people, there ceases to be a need to check the global feed anymore.
 
-This being said, there are no strict guidelines on anything that shows up in the global feed on bitclout.com. In the short-term, because bitclout.com aims to appeal to as wide an audience as possible, the content will generally bias more toward things that have mass appeal. But that's about it.
+This being said, there are no strict guidelines on anything that shows up in the global feed on diamondapp.com. In the short-term, because diamondapp.com aims to appeal to as wide an audience as possible, the content will generally bias more toward things that have mass appeal. But that's about it.
 
 ## **4. $DESO**
 
@@ -369,11 +369,11 @@ This is a commonly-misunderstood issue, and it is due to the fact that there was
 
 Today, node operators can specify a [DESO wallet](https://github.com/deso-protocol/backend/blob/527751f1358aae19b13450cad2c0d270b9ba226b/cmd/run.go#L129) and a [Bitcoin wallet](https://github.com/deso-protocol/backend/blob/527751f1358aae19b13450cad2c0d270b9ba226b/cmd/run.go#L128) and allow their users to seamlessly purchase DESO for Bitcoin through their node. The node operator can then use the Bitcoin they accumulate purchase DESO from an exchange to refill their DESO wallet and earn a "slippage fee" for this service \(basically acting as a market maker\).
 
-Prior to the [Deflation Bomb](https://bitclout.com/posts/3a13a7e4342148e76e1de957f22775a4f6916ed809a90e77a035bb7cefaaaf44?feedTab=Global), DESO was purchased via a [BitcoinExchange](https://github.com/deso-protocol/core/blob/31735a82b8446421176df151dd5f80d9dac2eabd/lib/network.go#L208) transaction on the DeSo blockchain, which resulted in BTC accumulating in a treasury wallet. For security reasons, we cannot publicly explain exactly how these funds are custodied. This being said, the core dev team is working on clarifying the governance around this wallet and should have some updates very soon.
+Prior to the [Deflation Bomb](https://diamondapp.com/posts/3a13a7e4342148e76e1de957f22775a4f6916ed809a90e77a035bb7cefaaaf44?feedTab=Global), DESO was purchased via a [BitcoinExchange](https://github.com/deso-protocol/core/blob/31735a82b8446421176df151dd5f80d9dac2eabd/lib/network.go#L208) transaction on the DeSo blockchain, which resulted in BTC accumulating in a treasury wallet. For security reasons, we cannot publicly explain exactly how these funds are custodied. This being said, the core dev team is working on clarifying the governance around this wallet and should have some updates very soon.
 
 ## 5. Community Questions
 
-A community AMA recently resulted in some [amazing questions](https://bitclout.com/posts/d4d29c0adb284da5190d61593e9dafceddeb92ea02e9d0771f0e6c5f05b6d44c). We decided to give them their own section here to make sure they were all covered.
+A community AMA recently resulted in some [amazing questions](https://diamondapp.com/posts/d4d29c0adb284da5190d61593e9dafceddeb92ea02e9d0771f0e6c5f05b6d44c). We decided to give them their own section here to make sure they were all covered.
 
 ### Roadmap
 
@@ -383,11 +383,9 @@ We are working on formalizing this. The priorities fluctuate, but below are some
 
 * **NFTs** We will be getting feedback on the community for some proposals prior to this, and are looking to develop and launch this a little more collaboratively than other features.
 * **Improve the onboarding and overall look and feel of the reference client.** The core dev team has retained a professional design firm to work on these. And all improvements become instantly accessible to the community via the open-source repos.
-* **Notifications.** Currently, bitclout.com sends precisely zero email and phone notifications, even if users have opted into them. It's somewhat ridiculous that this is the case, and that DeSo has the traction that it does given the lack of a "notification loop," but it will be fixed soon \(and all node operators will benefit\).
-  * Part of this work requires txindex to be more efficient, which is a top priority in its own right. There is currently an experiment underway to move it to Postgres, which will make it easier to query as well.
 * **Derived keys \(aka permissions\).** Third-party apps on iOS currently have issues using identity.deso.org due to app store restrictions. Separately, many have expressed a desire to have someone else manage their account without giving them access to their funds or their seed phrase. Both of these concerns will be addressed by a proposal we're working on to allow "derived keys" to sign transactions on behalf of a "master key" for some period of time. We are working with Flick and Gem on this in particular.
   * Along with this work is implementing a way for ordinary users to transfer their profile to a new key, which will allow us to hopefully remove/sunset SwapIdentity.
-* **Referral program and gas on the fire.** Almost no money has been spent to acquire DeSo users, and the core dev team has yet to tap into a deep bench of high-powered connections to grow DeSo. This is because the core devs have wanted to refine everything before "pouring gas on the fire." This being said, we believe that after completing the other priorities, we will be ready. And every user we acquire will create value not just for bitclout.com, but for all third-party apps.
+* **Referral program and gas on the fire.** Almost no money has been spent to acquire DeSo users, and the core dev team has yet to tap into a deep bench of high-powered connections to grow DeSo. This is because the core devs have wanted to refine everything before "pouring gas on the fire." This being said, we believe that after completing the other priorities, we will be ready. And every user we acquire will create value for all third-party apps.
 * **Scaling.** Soon we will hit the limits of "big block" scaling \(see [here](https://app.gitbook.com/@bitclout-1/s/diamondhands-drafts/~/drafts/-MdaSuHgyhxyqnpDFNo0/bitclout-faq)\). We will be working very hard with the community to make sure the warp upgrade is in place prior to this point.
   * Along with this work is investigation into the optimal way to move to full proof of stake.
 * **Listings.** In the background of all of this, expect more listings. Smaller exchanges will be faster to list than bigger exchanges, but we are working with as many as we can to list DESO on as many venues as possible. Every listing brings with it new users on these exchanges that have never heard of DeSo before, serving as a great growth hack in and of itself.
@@ -398,7 +396,7 @@ There is no designated time on this yet, but hoping within 3 months of July 2021
 
 #### When will verification and profile blocks move on chain and how will this work? \(@ItsAditya @Tijn\)
 
-There is a PR to move blocks on chain that will be merged soonish. For verification, we have a proposal that we call "associations" that will allow any profile to "associate" with another profile, creating a directed graph of "associations." The blue checkmark on bitclout.com will then become a special case of this, as simply an association between a bitclout.com profile and a user, and each node will be able to provide its own blue checkmark via its own on-chain association.
+There is a PR to move blocks on chain that will be merged soonish. For verification, we have a proposal that we call "associations" that will allow any profile to "associate" with another profile, creating a directed graph of "associations." The blue checkmark on diamondapp.com will then become a special case of this, as simply an association between a diamondapp.com profile and a user, and each node will be able to provide its own blue checkmark via its own on-chain association.
 
 This same primitive can also be used by universities or other credentialing authorities in the future as a means of doing cryptographically verifiable diplomas. This would cause DeSo to become a sort of "identity hub," and eat into the LinkedIn use-case.
 
@@ -444,7 +442,7 @@ Good idea! We haven't thought about this, but it could be interesting. I would p
 
 #### What criteria are or will be used for user verification as it seems inconsistent at times ? And will there be away to get verified without social profiles \(@ItsAditya @lukasjakson\)
 
-See my answer about "associations" previously. The long-term answer is that every node should do its own verification to avoid concentration, and this is precisely why bitclout.com verifications don't carry over to other nodes. Today, bitclout.com verifies users if they have a verified checkmark on Twitter, with very rare exceptions in cases where it looks like a user will add a lot of value to the community. Again, the long-term answer, though, is that no one entity has universal power over this, so that many different standards can compete.
+See my answer about "associations" previously. The long-term answer is that every node should do its own verification to avoid concentration, and this is precisely why diamondapp.com verifications don't carry over to other nodes. Apps like diamondapp.com can verify users in their own discretion, for if they have a verified checkmark on Twitter, or when it looks like a user will add a lot of value to the community. Again, the long-term answer, though, is that no one entity has universal power over this, so that many different standards can compete.
 
 #### Considering the official twitter account, how do you balance this with being a decentralized network - how do you balance anonymous vs public involvement? \(@zopel\)
 
@@ -464,15 +462,11 @@ See the [roadmap](deso-faq.md#roadmap). Gas on the fire will come once a few mor
 
 Yes, it's a top priority. See [roadmap](deso-faq.md#roadmap).
 
-#### ~~What happens on 10 August when Bitclout.com expires?~~ Bitclout.com has been renewed until 2022. \(@tijn\)
-
-Saw that; thanks guys. We want bitclout.com to eventually shut down full-stop, and it would be great if we could make it happen that quickly, but it will take a little bit more time than that.
-
 #### Are you hiring ? \(@Davidsun\)
 
 Yes! We've had issues hiring since we're not a company and everyone is pseudonymous, but hoping to at least put up a resume drop or something soon for people who are interested.
 
-#### What efforts are being made to convince a major social media platform to test-run a Bitclout front end; either as an optional mode or standalone app? \(@AndyFazliu\)
+#### What efforts are being made to convince a major social media platform to test-run a Diamond front end; either as an optional mode or standalone app? \(@AndyFazliu\)
 
 I can't say anything about this just yet, but I'll give you a hint: Exchanges &gt;&gt; Social Media Companies for this because it allows them to break into social as an adjacent business.
 
@@ -488,11 +482,11 @@ See the answer on locking.
 
 #### Will there be an option for reserved accounts to delete their profile if they dont want it? And in that case what will happen to the creator coins & investors? \(@OscarArgaez\)
 
-Yes. See [here](deso-faq.md#how-do-i-remove-my-profile-from-bitclout-com-if-it-was-reserved). Their coins remain locked in the profile once they are removed, but will eventually be sold after everyone else has pulled their money out.
+Yes. See [here](deso-faq.md#how-do-i-remove-my-profile-from-diamond-app-if-it-was-reserved). Their coins remain locked in the profile once they are removed, but will eventually be sold after everyone else has pulled their money out.
 
 ### Exchange
 
-#### @diamondhands indicated any DESO sold by them on bitclout.com is purchased on blockchain exchange. Does this mean its 1:1 purchase, or does the "Bank" pre-purchase clout on site prior to selling. Do you market buy on Blockchain or place limit orders. Can we have more transparency about $clout purchases on site vs on exchange for the bitclout.com bank? \(@lukasjakson @Krassenstein @Davidsun @tijn @Shhubham\)
+#### @diamondhands indicated any DESO sold by them on deso.org is purchased on blockchain exchange. Does this mean its 1:1 purchase, or does the "Bank" pre-purchase clout on site prior to selling. Do you market buy on Blockchain or place limit orders. Can we have more transparency about $clout purchases on site vs on exchange for the deso.org bank? \(@lukasjakson @Krassenstein @Davidsun @tijn @Shhubham\)
 
 Good question. It's not perfect because we don't have a great way to know exactly what price all the Bitcoin came in at. We try and put in limit orders at approximately the price we sold it at. Sometimes we can't execute at those prices and have to raise it, in which case we lose some DESO. It's hard to give much more transparency than this here, but hopefully this makes sense.
 

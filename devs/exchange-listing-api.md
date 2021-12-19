@@ -17,13 +17,13 @@ This guide will cover all of the API endpoints that are needed in order to list 
 
 The [Quick Start](exchange-listing-api.md#quick-start) section provides examples of all of the above using the “curl” command. The [Full API Guide](exchange-listing-api.md#full-api-guide) section provides more detail on each API endpoint shown in the examples.
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use in-browser signing such that your seed phrase never leaves your browser (**_[_**learn more**_](https://docs.deso.org/privacy-and-security)_**). In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The DeSo nodes use in-browser signing such that your seed phrase never leaves your browser (**_[_**learn more**_](https://docs.deso.org/privacy-and-security)_**). In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 ## Quick Start
 
 ### **Generate a Seed Mnemonic**
 
-To get started, you need to generate a standard [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) mnemonic seed that will be used to generate public/private key pairs. If you don't require that your keys be generated on an air-gapped computer, then you can use the [bitclout.com](https://bitclout.com) signup flow to generate your mnemonic. Note that your seed _never_ leaves your browser when you generate it on bitclout.com. See [Privacy and Security](https://docs.deso.org/privacy-and-security) for more details on this process.
+To get started, you need to generate a standard [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) mnemonic seed that will be used to generate public/private key pairs. If you don't require that your keys be generated on an air-gapped computer, then you can use the [Diamond](https://diamondapp.com) signup flow to generate your mnemonic. Note that your seed _never_ leaves your browser when you generate it on diamondapp. See [Privacy and Security](https://docs.deso.org/privacy-and-security) for more details on this process.
 
 If you need your seed to be generated in an offline fashion, then we recommend that you use [this tool](https://iancoleman.io/bip39/). Either a 12 or 24-word mnemonic should be fine, and standard Bitcoin mnemonics work as well.
 
@@ -85,7 +85,7 @@ Notes:
     ```
 * We pipe the command into “python -m json.tool” so that it will “pretty print” but that you can delete this if you don’t have Python installed.
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The DeSo nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 ### Check Balance of DeSo Public Key
 
@@ -114,7 +114,7 @@ curl --header "Content-Type: application/json" --request POST --data '{
 Notes:
 
 * This example will fail unless you send DeSo to the `SenderPublicKeyBase58Check`.
-  * You can buy DeSo on bitclout.com and then use the "Send DeSo" page to get some DeSo for testing purposes.
+  * You can buy DeSo on diamondapp.com and then use the "Send DeSo" page to get some DeSo for testing purposes.
 * The amount must be specified in "nanos," where 1 DeSo = 1e9 nanos. This example transfers 1 DeSo from public key `BC1YLgAJ2kZ7Q4fZp7KzK2Mzr9zyuYPaQ1evEWG4s968sChRBPKbSV1` to public key `BC1YLgU67opDhT9bTPsqvue9QmyJLDHRZrSj77cF3P4yYDndmad9Wmx`
   * To do a "dry run" of the transaction without broadcasting it, simply add `DryRun: true` to the params.
 * Setting “AmountNanos” to a negative value like -1 will send the maximum amount possible.
@@ -122,7 +122,7 @@ Notes:
 * This endpoint will return information for the transaction created. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section on this endpoint for more information on what is returned.
 * A custom “fee rate” can also be set. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint for more detail on that.
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The diamondapp.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 ### Look Up Transactions for a Public Key
 
@@ -180,7 +180,7 @@ For more information, see the [Full API Guide](exchange-listing-api.md#full-api-
 
 ## Full API Guide
 
-_**Note: This API is strictly for use by exchanges. The bitclout.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
+_**Note: This API is strictly for use by exchanges. The diamondapp.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users.**_
 
 _**Note: The dev community is also working to complete an integration with**_ [_**Rosetta**_](https://www.rosetta-api.org) _**that will further build on this API.**_
 
@@ -190,7 +190,7 @@ You can generate public/private keypairs with a standard BIP39 mnemonic. Each pu
 
 All public/private keys are inter-operable as Bitcoin public/private keys. Meaning they represent a point on the secp256k1 curve (same as what is used by Bitcoin).
 
-Under the hood, DeSo takes the BIP39 mnemonic and generates the public/private key pairs using the BIP32 derivation path m/44'/0'/0'/0/{index}, where "index" is the index of the public/private key being generated. This means that DeSo public/private key pair generated by the node will always line up with the public/private key pairs generated by [this Ian Coleman tool](https://iancoleman.io/bip39/). An engineer can therefore “sanity check” that things are working by generating a mnemonic using bitclout.com or Ian Coleman, creating a key pair with that mnemonic, and then verifying that the public/private key pairs generated line up with what is shown on bitclout.com or Ian Coleman.
+Under the hood, DeSo takes the BIP39 mnemonic and generates the public/private key pairs using the BIP32 derivation path m/44'/0'/0'/0/{index}, where "index" is the index of the public/private key being generated. This means that DeSo public/private key pair generated by the node will always line up with the public/private key pairs generated by [this Ian Coleman tool](https://iancoleman.io/bip39/). An engineer can therefore “sanity check” that things are working by generating a mnemonic using diamondapp.com or Ian Coleman, creating a key pair with that mnemonic, and then verifying that the public/private key pairs generated line up with what is shown on diamondapp.com or Ian Coleman.
 
 ```
 PATH: /api/v1/key-pair
