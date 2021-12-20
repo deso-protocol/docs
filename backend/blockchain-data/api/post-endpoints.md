@@ -6,6 +6,14 @@ description: >-
 
 # Post Endpoints
 
+Please make sure you've read [data-types.md](../basics/data-types.md "mention") so you are familiar with the following types referenced in this documentation:
+
+* [#profileentryresponse](../basics/data-types.md#profileentryresponse "mention")
+* [#postentryresponse](../basics/data-types.md#postentryresponse "mention")
+* [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention")
+* [#nftentryresponse](../basics/data-types.md#nftentryresponse "mention")
+* [#nftcollectionresponse](../basics/data-types.md#nftcollectionresponse "mention")
+
 {% swagger method="post" path="" baseUrl="/api/v0/get-posts-stateless" summary="Get Posts Stateless" %}
 {% swagger-description %}
 

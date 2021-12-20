@@ -6,6 +6,14 @@ description: >-
 
 # Tutorial Endpoints
 
+Please make sure you've read [data-types.md](../basics/data-types.md "mention") so you are familiar with the following types referenced in this documentation:
+
+* [#profileentryresponse](../basics/data-types.md#profileentryresponse "mention")
+* [#postentryresponse](../basics/data-types.md#postentryresponse "mention")
+* [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention")
+* [#nftentryresponse](../basics/data-types.md#nftentryresponse "mention")
+* [#nftcollectionresponse](../basics/data-types.md#nftcollectionresponse "mention")
+
 {% swagger method="post" path="" baseUrl="POST /api/v0/get-tutorial-creators" summary="Get Tutorial Creators" %}
 {% swagger-description %}
 Get the well-known and up-and-coming creators featured in the Buy a Creator step of the tutorial. Creators who have a founder's reward greater than 10% are excluded here.

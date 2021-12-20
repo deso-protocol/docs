@@ -4,6 +4,14 @@ description: Description of endpoints used to get referral data
 
 # Referral Endpoints
 
+Please make sure you've read [data-types.md](../basics/data-types.md "mention") so you are familiar with the following types referenced in this documentation:
+
+* [#profileentryresponse](../basics/data-types.md#profileentryresponse "mention")
+* [#postentryresponse](../basics/data-types.md#postentryresponse "mention")
+* [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention")
+* [#nftentryresponse](../basics/data-types.md#nftentryresponse "mention")
+* [#nftcollectionresponse](../basics/data-types.md#nftcollectionresponse "mention")
+
 {% swagger method="post" path="" baseUrl="/api/v0/get-referral-info-for-user" summary="Get Referral Info For User" %}
 {% swagger-description %}
 Gets all data about all referral codes for this owner, including users referred by this code.
@@ -57,11 +65,7 @@ JSON web token authenticating user
 {% endswagger-response %}
 
 {% swagger-response status="400: Bad Request" description="" %}
-```javascript
-{
-    // Response
-}
-```
+
 {% endswagger-response %}
 {% endswagger %}
 
@@ -80,7 +84,7 @@ Example usages in frontend:\
 referral code
 {% endswagger-parameter %}
 
-{% swagger-response status="200: OK" description="" %}
+{% swagger-response status="200: OK" description="Successfully retrieved referral info about the provided referral hash" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -93,6 +97,12 @@ referral code
       "MaxReferrals": 10, // Maximum number of users that can be referred by this code. Note if this value is 0, there is no limit on the number of referrals
       "TotalReferrals": 90, // Number of users who have been succesfully referred by this code
     }
+  },
+  "CountrySignUpBonus": { // The CountrySignUpBonus object is based on the IP from which the request is made.
+    "AllowCustomReferralAmount": true, // If true, referee amount specified in referral code will be paid to users who sign up with IDs from this country. If false, ReferralAmountOverrideUSDCents will be paid to users who sign up with IDs from this country.
+    "ReferralAmountOverrideUSDCents": 100, // Amount all referees will be paid when signing up from this country if AllowCustomReferralAmount is false.
+    "AllowCustomKickbackAmount": false, // If true, referrer amount specified in referral code will be paid as a kickback to users who gave out referral code that a user signed up with IDs from this country. If false, KickbackAmountOverrideUSDCents will be paid as a kickback to referrers when a user signs up with an ID from this country.
+    "KickbackAmountOverrideUSDCents": 0, // Amount all referrers will be paid when a referee signs up from this country if AllowCustomKickbackAmount is false.
   }
 }
 ```
@@ -105,10 +115,6 @@ referral code
 {% endswagger-response %}
 
 {% swagger-response status="400: Bad Request" description="" %}
-```javascript
-{
-    // Response
-}
-```
+
 {% endswagger-response %}
 {% endswagger %}
