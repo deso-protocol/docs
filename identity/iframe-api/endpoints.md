@@ -79,7 +79,7 @@ The encrypt API is responsible for encrypting messages. For more details check o
 {
   id: '21e02080-0ef4-4056-a319-a66403f33768',
   service: 'identity',
-  method: 'sign',
+  method: 'encrypt',
   payload: {
     accessLevel: 3,
     accessLevelHmac: "0fab13f4...",
