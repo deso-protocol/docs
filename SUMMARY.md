@@ -12,6 +12,7 @@
     * [Community Guidelines](faq/discord/deso-foundation-discord-community-guidelines/community-guidelines.md)
 * [Referrals](faq/referrals/README.md)
   * [Incentive Structure](faq/referrals/incentive-structure.md)
+  * [Glossary](faq/referrals/glossary.md)
 
 ## The DeSo Code <a href="#code" id="code"></a>
 
