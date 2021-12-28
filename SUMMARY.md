@@ -10,6 +10,8 @@
     * [Community Team](faq/discord/deso-foundation-discord-community-guidelines/community-team.md)
     * [Discord Roles](faq/discord/deso-foundation-discord-community-guidelines/discord-roles.md)
     * [Community Guidelines](faq/discord/deso-foundation-discord-community-guidelines/community-guidelines.md)
+* [Referrals](faq/referrals/README.md)
+  * [Incentive Structure](faq/referrals/incentive-structure.md)
 
 ## The DeSo Code <a href="#code" id="code"></a>
 
