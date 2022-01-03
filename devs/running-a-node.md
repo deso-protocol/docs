@@ -12,7 +12,7 @@ Running a node gives you full access to the DeSo firehose. Access to every profi
 
 When you run a node, it starts with a blank global feed and an "Admin" panel that you can use to start adding posts to it. **All of the same tools that the diamondapp.com team uses to manage their global feed are now available to you to manage a feed of your own.**
 
-Essentially, running a DeSo node allows you to expose your own "view" of the firehose of content. For exmaple, [Diamond](https://diamondapp.com) node exposes all of the crypto-related content, but when you run your own node you have full control to surface whatever content speaks to you. What will you do with your feed? Here are some ideas for feeds that we think would be popular:
+Essentially, running a DeSo node allows you to expose your own "view" of the firehose of content. For example, [Diamond](https://diamondapp.com) node exposes all of the crypto-related content, but when you run your own node you have full control to surface whatever content speaks to you. What will you do with your feed? Here are some ideas for feeds that we think would be popular:
 
 * **A feed for every country and every language.** Isn't it weird that people all over the world consume information curated predominantly by the US? How much does an engineer working in Silicon Valley really know about what people in other countries want to see, or what features they want? In the past, we were stuck with this model because US companies built a data network effect that entrenched them, even in non-US countries. But DeSo can break this status quo because all of its data is open and the barrier to entry to starting a competitive feed is virtually zero. For the first time, people who actually live in a country can curate a feed for their people, no matter how large or small their country is. And this applies to every country that succumbed too quickly to the network effects of the Silicon Valley tech companies. By lowering the barrier to entry to creating a feed, and opening up the data firehose to anyone, we think DeSo has the potential to bring international social media products to a whole new level.
 * **The politics-focused feed.** Imagine a feed where all the posts from the top political figures are highlighted. You could even imagine segmenting the firehose into two feeds: a "red" feed and a "blue" feed that's dedicated to each political party.
@@ -55,7 +55,7 @@ Running a node currently requires a modest amount of technical know-how. For the
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
-![](../.gitbook/assets/image-deso-7-1-2-2-2-2-%20%282%29%20%281%29.png)
+![](<../.gitbook/assets/image-deso-7-1-2-2-2-2- (2) (1).png>)
 
 Once your node is synced, you have access to the full firehose of DeSo data in real time! Below are some tips on how take full advantage of your node.
 
@@ -76,7 +76,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 To manage your feed, start by navigating to the Admin tab as shown below. The Admin tab shows the full firehose of posts in real time, with a button next to each one that allows you to add it to the global feed. You can also sort the posts by DESO. These are all the same tools that the bitclout.com mods have, now at your fingertips through the power of decentralization.
 
-![](../.gitbook/assets/image-deso-2-8-1-2-2-2-2-%20%282%29.png)
+![](<../.gitbook/assets/image-deso-2-8-1-2-2-2-2- (2).png>)
 
 You can also add any post from anyone's profile to the global feed simply by hitting the dropdown at the top-right of the post. You can also pin posts to your feed, which is a good way of communicating announcements to your user-base.
 
@@ -86,10 +86,10 @@ When you run a node, you act as a moderator and have a variety of superpowers th
 
 * **Blacklisting** a profile removes it everywhere except from peoples' wallet pages. This makes it so that anyone who was holding the blacklisted profile can sell out of their holdings.
 * **Graylisting** a profile removes it from the leaderboard, removes it from search, removes its comments from threads, and removes its posts from the Admin panel.
-* **Whitelisting** a profile makes that user's posts show up on the global feed automatically with some frequency \(currently it allows five posts per day\).
+* **Whitelisting** a profile makes that user's posts show up on the global feed automatically with some frequency (currently it allows five posts per day).
 * Finally, a mod can allow a phone number to be re-used to claim starter DeSo. This is useful for various testing situations.
 
-![](../.gitbook/assets/image-deso-4-%20%281%29.png)
+![](<../.gitbook/assets/image-deso-4- (1).png>)
 
 When you've set your public key as an `ADMIN_PUBLIC_KEY`, the Admin tab becomes visible only to you. This is a critical step in securing your node. Not doing this would make it so that all your users can add posts to the global feed.
 
@@ -101,7 +101,7 @@ Within the Admin Panel, there is a `Super` tab which is only accessible by Super
 
 ![](../.gitbook/assets/verify-users-image-deso.png)
 
-Super Admins can grant verification badges \(on their node\) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`. Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
+Super Admins can grant verification badges (on their node) to a user by putting the username in the `Grant Verification Badge` input box and then clicking `Verify`. Similarly, a Super Admin can revoke verification by putting the username in the `Remove Verification Badge` and then clicking `Remove`.
 
 ### Buy $DESO Management
 
@@ -121,9 +121,9 @@ This is a percentage-based fee applied to all $DESO purchased on your node. If t
 
 To simplify the on-boarding experience for new users on your node, you can sell $DESO for Bitcoin directly to users. To configure your node to sell $DESO, please set the following flags:
 
-* `BUY_DESO_SEED`: This is a seed phrase for the public key that contains $DESO that you will sell to users.  As with all seed phrases, keep this secret and share it with nobody. Take extra precautions to not commit it to version control and quickly move funds if this seed is ever compromised.
-  * You will need to deposit $DESO to the public key for this seed phrase.  All $DESO purchases on your node will send $DESO from this wallet.
-* `BUY_DESO_BTC_ADDRESS`: This is a Bitcoin address you control. When users purchased $DESO with Bitcoin, the Bitcoin will arrive at this address. 
+* `BUY_DESO_SEED`: This is a seed phrase for the public key that contains $DESO that you will sell to users. As with all seed phrases, keep this secret and share it with nobody. Take extra precautions to not commit it to version control and quickly move funds if this seed is ever compromised.
+  * You will need to deposit $DESO to the public key for this seed phrase. All $DESO purchases on your node will send $DESO from this wallet.
+* `BUY_DESO_BTC_ADDRESS`: This is a Bitcoin address you control. When users purchased $DESO with Bitcoin, the Bitcoin will arrive at this address.
 
 ## How Users Login
 
@@ -135,7 +135,7 @@ Answers to common questions and issues about running your own node:
 
 ### What are the minimum requirements for syncing a node?
 
-We recommend having a machine with at least 32GB of RAM and 350GB of storage \(as at 21 July 2021\). If TXIndex is disabled, then you need about 200GB in total. The Blockchain DB takes up about 90 GB, and the TXIndex takes up 160 GB. THe DB+TXindex size grows by about 50GB a month currently.
+We recommend having a machine with at least 32GB of RAM and 350GB of storage (as at 21 July 2021). If TXIndex is disabled, then you need about 200GB in total. The Blockchain DB takes up about 90 GB, and the TXIndex takes up 160 GB. THe DB+TXindex size grows by about 50GB a month currently.
 
 ### How do I configure SSL?
 
@@ -143,7 +143,7 @@ There is an example SSL configuration in `nginx.dev`.
 
 ### How do I use the BlockCypher API?
 
-BlockCypher will help prevent double-spends in the mempool. You can signup for a [BlockCypher](https://www.blockcypher.com/) account on the BlockCypher website. BlockCypher does offer a free amount of API calls.
+BlockCypher will help prevent double-spends in the mempool. You can signup for a [BlockCypher](https://www.blockcypher.com) account on the BlockCypher website. BlockCypher does offer a free amount of API calls.
 
 Once you have signed up for an account you may copy a token from the [tokens](https://accounts.blockcypher.com/tokens) section of the dashboard.
 
@@ -157,10 +157,10 @@ Both records should point to the IP address of your node.
 
 #### Example DNS Records:
 
-| Hostname | Type | TTL | Priority | Content |
-| :--- | :--- | :--- | :--- | :--- |
-| node.`DOMAIN`.com | A | 299 |  | `IPADDRESS` |
-| api.`DOMAIN`.com | A | 299 |  | `IPADDRESS` |
+| Hostname          | Type | TTL | Priority | Content     |
+| ----------------- | ---- | --- | -------- | ----------- |
+| node.`DOMAIN`.com | A    | 299 |          | `IPADDRESS` |
+| api.`DOMAIN`.com  | A    | 299 |          | `IPADDRESS` |
 
 If you do not create both records you will be unable to use a custom domain.
 
@@ -173,4 +173,3 @@ Yes! Every transaction is broadcast to all other nodes on the network, and shoul
 Twilio provides an SMS API that allows you to confirm user phone numbers and thus send them currency from your seed wallet set inside the `dev.env` file. If you do not have this set users will be unable to verify a phone number.
 
 Twilio pricing can be reviewed [here](https://www.twilio.com/sms/pricing/us).
-
