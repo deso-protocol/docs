@@ -83,10 +83,10 @@ Most responses from the window context will have the same structure as above. A 
 localStorage.setItem(IdentityUsersKey, JSON.stringify(userCredentials));
 
 // Read data from localStorage at publicKey
-const users = JSON.parse(localStroage.getItem(IdentityUsersKey));
+const users = JSON.parse(localStorage.getItem(IdentityUsersKey));
 
 // Remove data from localStorage at publicKey
-localStorage.remove(IdentityUsersKey);
+localStorage.removeItem(IdentityUsersKey);
 ```
 
 Apart from the `users` field, the response will contain fields that are specific to the requested API endpoint. When we called the `log-in` endpoint, the response also contained `publicKeyAdded` of the logged user, and `signedUp` indicating that the user has signed up. More information on these fields can be found in the [#endpoints](./#endpoints "mention") section.
