@@ -14,14 +14,6 @@
   * [Referral Program - Overview](faq/referral-program/referral-program-overview.md)
   * [Referral Program - Incentive Structure](faq/referral-program/referral-program-incentive-structure.md)
   * [Referral Program - Glossary](faq/referral-program/referral-program-glossary.md)
-* [Account Setup](faq/account-setup/README.md)
-  * [Account Setup - Signup Options](faq/account-setup/account-setup-signup-options.md)
-  * [Account Setup - Profile Creation](faq/account-setup/account-setup-profile-creation/README.md)
-    * [Validating with ID](faq/account-setup/account-setup-profile-creation/validating-with-id.md)
-    * [Validating via SMS](faq/account-setup/account-setup-profile-creation/validating-via-sms.md)
-    * [Validate by buying or sending $DESO](faq/account-setup/account-setup-profile-creation/validate-by-buying-or-sending-usddeso.md)
-  * [Account Setup - Signup Bonus](faq/account-setup/account-setup-signup-bonus.md)
-  * [Account Setup - Glossary](faq/account-setup/account-setup-glossary.md)
 
 ## The DeSo Code <a href="#code" id="code"></a>
 
