@@ -14,6 +14,7 @@
   * [Referral Program - Overview](faq/referral-program/referral-program-overview.md)
   * [Referral Program - Incentive Structure](faq/referral-program/referral-program-incentive-structure.md)
   * [Referral Program - Glossary](faq/referral-program/referral-program-glossary.md)
+* [Reporting an Account or Post](faq/reporting-an-account-or-post.md)
 
 ## The DeSo Code <a href="#code" id="code"></a>
 
