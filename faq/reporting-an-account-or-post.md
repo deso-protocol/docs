@@ -2,7 +2,7 @@
 
 * The best way to report a post or account is to do so via our “Report” buttons. This method allows us to keep a record of every public key that is reported so we can reverse search blacklisted accounts if needed.&#x20;
 * At this time, you **will not** be notified if the post or account you reported has been hidden from the main node or not. You can expect your reported account or post has been reviewed 24 hours from the initial report.&#x20;
-* If you would like to know the status of an account or post you have reported, you can actively reach out regarding a specific case support@deso.org.
+* If you would like to know the status of an account or post you have reported, you can actively reach out regarding a specific case at support@deso.org.
 * **Support will no longer be reviewing any reported scams in Discord.** When one-off accounts are reported in Discord, there exists no record of account removal as they don’t get entered into the excel spreadsheet that keeps track of all reported public keys.
 
 ### What posts or accounts do we hide from the main node?&#x20;
