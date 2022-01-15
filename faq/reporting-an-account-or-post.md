@@ -6,7 +6,7 @@
 
 ### What posts or accounts do we hide from the main node?&#x20;
 
-* We only hide accounts or posts that violate federal or state guidelines. This is anything from imposter accounts, accounts minting/selling unoriginal artwork, child pornography, etc. We do not hide accounts that are posting NSFW content, are rug pulling, are abusive or harmful, or other acts that are not illegal in nature.&#x20;
+* We only hide accounts or posts that violate federal or state guidelines. This is anything from imposter accounts, accounts minting/selling unoriginal artwork, child pornography, etc. We do not hide accounts that are posting NSFW content, are rug pulling, are "offensive", or other acts that are not illegal in nature.&#x20;
 
 ### How do I report an account or post?&#x20;
 
