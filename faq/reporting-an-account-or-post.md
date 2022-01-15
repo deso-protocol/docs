@@ -1,12 +1,12 @@
 # Reporting an Account or Post
 
 * The best way to report a post or account is to do so via our “Report” buttons. This method allows us to keep a record of every public key that is reported so we can reverse search blacklisted accounts if needed.&#x20;
-* You can expect your reported account or post to be reviewed 24 hours from the initial report.
-* Support will no longer be reviewing any reported scams in Discord. When one-off accounts are reported in Discord, there exists no record of account removal as they don’t get entered into the excel spreadsheet that keeps track of all reported public keys.
+* At this time, you **will not** be notified if the post or account you reported has been hidden from the main node or not. You can expect your reported account or post has been reviewed 24 hours from the initial report.
+* **Support will no longer be reviewing any reported scams in Discord.** When one-off accounts are reported in Discord, there exists no record of account removal as they don’t get entered into the excel spreadsheet that keeps track of all reported public keys.
 
 ### What posts or accounts do we hide from the main node?&#x20;
 
-* We only hide accounts or posts that violate federal or state guidelines. This is anything from imposter accounts, accounts minting/selling unoriginal artwork, child pornography, etc. We do not hide accounts that are posting NSFW content, are rug pulling, are "offensive", or other acts that are not illegal in nature.&#x20;
+* We only hide accounts or posts that violate federal or state guidelines. This is anything from imposter accounts, accounts minting/selling unoriginal artwork, child pornography, etc. We do not hide accounts that are posting NSFW/adult content, are rug pulling, are "offensive", or other acts that are not illegal in nature.&#x20;
 
 ### How do I report an account or post?&#x20;
 
