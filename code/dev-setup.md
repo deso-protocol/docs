@@ -127,4 +127,4 @@ ng serve --port 4201
 
 In order to point your browser at your local identity service rather than at identity.deso.org, you must change a localStorage value similar to what we did to get the testnet node running. In this case, we must change `lastIdentityServiceURL` to `http://localhost:4201`. See the screenshot below:
 
-![](../.gitbook/assets/image%20\(15\).png)
+![](../.gitbook/assets/desoconsole3.png)
