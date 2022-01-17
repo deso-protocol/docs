@@ -84,7 +84,7 @@ http://localhost:4200
 
 By default, your browser will point at `localhost:17001`, which is the default "mainnet" API port. However, when you run n0\_test, your node spins up on `localhost:18001`. To point your frontend at your testnet node, however, you must open up your inspector and change your `lastLocalNodev2` parameter to `localhost:18001` as shown in the screenshot below. After you do this, you should be able to Sign Up, and everything should work normally.
 
-![](../.gitbook/assets/image1.png)
+![](../.gitbook/assets/desoconsole2.png)
 
 ### Running the node in mainnet mode
 
