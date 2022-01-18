@@ -39,7 +39,7 @@ If true, other nodes are able to request exposed attributes of your global state
 `--global-state-api-url`
 
 Type: String
-
 Default: None
+Example: `--global-state-api-url https://node.deso.org` or `GLOBAL_STATE_API_URL=https://node.deso.org`
 
-URL to use to fetch global state data. Only used if expose-global-state is false. If not provided, use own global state. The URL must point to another node that has `true` for its [#expose-global-state](global-state.md#expose-global-state "mention") value. This will allow you to fetch verified usernames, blacklist, graylist, and posts that have been added to the global feed on the requested URL.&#x20;
+Fully formed URL to use to fetch global state data. Only used if expose-global-state is false. If not provided, use own global state. The URL must point to another node that has `true` for its [#expose-global-state](global-state.md#expose-global-state "mention") value. This will allow you to fetch verified usernames, blacklist, graylist, and posts that have been added to the global feed on the requested URL.&#x20;
