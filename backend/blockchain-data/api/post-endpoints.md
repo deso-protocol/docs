@@ -533,7 +533,7 @@ Public key of the reader
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-reposts-for-post" summary="" %}
+{% swagger method="post" path="" baseUrl="/api/v0/get-reposts-for-post" summary="Get Reposts For Post" %}
 {% swagger-description %}
 Get Profiles of users who reposted (without a quote) a given post
 

@@ -36,115 +36,17 @@ Number of notifications to fetch
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="FilteredOutNotificationCategories" type="map[string]bool" %}
-map of category name to boolean indicating whether or not to include this category of transaction types. if not provided, no filtering occurs.
-
+map of category name to boolean indicating whether or not to include this category of transaction types. if not provided, no filtering occurs.\
 \
+Category names and transaction types included in category:\
+&#x20; \- `diamond`: `BasicTransfer` or `CreatorCoinTransfer` transactions that have appropriate diamond extra data.\
+&#x20; \- `transfer`: `BasicTransfer` or `CreatorCoinTransfer` transactions that do not have diamond extra data OR `CreatorCoin` (buy or sell) transactions.\
+&#x20; \- `post`: `Post` transactions\
+&#x20; \- `follow`: `Follow` transactions\
+&#x20; \- `like`: `Like` transactions\
+&#x20; \- `nft`: `NFTBid,` `AcceptNFTBid`,  `NFTTransfer` , `CreateNFT`, or `UpdateNFT` transactions
 
-
-
-
-\
-
-
-Category names and transaction types included in category:
-
-\
-
-
-  \- 
-
-`diamond`
-
-: 
-
-`BasicTransfer`
-
- or 
-
-`CreatorCoinTransfer`
-
- transactions that have appropriate diamond extra data.
-
-\
-
-
-  \- 
-
-`transfer`
-
-: 
-
-`BasicTransfer`
-
- or 
-
-`CreatorCoinTransfer`
-
- transactions that do not have diamond extra data OR 
-
-`CreatorCoin`
-
- (buy or sell) transactions.
-
-\
-
-
-  \- 
-
-`post`
-
-: 
-
-`Post`
-
- transactions
-
-\
-
-
-  \- 
-
-`follow`
-
-: 
-
-`Follow`
-
- transactions
-
-\
-
-
-  \- 
-
-`like`
-
-: 
-
-`Like`
-
- transactions
-
-\
-
-
-  \- 
-
-`nft`
-
-: 
-
-`NFTBid,`
-
- 
-
-`AcceptNFTBid`
-
-,  or 
-
-`NFTTransfer`
-
- transactions
+&#x20; \- `dao`: `DAOCoin` or `DAOCoinTransfer` transactions
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="Successfully retrieved the next page of notifications" %}
@@ -236,14 +138,56 @@ Category names and transaction types included in category:
           "NFTPostHashHex": "43b943880ff21f67b92941553233b9d0e6bcf7c56e9a533416873d4d0798d290", // Hex of Post hash that is being bid on in this transaction
           "SerialNumber": 10, // Serial number on which this bid is submitted
           "BidAmountNanos": 1000, // Amount of DeSo (in nanos) bid on the NFT in this transaction.
+          "IsBuyNowBid": true, // If true, this bid was a bid on a Buy Now NFT that exceeded the Buy Now Price, resulting in a purchase of the NFT
+          "CreatorCoinRoyaltyNanos": 100, // Amount of royalties going to the NFT creator's creator coin in this transaction. 
+          "CreatorRoyaltyNanos": 200, // Amount of royalties going to the NFT creator's wallet in the form of DESO in this transaction.
+          "CreatorPublicKeyBase58Check": "BC1YLhtBTFXAsKZgoaoYNW8mWAJWdfQjycheAeYjaX46azVrnZfJ94s", // Public key of the creator of the NFT
+          "AdditionalCoinRoyaltiesMap": { // Map of public key to DESO nanos representing the royalties to the public key's creator coin
+            "tBCKW665XZnvVZcCfcEmyeecSZGKAdaxwV2SH9UFab6PpSRikg4EJ2": 50,
+          },
+          "AdditionalDESORoyaltiesMap": { // Map of public key to DESO nanos representing the royalties paid to public key in the form of DESO
+            "tBCKW665XZnvVZcCfcEmyeecSZGKAdaxwV2SH9UFab6PpSRikg4EJ2": 25,
+          },
+          "OwnerPublicKeyBase58Check": "tBCKVERmG9nZpHTk2AVPqknWc1Mw9HHAnqrTpW1RnXpXMQ4PsQgnmV", // Public key of the owner at the time of the bid
         },
         "AcceptNFTBidTxindexMetadata": { // Describe Accept NFT bid transactions. Only appears for accept NFT bid transactions.
           "NFTPostHashHex": "43b943880ff21f67b92941553233b9d0e6bcf7c56e9a533416873d4d0798d290", // Hex of Post hash that is  sold in this transaction
           "SerialNumber": 10, // Serial number that is sold in this transaction 
           "BidAmountNanos": 1000, // Amount of DeSo (in nanos) of the bid that was accepted in this transaction.
-          "CreatorCoinRoyaltyNanos": 100, // Amount of royalties going to the creator coin in this transaction. 
+          "CreatorCoinRoyaltyNanos": 100, // Amount of royalties going to the NFT creator's creator coin in this transaction. 
+          "CreatorRoyaltyNanos": 200, // Amount of royalties going to the NFT creator's wallet in the form of DESO in this transaction.
           "CreatorPublicKeyBase58Check": "BC1YLhtBTFXAsKZgoaoYNW8mWAJWdfQjycheAeYjaX46azVrnZfJ94s", // Public key of the creator of the NFT
-        }
+          "AdditionalCoinRoyaltiesMap": { // Map of public key to DESO nanos representing the royalties to the public key's creator coin
+            "tBCKW665XZnvVZcCfcEmyeecSZGKAdaxwV2SH9UFab6PpSRikg4EJ2": 50,
+          },
+          "AdditionalDESORoyaltiesMap": { // Map of public key to DESO nanos representing the royalties paid to public key in the form of DESO
+            "tBCKW665XZnvVZcCfcEmyeecSZGKAdaxwV2SH9UFab6PpSRikg4EJ2": 25,
+          }
+        },
+        "UpdateNFTTxindexMetadata": { // Describes the Update NFT transaction
+          "NFTPostHashHex": "3588e0a85e463966e91b0ec429de9b3edd9f5c9fad3c555c60af358e0688c801", // Hex of Post hash for the NFT that is updated in this transaction
+          "IsForSale": true, // If true, this NFT has been put on sale
+        },
+        "CreateNFTTxindexMetadata": { // Describe the Create NFT transaction
+          "NFTPostHashHex": "3588e0a85e463966e91b0ec429de9b3edd9f5c9fad3c555c60af358e0688c801", // Hex of Post hsah for the NFT that is being created in this transaction
+          "AdditionalCoinRoyaltiesMap": { // Map of public key to basis points for additional coin royalty
+            "tBCKW665XZnvVZcCfcEmyeecSZGKAdaxwV2SH9UFab6PpSRikg4EJ2": 100
+          },
+          "AdditionalDESORoyaltiesMap": { // Map of public key to basis points for additional DESO royalty
+            "tBCKVERmG9nZpHTk2AVPqknWc1Mw9HHAnqrTpW1RnXpXMQ4PsQgnmV": 500
+         }
+        },
+        "DAOCoinTxindexMetadata": { // Describes the DAO Coin transaction
+          "CreatorUsername": "LazyNina", // Username of DAO creator
+          "OperationType": "mint", // String of operation type. Expected values are mint, burn, disable_minting, and update_transfer_restriction_status
+          "CoinsToMintNanos": "0x5F5E100", // Hex string representing the number of coins minted in this operation
+          "CoinsToBurnNanos": "0x0", // Hex string representing the number of coins burned in this operation
+          "TransferRestrictionStatus": "", // String representing the transfer restriction status set in this transaction. Valid values are "Unrestricted", "Profile Owner Only", "DAO Members Only", and "Permanently Unrestricted"
+        },
+        "DAOCoinTransferTxindexMetadata": {
+          "CreatorUsername": "LazyNina", // Username of DAO creator
+          "DAOCoinToTransferNanos": "0x5F5E100", // Hex string representing the number of DAO coins transferred in this transaction
+        },
       },
       "Txn": null,
       "TxnOutputResponses": [{ // Outputs from the transaction that generated this notification

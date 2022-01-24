@@ -46,6 +46,7 @@
     * [NFT Transactions API](backend/transactions/construct-transactions/nft-transactions-api.md)
     * [Financial Transactions API](backend/transactions/construct-transactions/financial-transactions-api.md)
     * [Derived Keys Transaction API](backend/transactions/construct-transactions/derived-keys-transaction-api.md)
+    * [DAO Transactions API](backend/transactions/construct-transactions/dao-transactions-api.md)
 * [Blockchain Data](backend/blockchain-data/README.md)
   * [Basics](backend/blockchain-data/basics/README.md)
     * [Data Types](backend/blockchain-data/basics/data-types.md)

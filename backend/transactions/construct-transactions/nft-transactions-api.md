@@ -14,11 +14,11 @@ Create a create NFT transaction. Transaction needs to be signed and submitted th
 
 Create NFT transactions mints the post specified by NFTPostHashHex as an NFT.
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L84).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L94).
 
 Example usages in frontend:\
-&#x20; \- Make request to [Create NFT](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L841)\
-&#x20; \- Use CreateNFT to [mint a post as an NFT](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/mint-nft-modal/mint-nft-modal.component.ts#L101)
+&#x20; \- Make request to [Create NFT](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/backend-api.service.ts#L916)\
+&#x20; \- Use CreateNFT to [mint a post as an NFT](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/mint-nft-modal/mint-nft-modal.component.ts#L227)
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="UpdaterPublicKeyBase58Check" type="String" required="true" %}
@@ -51,6 +51,22 @@ When true, put all serial numbers on sale
 
 {% swagger-parameter in="body" name="MinBidAmountNanos" type="int" %}
 Minimum bid amount allowed for all serial numbers
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="IsBuyNow" type="Boolean" required="false" %}
+If IsForSale is false, this field is ignored. If IsBuyNow is true and IsForSale is true, all serial numbers will be put on sale and can be purchased outright at BuyNowPriceNanos. Please note that at this time, you cannot make an NFT contain an unlockable and set IsBuyNow to true.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="BuyNowPriceNanos" type="uint64" %}
+The price at which another user can purchase this NFT without requiring an accept NFT bid transaction from the NFT owner
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="AdditionalDESORoyaltiesMap" type="map[string]uint64" %}
+A map of public key to basis points. Each public key specified will receive a royalty of each sale paid directly to their DeSo wallet. If a public key is mapped to 100 basis points, they will receive 1% of all sales.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="AdditionalCoinRoyaltiesMap" type="map[string]uint64" %}
+A map of public key to basis points. Each public key specified will have a percentage of each sale added to the amount of DESO locked in their profile's creator coin. If a public key is mapped  to 100 basis points, their creator coin will have 1% of the sale price added to the DESO locked. 
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint64" required="true" %}
@@ -97,7 +113,11 @@ Array of
       "NFTRoyaltyToCoinBasisPoints": 1000 // Percentage in basis points of NFT sales that will be added to the amount locked in the NFT creator's coin
     },
     "PublicKey": "Aqo9yNKZ6h5JFN5mSU7T4W7amg1lcZ1SPBqaA8v59gxF",
-    "ExtraData": null,
+    "ExtraData": {
+      "BuyNowPriceNanos": "gIzuiRo=", // Buy Now Price in DESO nanos
+      "CoinRoyaltiesMap": "AQKqPcjSmeoeSRTeZklO0+Fu2poNZXGdUjwamgPL+fYMRWQ=", // Map of public key to basis points representing royalties paid as DESO locked in creator coins
+      "DESORoyaltiesMap": "AQI5exqA66CmBkRlCvE8Km/9+784gwyvw0k3p13dRLjOUvQD"// Map of public key to basis points representing royalties paid in DESO
+    },
     "Signature": null,
     "TxnTypeJSON": 15
   },
@@ -150,12 +170,20 @@ Hash of the NFT Post being updated
 serial number to update
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" required="true" name="IsForSale" %}
+{% swagger-parameter in="body" required="true" name="IsForSale" type="Boolean" %}
 When true, put this serial number on sale
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" required="true" name="MinBidAmountNanos" %}
+{% swagger-parameter in="body" required="true" name="MinBidAmountNanos" type="int" %}
 Minimum bid amount allowed for this serial number
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="IsBuyNow" type="Boolean" %}
+If IsForSale is false, this field is ignored. If IsBuyNow is true and IsForSale is true, all serial numbers will be put on sale and can be purchased outright at BuyNowPriceNanos. Please note that at this time, you cannot make an NFT contain an unlockable and set IsBuyNow to true.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="BuyNowPriceNanos" type="uint64" %}
+The price at which another user can purchase this NFT without requiring an accept NFT bid transaction from the NFT owner
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="MinFeeRteNanosPerKB" type="uint64" required="true" %}
@@ -200,7 +228,9 @@ Array of
       "MinBidAmountNanos": 1000000000 // The minimum bid amount allowed on this NFT
     },
     "PublicKey": "Aqo9yNKZ6h5JFN5mSU7T4W7amg1lcZ1SPBqaA8v59gxF",
-    "ExtraData": null,
+    "ExtraData": {
+      "BuyNowPriceNanos": "gMivoCU=" // Buy Now prices in DESO nanos
+    },
     "Signature": null,
     "TxnTypeJSON": 16
   },

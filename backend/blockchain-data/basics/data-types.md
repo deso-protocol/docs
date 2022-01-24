@@ -26,6 +26,12 @@ Every public key on the DeSo blockchain can have a profile that describes who th
     "CoinWatermarkNanos": 2203171427, // CoinWatermarkNanos is the highest amount of nanos that have ever been locked in this profile at a single point in time.
     "DeSoLockedNanos": 110694117 // Deprecated - use DeSoLockedNanos
   },
+  "DAOCoinEntry": {
+    "NumberOfHolders": 1823837, // Number of public keys holding this DAO coin.
+    "CoinsInCirculationNanos": "0x3B9ACA00", // The current total supply of this creator's DAO coins represented as a hex string.
+    "MintingDisabled": false, // If true, the supply of this DAO coin is fixed and new coins cannot be minted.
+    TransferRestrictionStatus: "unrestricted", // The current transfer restriction status of this creator's DAO coin. Unrestricted means you can transfer to anybody, profile_owner_only means you can only transfer TO or FROM this profile's public key, dao_members_only means you can only transfer to user's who already hold this DAO coin, and permanently_unrestricted means there are no restrictions and this status will never be updated again.
+  },
   "CoinPriceDeSoNanos": 150729253, // CoinPriceDeSoNanos is the price of this creator's coin in nanos.
   "CoinPriceDeSoNanos": 150729253, // Deprecated - use CoinPriceDeSoNanos
   "UsersThatHODL": [{ // Array of all hodlers of this creator's coin in the form of BalanceEntryResponses (described below). This is not always included.
@@ -43,7 +49,7 @@ Every public key on the DeSo blockchain can have a profile that describes who th
 
 Objects of this type will be denoted as `<ProfileEntryResponse>` in this documentation.
 
-For reference, `ProfileEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L560).
+For reference, `ProfileEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/user.go#L577).
 
 ## PostEntryResponse
 
@@ -92,6 +98,12 @@ Posts are the main way creators communicate with the public on DeSo. Below is an
   "HasUnlockable": false, // If true, when this post is sold as an NFT, the owner will be required to provide some unlockable content.
   "NFTRoyaltyToCreatorBasisPoints": 500, // Percentage in basis points of the royalty that goes to this post's creator when this NFT is sold.
   "NFTRoyaltyToCoinBasisPoints": 1000, // Percentage in basis points of the royalty that is added to the DeSo locked in this post's creator's coin when this NFT is sold.
+  "AdditionalDESORoyaltiesMap": { // Map with public key representing users who receive a royalty paid in DESO upon each sale and values are the royalty percentage defined in basis points
+    "tBCKYYbGp3iLwhienWLzbLJM1Yi4WKmWRwNNCchhDLtniDqiHPMGK1": 100, // This user would receive 1% of all future sales in DESO 
+  },
+  "AdditionalCoinRoyaltiesMap": { // Map with public key representing users who receive a royalty in the form of additional DESO locked in their creator coin and values are the royalty percentage defined in basis points.
+    "tBCKYYbGp3iLwhienWLzbLJM1Yi4WKmWRwNNCchhDLtniDqiHPMGK1": 200 // This user's creator coin would have 2% of all future sales added as DESO locked in their creator coin  
+  },
   "DiamondsFromSender": 0, // Number of diamonds this post received from a sender. Only populated in get-diamonded-posts
   "HotnessScore": 0, // Hotness score is a measure of how engaging a post is. Posts with the highest hotness scores are featured in the Hot Feed.
   "PostMultiplier": 0, // Multiplier applied to this post in the hot feed algorithm.
@@ -100,26 +112,27 @@ Posts are the main way creators communicate with the public on DeSo. Below is an
 
 Objects of this type will be denoted as `<PostEntryResponse>` in this documentation.
 
-For reference, `PostEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/post.go#L56).
+For reference, `PostEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/post.go#L56).
 
 ## BalanceEntryResponse
 
-`BalanceEntryResponses` are another common object you will encounter. `BalanceEntryResponses` describe the amount of a specific creator coin that a user holds.
+`BalanceEntryResponses` are another common object you will encounter. `BalanceEntryResponses` describe the amount of a specific creator coin or DAO coin that a user holds.
 
 ```json5
 {
-  "HODLerPublicKeyBase58Check": "tBCKVERmG9nZpHTk2AVPqknWc1Mw9HHAnqrTpW1RnXpXMQ4PsQgnmV", // Public key of user who is holding this creator's coin.
+  "HODLerPublicKeyBase58Check": "tBCKVERmG9nZpHTk2AVPqknWc1Mw9HHAnqrTpW1RnXpXMQ4PsQgnmV", // Public key of user who is holding this creator's coin or the DAO coin.
   "CreatorPublicKeyBase58Check": "tBCKW665XZnvVZcCfcEmyeecSZGKAdaxwV2SH9UFab6PpSRikg4EJ2", // Public Key of the creator
-  "HasPurchased": false, // If true, this user has purchased some amount of creator coins of this creator. If false, they have received these creator coins in a transfer.
-  "BalanceNanos": 1000000000, // How many nanos of this creator's coin does the HODLer own.
-  "NetBalanceInMempool": 0, // How many nanos of this creator's coin does this HODLer own that are still waiting to be mined into a block.
+  "HasPurchased": false, // If true, this user has purchased some amount of creator coins of this creator. If false, they have received these creator coins in a transfer. This field is always false for DAO coins.
+  "BalanceNanos": 1000000000, // How many nanos of this creator's coin does the HODLer own. This field is used for creator coins as DAO coins can exceed the max uint64 value.
+  "BalanceNanosUint256": "0x3B9ACA00", // Balance Nanos as a hex string. This is used for DAO coins.
+  "NetBalanceInMempool": 0, // How many nanos of this creator's coin or DAO coin does this HODLer own that are still waiting to be mined into a block.
   "ProfileEntryResponse": <ProfileEntryResponse>, // ProfileEntryResponse of the HODLer or creator depending upon the context in which the BalanceEntryResponse was retrieved
 }
 ```
 
 Objects of this type will be denoted as `<BalanceEntryResponse>` in this documentation.
 
-For reference, `BalanceEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/shared.go#L143).
+For reference, `BalanceEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/shared.go#L209).
 
 ## NFTEntryResponse
 
@@ -132,6 +145,8 @@ For reference, `BalanceEntryResponse` is defined in the backend repo [here](http
   "IsForSale": true, // If true, this serial number is for sale. If false, this serial number is not currently for sale.
   "IsPending": false, // If true, this serial number was transferred to the owner and is pending an acceptance of the NFT transfer. If false, this serial number is not pending an acceptance.
   "MinBidAmountNanos": 0, // Minimum bid amount in nanos allowed on this serial number.
+  "IsBuyNow": true, // If true, this serial number can be purchased at the price of BuyNowPriceNanos without requiring an accept nft bid transaction from the owner.
+  "BuyNowPriceNanos": 100000000000, // This is the price at which this serial number can be "bought now". A user can "Buy Now" by submitting a bid that matches the buy now price nanos.
   "LastAcceptedBidAmountNanos": 10000000, // Bid amount in nanos representing the last price at which this serial number was sold.
   "HighestBidAmountNanos": 1150000000, // Highest bid amount currently on this serial number.
   "LowestBidAmountNanos": 97680, // Lowest bid amount currently on this serial number.
@@ -142,7 +157,7 @@ For reference, `BalanceEntryResponse` is defined in the backend repo [here](http
 
 Objects of this type will be denoted as `<NFTEntryResponse>` in this documentation.
 
-For reference, `NFTEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L15).
+For reference, `NFTEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L16).
 
 ## NFTCollectionResponse
 
@@ -154,11 +169,14 @@ For reference, `NFTEntryResponse` is defined in the backend repo [here](https://
   "PostEntryResponse": <PostEntryResponse>, // PostEntryResponse of the post that is an NFT
   "HighestBidAmountNanos": 2000000000, // Highest bid amount currently on any serial number of this Post
   "LowestBidAmountNanos": 0, // Lowest bid amount currently on any serial number of this Post
+  "HighestBuyNowPriceNanos": 2000000000, // Highest buy now price amount currently on any serial number of this Post
+  "LowestBuyNowPriceNanos": 0, // Lowest buy now price amount currently on any serial number of this Post
   "NumCopiesForSale": 1, // Number of serial numbers currently for sale of this NFT post.
+  "NumCopiesBuyNow": 1, // Number of serial numbers currently for sale of this NFT post that have IsBuyNow = true.
   "AvailableSerialNumbers": [15] // Array of integers representing the set of all serial numbers that are for sale of this NFT post.
 }
 ```
 
 Objects of this type will be denoted as `<NFTCollectionResponse>` in this documentation.
 
-For reference, `NFTCollectionResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L32).
+For reference, `NFTCollectionResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L35).

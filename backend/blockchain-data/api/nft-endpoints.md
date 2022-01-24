@@ -18,7 +18,7 @@ Please make sure you've read [data-types.md](../basics/data-types.md "mention") 
 {% swagger-description %}
 Get NFTs that a user owns, optionally filtering on for-sale status and pending (NFT transferred) status.&#x20;
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L811).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L1024).
 
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFTs For User](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L980)\
@@ -60,7 +60,7 @@ Public key of the reader
       "NFTEntryResponses": [<NFTEntryResponse>, <NFTEntryResponse>]// NFTEntryResponses describe the serial numbers of this NFT. There may be multiple for a given post if a user owns multiple NFTs
     },
   }
-5
+}
 ```
 {% endtab %}
 
@@ -145,7 +145,7 @@ Public key of the reader
 {% swagger-description %}
 Get all bids for all serial numbers of a given NFT post.
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L1016).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L1113).
 
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFT Bids For NFT Post](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L969)\
@@ -199,7 +199,7 @@ Public key of the reader
 {% swagger-description %}
 Get summaries of all NFTs included in the NFT showcase.
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L663).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L760).
 
 Example usage in frontend:\
 &#x20; \- Make request to [Get NFT Showcase](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1004)\
@@ -241,7 +241,7 @@ Public key of the reader
 {% swagger-description %}
 Get the time the next NFT showcase drop so it can be advertised to users
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L761).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L858).
 
 Example usages in frontend:\
 &#x20; \- Make request to [Get Next NFT Showcase](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1015)\
@@ -279,7 +279,7 @@ Example usages in frontend:\
 {% swagger-description %}
 Get an [#nftcollectionresponse](../basics/data-types.md#nftcollectionresponse "mention") that summarizes a single NFT post
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L1098).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L1195).
 
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFT Collection Summary](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1021)\
@@ -308,7 +308,10 @@ Public key of the reader
     "PostEntryResponse": <PostEntryResponse>, // PostEntryResponse of the post that is an NFT
     "HighestBidAmountNanos": 2000000000, // Highest bid amount currently on any serial number of this Post
     "LowestBidAmountNanos": 0, // Lowest bid amount currently on any serial number of this Post
+    "HighestBidAmountNanos": 35000000000, // Highest buy now price currently on any serial number of this Post
+    "LowestBidAmountNanos": 0, // Lowest buy now price currently on any serial number of this Post
     "NumCopiesForSale": 1, // Number of serial numbers currently for sale of this NFT post.
+    "NumCopiesBuyNow": 1, // Number of serial numbers currently for sale as "Buy Now" NFTs - this means a user can purchase the NFT at the BuyNowPriceNanos without requiring an accept NFT bid transaction from the owner.
     "AvailableSerialNumbers": [15] // Array of integers representing the set of all serial numbers that are for sale of this NFT post.
   },
   SerialNumberToNFTEntryResponse: { // Map of serial number to NFT Entry Response
@@ -338,7 +341,7 @@ Public key of the reader
 {% swagger-description %}
 Gets an NFTEntryResponse for each serial number of this NFT post.
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L1178).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L1275).
 
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFT Entries for Post Hash](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1028)&#x20;

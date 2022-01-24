@@ -20,7 +20,7 @@ Get information about multiple users. This endpoint is used for retrieving data 
 
 Request contains a list of public keys of users to fetch.
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L38).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/user.go#L40).
 
 Example usages in frontend:\
 &#x20; \- Make request to [Get Users Stateless](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L725)\
@@ -34,6 +34,10 @@ list of public keys
 
 {% swagger-parameter in="body" name="SkipForLeaderBoard" type="Boolean" %}
 Skips fetching all attributes other than the ProfileEntryResponse and PublicKeyBase58Check
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="GetUnminedBalance" type="Boolean" %}
+If true, get all UTXOs to compute the user's unmined balance. This is slower and not recommended.
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="Successfully return all user objects requested, param updater public keys, and the default fee" %}

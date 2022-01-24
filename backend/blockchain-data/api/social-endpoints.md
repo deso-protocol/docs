@@ -16,11 +16,13 @@ Please make sure you've read [data-types.md](../basics/data-types.md "mention") 
 {% swagger-description %}
 Get [#balanceentryresponse](../basics/data-types.md#balanceentryresponse "mention")objects for users who are holding (or held by) a certain public key's creator coin.\
 \
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L1168).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/user.go#L1224).
 
 Example usages in frontend:\
-&#x20; \- Make request to [Get Hodlers For Public Key](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1208)\
-&#x20; \- Use GetHodlersForPublicKey to [show all the users who are holding a creator's coin](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-hodlers/creator-profile-hodlers.component.ts#L36)
+&#x20; \- Make request to [Get Hodlers For Public Key](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/backend-api.service.ts#L1366)\
+&#x20; \- Use GetHodlersForPublicKey to [show all the users who are holding a creator's coin or a creator's DAO coin](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/creator-profile-page/creator-profile-hodlers/creator-profile-hodlers.component.ts#L37)\
+&#x20; \- Use GetHodlersForPublicKey to [see all users who hold your DAO coin](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L112)\
+&#x20; \- Use GetHodlersForPublicKey to [see all DAO coins you hold](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L139)
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="PublicKeyBase58Check" type="String" %}
@@ -65,6 +67,10 @@ If true, fetch balance entries for hodlings of the user instead of balance entri
 
 {% swagger-parameter in="body" name="FetchAll" type="Boolean" %}
 if true, fetch all results. Supercedes NumToFetch.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="IsDAOCoin" type="Boolean" %}
+If true, fetch hodlers of DAO coin instead of creator coin
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="Successfully retrieved BalanceEntryResponses for each user who are holding/are held by the provided public key/username" %}
@@ -278,7 +284,11 @@ Public key of the creator we want to check if the user is following
 {% swagger-description %}
 Check if the user holds the creator coin of a public key. If user is holding some amount of creator coin, we return the BalanceEntryResponse representing how much the user holds.
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L2725).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/user.go#L2836).
+
+Example usages in frontend:\
+&#x20; \- Make request to [Is Hodling Public Key](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/backend-api.service.ts#L1387)\
+&#x20; \- Use IsHodlingPublicKey to [check if a user is a DAO member and can be transferred a DAO coin that is restricted to DAO members only.](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/transfer-dao-coin-modal/transfer-dao-coin-modal.component.ts#L53)
 {% endswagger-description %}
 
 {% swagger-parameter in="body" required="true" name="PublicKeyBase58Check" type="String" %}
@@ -289,7 +299,11 @@ Public key of the user that may be holding the creator coin of IsHodlingPublicKe
 Public key of the creator we want to check that the user is holding
 {% endswagger-parameter %}
 
-{% swagger-response status="200: OK" description="Successfully retrieved whether PublicKeyBas58Check is hodling the creator coin of IsHodlingPublicKeyBase58Check" %}
+{% swagger-parameter in="body" name="IsDAOCoin" type="Boolean" %}
+If true, check if this public key is hodling the DAO coin instead of creator coin
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully retrieved whether PublicKeyBas58Check is hodling the creator coin or DAO coin of IsHodlingPublicKeyBase58Check" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5

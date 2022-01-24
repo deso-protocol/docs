@@ -307,11 +307,7 @@ When true, perform additional checks to ensure user is at the correct point in t
 {% endswagger-response %}
 
 {% swagger-response status="400: Bad Request" description="" %}
-```javascript
-{
-    // Response
-}
-```
+
 {% endswagger-response %}
 {% endswagger %}
 
