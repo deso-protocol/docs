@@ -83,7 +83,12 @@
 
 ## Developer Docs <a href="#devs" id="devs"></a>
 
-* [Running a Node](devs/running-a-node.md)
+* [Node Setup](devs/node-setup/README.md)
+  * [Requirements](devs/node-setup/requirements/README.md)
+    * [Hardware](devs/node-setup/requirements/hardware.md)
+    * [Software](devs/node-setup/requirements/software.md)
+  * [Setup](devs/node-setup/setup.md)
+  * [Node FAQ](devs/node-setup/running-a-node.md)
 * [Bug Bounty](devs/bug-bounty.md)
 * [Backend API](devs/backend-api.md)
 * [Exchange Listing API](devs/exchange-listing-api.md)
