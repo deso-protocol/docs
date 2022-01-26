@@ -33,33 +33,33 @@ Once the user completes the identity flow, you’ll receive a response containin
 ```javascript
 {
     accessSignature: "30440220314ccf7a747922ddb6f8c26821c6f0dc65f0227e15014fb5e728f96abed841e2022033aace1f75eb35479d07273ff8bf1a959af75209743ced23939210f824d5321f",
-    derivedPublicKey: "tBCKUx3cYyUcPnXyqLYuAfpChQHzcbzvhLTF6Xujuu5CA8hKaHPwTo",
+    derivedPublicKeyBase58Check: "tBCKUx3cYyUcPnXyqLYuAfpChQHzcbzvhLTF6Xujuu5CA8hKaHPwTo",
     derivedSeedHex: "e4c515c30479d116757c56b4224022a5558af243946c075cff6ae2ec67fd3748",
     expirationBlock: 12024,
     derivedJwt: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzM5Mjg0MjgsImV4cCI6MTYzNjUyMDQyOH0.dvbNwcOUz2bzEMC79nyxzIJGI_3NoMUw59VAI6qdLGNy6x5YC9u0MsFcrDhuL-i8Y66gIQXq0VzgeIzNThxisg",
     jwt: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzM5Mjg0MjgsImV4cCI6MTYzNjUyMDQyOH0.4zyR0kgXIeO6P94TuGWbxxr3fHUoIyJWv4GGMAxP6gfz6UMwSSej85ZJe_N5JYYcvk_vHWhnj0CcXfGQtNMQ8Q",
     network: "testnet",
-    publicKey: "tBCKWiTPdkGAiSd2jTx58hRh1TAGVnpeDE78eYqsghEeVFpjkGYNLk",
+    publicKeyBase58Check: "tBCKWiTPdkGAiSd2jTx58hRh1TAGVnpeDE78eYqsghEeVFpjkGYNLk",
 }
 ```
 
 Let’s take a look at these values:
 
-* `accessSignature` is a proof of access, equal to an owner-signed digest of `sha256(derivedPublicKey + expirationBlock)`
-* `derivedPublicKey` and `derivedSeedHex` is the derived keypair
+* `accessSignature` is a proof of access, equal to an owner-signed digest of `sha256(derivedPublicKey + expirationBlock)` (For more details check out [the implementation](https://github.com/deso-protocol/identity/blob/ffcb09a3ba6070d14a43c31a09f7ed0478fb2acf/src/app/account.service.ts#L109))
+* `derivedPublicKeyBase58Check` and `derivedSeedHex` is the derived keypair
 * `expirationBlock` is a future block height, and represents the expiration “date” (block) of the derived key. Derived keys expire after about 30 days. After that period, you will have to generate and authorize another derived key. To check if a derived key is valid you should compare the current block height, e.g. taken from `/api/v0/get-app-state` Backend API endpoint, with the `expirationBlock` that you can find by quering the `/api/v0/get-user-derived-keys` Backend API endpoint.
-* `derivedJwt` is a JWT token with a month-long timeout signed by the `derivedPublicKey`
-* `jwt` is a JWT token with a month-long timeout signed by the owner `publicKey`
+* `derivedJwt` is a JWT token with a month-long timeout signed by the `derivedPublicKeyBase58Check`
+* `jwt` is a JWT token with a month-long timeout signed by the owner `publicKeyBase58Check`
 
 ### Authorize Derived Key
 
-Before any signing can happen, a derived key must first be activated by submitting an [`authorizeDerivedKey` transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKey`, `expirationBlock`, and `publicKey`. To make the transaction, make a request to the `/api/v0/authorize-derived-key` Backend API endpoint. If you set `DerivedKeySignature: true` when making the Backend API request, you can sign the authorize transaction with the derived key right away. To help you get started with the `authorizeDerivedKey` transaction, we made [this node.js code](https://github.com/deso-protocol/examples/tree/main/identity/authorize-derived-key) snippet in examples repository that shows this flow. If everything worked, you should see the derived key listed in the response to the `/api/v0/get-user-derived-keys` [endpoint](https://github.com/deso-protocol/backend/blob/f70d89a/routes/user.go#L2559) with a payload of `PublicKeyBase58Check` set to owner user public key.
+Before any signing can happen, a derived key must first be activated by submitting an [`authorizeDerivedKey` transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKeyBase58Check`, `expirationBlock`, and `publicKeyBase58Check`. To make the transaction, make a request to the `/api/v0/authorize-derived-key` Backend API endpoint. If you set `DerivedKeySignature: true` when making the Backend API request, you can sign the authorize transaction with the derived key right away. To help you get started with the `authorizeDerivedKey` transaction, we made [this node.js code](https://github.com/deso-protocol/examples/tree/main/identity/authorize-derived-key) snippet in examples repository that shows this flow. If everything worked, you should see the derived key listed in the response to the `/api/v0/get-user-derived-keys` [endpoint](https://github.com/deso-protocol/backend/blob/f70d89a/routes/user.go#L2559) with a payload of `PublicKeyBase58Check` set to owner user public key.
 
 While powerful, this model has a limitation. Namely, it requires the user to have some balance to execute the `authorizeDerivedKey` transaction. This poses a limitation as you won't be able to authorize a derived key for new users who might not have balance in their accounts. However, in practice, there is no use for derived keys unless the user has some non-zero balance in their account. Otherwise, they wouldn't be able to submit any transactions in the first place. One possible remedy to this limitation is to send the `authorizeDerivedKey` transaction only when the user wants to perform an action and has sufficient balance, such as giving a like, making a follow, etc. Another approach is to write a hook that sends the `authorizeDerivedKey` transaction in the background whenever user receives sufficient balance. This simple background mechanism should mitigate most UX issues.
 
 ### Signing Transactions
 
-The private key `derivedSeedHex`embedded in the response from Identity's `/derive` can be used to sign transactions on behalf of the `publicKey` owner. To achieve this, you should construct transactions in the Backend API as if made by the owner’s public key. You then need to append a field to transaction’s `ExtraData["DerivedPublicKey"]` with value set to the derived public key in compressed byte format (33 bytes array) encoded as hex string. Check out this node.js [code snippet](https://github.com/deso-protocol/examples/tree/main/identity/compress-public-key) in the examples repository for help with compressing the derived public key.
+The private key `derivedSeedHex`embedded in the response from Identity's `/derive` can be used to sign transactions on behalf of the `publicKeyBase58Check` owner. To achieve this, you should construct transactions in the Backend API as if made by the owner’s public key. You then need to append a field to transaction’s `ExtraData["DerivedPublicKey"]` with value set to the derived public key in compressed byte format (33 bytes array) encoded as hex string. Check out this node.js [code snippet](https://github.com/deso-protocol/examples/tree/main/identity/compress-public-key) in the examples repository for help with compressing the derived public key.
 
 If you have trouble de/serializing transactions to add the `“DerivedPublicKey”` to ExtraData, you can use a backend endpoint `/api/v0/append-extra-data` and pass the hex of the transaction and the derived public key like this:
 

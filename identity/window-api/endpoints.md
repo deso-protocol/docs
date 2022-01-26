@@ -120,7 +120,7 @@ const logout = window.open('https://identity.deso.org/logout');
 
 ## approve
 
-The approve endpoint is used for transaction signing. If you're unsure what this means, make sure to check out the [#transactions](../identity.md#transactions "mention") section to see how transactions work in the DeSo blockchain. Usually, the approve endpoint is called when you want to sign a transaction that's outside the scope of the [`accessLevel`](../identity.md#access-levels) you have requested during [#log-in](./#log-in "mention"). For example, if you requested `accessLevel=3` and want to sign a `BasicTransfer` transaction (constructed via `api/v0/send-deso`Backend API), you would need to use the approve endpoint because `BasicTransfer` requires `accessLevel=4`. If the transaction you want to sign is within the scope of the `accessLevel` you have, you should sign it through the [iframe-api](../iframe-api/ "mention").&#x20;
+The approve endpoint is used for transaction signing. If you're unsure what this means, make sure to check out the [#transactions](../identity.md#transactions "mention") section to see how transactions work in the DeSo blockchain. Usually, the approve endpoint is called when you want to sign a transaction that's outside the scope of the [`accessLevel`](../identity.md#access-levels) you have requested during [#log-in](./#log-in "mention"). For example, if you requested `accessLevel=3` and want to sign a `BasicTransfer` transaction (constructed via `api/v0/send-deso`Backend API), you would need to use the approve endpoint because `BasicTransfer` requires `accessLevel=4`. If the transaction you want to sign is within the scope of the `accessLevel` you have, you should sign it through the [iframe-api](../iframe-api/ "mention").
 
 #### Request
 
@@ -130,11 +130,11 @@ const approve = window.open('https://identity.deso.org/approve');
 
 #### URL Parameters
 
-| Name                | Type   | Description                                             |
-| ------------------- | ------ | ------------------------------------------------------- |
-| tx                  | string | Transaction hex of the transaction to sign              |
-| testnet (optional)  | bool   | Whether we're on testnet or mainnet. Default is `false` |
-| webview (optional)  | bool   | Whether we're using webview. Default is `false`         |
+| Name               | Type   | Description                                             |
+| ------------------ | ------ | ------------------------------------------------------- |
+| tx                 | string | Transaction hex of the transaction to sign              |
+| testnet (optional) | bool   | Whether we're on testnet or mainnet. Default is `false` |
+| webview (optional) | bool   | Whether we're using webview. Default is `false`         |
 
 #### Response
 
@@ -162,7 +162,7 @@ const approve = window.open('https://identity.deso.org/approve');
 
 ## derive
 
-The derive endpoint is used to generate a derived key for a user. When you hold a derived key, you can sign transactions for a user without having to interact with the DeSo Identity Service. Derived keys are intended to be used primarily in mobile applications and with [#callbacks](./#callbacks "mention"). If no callback is specified, you will receive the derived key through [#messages](./#messages "mention"). In such case, you will receive the payload with `method: "derive"` (opposed to `"login"`).  More information on derived keys can be found in [#derived-keys](../mobile-integration.md#derived-keys "mention").
+The derive endpoint is used to generate a derived key for a user. When you hold a derived key, you can sign transactions for a user without having to interact with the DeSo Identity Service. Derived keys are intended to be used primarily in mobile applications and with [#callbacks](./#callbacks "mention"). If no callback is specified, you will receive the derived key through [#messages](./#messages "mention"). In such case, you will receive the payload with `method: "derive"` (opposed to `"login"`). More information on derived keys can be found in [#derived-keys](../mobile-integration.md#derived-keys "mention").
 
 #### Request
 
@@ -187,8 +187,8 @@ const derive = window.open('https://identity.deso.org/derive');
   method: "derive",
   payload: {
     derivedSeedHex: "40538066039f21f42f0247f49fe4e7d63a9d80528486b02fea37ce3c57886546",
-    derivedPublicKey: "BC1YLjGYUcpF7HMqmUYNoDaV7Wxc8TYoGhGwmigyEVSCKNAxU9GmikD",
-    publicKey: "BC1YLj8iwsicimv8ttrPg6rBtizvM7X3KCsiVQwYZKqj6Wj3rT8TD3D",
+    derivedPublicKeyBase58Check: "BC1YLjGYUcpF7HMqmUYNoDaV7Wxc8TYoGhGwmigyEVSCKNAxU9GmikD",
+    publicKeyBase58Check: "BC1YLj8iwsicimv8ttrPg6rBtizvM7X3KCsiVQwYZKqj6Wj3rT8TD3D",
     btcDepositAddress: "Not implemented yet",
     ethDepositAddress: "Not implemented yet",
     expirationBlock: 91587,
