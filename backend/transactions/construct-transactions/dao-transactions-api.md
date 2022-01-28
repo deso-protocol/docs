@@ -32,7 +32,7 @@ Example usages in frontend:\
 Public key performing the DAO Coin operation
 {% endswagger-parameter %}
 
-{% swagger-parameter in="body" required="true" name="ProfilePublicKeyBase58Check" type="String" %}
+{% swagger-parameter in="body" required="true" name="ProfilePublicKeyBase58CheckOrUsername" type="String" %}
 Public key  or username of the creator of the DAO on whose DAO coins Updater is operating
 {% endswagger-parameter %}
 
