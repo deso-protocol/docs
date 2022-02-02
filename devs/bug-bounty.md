@@ -1,6 +1,6 @@
 # Bug Bounty
 
-We want the DeSo blockchain to be one of the most secure blockchains in the world, but we need your help. If you're skilled at finding exploits and security vulnerabilities, **please email security@deso.org so we can share some resources with you and include you in our first bug bounty.**‌
+We want the DeSo blockchain to be one of the most secure blockchains in the world, but we need your help. If you're skilled at finding exploits and security vulnerabilities, **please email node.admin+security@protonmail.com so we can share some resources with you and include you in our first bug bounty.**‌
 
 ## Rewards <a id="rewards"></a>
 
@@ -37,7 +37,7 @@ Below is a list of severity levels and reward amounts for each level, as well as
 
 ## Claiming a Bounty <a id="claiming-a-bounty"></a>
 
-In order to be eligible to receive a bounty you must fully disclose an exploit to the DeSo developer community by emailing **security@deso.org** Below are some guidelines for disclosing your exploit:‌
+In order to be eligible to receive a bounty you must fully disclose an exploit to the DeSo developer community by emailing **node.admin+security@protonmail.com** Below are some guidelines for disclosing your exploit:‌
 
 * You must be the first person to report an issue. If you are not the first person to report an issue the developer community may award a consolation prize at its discretion.
   * Additionally, if you report an issue that the developer community is already aware of or is actively fixing, then you are not eligible to receive a bounty.
