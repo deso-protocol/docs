@@ -4,7 +4,7 @@ description: Description of steps required to download and start your node
 
 # Setup
 
-Setting up a Deso Node is a simple process, but first verify that you have both [#docker](requirements/software.md#docker "mention") and [#git](requirements/software.md#git "mention") installed.
+Setting up a Deso Node is a simple process, but first verify that you have both [Broken link](broken-reference "mention") and [Broken link](broken-reference "mention") installed.
 
 ### Cloning The Repository&#x20;
 

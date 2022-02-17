@@ -18,11 +18,11 @@ const approve = window.open('https://identity.deso.org/approve?tx=0abf35a...');
 const testnet = window.open('https://identity.deso.org/log-in?testnet=true');
 ```
 
-And here's an example user interface after launching the `log-in` endpoint with a couple of URL parameters, in this case, `accessLevelRequest=4` and `hideJumio=true`. You might remember the `accessLevelRequest` URL parameter from the [#access-levels](../identity.md#access-levels "mention") section in our Introduction guide. There are other URL parameters that you can use and we will explain them in this document.&#x20;
+And here's an example user interface after launching the `log-in` endpoint with a couple of URL parameters, in this case, `accessLevelRequest=4` and `hideJumio=true`. You might remember the `accessLevelRequest` URL parameter from the [#access-levels](../identity.md#access-levels "mention") section in our Introduction guide. There are other URL parameters that you can use and we will explain them in this document.
 
-![Example usage of Window API ](<../../.gitbook/assets/Screenshot from 2021-11-25 01-00-478.png>)
+![Example usage of Window API](<../../../.gitbook/assets/Screenshot from 2021-11-25 01-00-478.png>)
 
-Once the window context is launched, the user has to perform an action, such as login or signup. After the user completes the flow, your app will receive either a `postMessage` or a `callback` containing secure user credentials and payload of the desired API endpoint. You can then use the user credentials for communicating with the [iframe-api](../iframe-api/ "mention"). We recommend the following format for opening the Identity window context:&#x20;
+Once the window context is launched, the user has to perform an action, such as login or signup. After the user completes the flow, your app will receive either a `postMessage` or a `callback` containing secure user credentials and payload of the desired API endpoint. You can then use the user credentials for communicating with the [iframe-api](../iframe-api/ "mention"). We recommend the following format for opening the Identity window context:
 
 ```javascript
 // center the window.
@@ -39,7 +39,7 @@ When we pass public key to the Identity window API, it should always be in base5
 BC1YLgwkd7iADbrSgryTfXhMEcsF76cXDaWog4aDzoTunDb2DcZ3myZ
 ```
 
-**Note: Only one Identity window should be opened at a time.**&#x20;
+**Note: Only one Identity window should be opened at a time.**
 
 ## Messages
 
@@ -75,7 +75,7 @@ When the user completes an action within the window context, Identity will send 
 }
 ```
 
-Most responses from the window context will have the same structure as above. A typical response will contain the `users` object, which reflects all users that have previously logged in to your application. The `users` object is a map of `publicKey => userCredentials` where the credentials are used primarily for communicating with the `iframe` context. In such requests, we will be passing the `encryptedSeedHex, accessLevel, accessLevelHmac` which are used by  DeSo Identity to ensure that the user has been securely authenticated via the window context. User credentials should be saved in local storage. You should always overwrite existing credentials whenever you receive a `method: "login"` response. This is because some requests can cause Identity to reauthorize all users and their credentials like `encryptedSeedHex` will change. In the DeSo Protocol implementation, we do this via `this.backend.setIdentityServiceUsers()` on [line #857](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/global-vars.service.ts#L857) in `/src/app/global-vars.service.ts` which uses the [`localStorage` API](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to store data. If you're unfamiliar with the `localStorage`, below are the three main API calls you'll need. In the reference implementation, we simply store the entire `payload.users` field under a single key called `IdentityUsersKey = "identityUsersV2"`
+Most responses from the window context will have the same structure as above. A typical response will contain the `users` object, which reflects all users that have previously logged in to your application. The `users` object is a map of `publicKey => userCredentials` where the credentials are used primarily for communicating with the `iframe` context. In such requests, we will be passing the `encryptedSeedHex, accessLevel, accessLevelHmac` which are used by DeSo Identity to ensure that the user has been securely authenticated via the window context. User credentials should be saved in local storage. You should always overwrite existing credentials whenever you receive a `method: "login"` response. This is because some requests can cause Identity to reauthorize all users and their credentials like `encryptedSeedHex` will change. In the DeSo Protocol implementation, we do this via `this.backend.setIdentityServiceUsers()` on [line #857](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/global-vars.service.ts#L857) in `/src/app/global-vars.service.ts` which uses the [`localStorage` API](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to store data. If you're unfamiliar with the `localStorage`, below are the three main API calls you'll need. In the reference implementation, we simply store the entire `payload.users` field under a single key called `IdentityUsersKey = "identityUsersV2"`
 
 ```javascript
 // Store data in localStorage with (key, value) = (IdentityUsersKey, users)
@@ -110,4 +110,3 @@ Where the `param1=value1` , `param2=value2` fields will match the structure of t
 ## Termination
 
 When a user finishes any action in an Identity window, a `method: "login"` message is sent or a `callback` is called. After you receive the payload from your desired API endpoint, you should close the Identity window by calling `window.close()` on the window object. When the Identity window is open, you can also communicate with it just like you would with the `iframe` API. This is sometimes useful if you want to sign a transaction or generate a JWT.
-

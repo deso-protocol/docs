@@ -624,7 +624,7 @@ Public key for which we want to query derived keys
 
 {% swagger method="post" path="" baseUrl="/api/v0/delete-identities" summary="Delete Identities" %}
 {% swagger-description %}
-Temporary route to wipe [seedinfo cookies](../../../code/walkthrough.md#seed-creation-and-transaction-construction). This endpoint relies on [identity api](../../../devs/identity-api.md).&#x20;
+Temporary route to wipe [seedinfo cookies](../../../../code/walkthrough.md#seed-creation-and-transaction-construction). This endpoint relies on [identity api](../../../../devs/identity-api.md).&#x20;
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/user.go#L498).
 

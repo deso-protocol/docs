@@ -4,9 +4,9 @@ In this tutorial, we will show you how to make changes to the DeSo codebase, and
 
 ## Prerequisites
 
-This guide assumes you have successfully made it through [**Setting Up Your Dev Environment**](dev-setup.md). In particular, it assumes you have a testnet node running with n0\_test showing a frontend UI that looks roughly like the following screenshot:
+This guide assumes you have successfully made it through [**Setting Up Your Dev Environment**](./). In particular, it assumes you have a testnet node running with n0\_test showing a frontend UI that looks roughly like the following screenshot:
 
-![](../.gitbook/assets/desopage1.png)
+![](../../../.gitbook/assets/desopage1.png)
 
 ## Make Your First Frontend Change
 
@@ -20,7 +20,7 @@ If your frontend repo is loaded into Goland, the following steps should allow yo
 
 After your changes are saved, your browser should update to show a new title for your feed tab:
 
-![](../.gitbook/assets/desopage2.png)
+![](../../../.gitbook/assets/desopage2.png)
 
 ## Make Your First Backend Change
 
@@ -43,7 +43,7 @@ The backend repo runs an API that the frontend Angular app queries to get all of
 
 Now you should see some custom content in the post that you added to the feed. You can modify endpoints in backend like this one to customize how data is returned to the user.
 
-![](../.gitbook/assets/desopage3.png)
+![](../../../.gitbook/assets/desopage3.png)
 
 ## Make Your First Core Change
 

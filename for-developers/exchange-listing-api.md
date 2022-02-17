@@ -34,7 +34,7 @@ What we will use in our examples:
 
 ### Run a Node
 
-All of the commands and examples in this guide will assume that you have a DeSo node running on your local machine. To set one up, simply follow the instructions in the open-source /run repository. If you run into any trouble, ask for help in the #nodes channel on the [official DeSo Discord](../faq/discord/):
+All of the commands and examples in this guide will assume that you have a DeSo node running on your local machine. To set one up, simply follow the instructions in the open-source /run repository. If you run into any trouble, ask for help in the #nodes channel on the [official DeSo Discord](../contact-and-media/social-media-and-community/discord/):
 
 * [https://github.com/deso-protocol/run](https://github.com/deso-protocol/run)
 

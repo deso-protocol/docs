@@ -10,7 +10,7 @@ description: Overview of DeSo Foundation and Community Servers and Guidelines
 
 {% embed url="https://discord.gg/Y5ujyJNB5h" %}
 
-[DeSo Foundation Discord Community Guidelines](deso-foundation-discord-community-guidelines/)
+[DeSo Foundation Discord Community Guidelines](broken-reference)
 
 ### Avoid scams
 

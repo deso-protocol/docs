@@ -1,30 +1,44 @@
 ---
-description: Description of software requirements
+description: Description of hardware and software dependencies for your DeSo Node
 ---
 
-# Software
+# Requirements
 
-### Docker
+Before running a node check your computer to verify the correct software and hardware is installed.
+
+### Hardware
+
+There is no strict minimum spec to run a DeSo Node, but to ensure optimal performance we recommend:
+
+**CPU:** 8 cores, or more
+
+**RAM:** 32gb, or more
+
+**Disk Space:** 400gb, or more
+
+### Software
+
+#### Docker
 
 Go to https://docs.docker.com/get-docker/ and select the operating system of your machine.
 
-![](../../../.gitbook/assets/operating-systems.PNG)
+![](../../.gitbook/assets/operating-systems.PNG)
 
 If you're mac is from 2020 or newer select Mac with Apple chip, otherwise select Mac with Intel chip.
 
-![](../../../.gitbook/assets/mac.PNG)
+![](../../.gitbook/assets/mac.PNG)
 
 If you're on windows select the Docker Desktop for Windows to begin downloading the installer.
 
-![](../../../.gitbook/assets/win-save.PNG)
+![](../../.gitbook/assets/win-save.PNG)
 
 &#x20;Once the installer opens, step through the defaults and if you're on windows be sure to select the Install required Windows component for WSL 2, finally accept the terms and conditions.
 
-![](../../../.gitbook/assets/windows-check.PNG)
+![](../../.gitbook/assets/windows-check.PNG)
 
 &#x20;Congratulations Docker is installed and ready to go!
 
-### Git
+#### Git
 
 Go to https://github.com/git-guides/install-git and download the installer for your operating system.
 
@@ -34,10 +48,10 @@ Go to https://github.com/git-guides/install-git and download the installer for y
 
 Click through the installer.
 
-![](../../../.gitbook/assets/git-setup.PNG)
+![](../../.gitbook/assets/git-setup.PNG)
 
 Open your terminal of choice and execute the command `git` to verify it was properly installed. Your terminal output should look similar to the image below.&#x20;
 
-![](../../../.gitbook/assets/git.PNG)
+![](../../.gitbook/assets/git.PNG)
 
 Congratulations, git is now installed and ready to go!

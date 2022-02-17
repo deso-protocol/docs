@@ -1,6 +1,6 @@
-# Setting Up Your Dev Environment
+# Setup a local node and frontend app
 
-This doc will teach you how to set up your dev environment. Although it's not a hard prerequisite, we recommend skimming the [DeSo Code Walkthrough](walkthrough.md) first, as it provides some useful context.
+This doc will teach you how to set up your dev environment. Although it's not a hard prerequisite, we recommend skimming the [DeSo Code Walkthrough](../) first, as it provides some useful context.
 
 ## Prerequisites
 
@@ -84,7 +84,7 @@ http://localhost:4200
 
 By default, your browser will point at `localhost:17001`, which is the default "mainnet" API port. However, when you run n0\_test, your node spins up on `localhost:18001`. To point your frontend at your testnet node, however, you must open up your inspector and change your `lastLocalNodev2` parameter to `localhost:18001` as shown in the screenshot below. After you do this, you should be able to Sign Up, and everything should work normally.
 
-![](../.gitbook/assets/desoconsole2.png)
+![](../../../.gitbook/assets/desoconsole2.png)
 
 ### Running the node in mainnet mode
 
@@ -127,4 +127,4 @@ ng serve --port 4201
 
 In order to point your browser at your local identity service rather than at identity.deso.org, you must change a localStorage value similar to what we did to get the testnet node running. In this case, we must change `lastIdentityServiceURL` to `http://localhost:4201`. See the screenshot below:
 
-![](../.gitbook/assets/desoconsole3.png)
+![](../../../.gitbook/assets/desoconsole3.png)

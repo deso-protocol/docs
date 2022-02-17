@@ -113,7 +113,7 @@ enum AccessLevel {
 
 Or, here's how the levels `2,3,4` (increasing downwards) look like in the DeSo Identity UI:
 
-![DeSo Identity Access Level UI](<../.gitbook/assets/Screenshot from 2021-11-22 01-13-56.png>)
+![DeSo Identity Access Level UI](<../../.gitbook/assets/Screenshot from 2021-11-22 01-13-56.png>)
 
 Access level determines which actions would require an approval from the user. Approval here means we need to launch the Identity in a `window` context so that user can review and manually confirm a transaction. The approval mechanism is explained in more detail in [#approve](window-api/#approve "mention"). You should only require access level `4` if your app really needs it. In general, you should deliberately request the minimal permission level that fits the requirements of your application For an exhaustive list of `accessLevel` requirements for each action, check out our [iframe-api](iframe-api/ "mention") documentation.
 
