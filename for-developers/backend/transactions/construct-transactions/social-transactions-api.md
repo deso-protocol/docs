@@ -599,3 +599,69 @@ Array of
 ```
 {% endswagger-response %}
 {% endswagger %}
+
+{% swagger method="post" path="" baseUrl="" summary="Create Follow Txn Stateless" %}
+{% swagger-description %}
+Prepare a follow/unfollow transaction. Transaction needs to be signed and submitted through 
+
+`api/v0/submit-transaction`
+
+ before changes come into effect. Example use in 
+
+[frontend](https://github.com/deso-protocol/frontend/blob/96bdf0c/src/app/backend-api.service.ts#L855)
+
+ and endpoint implementation in 
+
+[backend](https://github.com/deso-protocol/backend/blob/47bcc8a/routes/transaction.go#L1331)
+
+.
+{% endswagger-description %}
+
+{% swagger-parameter in="body" name="FollowerPublicKeyBase58Check" type="String" required="true" %}
+Public key of creator followed
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="FollowedPublicKeyBase58Check" type="String" %}
+Public key of follower
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="IsUnfollow" type="Bool" %}
+false if follow / true if unfollow
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint264" %}
+Rate per KB
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="" %}
+```javascript
+{
+    // Response
+{
+    TotalInputNanos: 220387362,
+    ChangeAmountNanos: 220387140
+    FeeNanos: 235,
+    Transaction: {
+        TxInputs : [ 
+            {
+                TxID: [...],
+                Index: 0
+            } , ...
+        ],
+        TxOutputs : [
+            {
+                PublicKey: "...",
+                AmountNanos: 999420
+            }, ...
+        ],
+        TxnMeta : {...},
+        PublicKey: "...",
+        ExtraData: {...},
+        Signature: {...},
+        TxnTypeJSON: 6
+    },
+    TransactionHex: "...",
+}
+```
+{% endswagger-response %}
+{% endswagger %}
