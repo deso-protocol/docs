@@ -80,6 +80,7 @@
 
 ## For Node Operators
 
+* [Active Nodes](for-node-operators/active-nodes.md)
 * [Setup](for-node-operators/node-setup/README.md)
   * [Requirements](for-node-operators/node-setup/requirements.md)
   * [Setup](for-node-operators/node-setup/setup.md)
