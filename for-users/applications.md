@@ -58,7 +58,7 @@
 | [CloutCast](https://cloutcast.io)                       | Pay for post.                                                                                                                                                                                                                                                        |
 | [DeSocialWorld](https://desocialworld.com)              | Do you prefer to use DeSo in your own language? DeSocialWorld will enable you to do so.                                                                                                                                                                              |
 | [DeSoList](https://desolists.com)                       | Create your own DeSo feeds with your favorite creators and enjoy our collection of curated lists.                                                                                                                                                                    |
-| [BuckMail](https://buckmall.cc)                         | Crowdfunding platform powered by DeSo with a mission to bring funding to everyone that needs it across the globe.                                                                                                                                                    |
+| [BuckMall](https://buckmall.cc)                         | Crowdfunding platform powered by DeSo with a mission to bring funding to everyone that needs it across the globe.                                                                                                                                                    |
 
 ### BitHunt
 
