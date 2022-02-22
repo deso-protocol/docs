@@ -5,7 +5,7 @@
 | App                                               | Description                                                                                                                                               |
 | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Diamond](https://diamondapp.com)                 | A social app similar to some web 2.0 counterparts.                                                                                                        |
-| [BitClout](ttps://bitclout.com)                   | The BitClout project is a decentralized, blockchain-based, open source social network.                                                                    |
+| [BitClout](https://bitclout.com)                   | The BitClout project is a decentralized, blockchain-based, open source social network.                                                                    |
 | [CloutFeed](https://cloutfeedapp.com)             | The first decentralized social media mobile app ever, powered by the DeSo blockchain!                                                                     |
 | [OpenProsper](https://www.openprosper.com)        | <p>Provides user intelligence for the blockchain.<br></p>                                                                                                 |
 | [Jamclout](https://www.jamclout.com)              | Connect with People / Rooms / Galleries.                                                                                                                  |
