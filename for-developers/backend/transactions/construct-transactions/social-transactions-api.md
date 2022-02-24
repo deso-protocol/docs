@@ -19,7 +19,7 @@ Example usages in frontend:\
 &#x20; \- Using Update Profile on the [Profile Update page](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/update-profile-page/update-profile/update-profile.component.ts#L170)
 {% endswagger-description %}
 
-{% swagger-parameter in="body" name="UpdatePublicKeyBase58Chck" type="String" required="true" %}
+{% swagger-parameter in="body" name="UpdaterPublicKeyBase58Chck" type="String" required="true" %}
 Public key of updater
 {% endswagger-parameter %}
 
