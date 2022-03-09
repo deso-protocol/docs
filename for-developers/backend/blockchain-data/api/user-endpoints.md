@@ -298,7 +298,7 @@ If true, do not throw a 404 error if there is no profile found. Instead, nil wil
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="get" path="" baseUrl="/api/v0/get-signle-profile-picture/{PublicKeyBase58Check}" summary="Get Single Profile Picture" %}
+{% swagger method="get" path="" baseUrl="/api/v0/get-single-profile-picture/{PublicKeyBase58Check}" summary="Get Single Profile Picture" %}
 {% swagger-description %}
 Returns the profile picture of the given public key
 
