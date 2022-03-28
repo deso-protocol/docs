@@ -1483,7 +1483,6 @@ func TestReactTxns(t *testing.T) {
 	// m2 -> p3 (surprised)
 	doReactTxn(m2Pub, post3Hash, m2Priv, false /*isRemove*/, HappyReaction, 10 /*feeRateNanosPerKB*/)
 
-	//TODO When it's not the same reaction
 	reactingP1 := [][]byte{
 		_strToPk(t, m0Pub),
 		_strToPk(t, m2Pub),
@@ -1508,7 +1507,6 @@ func TestReactTxns(t *testing.T) {
 			require.Contains(reactingP1, reactingPks[ii])
 		}
 		post1 := DBGetPostEntryByPostHash(db, &post1Hash)
-		// TODO
 		require.Equal(uint64(len(reactingP1)), post1.EmojiCount[HappyReaction])
 	}
 
@@ -1521,7 +1519,6 @@ func TestReactTxns(t *testing.T) {
 			require.Contains(reactingP2, reactingPks[ii])
 		}
 		post2 := DBGetPostEntryByPostHash(db, &post2Hash)
-		// TODO
 		require.Equal(uint64(len(reactingP2)), post2.EmojiCount[HappyReaction])
 	}
 
@@ -1534,7 +1531,6 @@ func TestReactTxns(t *testing.T) {
 			require.Contains(reactingP3, reactingPks[ii])
 		}
 		post3 := DBGetPostEntryByPostHash(db, &post3Hash)
-		//TODO
 		require.Equal(uint64(len(reactingP3)), post3.EmojiCount[HappyReaction])
 	}
 
@@ -1603,14 +1599,12 @@ func TestReactTxns(t *testing.T) {
 
 	// m3 -> p2 (unfollow, happy)
 	doReactTxn(m3Pub, post2Hash, m3Priv, true /*isRemove*/, HappyReaction, 10 /*feeRateNanosPerKB*/)
-
-	//TODO When different reactions
+	
 	// Duplicating "m0 -> p1" (unfollow) should fail.
 	_, _, _, err = _doReactTxn(
 		t, chain, db, params, 10 /*feeRateNanosPerKB*/, m0Pub,
 		post1Hash, m0Priv, true /*isRemove*/, HappyReaction)
 	require.Error(err)
-	//TODO Check if we need to add errors.
 	require.Contains(err.Error(), RuleErrorCannotRemoveReactionWithoutAnExistingReaction)
 
 	reactingP1 = [][]byte{
@@ -1631,7 +1625,6 @@ func TestReactTxns(t *testing.T) {
 			require.Contains(reactingP1, reactingPks[ii])
 		}
 		post1 := DBGetPostEntryByPostHash(db, &post1Hash)
-		//TODO
 		require.Equal(uint64(len(reactingP1)), post1.EmojiCount[HappyReaction])
 	}
 
@@ -1643,8 +1636,7 @@ func TestReactTxns(t *testing.T) {
 		for ii := 0; ii < len(reactingPks); ii++ {
 			require.Contains(reactingP2, reactingPks[ii])
 		}
-		post2 := DBGetPostEntryByPostHash(db, &post2Hash)
-		//TODO
+		post2 := DBGetPostEntryByPostHash(db, &post2Hash
 		require.Equal(uint64(len(reactingP2)), post2.EmojiCount[HappyReaction])
 	}
 
@@ -1728,13 +1720,10 @@ func TestReactTxns(t *testing.T) {
 		// Here we check the reactcounts after all the reactentries have been disconnected.
 		if backwardIter == 19 {
 			post1 := DBGetPostEntryByPostHash(db, &post1Hash)
-			//TODO
 			require.Equal(uint64(0), post1.EmojiCount[HappyReaction])
 			post2 := DBGetPostEntryByPostHash(db, &post2Hash)
-			//TODO
 			require.Equal(uint64(0), post2.EmojiCount[HappyReaction])
 			post3 := DBGetPostEntryByPostHash(db, &post3Hash)
-			//TODO
 			require.Equal(uint64(0), post3.EmojiCount[HappyReaction])
 		}
 	}
@@ -1834,7 +1823,6 @@ func TestReactTxns(t *testing.T) {
 				require.Contains(reactingP1, reactingPks[ii])
 			}
 			post1 := DBGetPostEntryByPostHash(db, &post1Hash)
-			//TODO
 			require.Equal(uint64(len(reactingP1)), post1.EmojiCount[HappyReaction])
 		}
 
@@ -1847,7 +1835,6 @@ func TestReactTxns(t *testing.T) {
 				require.Contains(reactingP2, reactingPks[ii])
 			}
 			post2 := DBGetPostEntryByPostHash(db, &post2Hash)
-			//TODO
 			require.Equal(uint64(len(reactingP2)), post2.EmojiCount[HappyReaction])
 		}
 
@@ -1860,7 +1847,6 @@ func TestReactTxns(t *testing.T) {
 				require.Contains(reactingP3, reactingPks[ii])
 			}
 			post3 := DBGetPostEntryByPostHash(db, &post3Hash)
-			//TODO
 			require.Equal(uint64(len(reactingP3)), post3.EmojiCount[HappyReaction])
 		}
 
