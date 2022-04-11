@@ -16,7 +16,7 @@
 | ****[Mousai](https://mousai.stream)               | Music streaming platform.                                                                            |
 | [EverythingStore](https://www.everythingstore.io) | Online shopping with $DeSo.                                                                          |
 | [Wun](https://wun.vc)                             | Your virtual ID Card for the metaverse.                                                              |
-| ****[OneClout](https://oneclout.net)              | Cross post from DeSo apps to Twitter, Facebook, and Instagram                                        |
+| ****[OneClout](https://oneclout.net)              | Cross post from DeSo apps to Twitter, Facebook, and Instagram.                                       |
 
 ### Investor dApps
 
