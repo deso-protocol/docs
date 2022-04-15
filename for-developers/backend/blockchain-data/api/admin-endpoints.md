@@ -10,26 +10,10 @@ POST /api/v0/admin/node-control
 
 TODO
 
-### Reprocess Bitcoin Block
-
-```
-POST /api/v0/admin/reprocess-bitcoin-block
-```
-
-TODO
-
 ### Get Mempool Stats
 
 ```
 POST /api/v0/admin/get-mempool-stats
-```
-
-TODO
-
-### Evict Unmined Bitcoin Txns
-
-```
-POST /api/v0/admin/evict-unmined-bitcoin-txns
 ```
 
 TODO
