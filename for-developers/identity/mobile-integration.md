@@ -8,6 +8,8 @@ description: Integrating with the DeSo Identity on Mobile.
 
 In the world of blockchain, user private keys are extremely sensitive information. This is because, unlike Web2 password, private keys cannot be modified, which means that if somebody gets a hold of your private key, you're potentially **forever** vulnerable to an attack and there isn't much you can do unless you move your entire account to another private key. We are firm believers that user primary keys should **never** be shared with third-party applications, regardless of their security practices, and so we created derived keys, which significantly lower attack vectors related to unauthorized access to user credentials. Derived keys are impermanent and they usually automatically expire about 30 days after being issued. Derived keys can also be de-authorized at any point, which we believe will allow for the creation of advanced security systems in the future that can mitigate the risks originating from key leakage.
 
+After the Transaction Spending Limit block height is reached, derived keys will need to be authorized to perform specific transaction types as well as more specific operations for Creator Coin, DAO Coin, and NFT transaction types.  Check out [#transactionspendinglimitresponse](../backend/blockchain-data/basics/data-types.md#transactionspendinglimitresponse "mention") to learn how to construct the Transaction Spending Limit object.
+
 A derived key is a pair of public and private cryptographic keys that are authorized to sign transactions on behalf of another key pair. That is, if you hold a valid derived key of a user, you can submit a transaction signed by that derived key, and it will be regarded as a valid transaction as if it was made by that user. This is particularly useful in mobile applications because it means you only have to interact with the DeSo Identity Service once, just to get the derived key of a user. It also means that derived keys are extremely sensitive information and therefore should be handled in secure storage with utmost caution, ideally by experienced software engineers.
 
 The flow of using the derived keys is as follows:
@@ -39,21 +41,33 @@ Once the user completes the identity flow, you’ll receive a response containin
     derivedJwt: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzM5Mjg0MjgsImV4cCI6MTYzNjUyMDQyOH0.dvbNwcOUz2bzEMC79nyxzIJGI_3NoMUw59VAI6qdLGNy6x5YC9u0MsFcrDhuL-i8Y66gIQXq0VzgeIzNThxisg",
     jwt: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzM5Mjg0MjgsImV4cCI6MTYzNjUyMDQyOH0.4zyR0kgXIeO6P94TuGWbxxr3fHUoIyJWv4GGMAxP6gfz6UMwSSej85ZJe_N5JYYcvk_vHWhnj0CcXfGQtNMQ8Q",
     network: "testnet",
+    messagingKeyName: "default-key",
+    messagingKeySignature: "fakemessagingkeysignature",
+    messagingPublicKeyBase58Check: "tBC1YLh9Rjy3fLcW1bRDcQ4PXhGocuGnsNqVJx3CESCJknkZ7LJ6mV"
+    messagingPrivateKey: "fakemessagingprivatekey"
     publicKeyBase58Check: "tBCKWiTPdkGAiSd2jTx58hRh1TAGVnpeDE78eYqsghEeVFpjkGYNLk",
+    transactionSpendingLimitHex: "80d0dbc3f4020205f4b00709ff8705042100000000000000000000000000000000000000000000000000000000000000000000871121032357f6e57297839516ae3fd71e76ce47e43f881e8be86877f00ec456594b10c9017b21032357f6e57297839516ae3fd71e76ce47e43f881e8be86877f00ec456594b10c9029b2021032357f6e57297839516ae3fd71e76ce47e43f881e8be86877f00ec456594b10c903ee4700022001855d9ca9c54d797e53df0954204ae7d744c98fe853bc846f5663459ac9cb7b00010a2001855d9ca9c54d797e53df0954204ae7d744c98fe853bc846f5663459ac9cb7b0003f50300"
 }
 ```
 
 Let’s take a look at these values:
 
-* `accessSignature` is a proof of access, equal to an owner-signed digest of `sha256(derivedPublicKey + expirationBlock)` (For more details check out [the implementation](https://github.com/deso-protocol/identity/blob/ffcb09a3ba6070d14a43c31a09f7ed0478fb2acf/src/app/account.service.ts#L109))
+* `accessSignature` is a proof of access, equal to an owner-signed digest of `sha256(derivedPublicKey + expirationBlock + transactionSpendingLimitBytes)` (For more details check out [the implementation](https://github.com/deso-protocol/identity/blob/ffcb09a3ba6070d14a43c31a09f7ed0478fb2acf/src/app/account.service.ts#L109))
 * `derivedPublicKeyBase58Check` and `derivedSeedHex` is the derived keypair
 * `expirationBlock` is a future block height, and represents the expiration “date” (block) of the derived key. Derived keys expire after about 30 days. After that period, you will have to generate and authorize another derived key. To check if a derived key is valid you should compare the current block height, e.g. taken from `/api/v0/get-app-state` Backend API endpoint, with the `expirationBlock` that you can find by quering the `/api/v0/get-user-derived-keys` Backend API endpoint.
 * `derivedJwt` is a JWT token with a month-long timeout signed by the `derivedPublicKeyBase58Check`
 * `jwt` is a JWT token with a month-long timeout signed by the owner `publicKeyBase58Check`
+* `network`  is the network for which this derived key was generated
+* `messagingKeyName` is the key name used for v3 messaging
+* `messagingKeySignature` is the key signature used for v3 messaging
+* `messagingPublicKeyBase58Check` is the public key used for v3 messaging
+* `messagingPrivateKey` is the private key used for v3 messaging
+* `publicKeyBase58Check` is the public key that is the parent of this derived key.
+* `transactionSpendingLimitHex` is a hex string representing the TransactionSpendingLimit for this derived key.
 
 ### Authorize Derived Key
 
-Before any signing can happen, a derived key must first be activated by submitting an [`authorizeDerivedKey` transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKeyBase58Check`, `expirationBlock`, and `publicKeyBase58Check`. To make the transaction, make a request to the `/api/v0/authorize-derived-key` Backend API endpoint. If you set `DerivedKeySignature: true` when making the Backend API request, you can sign the authorize transaction with the derived key right away. To help you get started with the `authorizeDerivedKey` transaction, we made [this node.js code](https://github.com/deso-protocol/examples/tree/main/identity/authorize-derived-key) snippet in examples repository that shows this flow. If everything worked, you should see the derived key listed in the response to the `/api/v0/get-user-derived-keys` [endpoint](https://github.com/deso-protocol/backend/blob/f70d89a/routes/user.go#L2559) with a payload of `PublicKeyBase58Check` set to owner user public key.
+Before any signing can happen, a derived key must first be activated by submitting an [`authorizeDerivedKey` transaction](https://docs.deso.org/devs/backend-api#authorize-derived-key), containing the `accessSignature`, `derivedPublicKeyBase58Check`, `expirationBlock`, `transactionSpendingLimitHex` and `publicKeyBase58Check`. To make the transaction, make a request to the `/api/v0/authorize-derived-key` Backend API endpoint. If you set `DerivedKeySignature: true` when making the Backend API request, you can sign the authorize transaction with the derived key right away. To help you get started with the `authorizeDerivedKey` transaction, we made [this node.js code](https://github.com/deso-protocol/examples/tree/main/identity/authorize-derived-key) snippet in examples repository that shows this flow. If everything worked, you should see the derived key listed in the response to the `/api/v0/get-user-derived-keys` [endpoint](https://github.com/deso-protocol/backend/blob/f70d89a/routes/user.go#L2559) with a payload of `PublicKeyBase58Check` set to owner user public key. Additionally, see the implementation of AuthorizeDerivedKey in the DeSo developer hub [here](https://hub.deso.org/#/user/authorize-derived-key).
 
 While powerful, this model has a limitation. Namely, it requires the user to have some balance to execute the `authorizeDerivedKey` transaction. This poses a limitation as you won't be able to authorize a derived key for new users who might not have balance in their accounts. However, in practice, there is no use for derived keys unless the user has some non-zero balance in their account. Otherwise, they wouldn't be able to submit any transactions in the first place. One possible remedy to this limitation is to send the `authorizeDerivedKey` transaction only when the user wants to perform an action and has sufficient balance, such as giving a like, making a follow, etc. Another approach is to write a hook that sends the `authorizeDerivedKey` transaction in the background whenever user receives sufficient balance. This simple background mechanism should mitigate most UX issues.
 

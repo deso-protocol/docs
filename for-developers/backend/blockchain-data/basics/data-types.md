@@ -152,12 +152,15 @@ For reference, `BalanceEntryResponse` is defined in the backend repo [here](http
   "LowestBidAmountNanos": 97680, // Lowest bid amount currently on this serial number.
   "LastOwnerPublicKeyBase58Check": "BC1YLhkVFp84xfJZqN6jCBsdo6bPyuBoxakChg8DJmmvy2jMhZgBaWK", // Public key of the user who last owned this serial number. This is needed to decrypt Unlockable text.
   "EncryptedUnlockableText": "someencryptedtext" // Unlockable content Text encrypted with a shared secret
+  "ExtraData": { // Extra data is an arbitrary key value object that add metadata to an NFT
+    "SomeKey": "SomeValue"
+  }
 }
 ```
 
 Objects of this type will be denoted as `<NFTEntryResponse>` in this documentation.
 
-For reference, `NFTEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L16).
+For reference, `NFTEntryResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/1dea89896504ecc89739d88e9ca6097181168439/routes/nft.go#L17).
 
 ## NFTCollectionResponse
 
@@ -179,4 +182,78 @@ For reference, `NFTEntryResponse` is defined in the backend repo [here](https://
 
 Objects of this type will be denoted as `<NFTCollectionResponse>` in this documentation.
 
-For reference, `NFTCollectionResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L35).
+For reference, `NFTCollectionResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/1dea89896504ecc89739d88e9ca6097181168439/routes/nft.go#L39).
+
+## TransactionSpendingLimitResponse
+
+`TransactionSpendingLimitResponse` defines the permissions a derived key is authorized to perform on behalf of the owner key.
+
+```json5
+{
+  "GlobalDESOLimit": 10000000, // The cumulative amount of DESO the derived key is allow to spend on 
+                               // behalf of the owner public key
+  "TransactionCountLimitMap": { // Map of transaction type to the number of times this derived key is 
+                                // allowed to perform this operation on behalf of the owner public key
+    "BASIC_TRANSFER": 2, // 2 basic transfer transactions are authorized
+    "SUBMIT_POST": 4, // 4 submit post transactions are authorized
+  },
+  "CreatorCoinOperationLimitMap": { // Map with keys representing public keys of creators
+                                    // mapped to objects defining the number of times each
+                                    // creator coin operation can be performed. An empty string
+                                    // key means the specified operations are authorized on ANY
+                                    // creator coin.
+    "BC1YLhtBTFXAsKZgoaoYNW8mWAJWdfQjycheAeYjaX46azVrnZfJ94s": { // Derived key is authorized to perform the 
+                                                                 // following operations on 
+                                                                 // BC1YLhtBTFXAsKZgoaoYNW8mWAJWdfQjycheAeYjaX46azVrnZfJ94s's creator coin.
+      "any": 3, // Derived key can perform ANY creator coin operation 3 times on this creator coin.
+                // note: any operations are used after more specific operations are used up.
+      "buy": 2, // Derived key can perform a buy creator coin operation 2 times on this creator coin.
+      "sell": 1, // Derived key can perform a sell creator coin operation 1 time on this creator coin.
+      "transfer": 3, // Derived key can perform a transfer creator coin operation 3 times on this creator coin.
+    },
+  },
+  "DAOCoinOperationLimitMap": { // Map with keys representing public keys of DAO
+                                // mapped to objects defining the number of times each
+                                // DAO coin operation can be performed. An empty string
+                                // key means the specified operations are authorized on ANY
+                                // DAO coin.
+    "BC1YLhtBTFXAsKZgoaoYNW8mWAJWdfQjycheAeYjaX46azVrnZfJ94s": { // Derived key is authorized to perform the 
+                                                                 // following operations on 
+                                                                 // BC1YLhtBTFXAsKZgoaoYNW8mWAJWdfQjycheAeYjaX46azVrnZfJ94s's DAO coin.
+      "any": 2, // Derived key can perform ANY DAO coin operation 2 times on this DAO coin.
+                // note: any operations are used after more specific operations.
+      "mint": 3, // Derived key can perform a mint operation 3 times onn this DAO coin.
+      "burn": 1, // Derived key can perform a burn operation 1 time on this DAO coin.
+      "disable_minting": 1, // Derived key can perform a disable minting operation 1 time on this DAO coin.
+      "update_transfer_restriction_status": 2, // Derived key can perform an update_transfer_restriction_status operation 2 times on this DAO coin. 
+      "transfer": 1, // Derived key can perform a transfer operation 1 time on this DAO coin.
+    }
+  },
+  "NFTOperationLimitMap": { // Map with keys representing NFT post hash hexes
+                            // mapped to objects with keys representing serial numbers 
+                            // mapped to objects defining the number of times each
+                            // NFT operation can be performed. An empty string
+                            // key means the specified operations are authorized on ANY
+                            // NFT. A serial number 0 means the specified operations 
+                            // are authorized on any serial number for an NFT.
+    "b1cf68f5eb829f8c6c42abe009f315ee921d46c91cc6bd3b9cab9dc4851addc1": {
+      0: { // Operations defined under serial number 0 can be performed on any serial number for this NFT.
+           // Note: serial number 0 operations are used after more specific serial number operations are used up.
+        "any": 1, // Derived key can perform any operation on any serial number 1 time.
+      },
+      1: {
+        "update": 1, // Derived key can perform an UPDATE_NFT transaction for this serial number.
+        "accept_nft_bid": 2, // Derived key can perform 2 ACCEPT_NFT_BID transactions for this serial number.
+        "nft_bid": 3, // Derived key can perform 3 NFT_BID transactions for this serial number.
+        "transfer": 1, // Derived key can perform 1 NFT_TRANSFER transaction for this serial number.
+        "burn": 1, // Derived key can perform 1 NFT_BURN transaction for this serial number.
+        "accept_nft_transfer": 2, // Derived key can perform 2 ACCEPT_NFT_TRANSFER transactions for this serial number.
+      }
+    }
+  },
+}
+```
+
+Objects of this type will be denoted at `<TransactionSpendingLimitResponse>` in this documentation.
+
+For reference, `TransactionSpendingLimitResponse` is defined in the backend repo [here](https://github.com/deso-protocol/backend/blob/1dea89896504ecc89739d88e9ca6097181168439/routes/transaction.go#L2575).
