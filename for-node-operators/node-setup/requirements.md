@@ -10,11 +10,10 @@ Before running a node check your computer to verify the correct software and har
 
 There is no strict minimum spec to run a DeSo Node, but to ensure optimal performance we recommend:
 
-**CPU:** 8 cores, or more
+**RAM:** 30gb (Regular sync), 64gb (Hypersync), 10gb (Without TxIndex)
+  * Reccomendations based on usage during initial sync; Operational usage 
 
-**RAM:** 32gb, or more
-
-**Disk Space:** 400gb, or more
+**Disk Space:** 500gb
 
 ### Software
 
