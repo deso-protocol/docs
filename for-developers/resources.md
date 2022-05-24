@@ -23,6 +23,7 @@ So use them as examples and Do Your Own Research before running these.
 
     - Supports signing transactions in C# using seed hex and derived keys
     - Supports Identity login in Unity apps through [flask backend](https://github.com/Desonity/Backend-Flask)
+    - Supports deso backend api functions
 
 * [Python Package](https://pypi.org/project/deso/) 
 
