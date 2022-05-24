@@ -19,6 +19,11 @@ So use them as examples and Do Your Own Research before running these.
 
 ## SDKs / Libraries 
 
+* [Unity 3D Package](https://github.com/Desonity/Desonity)
+
+    - Supports signing transactions in C# using seed hex and derived keys
+    - Supports Identity login in Unity apps through [flask backend](https://github.com/Desonity/Backend-Flask)
+
 * [Python Package](https://pypi.org/project/deso/) 
 
     - Supports all DeSo Backend api functions
