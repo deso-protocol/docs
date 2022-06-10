@@ -23,6 +23,10 @@ Public key of the derived key owner
 The derived public key
 {% endswagger-parameter %}
 
+{% swagger-parameter in="body" name="DerivedKeySignature" type="Boolean" %}
+Set to true if you intend to sign this transaction with the derived public key instead of the owner public key. This will add the DerivedPublicKey to ExtraData
+{% endswagger-parameter %}
+
 {% swagger-parameter in="body" required="true" type="uint64" name="ExpirationBlock" %}
 Height of block after which this derived key will no longer work.
 {% endswagger-parameter %}
