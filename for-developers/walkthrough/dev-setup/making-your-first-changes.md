@@ -151,11 +151,6 @@ func (txnData *ReactMetadata) GetTxnType() TxnType {
 func (txnData *ReactMetadata) ToBytes(preSignature bool) ([]byte, error) {
     // Validate the metadata before encoding it.
     //
-    // Post hash must be included and must have the expected length.
-    if len(txnData.PostHash) != HashSizeBytes {
-        return nil, fmt.Errorf("ReactMetadata.ToBytes: PostHash "+
-        "has length %d != %d", len(txnData.PostHash), HashSizeBytes)
-    }
 
     var data []byte
     
@@ -327,7 +322,9 @@ You will also need to add a new constant `OperationTypeReact` of the `NEXT_TAG` 
 and increment the `NEXT_TAG` value in the documentation.
 
 ```go
-OperationTypeReact                        OperationType = `NEXT_TAG`
+	OperationTypeDAOCoinTransfer              OperationType = 26
+	OperationTypeSpendingLimitAccounting      OperationType = 27
+    OperationTypeReact                        OperationType = `NEXT_TAG` // Add this line
 ```
 
 ##### `UtxoOperation`
@@ -346,22 +343,25 @@ Place the snippet below after the `LikeEntry` type declaration. `ReactionKey` an
 The `isDeleted` boolean field is used to determine whether the entry should be deleted when the view is flushed to the database.
 
 ```go
-func MakeReactionKey(userPk []byte, ReactPostHash BlockHash) ReactionKey {
+func MakeReactionKey(userPk []byte, ReactPostHash BlockHash, ReactEmoji rune) ReactionKey {
 	return ReactionKey{
 		// Avoid using the pointer so that it is easier to compare Reaction key structs
 		ReactorPubKey:   *NewPublicKey(userPk),
 		ReactedPostHash: ReactPostHash,
+		ReactEmoji:      ReactEmoji,
 	}
 }
 
 type ReactionKey struct {
 	ReactorPubKey   PublicKey
 	ReactedPostHash BlockHash
+	ReactEmoji      rune
 }
 
 type ReactionEntry struct {
 	ReactorPubKey   []byte
 	ReactedPostHash *BlockHash
+	ReactEmoji      rune
 	// Whether this entry is deleted in the view
 	isDeleted bool
 }
@@ -370,15 +370,9 @@ type ReactionEntry struct {
 
 Unlike `LikeKey` that has a `PkMapKey` field, `ReactionKey` stores a pointer to a `PublicKey` because `PkMapKey` is deprecated.
 
-**Why use `PublicKey` instead of `*PublicKey` as type for `ReactorPubKey`?** It is just for convenience.
-Later, we will need to compare to `ReactionKeys` objects. When comparing, we will create a test `ReactionKey` key.
-If we were to use a pointer `*PublicKey`, then the `ReactorPubKey` field would store the value of the address of test `PublicKey` value.
-
-
-
 #### `block_view.go`
 ##### Updating `UtxoView`
-In `block_view.go`, add the `ReactionKeyToReactionEntry` field in `UtxoView`. This is the field that will contain the some side effects of React transactions.
+In `block_view.go`, add the `ReactionKeyToReactionEntry` field in `UtxoView`. This is the field that will contain some side effects of React transactions.
 You can place it after the `LikeKeyToLikeEntry`.
 
 ```go
@@ -483,10 +477,6 @@ Then, open `notifier.go`, scroll to the `Update` method, and add an `else if` co
 ```
 
 ##### `PGReact`
-You can start by creating a table representing a `ReactionEntry`. Using `go-pg`, all we need to do is define a Go struct
-and `go-pg`'s takes care of creating the database table using ORM. For more information,
-please visit [the official documentation](https://pg.uptrace.dev/models/).
-
 Place the code snippet below just before the `PGFollow` type declaration.
 ```go
 type PGReact struct {
@@ -494,6 +484,7 @@ type PGReact struct {
 
 	ReactorPublicKey []byte     `pg:",pk,type:bytea"`
 	ReactorPostHash  *BlockHash `pg:",pk,type:bytea"`
+	ReactionEmoji    rune       `pg:",pk,type:bytea"`
 }
 
 func (react *PGReact) NewReactionEntry() *ReactionEntry {
@@ -555,10 +546,11 @@ Finally, add the methods to retrieve from the Postgres database after the `GetLi
 // Reacts
 //
 
-func (postgres *Postgres) GetReaction(reactorPublicKey []byte, reactedPostHash *BlockHash) *PGReact {
+func (postgres *Postgres) GetReaction(reactorPublicKey []byte, reactedPostHash *BlockHash, reactionEmoji rune) *PGReact {
 	react := PGReact{
 		ReactorPublicKey: reactorPublicKey,
 		ReactorPostHash:  reactedPostHash,
+		ReactionEmoji:    reactionEmoji,
 	}
 	err := postgres.db.Model(&react).WherePK().First()
 	if err != nil {
@@ -639,14 +631,14 @@ func _dbSeekPrefixForReactorPubKeysReactingToPostHash(likedPostHash BlockHash) [
 
 // Note that this adds a mapping for the user *and* the liked post.
 func DbPutReactMappingsWithTxn(
-	txn *badger.Txn, userPubKey []byte, likedPostHash BlockHash) error {
+	txn *badger.Txn, userPubKey []byte, likedPostHash BlockHash, reactionEmoji rune) error {
 
 	if len(userPubKey) != btcec.PubKeyBytesLenCompressed {
 		return fmt.Errorf("DbPutReactMappingsWithTxn: User public key "+
 			"length %d != %d", len(userPubKey), btcec.PubKeyBytesLenCompressed)
 	}
 
-	if err := txn.Set(_dbKeyForReactorPubKeyToPostHashMapping(userPubKey, likedPostHash), []byte{}); err != nil {
+	if err := txn.Set(_dbKeyForReactorPubKeyToPostHashMapping(userPubKey, likedPostHash, reactionEmoji), []byte{}); err != nil {
 		return errors.Wrapf(err, "DbPutReactMappingsWithTxn: Problem adding user to reacted post mapping: ")
 	}
 
@@ -658,17 +650,17 @@ func DbPutReactMappingsWithTxn(
 }
 
 func DbPutReactMappings(
-	handle *badger.DB, userPubKey []byte, likedPostHash BlockHash) error {
+	handle *badger.DB, userPubKey []byte, likedPostHash BlockHash, reactionEmoji rune) error {
 
 	return handle.Update(func(txn *badger.Txn) error {
-		return DbPutReactMappingsWithTxn(txn, userPubKey, likedPostHash)
+		return DbPutReactMappingsWithTxn(txn, userPubKey, likedPostHash, reactionEmoji)
 	})
 }
 
 func DbGetReactorPubKeyToPostHashMappingWithTxn(
-	txn *badger.Txn, userPubKey []byte, likedPostHash BlockHash) []byte {
+	txn *badger.Txn, userPubKey []byte, likedPostHash BlockHash, reactionEmoji rune) []byte {
 
-	key := _dbKeyForReactorPubKeyToPostHashMapping(userPubKey, likedPostHash)
+	key := _dbKeyForReactorPubKeyToPostHashMapping(userPubKey, likedPostHash, reactionEmoji)
 	_, err := txn.Get(key)
 	if err != nil {
 		return nil
@@ -679,11 +671,11 @@ func DbGetReactorPubKeyToPostHashMappingWithTxn(
 	return []byte{}
 }
 
-func DbGetReactorPubKeyToReactedPostHashMapping(
-	db *badger.DB, userPubKey []byte, likedPostHash BlockHash) []byte {
+func DbGetReactorPubKeyToPostHashMapping(
+	db *badger.DB, userPubKey []byte, likedPostHash BlockHash, reactionEmoji rune) []byte {
 	var ret []byte
 	db.View(func(txn *badger.Txn) error {
-		ret = DbGetReactorPubKeyToPostHashMappingWithTxn(txn, userPubKey, likedPostHash)
+		ret = DbGetReactorPubKeyToPostHashMappingWithTxn(txn, userPubKey, likedPostHash, reactionEmoji)
 		return nil
 	})
 	return ret
@@ -692,17 +684,17 @@ func DbGetReactorPubKeyToReactedPostHashMapping(
 // Note this deletes the like for the user *and* the liked post since a mapping
 // should exist for each.
 func DbDeleteReactMappingsWithTxn(
-	txn *badger.Txn, userPubKey []byte, postHash BlockHash) error {
+	txn *badger.Txn, userPubKey []byte, postHash BlockHash, reactionEmoji rune) error {
 
 	// First check that a mapping exists. If one doesn't exist then there's nothing to do.
-	existingMapping := DbGetReactorPubKeyToPostHashMappingWithTxn(txn, userPubKey, postHash)
+	existingMapping := DbGetReactorPubKeyToPostHashMappingWithTxn(txn, userPubKey, postHash, reactionEmoji)
 	if existingMapping == nil {
 		return nil
 	}
 
 	// When a message exists, delete the mapping for the sender and receiver.
 	if err := txn.Delete(
-		_dbKeyForReactorPubKeyToPostHashMapping(userPubKey, postHash)); err != nil {
+		_dbKeyForReactorPubKeyToPostHashMapping(userPubKey, postHash, reactionEmoji)); err != nil {
 		return errors.Wrapf(err, "DbDeleteLikeMappingsWithTxn: Deleting "+
 			"userPubKey %s and postHash %s failed",
 			PkToStringBoth(userPubKey), postHash)
@@ -718,9 +710,9 @@ func DbDeleteReactMappingsWithTxn(
 }
 
 func DbDeleteReactMappings(
-	handle *badger.DB, userPubKey []byte, postHash BlockHash) error {
+	handle *badger.DB, userPubKey []byte, postHash BlockHash, reactionEmoji rune) error {
 	return handle.Update(func(txn *badger.Txn) error {
-		return DbDeleteReactMappingsWithTxn(txn, userPubKey, postHash)
+		return DbDeleteReactMappingsWithTxn(txn, userPubKey, postHash, reactionEmoji)
 	})
 }
 
@@ -833,7 +825,7 @@ func (bav *UtxoView) _flushReactEntriesToDbWithTxn(txn *badger.Txn) error {
 
 		// Sanity-check that the ReactKey computed from the ReactEntry is
 		// equal to the ReactKey that maps to that entry.
-		reactKeyInEntry := MakeReactionKey(reactEntry.ReactorPubKey, *reactEntry.ReactedPostHash)
+        reactKeyInEntry := MakeReactionKey(reactEntry.ReactorPubKey, *reactEntry.ReactedPostHash, reactEntry.ReactEmoji)
 		if reactKeyInEntry != reactKey {
 			return fmt.Errorf("_flushReactEntriesToDbWithTxn: ReactEntry has "+
 				"ReactKey: %v, which doesn't match the ReactKeyToReactEntry map key %v",
@@ -843,7 +835,7 @@ func (bav *UtxoView) _flushReactEntriesToDbWithTxn(txn *badger.Txn) error {
 		// Delete the existing mappings in the db for this ReactKey. They will be re-added
 		// if the corresponding entry in memory has isDeleted=false.
 		if err := DbDeleteReactMappingsWithTxn(
-			txn, reactKey.ReactorPubKey[:], reactKey.ReactedPostHash); err != nil {
+            txn, reactKey.ReactorPubKey[:], reactKey.ReactedPostHash, reactKey.ReactEmoji); err != nil {
 
 			return errors.Wrapf(
 				err, "_flushReactEntriesToDbWithTxn: Problem deleting mappings "+
@@ -861,7 +853,7 @@ func (bav *UtxoView) _flushReactEntriesToDbWithTxn(txn *badger.Txn) error {
 			// If the LikeEntry has (isDeleted = false) then we put the corresponding
 			// mappings for it into the db.
 			if err := DbPutReactMappingsWithTxn(
-				txn, reactEntry.ReactorPubKey, *reactEntry.ReactedPostHash); err != nil {
+                txn, reactEntry.ReactorPubKey, *reactEntry.ReactedPostHash, reactEntry.ReactEmoji); err != nil {
 
 				return err
 			}
@@ -948,15 +940,16 @@ func (bav *UtxoView) _getReactionEntryForReactionKey(reactionKey *ReactionKey) *
 	// nil. Either way, save the value to the in-memory view mapping got later.
 	reactionExists := false
 	if bav.Postgres != nil {
-		reactionExists = bav.Postgres.GetReaction(reactionKey.ReactorPubKey[:], &reactionKey.ReactedPostHash) != nil
+		reactionExists = bav.Postgres.GetReaction(reactionKey.ReactorPubKey[:], &reactionKey.ReactedPostHash, reactionKey.ReactEmoji) != nil
 	} else {
-		reactionExists = DbGetReactorPubKeyToPostHashMapping(bav.Handle, reactionKey.ReactorPubKey[:], reactionKey.ReactedPostHash) != nil
+		reactionExists = DbGetReactorPubKeyToPostHashMapping(bav.Handle, reactionKey.ReactorPubKey[:], reactionKey.ReactedPostHash, reactionKey.ReactEmoji) != nil
 	}
 
 	if reactionExists {
 		reactionEntry := ReactionEntry{
 			ReactorPubKey:   reactionKey.ReactorPubKey[:],
 			ReactedPostHash: &reactionKey.ReactedPostHash,
+			ReactEmoji:      reactionKey.ReactEmoji,
 		}
 		bav._setReactionEntryMappings(&reactionEntry)
 		return &reactionEntry
@@ -973,7 +966,7 @@ func (bav *UtxoView) _setReactionEntryMappings(reactionEntry *ReactionEntry) {
 		return
 	}
 
-	reactionKey := MakeReactionKey(reactionEntry.ReactorPubKey, *reactionEntry.ReactedPostHash)
+	reactionKey := MakeReactionKey(reactionEntry.ReactorPubKey, *reactionEntry.ReactedPostHash, reactionEntry.ReactEmoji)
 	bav.ReactionKeyToReactionEntry[reactionKey] = reactionEntry
 }
 
@@ -987,14 +980,14 @@ func (bav *UtxoView) _deleteReactionEntryMappings(reactionEntry *ReactionEntry) 
 	bav._setReactionEntryMappings(&tombstoneReactionEntry)
 }
 
-func (bav *UtxoView) GetReactionByReader(readerPK []byte, postHash *BlockHash) bool {
+func (bav *UtxoView) GetReactionByReader(readerPK []byte, postHash *BlockHash, reactEmoji rune) bool {
 	// Get react state.
-	reactionKey := MakeReactionKey(readerPK, *postHash)
+	reactionKey := MakeReactionKey(readerPK, *postHash, reactEmoji)
 	reactionEntry := bav._getReactionEntryForReactionKey(&reactionKey)
 	return reactionEntry != nil && !reactionEntry.isDeleted
 }
 
-func (bav *UtxoView) GetReactionsForPostHash(postHash *BlockHash) (_ReactorPubKeys [][]byte, _err error) {
+func (bav *UtxoView) GetReactionsForPostHash(postHash *BlockHash, reactionEmoji rune) (_ReactorPubKeys [][]byte, _err error) {
 	if bav.Postgres != nil {
 		reactions := bav.Postgres.GetReactionsForPost(postHash)
 		for _, reaction := range reactions {
@@ -1015,7 +1008,7 @@ func (bav *UtxoView) GetReactionsForPostHash(postHash *BlockHash) (_ReactorPubKe
 			}
 
 			reactorPubKey := key[1+HashSizeBytes:]
-			reactKey := MakeReactionKey(reactorPubKey, *postHash)
+			reactKey := MakeReactionKey(reactorPubKey, *postHash, reactionEmoji)
 			bav._getReactionEntryForReactionKey(&reactKey)
 		}
 	}
@@ -1074,7 +1067,7 @@ func (bav *UtxoView) _connectReact(
 	// At this point the code diverges and considers the react flows differently
 	// since the presence of an existing react entry has a different effect in either case.
 
-	reactionKey := MakeReactionKey(txn.PublicKey, *txMeta.PostHash)
+	reactionKey := MakeReactionKey(txn.PublicKey, *txMeta.PostHash, txMeta.EmojiReaction)
 	existingReactEntry := bav._getReactionEntryForReactionKey(&reactionKey)
 	// We don't need to make a copy of the post entry because all we're modifying is the emoji counts,
 	// which isn't stored in any of our mappings. But we make a copy here just because it's a little bit
@@ -1086,7 +1079,7 @@ func (bav *UtxoView) _connectReact(
 		if existingReactEntry == nil || existingReactEntry.isDeleted {
 			return 0, 0, nil, errors.Wrapf(
 				RuleErrorCannotRemoveReactionWithoutAnExistingReaction,
-				"_connectReact: Like key: %v", &reactionKey)
+				"_connectReact: React key: %v", &reactionKey)
 		}
 
 		// Now that we know there is a react entry, we delete it and decrement the emoji count.
@@ -1179,7 +1172,7 @@ func (bav *UtxoView) _disconnectReact(
 		// If this is a normal "react," we do some sanity checks and then delete the entry.
 
 		// Get the ReactionEntry. If we don't find it or isDeleted=true, that's an error.
-		reactKey := MakeReactionKey(currentTxn.PublicKey, *txMeta.PostHash)
+		reactKey := MakeReactionKey(currentTxn.PublicKey, *txMeta.PostHash, txMeta.EmojiReaction)
 		reactEntry := bav._getReactionEntryForReactionKey(&reactKey)
 		if reactEntry == nil || reactEntry.isDeleted {
 			return fmt.Errorf("_disconnectReact: ReactionEntry for "+
@@ -1214,7 +1207,6 @@ func (bav *UtxoView) _disconnectReact(
 	return bav._disconnectBasicTransfer(
 		currentTxn, txnHash, utxoOpsForTxn[:operationIndex], blockHeight)
 }
-
 ```
 
 #### `block_view_react_test`
@@ -1966,6 +1958,7 @@ func TestReactTxns(t *testing.T) {
 		require.NoError(utxoView.FlushToDb())
 	}
 
+	//TODO (See feedback for more updates) - I would probably use the TestMeta struct and follow the pattern used in block_view_dao_coin_limit_order_test.go.
 	testDisconnectedState()
 }
 
