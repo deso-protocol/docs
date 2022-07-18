@@ -53,6 +53,10 @@ Deprecated
 Deprecated
 {% endswagger-parameter %}
 
+{% swagger-parameter in="body" name="ExtraData" type="map[string]string" %}
+extra data, values must be strings. This is an arbitrary json object that can be used to add extra metadata on a profile
+{% endswagger-parameter %}
+
 {% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint64" required="true" %}
 Rate per KB
 {% endswagger-parameter %}
@@ -96,7 +100,7 @@ Array of
       "IsHidden": false // Is this profile hidden
     },
     "PublicKey": "Aqo9yNKZ6h5JFN5mSU7T4W7amg1lcZ1SPBqaA8v59gxF",
-    "ExtraData": null,
+    "ExtraData": null, // Any additional keys in the ExtraData field of the request body will be included here
     "Signature": null,
     "TxnTypeJSON": 6
   },
@@ -546,6 +550,18 @@ Array of
  objects that define additional outputs that need to be added to this transaction 
 {% endswagger-parameter %}
 
+{% swagger-parameter in="body" name="SenderMessagingGroupKeyName" type="String" %}
+SenderMessagingGroupKeyName is the messaging group key name of the sender. If left empty, this endpoint will replace it with the base messaging key. If both SenderMessagingGroupKeyName and RecipientMessagingGroupKeyName are left empty, a V2 message will be constructed
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="RecipientMessagingGroupKeyName" type="String" %}
+RecipientMessagingGroupKeyName is the messaging group key name of the recipient. If left empty, this endpoint will replace it with the base messaging key. If both SenderMessagingGroupKeyName and RecipientMessagingGroupKeyName are left empty, a V2 message will be constructed
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="ExtraData" type="map[string]string" %}
+extra data, values must be strings. This is an arbitrary json object that can be used to add extra metadata on a message
+{% endswagger-parameter %}
+
 {% swagger-response status="200: OK" description="Successfully constructed a send message transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
@@ -574,11 +590,116 @@ Array of
       "TimestampNanos": 1637775918769757700 // Timestamp of message
     },
     "PublicKey": "Aqo9yNKZ6h5JFN5mSU7T4W7amg1lcZ1SPBqaA8v59gxF",
-    "ExtraData": {
+    "ExtraData": { // Any additional keys in the ExtraData field of the request body will be included here as well.
       "V": "Ag==" // Version of message encryption used to encrypt this message
+      "SenderMessagingPublicKey": "senderMessagingPublicKey", // SenderMesssagingPublicKey for v3 messages - Unintelligble bytes
+      "SenderMessagingGroupKeyName": "senderMessagingGroupKeyName", // SenderGroupKeyName for v3 messages - Unintelligble bytes
+      "RecipientMessagingPublicKey": "recipientMessagingPublicKey", // RecipientMesssagingPublicKey for v3 messages - Unintelligble bytes
+      "RecipientMessagingGroupKeyName": "recipientMessagingGroupKeyName", // RecipientGroupKeyName for v3 messages - Unintelligble bytes
     },
     "Signature": null,
     "TxnTypeJSON": 4
+  },
+  "TransactionHex": "018c4bc1d70d40fa5b27d6299b9f1c6868552846bc7dbebb37c8f2c396ca3e16f6000102aa3dc8d299ea1e4914de66494ed3e16eda9a0d65719d523c1a9a03cbf9f60c45f5f2e7dc03049f0102397b1a80eba0a60644650af13c2a6ffdfbbf38830cafc34937a75ddd44b8ce527404b05896abbc36cff0a1336d5d78be5c46d6bd7623e9f7b953ce1575148f7ddde077ce8b10d97f7b4deee420a1b68e45fac58f44c9b5ff5fa4b95498d2e38284ba5affda653edfd0630d14b664c52d04f1e515b31a3e7e562138fcd07f7da810aa3ceeb19c7e824813cdd319539dc2f636e9144ababcd79fd590a3dd162102aa3dc8d299ea1e4914de66494ed3e16eda9a0d65719d523c1a9a03cbf9f60c45010156010200"
+}
+```
+{% endtab %}
+
+{% tab title="Response Field Descriptions" %}
+...coming soon! See comments in sample response for descriptions for now.
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
+
+{% swagger method="post" path="" baseUrl="/api/v0/register-messaging-group-key" summary="Register Messaging Group Key" %}
+{% swagger-description %}
+Create a Group Messaging Key for V3 messages.
+
+Group Messaging Keys are used to power v3 messages. More info to come.
+{% endswagger-description %}
+
+{% swagger-parameter in="body" name="OwnerPublicKeyBase58Check" type="String" required="true" %}
+Public key of the account for which we want to register a messaging key
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="MessagingPublicKeyBase58Check" type="String" required="true" %}
+Public key of the messaging group we want to register
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="MessagingGroupKeyName" type="String" required="true" %}
+Name of the group key
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="MessagingKeySignatureHex" type="String" required="true" %}
+Signature of sha256x2(MessagingPublicKeyBase58Check + MessagingGroupKeyName). Currently, the signature is only needed to register the default key
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="ExtraData" type="map[string]string" %}
+extra data, values must be strings. This is an arbitrary json object that can be used to add extra metadata on a group messaging key
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint64" required="true" %}
+Rate per KB
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="TransactionFees" type="TransactionFee[]" %}
+Array of 
+
+[#transactionfee](../basics/data-types.md#transactionfee "mention")
+
+ objects that define additional outputs that need to be added to this transaction 
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully constructed a register group messaging key transaction" %}
+{% tabs %}
+{% tab title="Sample Response" %}
+```
+{
+  "TstampNanos": 1637775918769757700,
+  "TotalInputNanos": 999946965,
+  "ChangeAmountNanos": 999946613,
+  "FeeNanos": 352,
+  "Transaction": {
+    "TxInputs": [
+      {
+        "TxID": [...],
+        "Index": 0
+      }
+    ],
+    "TxOutputs": [
+      {
+        "PublicKey": "Aqo9yNKZ6h5JFN5mSU7T4W7amg1lcZ1SPBqaA8v59gxF",
+        "AmountNanos": 999946613
+      }
+    ],
+    "TxnMeta": {
+      "MessagingPublicKey": "Ajl7GoDroKYGRGUK8Twqb/37vziDDK/DSTenXd1EuM5S", // Public key (in bytes) of the messaging group
+      "MessagingGroupKeyName": "somekeyname", // messaging group key name in bytes
+      "GroupOwnerSignature": "somebytes" // group owner signature in bytes
+      "MessagingGroupMembers": [ // list of group members
+        "GroupMemberPublicKey":" "publickey", // the main public key of the group chat member.
+        "GroupMemberKeyName": "keyaneminbytes", // GroupMemberKeyName determines the key of the recipient that the
+	                                        // encrypted key is addressed to. We allow adding recipients by their
+	                                        // messaging keys. It suffices to specify the recipient's main public key
+	                                        // and recipient's messaging key name for the consensus to know how to
+	                                        // index the recipient. That's why we don't actually store the messaging
+	                                        // public key in the MessagingGroupMember entry.
+	"EncryptedKey": "encryptedbytes", // Encrypted messaging key, addressed to the recipient
+      }]
+    },
+    "PublicKey": "Aqo9yNKZ6h5JFN5mSU7T4W7amg1lcZ1SPBqaA8v59gxF",
+    "ExtraData": null, // Any additional keys in the ExtraData field of the request body will be included here as well.
+    "Signature": null,
+    "TxnTypeJSON": 23
   },
   "TransactionHex": "018c4bc1d70d40fa5b27d6299b9f1c6868552846bc7dbebb37c8f2c396ca3e16f6000102aa3dc8d299ea1e4914de66494ed3e16eda9a0d65719d523c1a9a03cbf9f60c45f5f2e7dc03049f0102397b1a80eba0a60644650af13c2a6ffdfbbf38830cafc34937a75ddd44b8ce527404b05896abbc36cff0a1336d5d78be5c46d6bd7623e9f7b953ce1575148f7ddde077ce8b10d97f7b4deee420a1b68e45fac58f44c9b5ff5fa4b95498d2e38284ba5affda653edfd0630d14b664c52d04f1e515b31a3e7e562138fcd07f7da810aa3ceeb19c7e824813cdd319539dc2f636e9144ababcd79fd590a3dd162102aa3dc8d299ea1e4914de66494ed3e16eda9a0d65719d523c1a9a03cbf9f60c45010156010200"
 }

@@ -2,24 +2,21 @@
 
 ### Consumer Apps
 
-| App                                               | Description                                                                                                                                               |
-| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Diamond](https://diamondapp.com)                 | A social app similar to some web 2.0 counterparts.                                                                                                        |
-| [BitClout](https://bitclout.com)                   | The BitClout project is a decentralized, blockchain-based, open source social network.                                                                    |
-| [CloutFeed](https://cloutfeedapp.com)             | The first decentralized social media mobile app ever, powered by the DeSo blockchain!                                                                     |
-| [OpenProsper](https://www.openprosper.com)        | <p>Provides user intelligence for the blockchain.<br></p>                                                                                                 |
-| [Jamclout](https://www.jamclout.com)              | Connect with People / Rooms / Galleries.                                                                                                                  |
-| [Vibehut](https://vibehut.io)                     | 1-on-1 video calls based on your social score.                                                                                                            |
-| [Chimein](https://www.chime-in.io)                | _Chime In_ is available 24 hours a day to meet and congregate.                                                                                            |
-| [3DeSocial](https://cloutrooms.app)               | Cloutrooms is a 3D virtual environment created using the power of decentralized open source social media.                                                 |
-| [EverythingStore](https://www.everythingstore.io) | Shopping.                                                                                                                                                 |
-| [PurpleCreator](https://www.purplecreator.com)    | The exchange for DAO coins.                                                                                                                               |
-| [CloutPub](https://cloutpub.org)                  | DeSo publishing network.                                                                                                                                  |
-| [Afterparty](https://afterparty.ai)               | Afterparty is a community of innovative creators, artists, and builders with a Web3 platform for accessing physical and virtual experiences through NFTs. |
-| [Wun](https://wun.vc)                             | Your Virtual ID Card For The Metaverse.                                                                                                                   |
-| [Astronation](https://astronation.world)          | The virtual reality open world. Interact in real-time with other inhabitants of an endless star system.                                                   |
-| [LosVegalos](https://www.losvegalos.com/wheel)    | A unique DeSo experience combining gaming with gambling to bring joy and excitement to the community!                                                     |
-| [OneClout](https://oneclout.net)                  | OneClout  sends your DeSo posts and NFTs to Twitter, Instagram\* and Facebook.                                                                            |
+| App                                               | Description                                                                                          |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [Diamond](https://diamondapp.com)                 | Twitter-like front end that uses crypto to enhance the experience by leveraging the DeSo blockchain. |
+| [SuperNovas](ttps://supernovas.app)               | Bringing a social experience to NFTs.                                                                |
+| [Entre](https://joinentre.com)                    | The web3 professional networking app.                                                                |
+| [DeSociaWorld](https://desocialworld.com)         | Multi-language DeSo feeds.                                                                           |
+| [OverClout](https://overclout.com)                | A new type of social media experience.                                                               |
+| [ChimeIn](https://www.chime-in.io)                | Web3 voice-chat rooms.                                                                               |
+| [OpenProsper](https://www.openprosper.com)        | DeSo analytics.                                                                                      |
+| [BitClout](https://bitclout.com)                  | BitClout is a decentralized, blockchain-based, open source social network.                           |
+| [VibeHut](https://vibehut.io)                     | Video chat with friends or strangers based off of your interest and social credit.                   |
+| ****[Mousai](https://mousai.stream)               | Music streaming platform.                                                                            |
+| [EverythingStore](https://www.everythingstore.io) | Online shopping with $DeSo.                                                                          |
+| [Wun](https://wun.vc)                             | Your virtual ID Card for the metaverse.                                                              |
+| ****[OneClout](https://oneclout.net)              | Cross post from DeSo apps to Twitter, Facebook, and Instagram.                                       |
 
 ### Investor dApps
 
@@ -42,7 +39,7 @@
 | [Supernovas](https://supernovas.app)         | Supernovas is the decentralized social NFT marketplace built for creators and collectors. |
 | [NameTrade](https://name-trade.com/password) | Buy and Sell DeSo usernames.                                                              |
 
-### Tools/Explorers/Utilities&#x20;
+### Tools/Explorers/Utilities
 
 | App                                                     | Description                                                                                                                                                                                                                                                          |
 | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

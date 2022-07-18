@@ -53,6 +53,8 @@
       * [Admin Endpoints](for-developers/backend/blockchain-data/api/admin-endpoints.md)
       * [Buy DeSo Endpoints](for-developers/backend/blockchain-data/api/buy-deso-endpoints.md)
       * [Meta Data Endpoints](for-developers/backend/blockchain-data/api/backend-api.md)
+      * [Transaction Spending Limits Endpoints](for-developers/backend/blockchain-data/api/transaction-spending-limits-endpoints.md)
+      * [DAO Endpoints](for-developers/backend/blockchain-data/api/dao-endpoints.md)
   * [Configuration](for-developers/backend/configuration/README.md)
     * [Onboarding](for-developers/backend/configuration/onboarding.md)
     * [Phone Number Verification](for-developers/backend/configuration/phone-number-verification.md)

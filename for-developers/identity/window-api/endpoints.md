@@ -164,6 +164,8 @@ const approve = window.open('https://identity.deso.org/approve');
 
 The derive endpoint is used to generate a derived key for a user. When you hold a derived key, you can sign transactions for a user without having to interact with the DeSo Identity Service. Derived keys are intended to be used primarily in mobile applications and with [#callbacks](./#callbacks "mention"). If no callback is specified, you will receive the derived key through [#messages](./#messages "mention"). In such case, you will receive the payload with `method: "derive"` (opposed to `"login"`). More information on derived keys can be found in [#derived-keys](../mobile-integration.md#derived-keys "mention").
 
+After the Transaction Spending Limits fork height hits, derived keys will require authorization of transaction spending limits, which provides granular permissions on transaction type and even more granular permissions on NFTs, Creator Coins, and DAO Coins. To learn more, read the [#derived-keys](../mobile-integration.md#derived-keys "mention") section.
+
 #### Request
 
 ```javascript
@@ -172,11 +174,14 @@ const derive = window.open('https://identity.deso.org/derive');
 
 #### URL Parameters
 
-| Name                | Type   | Description                                                                       |
-| ------------------- | ------ | --------------------------------------------------------------------------------- |
-| callback (optional) | string | Callback URL for the payload as explained in [#callbacks](./#callbacks "mention") |
-| testnet (optional)  | bool   | Whether we're on testnet or mainnet. Default is `false`                           |
-| webview (optional)  | bool   | Whether we're using webview. Default is `false`                                   |
+| Name                     | Type   | Description                                                                                                                                                                                                                    |
+| ------------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| callback (optional)      | string | Callback URL for the payload as explained in [#callbacks](./#callbacks "mention")                                                                                                                                              |
+| testnet (optional)       | bool   | Whether we're on testnet or mainnet. Default is `false`                                                                                                                                                                        |
+| webview (optional)       | bool   | Whether we're using webview. Default is `false`                                                                                                                                                                                |
+| TransactionSpendingLimit | string | [#transactionspendinglimitresponse](../../backend/blockchain-data/basics/data-types.md#transactionspendinglimitresponse "mention")as a JSON string. Use `encodeURIComponent(JSON.stringify(transactionSpendingLimitResponse))` |
+| PublicKey                | String | Public key (in base 58) for which you want to generate a derived key (Optional)                                                                                                                                                |
+| DerivedPublicKey         | String | Derived key (in base 58) that you want to use instead of allowing identity to generate a new one (Optional)                                                                                                                    |
 
 #### Response
 

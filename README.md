@@ -138,9 +138,7 @@ Creator coins are naturally scarce, with generally fewer than 100 to 1,500 coins
 The formula or “curve” for determining the price of a creator’s coin is as follows. Note that creator coins are normally bought and sold with the DeSo cryptocurrency, but we provide a dollar version of the formula for easy calculating:
 
 $$
-price\_in\_deso = .003 \times creator\_coins\_in\_circulation^2
-\\
-price\_in\_usd = .003 \times creator\_coins\_in\_circulation^2 \times deso\_price\_in\_usd
+price\_in\_deso = .003 \times creator\_coins\_in\_circulation^2 \\ price\_in\_usd = .003 \times creator\_coins\_in\_circulation^2 \times deso\_price\_in\_usd
 $$
 
 When you create a profile, there are initially zero coins in existence and thus the price is zero. If you want to buy coins from the profile, it will happily mint them on-chain and sell them to you according to the price curve above, making it more and more expensive as more coins are purchased. The money you use to buy the coins gets “locked” in the profile in exchange for the coins. On the flipside, if you want to sell coins, the profile will happily buy them from you according to the curve using the money locked from previous buys. And so buying **creates** coins while pushing the price **up** and **locking** money into the profile, while selling **destroys** coins while pushing the price **down** and **unlocking** money from the profile. This is often referred to as an “automated market-maker,” and it’s the same concept that powers protocols like Uniswap and Bancor.
@@ -300,7 +298,7 @@ Just to do some math, imagine a post with 1 million likes gets 100,000 diamonds,
 
 Today, DeSo runs a hybrid Proof of Work consensus mechanism that allows it to use far less energy than Bitcoin or Ethereum while remaining secure against 51% attacks. Its current power consumption can be estimated via websites such as bitpool.me, and we believe it to be significantly less than 500 Kilowatts.
 
-This being said, the core development team behind DeSo has invested significant resources into developing a groundbreaking proof of stake proposal that we expect to reveal in the coming weeks, and that we expect to launch before the end of the year 2021. Importantly, this proposal, like everything else with DeSo, will be especially well-suited to supporting the unique constraints of social applications.
+This being said, the core development team behind DeSo has invested significant resources into developing a groundbreaking proof of stake proposal that we expect to reveal in the coming weeks, and that we expect to launch before the end of the year 2022. Importantly, this proposal, like everything else with DeSo, will be especially well-suited to supporting the unique constraints of social applications.
 
 ## A Simplified Scaling Roadmap
 
@@ -323,11 +321,11 @@ The math below walks through DeSo scalability at each stage:
    * The average DeSo blockchain post size is **218 bytes**.
    *   There are 10 other [transaction types](https://github.com/deso-protocol/core/blob/135c03a/lib/network.go#L239) besides `POST`, such as `LIKE` and `FOLLOW`. In a recent block, posts were about **1/3** of the total block size.
 
-       ![](https://lh4.googleusercontent.com/YSLyEVtV0Ynx--mta7IP3QS5aVrZiq7MBVmIc9h9bZwbCrLXXTIIDzO2Gm9RYOjaqQONhOju-F7RvaTIVO6vWJ5AMASXIYHMI4z9sjK3acpoXOmhRHX99-35qS4I54KBl2C3zjnH)
+       <img src="https://lh4.googleusercontent.com/YSLyEVtV0Ynx--mta7IP3QS5aVrZiq7MBVmIc9h9bZwbCrLXXTIIDzO2Gm9RYOjaqQONhOju-F7RvaTIVO6vWJ5AMASXIYHMI4z9sjK3acpoXOmhRHX99-35qS4I54KBl2C3zjnH" alt="" data-size="original">
    * The DeSo blockchain currently produces up to 2MB blocks every 5 minutes, as you can see from [bitcloutpulse.com/explorer](https://bitcloutpulse.com/explorer).
    * So it can scale to \~30 transactions per second, **which is \~10 posts per second** (= 2e6 bytes/block / (218 bytes/post \* 60 seconds/minute \* 5 minutes/block) \* 1 post / 3 transactions).
    * If we increase the block size to 16MB blocks every five minutes, we can roughly extrapolate that it scales to \~240 transactions per second = **\~80 posts per second**.
-   * For comparison, Twitter has approximately [6000 posts/second](https://www.dsayce.com/social-media/tweets-day/#:\~:text=Every%20second%2C%20on%20average%2C%20around%206%2C000%20tweets%20are%20tweeted%20on,August%202014%20with%20661%20million.) on average with 300M users.
+   * For comparison, Twitter has approximately [6000 posts/second](https://www.dsayce.com/social-media/tweets-day/) on average with 300M users.
    * So, at 80 posts per second, we should be able to roughly accommodate about 80/6000 = 1.33% of 300M users, or **4M users**.
    * That’s where we can get with a basic block size increase alone. But we have a few other cards to play.
 3. Warp sync
@@ -335,9 +333,9 @@ The math below walks through DeSo scalability at each stage:
      * As a concrete example, if all you're downloading is the current creator coin balances for each user, then all that user's trades are effectively compressed into a few integers because you don't care about the history (only the end state).
    * Instead, we move to a model where nodes by default first sync and validate a snapshot of the current blockchain state and then sync only a few week's worth of blocks on top of that.
    * Generally, the bottleneck to blockchain performance is validation speed. With DeSo, we've run tests that indicate a node running on an Intel Xeon E-2276M can validate transactions at the rate of **\~12MB/s = 1.04TB/day = \~55,000 txns per second**.
-   * So, if we start by just downloading the state with minimal validation, how big can it be? To download 10TB at 10gbps = 10e12/10e9\*8/60/60 takes about \~2.2h. To download 100TB at 10gbps = 10e12/10e9\*8/60/60 is about **\~22.2h to download the state**.&#x20;
+   * So, if we start by just downloading the state with minimal validation, how big can it be? To download 10TB at 10gbps = 10e12/10e9\*8/60/60 takes about \~2.2h. To download 100TB at 10gbps = 10e12/10e9\*8/60/60 is about **\~22.2h to download the state**.
    * With warp sync, the block size can be increased beyond 16MB because the number of blocks required to get a node up-to-date can be reduced to only one week's worth of blocks rather than the entire history of blocks from the beginning of time.
-   * Let’s suppose then that using warp sync we increase the block size further to 120MB blocks. How many transactions per second (TPS) would 120MB blocks every 5 minutes facilitate? If we assume 218 bytes per transaction (which is what the value is per post), then (120e6 bytes / (5 minutes \* 60 seconds/min)) / (218 bytes/txn) =  **\~1,800 transactions per second**.
+   * Let’s suppose then that using warp sync we increase the block size further to 120MB blocks. How many transactions per second (TPS) would 120MB blocks every 5 minutes facilitate? If we assume 218 bytes per transaction (which is what the value is per post), then (120e6 bytes / (5 minutes \* 60 seconds/min)) / (218 bytes/txn) = **\~1,800 transactions per second**.
    * How much bandwidth would it take to synchronize one week of 120MB blocks appearing every 5 minutes, and how long would it take in wall clock time?
      * Bandwidth would be roughly (120e6 bytes/block \* 1 block/5 minutes \* 60 minutes/hour \* 24 hours/day \* 7 days/week) / 1e9 bytes/GB = 238GB/ week
      * At the aforementioned validation speed of 12MB/s on an Intel Xeon E-2276M, it would take approximately 238e9 bytes/week / (12e6 validated bytes / second \* 60 seconds/minute \* 60 minutes/hour) = **5.5-6 hours to download and validate one week of 120MB blocks** at a validation speed of 12MB/s on good hardware.
@@ -368,7 +366,7 @@ Running a node gives you full access to the DeSo firehose. Access to every profi
 
 ### **Running your own feed**
 
-When you run a node, it starts with a blank global feed and an "Admin" panel that you can use to start adding posts to it. **All of the same tools that the [Diamond](diamondapp.com) team uses to manage their global feed are now available to you to manage a feed of your own.**
+When you run a node, it starts with a blank global feed and an "Admin" panel that you can use to start adding posts to it. **All of the same tools that the** [**Diamond**](diamondapp.com) **team uses to manage their global feed are now available to you to manage a feed of your own.**
 
 Essentially, running a DeSo node allows you to expose your own "view" of the firehose of content. [Diamond](https://diamondapp.com) exposes all of the crypto-related content, but when you run your own node you have full control to surface whatever content speaks to you. What will you do with your feed? Here are some ideas for feeds that we think would be popular:
 
