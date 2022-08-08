@@ -46,7 +46,7 @@ Category names and transaction types included in category:\
 &#x20; \- `like`: `Like` transactions\
 &#x20; \- `nft`: `NFTBid,` `AcceptNFTBid`,  `NFTTransfer` , `CreateNFT`, or `UpdateNFT` transactions
 
-&#x20; \- `dao`: `DAOCoin` or `DAOCoinTransfer` transactions
+&#x20; \- `dao`: `DAOCoin`, `DAOCoinTransfer`, or `DAOCoinLimitOrder` transactions
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="Successfully retrieved the next page of notifications" %}

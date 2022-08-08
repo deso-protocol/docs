@@ -18,7 +18,7 @@ Execute the command `git clone` [`https://github.com/deso-protocol/run.git`](htt
 
 Once the installation is complete navigate to the run folder with `cd run` and execute the command `./run.sh`&#x20;
 
-![](<../../.gitbook/assets/run-sh-1 (1).PNG>)
+![](../../.gitbook/assets/run-sh-1.PNG)
 
 A small terminal will appear and automatically download the containers for the node's frontend, backend, and nginx. This may take a few minutes.
 
@@ -26,4 +26,4 @@ Note in order to turn your node on or off open the Docker GUI navigate to the co
 
 ![](../../.gitbook/assets/docker-toggle-container.PNG)
 
-Congratulations, your Deso node is now running locally! Navigate to [http://deso.run](http://deso.run) or locahost:8080 in your browser to see your local instance.&#x20;
+Congratulations, your Deso node is now running locally! Navigate to [http://deso.run](http://deso.run/) or locahost:8080 in your browser to see your local instance.&#x20;

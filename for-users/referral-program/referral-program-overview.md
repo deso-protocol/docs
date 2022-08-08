@@ -14,7 +14,7 @@ Our [referral incentives](referral-program-glossary.md) are accurate as of when 
 
 After opening the referral link, the user will be prompted to verify their identity via Jumio. Upon successful verification, the referred friend and advocate are granted the referral incentive based on the incentive structure outlined [here](referral-program-incentive-structure.md).&#x20;
 
-Some referral links are capped to a maximum number of referred friends. This information can be viewed by logging into [Diamond](https://diamondapp.com), navigating to `Referrals`, and viewing `Referrals remaining` under `My Referrals`.
+Some referral links are capped to a maximum number of referred friends. This information can be viewed by logging into [Diamond](https://diamondapp.com/), navigating to `Referrals`, and viewing `Referrals remaining` under `My Referrals`.
 
 _The referral program incentive amounts and structure are subject to change at any time._
 

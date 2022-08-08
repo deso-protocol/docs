@@ -4,7 +4,7 @@ description: Description of flags related to selling DESO for BTC with Wyre on y
 
 # Wyre - Buy with USD
 
-Note: You will need to work with [Wyre](https://www.sendwyre.com) in order to set up an integration. Wyre will take credit card payment from your users and in exchange send you BTC to the address specified at [#buy-deso-btc-address](buy-with-btc.md#buy-deso-btc-address "mention")
+Note: You will need to work with [Wyre](https://www.sendwyre.com/) in order to set up an integration. Wyre will take credit card payment from your users and in exchange send you BTC to the address specified at [#buy-deso-btc-address](buy-with-btc.md#buy-deso-btc-address "mention")
 
 ## Wyre URL
 

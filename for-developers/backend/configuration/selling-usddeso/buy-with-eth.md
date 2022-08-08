@@ -22,4 +22,4 @@ Type: String
 
 Default: None
 
-Project ID for Infura requests. Infura is used to make requests to [ETH's JSON RPC API.](https://eth.wiki/json-rpc/API) Create a new project at [https://infura.io/](https://infura.io)
+Project ID for Infura requests. Infura is used to make requests to [ETH's JSON RPC API.](https://eth.wiki/json-rpc/API) Create a new project at [https://infura.io/](https://infura.io/)

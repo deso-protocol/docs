@@ -4,7 +4,7 @@ description: Description of flags related to verifying phone numbers with Twilio
 
 # Phone Number Verification
 
-Note: All flags below are required in order for the phone number verification service to work properly. You'll need to setup an account with [Twilio](https://www.twilio.com)
+Note: All flags below are required in order for the phone number verification service to work properly. You'll need to setup an account with [Twilio](https://www.twilio.com/)
 
 ## Twilio Account SID
 

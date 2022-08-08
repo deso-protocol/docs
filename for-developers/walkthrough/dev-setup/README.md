@@ -4,7 +4,7 @@ This doc will teach you how to set up your dev environment. Although it's not a 
 
 ## Prerequisites
 
-To run the frontend repo, you will need to be running Node v13.13.0 and NPM 6.14.4. We recommend using NVM to set this environment up. To run the backend you'll need Go v1.15.6 installed. These can be installed via [homebrew](https://brew.sh) by running
+To run the frontend repo, you will need to be running Node v13.13.0 and NPM 6.14.4. We recommend using NVM to set this environment up. To run the backend you'll need Go v1.15.6 installed. These can be installed via [homebrew](https://brew.sh/) by running
 
 ```bash
 brew install nvm
@@ -21,7 +21,7 @@ go version
 
 We will also assume that you have [Goland](https://www.jetbrains.com/go/) installed. This is the recommended IDE for developing on DeSo since most of the code is Go code.
 
-Another prerequisite is [vips](https://github.com/libvips/libvips) which can be installed with [homebrew](https://brew.sh) – `brew install vips` – or `apt install libvips-tools` on Ubuntu.
+Another prerequisite is [vips](https://github.com/libvips/libvips) which can be installed with [homebrew](https://brew.sh/) – `brew install vips` – or `apt install libvips-tools` on Ubuntu.
 
 ## Setup
 

@@ -4,7 +4,7 @@ description: Description of flags related to sending emails on your node
 
 # Emails
 
-Note: You'll need to set up an account with [Sendgrid](https://sendgrid.com)
+Note: You'll need to set up an account with [Sendgrid](https://sendgrid.com/)
 
 ## Sendgrid API Key
 

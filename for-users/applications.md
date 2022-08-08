@@ -2,21 +2,21 @@
 
 ### Consumer Apps
 
-| App                                               | Description                                                                                          |
-| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [Diamond](https://diamondapp.com)                 | Twitter-like front end that uses crypto to enhance the experience by leveraging the DeSo blockchain. |
-| [SuperNovas](ttps://supernovas.app)               | Bringing a social experience to NFTs.                                                                |
-| [Entre](https://joinentre.com)                    | The web3 professional networking app.                                                                |
-| [DeSociaWorld](https://desocialworld.com)         | Multi-language DeSo feeds.                                                                           |
-| [OverClout](https://overclout.com)                | A new type of social media experience.                                                               |
-| [ChimeIn](https://www.chime-in.io)                | Web3 voice-chat rooms.                                                                               |
-| [OpenProsper](https://www.openprosper.com)        | DeSo analytics.                                                                                      |
-| [BitClout](https://bitclout.com)                  | BitClout is a decentralized, blockchain-based, open source social network.                           |
-| [VibeHut](https://vibehut.io)                     | Video chat with friends or strangers based off of your interest and social credit.                   |
-| ****[Mousai](https://mousai.stream)               | Music streaming platform.                                                                            |
-| [EverythingStore](https://www.everythingstore.io) | Online shopping with $DeSo.                                                                          |
-| [Wun](https://wun.vc)                             | Your virtual ID Card for the metaverse.                                                              |
-| ****[OneClout](https://oneclout.net)              | Cross post from DeSo apps to Twitter, Facebook, and Instagram.                                       |
+| App                                                | Description                                                                                          |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [Diamond](https://diamondapp.com)                  | Twitter-like front end that uses crypto to enhance the experience by leveraging the DeSo blockchain. |
+| [SuperNovas](ttps://supernovas.app/)               | Bringing a social experience to NFTs.                                                                |
+| [Entre](https://joinentre.com/)                    | The web3 professional networking app.                                                                |
+| [DeSociaWorld](https://desocialworld.com/)         | Multi-language DeSo feeds.                                                                           |
+| [OverClout](https://overclout.com/)                | A new type of social media experience.                                                               |
+| [ChimeIn](https://www.chime-in.io/)                | Web3 voice-chat rooms.                                                                               |
+| [OpenProsper](https://www.openprosper.com/)        | DeSo analytics.                                                                                      |
+| [BitClout](https://bitclout.com/)                  | BitClout is a decentralized, blockchain-based, open source social network.                           |
+| [VibeHut](https://vibehut.io/)                     | Video chat with friends or strangers based off of your interest and social credit.                   |
+| ****[Mousai](https://mousai.stream)                | Music streaming platform.                                                                            |
+| [EverythingStore](https://www.everythingstore.io/) | Online shopping with $DeSo.                                                                          |
+| [Wun](https://wun.vc/)                             | Your virtual ID Card for the metaverse.                                                              |
+| ****[OneClout](https://oneclout.net/)              | Cross post from DeSo apps to Twitter, Facebook, and Instagram.                                       |
 
 ### Investor dApps
 

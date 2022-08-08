@@ -157,7 +157,7 @@ Below is a graph of what the creator coin price curve looks like as a function o
 | 640                              | $19,660.80                   | $4,194,304                |
 | 1280                             | $78,643.20                   | $33,554,432               |
 
-![](<.gitbook/assets/image (6) (1).png>)
+![](<.gitbook/assets/image (7) (3) (3) (3) (1).png>)
 
 ### Founder Rewards
 
@@ -411,7 +411,7 @@ Running a node currently requires a modest amount of technical know-how. For the
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
-![](.gitbook/assets/image-deso-7-1-2-2-2-2-.png)
+![](<.gitbook/assets/image-deso-7-1-2-2-2-2- (2) (1).png>)
 
 Once your node is synced, you have access to the full firehose of DeSo data in real-time! Below are some tips on how to take full advantage of your node.
 
@@ -432,7 +432,7 @@ Once your node is synced, you have access to the full firehose of DeSo data in r
 
 To manage your feed, start by navigating to the Admin tab as shown below. The Admin tab shows the full firehose of posts in real-time, with a button next to each one that allows you to add it to the global feed. You can also sort the posts by clout. These are all the same tools that the [Diamond](https://diamondapp.com) mods have, now at your fingertips through the power of decentralization.
 
-![](<.gitbook/assets/image-deso-2-8-1-2-2-2-2- (2).png>)
+![](<.gitbook/assets/image-deso-2-8-1-2-2-2-2- (2) (1).png>)
 
 You can also add any post from anyone's profile to the global feed simply by hitting the dropdown at the top-right of the post. You can also pin posts to your feed, which is a good way of communicating announcements to your user base.
 
