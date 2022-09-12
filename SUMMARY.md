@@ -7,10 +7,6 @@
 ## For Users
 
 * [Applications](for-users/applications.md)
-* [Referral Program](for-users/referral-program/README.md)
-  * [Referral Program - Overview](for-users/referral-program/referral-program-overview.md)
-  * [Referral Program - Incentive Structure](for-users/referral-program/referral-program-incentive-structure.md)
-  * [Referral Program - Glossary](for-users/referral-program/referral-program-glossary.md)
 * [Privacy and Security](for-users/privacy-and-security.md)
 
 ## For Developers
@@ -86,7 +82,7 @@
 * [Setup](for-node-operators/node-setup/README.md)
   * [Requirements](for-node-operators/node-setup/requirements.md)
   * [Setup](for-node-operators/node-setup/setup.md)
-  * [Keeping Your Node Up-To-Date](for-node-operators/node-setup/keeping-your-node-up-to-date.md)
+  * [Keeping Nodes Up-To-Date](for-node-operators/node-setup/keeping-nodes-up-to-date.md)
 * [FAQ](for-node-operators/running-a-node.md)
 
 ## Contact And Media
