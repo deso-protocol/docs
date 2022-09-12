@@ -86,7 +86,7 @@
 * [Setup](for-node-operators/node-setup/README.md)
   * [Requirements](for-node-operators/node-setup/requirements.md)
   * [Setup](for-node-operators/node-setup/setup.md)
-  * [Keeping Your Node Up-To-Date](for-node-operators/node-setup/keeping-your-node-up-to-date.md)
+  * [Managing Network Upgrades](for-node-operators/node-setup/managing-network-upgrades.md)
 * [FAQ](for-node-operators/running-a-node.md)
 
 ## Contact And Media
