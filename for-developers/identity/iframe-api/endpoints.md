@@ -4,17 +4,28 @@ description: List of DeSo Identity iframe API endpoints
 
 # Endpoints
 
+#### Note:
+
+The iframe API supports functionality for both public keys and derived keys. You can determine key type from the login response by checking for `derivedPublicKeyBase58Check`.
+
 ## sign
 
 [**AccessLevel**](../identity.md#access-levels)**: 3, 4 (depends on** [**transaction**](https://github.com/deso-protocol/identity/blob/9dad527dc46498b9aaa0344abd70dc8895acf246/src/app/identity.service.ts#L288)**)**
 
 The sign message is responsible for signing transaction hexes. If approval is required an application must call the [#approve](../window-api/#approve "mention") endpoint in the Window API to sign the transaction.
 
-#### Payload
+#### Payload for public keys
 
 | Name           | Type   | Description                              |
 | -------------- | ------ | ---------------------------------------- |
 | transactionHex | string | Hex of the transaction you want to sign. |
+
+#### Payload for derived keys
+
+| Name                        | Type   | Description                                                                                      |
+| --------------------------- | ------ | ------------------------------------------------------------------------------------------------ |
+| transactionHex              | string | Hex of the transaction you want to sign.                                                         |
+| derivedPublicKeyBase58Check | string | Only required if logged in user is using a derived key to sign on behalf of an owner public key. |
 
 #### Request
 
@@ -28,6 +39,8 @@ The sign message is responsible for signing transaction hexes. If approval is re
     accessLevelHmac: "0fab13f4...",
     encryptedSeedHex: "0fab13f4...",
     transactionHex: "0fab13f4...",
+    derivedPublicKeyBase58Check: "0fab13f4...",
+
   },
 }
 ```
@@ -64,14 +77,26 @@ You will get this response if the `accessLevel` your user has authorized doesn't
 
 [**AccessLevel**](../identity.md#access-levels)**: 2**
 
-The encrypt API is responsible for encrypting messages. For more details check out [#messages](../identity.md#messages "mention")
+The encrypt API is responsible for encrypting messages. For more details check out. [#messages](../identity.md#messages "mention")
 
-#### Payload
+#### Payload for public keys
 
-| Name               | Type   | Description                                       |
-| ------------------ | ------ | ------------------------------------------------- |
-| recipientPublicKey | string | Public key of the recipient in base58check format |
-| message            | string | Message text that you want to encrypt             |
+| Name               | Type   | Description                                        |
+| ------------------ | ------ | -------------------------------------------------- |
+| recipientPublicKey | string | Public key of the recipient in base58check format. |
+| message            | string | Message text that you want to encrypt.             |
+
+#### Payload for derived keys
+
+Only required if logged in user is using a derived key to sign on behalf of an owner public key.
+
+|                                 |        |                                                                                    |
+| ------------------------------- | ------ | ---------------------------------------------------------------------------------- |
+| recipientPublicKey              | string | Public key of the recipient in base58check format.                                 |
+| message                         | string | Message text that you want to encrypt.                                             |
+| encryptedMessagingKeyRandomness | string | This value is used in place of the `encryptedSeedHex` when encrypting the message. |
+| derivedPublicKeyBase58Check     | string | Public key requesting encryption in base58check format.                            |
+| ownerPublicKeyBase58Check       | string | Public key used  only for validation.                                              |
 
 #### Request
 
@@ -86,6 +111,40 @@ The encrypt API is responsible for encrypting messages. For more details check o
     encryptedSeedHex: "0fab13f4...",
     recipientPublicKey: "BC1YLgwkd7iADbrSgryTfXhMEcsF76cXDaWog4aDzoTunDb2DcZ3myZ"
     message: "This is a message",
+    derivedPublicKeyBase58Check: "BC1YLsond7iADbrSgryTfXhMEcsF76cXDaWog4aDzoTunDb2DcZ3myZ",
+    ownerPublicKeyBase58Check: "BC1YLdadd7iADbrSgryTfXhMEcsF76cXDaWog4aDzoTunDb2DcZ3myZ",
+    encryptedMessagingKeyRandomness: "837fab39...",
+    
+  },
+}
+```
+
+#### Response for Derived keys (Encrypted Messaging Key Randomness Required)
+
+You will get this response if the request includes a `derivedPublicKeyBase58Check` and does not include both `ownerPublicKeyBase58Check` and `encryptedMessagingKeyRandomness`.
+
+```javascript
+  id: '21e02080-0ef4-4056-a319-a66403f33768',
+  service: 'identity',
+  payload: {
+    encryptedMessage: "",
+    requiresEncryptedMessagingKeyRandomness: true,
+  },
+}
+```
+
+You can request Encrypted MessagingKeyRandomness by calling messaging-group in the window api.
+
+#### Response (Approval Required)
+
+You will get this response if the `accessLevel` your user has authorized doesn't match the access level required to sign a transaction. To fix, the user needs to allow at least access level 2.
+
+```javascript
+{
+  id: '21e02080-0ef4-4056-a319-a66403f33768',
+  service: 'identity',
+  payload: {
+    approvalRequired: true,
   },
 }
 ```
@@ -110,7 +169,7 @@ The decrypt API is responsible for decrypting messages. As we mentioned in the [
 
 Assuming `message` is a taken from `OrderedContactsWithMessages.Messages` from the backend API response, `encryptedMessage` can be constructed as follows:
 
-```
+```javascript
 encryptedMessage : {
     EncryptedHex: message.EncryptedText,
     PublicKey: message.IsSender ? message.RecipientPublicKeyBase58Check : message.SenderPublicKeyBase58Check,
@@ -119,13 +178,22 @@ encryptedMessage : {
 }
 ```
 
-Another use-case for the `decrypt` API is decrypting unlockable text in NFTs. To see how this can be done, we recommend tracing through the [`DecryptUnlockableTexts()`](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/backend-api.service.ts#L945) in the DeSo Protocol repository.
+Another use-case for the `decrypt` API is decrypting unlock-able text in NFTs. To see how this can be done, we recommend tracing through the [`DecryptUnlockableTexts()`](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/backend-api.service.ts#L945) in the DeSo Protocol repository.
 
-#### Payload
+#### Payload for public keys
 
-| Name              | Type                | Description                        |
-| ----------------- | ------------------- | ---------------------------------- |
-| encryptedMessages | \[]encryptedMessage | List of encrypted messages objects |
+| Name              | Type                | Description                         |
+| ----------------- | ------------------- | ----------------------------------- |
+| encryptedMessages | \[]encryptedMessage | List of encrypted messages objects. |
+
+#### Payload for derived keys
+
+|                                 |                     |                                                                                        |
+| ------------------------------- | ------------------- | -------------------------------------------------------------------------------------- |
+| derivedPublicKeyBase58Check     | string              | Public key requesting decryption in base58check format.                                |
+| ownerPublicKeyBase58Check       | string              | Used to identify which messaging group member entry is used to decrypt group messages. |
+| encryptedMessagingKeyRandomness | string              | Required to decrypt the request.                                                       |
+| encryptedMessages               | \[]encryptedMessage | List of encrypted messages objects.                                                    |
 
 #### Request
 
@@ -138,6 +206,9 @@ Another use-case for the `decrypt` API is decrypting unlockable text in NFTs. To
     accessLevel: 3,
     accessLevelHmac: "0fab13f4...",
     encryptedSeedHex: "0fab13f4...",
+    derivedPublicKeyBase58Check: "BC1YLsond7iADbrSgryTfXhMEcsF76cXDaWog4aDzoTunDb2DcZ3myZ",
+    ownerPublicKeyBase58Check: "BC1YLdadd7iADbrSgryTfXhMEcsF76cXDaWog4aDzoTunDb2DcZ3myZ",
+    encryptedMessagingKeyRandomness: "837fab39...",
     encryptedMessage: [
       {
         EncryptedHex: "0f154bcad...",
@@ -152,6 +223,35 @@ Another use-case for the `decrypt` API is decrypting unlockable text in NFTs. To
         Legacy: true
       }, ...
     ]
+  },
+}
+```
+
+#### Response (Encrypted Messaging Key Randomness Required)
+
+You will get this response if the request includes a `derivedPublicKeyBase58Check` and does not include both `ownerPublicKeyBase58Check` and `encryptedMessagingKeyRandomness`.
+
+```javascript
+{
+  id: '21e02080-0ef4-4056-a319-a66403f33768',
+  service: 'identity',
+  payload: {
+    decryptedHexes: {}
+    requiresEncryptedMessagingKeyRandomness: true,
+  },
+}
+```
+
+#### Response (Approval Required)
+
+You will get this response if the `accessLevel` your user has authorized doesn't match the access level required to sign a transaction. To fix, the user needs to allow at least access level 2.
+
+```javascript
+{
+  id: '21e02080-0ef4-4056-a319-a66403f33768',
+  service: 'identity',
+  payload: {
+    approvalRequired: true,
   },
 }
 ```
@@ -173,11 +273,25 @@ Response contains a `decryptedHexes` field which is a map of decrypted messages,
 }
 ```
 
+
+
 ## jwt
 
 [**AccessLevel**](../identity.md#access-levels)**: 2**
 
 The `jwt` message creates signed JWT tokens that can be used to verify a user's ownership of a specific public key. The JWT is only valid for 10 minutes. JWTs are used in some Backend API endpoints such as `/api/v0/upload-image.` The best practice is to request the JWT right before calling these endpoints.
+
+#### Payload for public keys
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| N/A  | N/A  | No payload. |
+
+#### payload for derived keys
+
+| Name                        | Type    | Description                                      |
+| --------------------------- | ------- | ------------------------------------------------ |
+| derivedPublicKeyBase58Check | string  | Informs Identity on how to sign the transaction. |
 
 #### Request
 
@@ -190,6 +304,7 @@ The `jwt` message creates signed JWT tokens that can be used to verify a user's 
     accessLevel: 3,
     accessLevelHmac: "0fab13f4...",
     encryptedSeedHex: "0fab13f4...",
+    derivedPublicKeyBase58Check: "BC1YLsond7iADbrSgryTfXhMEcsF76cXDaWog4aDzoTunDb2DcZ3myZ",
   },
 }
 ```
@@ -211,21 +326,54 @@ The `jwt` message creates signed JWT tokens that can be used to verify a user's 
 In case you want to validate the JWT token in Go, you could use the code below:
 
 ```javascript
-func ValidateJWT(publicKey string, jwtToken string) (bool, error) {
-    pubKeyBytes, _, err := Base58CheckDecode(publicKey)
-    if err != nil {
-        return false, err
-    }
+func (fes *APIServer) ValidateJWT(publicKey string, jwtToken string) (bool, error) {
+	pubKeyBytes, _, err := lib.Base58CheckDecode(publicKey)
+	if err != nil {
+		return false, errors.Wrapf(err, "Problem decoding public key")
+	}
 
-    pubKey, err := btcec.ParsePubKey(pubKeyBytes, btcec.S256())
-    if err != nil {
-        return false, err
-    }
+	pubKey, err := btcec.ParsePubKey(pubKeyBytes, btcec.S256())
+	if err != nil {
+		return false, errors.Wrapf(err, "Problem parsing public key")
+	}
 
-    token, err := jwt.Parse(jwtToken, func(token *jwt.Token) (interface{}, error) {
-        return pubKey.ToECDSA(), nil
-    })
+	token, err := jwt.Parse(jwtToken, func(token *jwt.Token) (interface{}, error) {
+		// Do not check token issued at time. We still check expiration time.
+		mapClaims := token.Claims.(jwt.MapClaims)
+		delete(mapClaims, "iat")
 
-    return token.Valid, err
+		// We accept JWT signed by derived keys. To accommodate this, the JWT claims payload should contain the key
+		// "derivedPublicKeyBase58Check" with the derived public key in base58 as value.
+		if derivedPublicKeyBase58Check, isDerived := mapClaims[JwtDerivedPublicKeyClaim]; isDerived {
+			// Parse the derived public key.
+			derivedPublicKeyBytes, _, err := lib.Base58CheckDecode(derivedPublicKeyBase58Check.(string))
+			if err != nil {
+				return nil, errors.Wrapf(err, "Problem decoding derived public key")
+			}
+			derivedPublicKey, err := btcec.ParsePubKey(derivedPublicKeyBytes, btcec.S256())
+			if err != nil {
+				return nil, errors.Wrapf(err, "Problem parsing derived public key bytes")
+			}
+			// Validate the derived public key.
+			utxoView, err := fes.mempool.GetAugmentedUniversalView()
+			if err != nil {
+				return nil, errors.Wrapf(err, "Problem getting utxoView")
+			}
+			blockHeight := uint64(fes.blockchain.BlockTip().Height)
+			if err := utxoView.ValidateDerivedKey(pubKeyBytes, derivedPublicKeyBytes, blockHeight); err != nil {
+				return nil, errors.Wrapf(err, "Derived key is not authorize")
+			}
+
+			return derivedPublicKey.ToECDSA(), nil
+		}
+
+		return pubKey.ToECDSA(), nil
+	})
+
+	if err != nil {
+		return false, errors.Wrapf(err, "Problem verifying JWT token")
+	}
+
+	return token.Valid, nil
 }
 ```
