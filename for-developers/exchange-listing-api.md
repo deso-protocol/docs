@@ -1,6 +1,6 @@
 # Exchange Listing API
 
-**The dev community recommends using the open source Rosetta API implementation for integrating DeSo on an exchange:** [**https://github.com/deso-protocol/rosetta-deso**](https://github.com/deso-protocol/rosetta-deso)**. The other APIs in this doc are less supported than the Rosetta APIs.**
+**The dev community recommends using the open source Rosetta API implementation, currently used by Coinbase, for integrating DeSo on an exchange:** [**https://github.com/deso-protocol/rosetta-deso**](https://github.com/deso-protocol/rosetta-deso)**. This being said, we provide an alternative set of APIs in this document that may be easier to use, and that the DeSo core team plans to support indefinitely.**
 
 Multiple major crypto exchanges have expressed interest in listing DeSo. The dev community is working closely with several of these, but, now that anyone in the world can run a DeSo node, we thought we'd democratize and decentralize this effort by publishing a simple public API that any crypto exchange in the world could follow to integrate DeSo.
 
