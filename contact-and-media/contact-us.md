@@ -3,6 +3,6 @@
 |          |                                                          |
 | -------- | -------------------------------------------------------- |
 | Support  | support@deso.org                                         |
-| Security | node.admin+security@protonmail.com                       |
+| Security | support+security@deso.org                                |
 | Career   | [https://jobs.lever.co/deso](https://jobs.lever.co/deso) |
 |          |                                                          |
