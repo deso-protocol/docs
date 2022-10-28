@@ -72,7 +72,6 @@
 * [The DeSo Repos](for-developers/walkthrough/README.md)
   * [Setup a local node and frontend app](for-developers/walkthrough/dev-setup/README.md)
     * [Making Your First Changes](for-developers/walkthrough/dev-setup/making-your-first-changes.md)
-* [Bug Bounty](for-developers/bug-bounty.md)
 * [Exchange Listing API](for-developers/exchange-listing-api.md)
 * [Resources & Examples](for-developers/resources.md)
 
