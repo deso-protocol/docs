@@ -272,7 +272,7 @@ if true, only return posts that have images, videos, or embed video URLs.
 {% swagger-description %}
 Get Hot Feed returns a page of Posts that are currently "hot". A post's hotness is determined by the time since the post was created and the number of likes, diamonds, comments, reposts, and quote reposts.
 
-Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/hot\_feed.go#L605).
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/main/routes/hot_feed.go#L943).
 
 Example usages in [diamondapp.com](https://diamondapp.com)'s frontend:\
 &#x20; \- Make request to [Get Hot Feed](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/backend-api.service.ts#L1153)\
