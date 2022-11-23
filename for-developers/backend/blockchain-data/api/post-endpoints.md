@@ -291,6 +291,14 @@ A list of posts that have already been seen by the reader
 Number of posts to fetch
 {% endswagger-parameter %}
 
+{% swagger-parameter in="body" name="Tag" type="String" %}
+ If defined, only get the hot feed for posts tagged with this tag.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="SortByNew" type="bool" %}
+ If true, sort by new instead of by hotness. Only applies to queries where "Tag" is defined.
+{% endswagger-parameter %}
+
 {% swagger-response status="200: OK" description="Successfully retrieved posts from the hot feed" %}
 {% tabs %}
 {% tab title="Sample Response" %}
