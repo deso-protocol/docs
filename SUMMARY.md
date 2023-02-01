@@ -33,6 +33,7 @@
       * [Financial Transactions API](for-developers/backend/transactions/construct-transactions/financial-transactions-api.md)
       * [Derived Keys Transaction API](for-developers/backend/transactions/construct-transactions/derived-keys-transaction-api.md)
       * [DAO Transactions API](for-developers/backend/transactions/construct-transactions/dao-transactions-api.md)
+      * [Associations Transactions API](for-developers/backend/transactions/construct-transactions/associations-transactions-api.md)
   * [Blockchain Data](for-developers/backend/blockchain-data/README.md)
     * [Basics](for-developers/backend/blockchain-data/basics/README.md)
       * [Data Types](for-developers/backend/blockchain-data/basics/data-types.md)
