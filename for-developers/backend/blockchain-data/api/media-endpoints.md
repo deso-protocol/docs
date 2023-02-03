@@ -142,6 +142,61 @@ videoId retrieved from the
 {% endswagger-response %}
 {% endswagger %}
 
+{% swagger method="post" path="" baseUrl="/api/v0/enable-video-download/{videoId}" summary="Enable A Video To Be Downloaded" %}
+{% swagger-description %}
+// 
+// 
+// EnableVideoDownload enables download support for an already uploaded video
+// 
+Cloudflare does NOT allow uploaded videos to be downloaded (just streamed). Cloudflare allows adding download support on a per-video basis.
+
+Enable A Video To Be Downloaded enables download support for an already uploaded video.
+
+See [Cloudflare documentation](https://developers.cloudflare.com/stream/viewing-videos/download-videos/) for more information.
+
+Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/media.go#L422).
+{% endswagger-description %}
+
+{% swagger-parameter in="path" name="videoId" type="String" required="true" %}
+videoId retrieved from the 
+
+`stream-media-id`
+
+ header when uploading a video
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Successfully enabled video for downloading" %}
+{% tabs %}
+{% tab title="Sample Response" %}
+```json5
+{
+  "Default":
+    {
+      "status": "ready",
+      "url": "https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/default.mp4",
+      "percentComplete": 100.0
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Response Field Descriptions" %}
+| Name          | Type    | Description                                                                                                      |
+| ------------- | ------- | ---------------------------------------------------------------------------------------------------------------- |
+| Default       | Map     | A map that contains the video information. If downloading has been enabled, "url" indicates the path to the file |
+{% endtab %}
+{% endtabs %}
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+```javascript
+{
+    // Response
+}
+```
+{% endswagger-response %}
+{% endswagger %}
+
 {% swagger method="post" path="" baseUrl="/api/v0/get-full-tiktok-url" summary="Get Full TikTok URL" %}
 {% swagger-description %}
 Given a short video ID of a TikTok, find the URL that can be used to embed this video. The short URL users get when copying a link to a TikTok from TikTok's mobile app isn't embeddable, so this endpoint allows us to find the desktop version of the URL from which we can construct an embeddable version of the URL.
