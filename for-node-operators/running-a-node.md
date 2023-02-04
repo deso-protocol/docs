@@ -2,7 +2,7 @@
 description: Description of frequently asked questions on Deso nodes
 ---
 
-# FAQ
+# 4⃣ Node: FAQ
 
 ## The Power of Decentralization
 
@@ -53,7 +53,7 @@ The above mechanisms don't even factor in profits that could be derived from aug
 
 ## How to Run a Node
 
-Running a node currently requires a modest amount of technical know-how. For the full instructions on how to run a node, checkout this[node-setup](node-setup/ "mention") guide.
+Running a node currently requires a modest amount of technical know-how. For the full instructions on how to run a node, checkout this [setup.md](setup.md "mention") guide.
 
 Once a node is running, it syncs all of the blocks from its peers, as well as the transactions in the "mempool," which have yet to be mined into a block. Every node comes with an Admin panel with a Network tab that allows you to monitor the node's sync state.
 
