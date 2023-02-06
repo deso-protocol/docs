@@ -58,9 +58,12 @@ And here's a corresponding handler logic on line [#226](https://github.com/deso-
 
 The above four fields are present in the majority of Identity messages. Let's take a closer look at each of them:
 
-* The `id` is in [UUID v4](https://en.wikipedia.org/wiki/Universally\_unique\_identifier#Version\_4\_\(random\)) format and is used to identify requests/responses by Identity.
-* The `service` field is set to `'identity'` in every message, and should be checked in the event handler (like[ this](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L214)) to make sure the message originated from the DeSo Identity Service.
-* The `payload` field will contain the data sent by Identity, such as user information, signed transactions, etc. In the case of `initialize` message, it's left as an empty JSON.
+* The `id` is in [UUID v4](https://en.wikipedia.org/wiki/Universally\_unique\_identifier#Version\_4\_\(random\)) format and is used to identify requests/responses by Identity.\
+
+* The `service` field is set to `'identity'` in every message, and should be checked in the event handler (like[ this](https://github.com/deso-protocol/frontend/blob/6d6225a8425f2fe7ad84a222027159333b2c754f/src/app/identity.service.ts#L214)) to make sure the message originated from the DeSo Identity Service.\
+
+* The `payload` field will contain the data sent by Identity, such as user information, signed transactions, etc. In the case of `initialize` message, it's left as an empty JSON.\
+
 * The `method` field describes the message sent, which is `'initialize'` in our example.
 
 The DeSo Identity Service **requires** a response to the `initialize` message on web-based applications.

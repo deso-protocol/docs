@@ -1,4 +1,14 @@
-# DeSo Vision
+---
+description: >-
+  Decentralized Social is empowering an internet that’s creator-led, user owned,
+  and open to millions of developers around the world to build off one another.
+---
+
+# 🚀 DeSo Vision
+
+{% embed url="https://www.youtube.com/watch?v=kPPb_S5Ry5E" %}
+Learn about DeSo in 90-seconds — https://deso.com
+{% endembed %}
 
 ## Moving from DeFi to DeSo <a href="#moving-from-defi-to-deso" id="moving-from-defi-to-deso"></a>
 

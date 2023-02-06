@@ -1,3 +1,7 @@
+---
+description: The incredible cost advantages of storage-heavy blockchains
+---
+
 # 4⃣ Infinite-State
 
 Many believe that general-purpose blockchains like Ethereum, Cardano, Avalanche, and Solana will come to power everything on the web, including financial apps, social apps, and even Amazon-like marketplaces.

@@ -26,7 +26,8 @@ That is, if you hold a valid derived key of a user, you can submit a transaction
 
 This is particularly useful in mobile applications because it means you only have to interact with the DeSo Identity Service once, just to get the derived key of a user.
 
-It also means that derived keys are extremely sensitive information and therefore should be handled in secure storage with the utmost caution, ideally by experienced software engineers.
+It also means that derived keys are extremely sensitive information and therefore should be handled in secure storage with the utmost caution, ideally by experienced software engineers.\
+
 
 **The flow of using the derived keys is as follows:**
 
@@ -38,7 +39,8 @@ It also means that derived keys are extremely sensitive information and therefor
 
 4. Submit signed `AuthorizeDerivedKey` transaction via `/api/v0/submit-transaction`\
    ``
-5. (Optional) Confirm that the derived key was successfully authorized through Backend API in `/api/v0/get-user-derived-keys`
+5. (Optional) Confirm that the derived key was successfully authorized through Backend API in `/api/v0/get-user-derived-keys`\
+   ``
 
 ### Generate Derived Key
 

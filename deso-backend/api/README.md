@@ -1,4 +1,4 @@
-# 7⃣ Data: API
+# 3⃣ Data: API
 
 ## ProfileEntryResponse
 
@@ -53,7 +53,9 @@ For reference, `ProfileEntryResponse` is defined in the backend repo [here](http
 
 ## PostEntryResponse
 
-Posts are the main way creators communicate with the public on DeSo. Below is an example of a `PostEntryResponse` - the object that represents a post and all it's attributes.
+Posts are the main way creators communicate with the public on DeSo.\
+\
+Below is an example of a `PostEntryResponse` - the object that represents a post and all it's attributes:
 
 ```json5
 {
@@ -116,7 +118,9 @@ For reference, `PostEntryResponse` is defined in the backend repo [here](https:/
 
 ## BalanceEntryResponse
 
-`BalanceEntryResponses` are another common object you will encounter. `BalanceEntryResponses` describe the amount of a specific creator coin or DAO coin that a user holds.
+`BalanceEntryResponses` are another common object you will encounter. \
+\
+`BalanceEntryResponses` describe the amount of a specific creator coin or DAO coin that a user holds.
 
 ```json5
 {

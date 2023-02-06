@@ -14,7 +14,7 @@ Type: String
 
 Default: None
 
-Seed phrase that is used to send DESO to users who go through [phone-number-verification.md](phone-number-verification.md "mention") or [jumio-verification.md](jumio-verification.md "mention"), and to [#comp-profile-creation](onboarding.md#comp-profile-creation "mention")
+Seed phrase that is used to send DESO to users who go through [phone-number-verification.md](phone-number-verification.md "mention") or [Broken link](broken-reference "mention"), and to [#comp-profile-creation](onboarding.md#comp-profile-creation "mention")
 
 ## Starter DESO Nanos
 

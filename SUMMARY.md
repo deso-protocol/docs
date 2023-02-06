@@ -1,6 +1,8 @@
 # Table of contents
 
-* [DeSo Vision](README.md)
+* [🚀 DeSo Vision](README.md)
+* [📅 DeSo Roadmap](deso-roadmap.md)
+* [🛠 DeSo Tech Stack](deso-tech-stack.md)
 
 ## DeSo Blockchain
 
@@ -20,6 +22,12 @@
 * [4⃣ Social NFT](deso-features/social-nft.md)
 * [5⃣ Social Tipping](deso-features/social-tipping.md)
 
+## DeSo Repos
+
+* [1⃣ Architecture Overview](deso-repos/architecture-overview/README.md)
+  * [Setup a Node & Frontend Locally](deso-repos/architecture-overview/dev-setup.md)
+  * [Making Your First Changes](deso-repos/architecture-overview/making-your-first-changes.md)
+
 ## DeSo Identity
 
 * [1⃣ Identity: Overview](deso-identity/identity/README.md)
@@ -32,10 +40,14 @@
   * [Overview](deso-identity/window-api/basics.md)
   * [Endpoints](deso-identity/window-api/endpoints.md)
 
+## DESO FRONTEND
+
+* [1⃣ Frontend: Get Started](deso-frontend/exchange-listing-api.md)
+* [2⃣ Frontend: React Example](deso-frontend/exchange-listing-api-1.md)
+
 ## DESO BACKEND
 
-* [1⃣ Architecture: Overview](deso-backend/walkthrough.md)
-* [3⃣ Backend: Config](deso-backend/configuration/README.md)
+* [1⃣ Backend: Config](deso-backend/configuration/README.md)
   * [Onboarding](deso-backend/configuration/onboarding.md)
   * [Phone Number Verification](deso-backend/configuration/phone-number-verification.md)
   * [Global State](deso-backend/configuration/global-state.md)
@@ -51,21 +63,19 @@
     * [Buy with ETH](deso-backend/configuration/selling-usddeso/buy-with-eth.md)
   * [Analytics](deso-backend/configuration/analytics.md)
   * [Emails](deso-backend/configuration/emails.md)
-  * [Jumio Verification](deso-backend/configuration/jumio-verification.md)
   * [Supply Monitoring](deso-backend/configuration/supply-monitoring.md)
-* [5⃣ Construct: API](deso-backend/construct-transactions/README.md)
+* [2⃣ Construct: API](deso-backend/construct-transactions/README.md)
   * [Social Transactions API](deso-backend/construct-transactions/social-transactions-api.md)
   * [NFT Transactions API](deso-backend/construct-transactions/nft-transactions-api.md)
   * [Financial Transactions API](deso-backend/construct-transactions/financial-transactions-api.md)
   * [Derived Keys Transaction API](deso-backend/construct-transactions/derived-keys-transaction-api.md)
-  * [DAO Transactions API](deso-backend/construct-transactions/dao-transactions-api.md)
+  * [DeSo Tokens Transactions API](deso-backend/construct-transactions/dao-transactions-api.md)
   * [Associations Transactions API](deso-backend/construct-transactions/associations-transactions-api.md)
   * [Access Groups API](deso-backend/construct-transactions/access-groups-api.md)
-* [7⃣ Data: API](deso-backend/api/README.md)
+* [3⃣ Data: API](deso-backend/api/README.md)
   * [Admin Endpoints](deso-backend/api/admin-endpoints.md)
   * [Associations Endpoints](deso-backend/api/associations-endpoints.md)
-  * [Buy DeSo Endpoints](deso-backend/api/buy-deso-endpoints.md)
-  * [DAO Endpoints](deso-backend/api/dao-endpoints.md)
+  * [DeSo Tokens Endpoints](deso-backend/api/dao-endpoints.md)
   * [Media Endpoints](deso-backend/api/media-endpoints.md)
   * [Miner Endpoints](deso-backend/api/miner-endpoints.md)
   * [Notification Endpoints](deso-backend/api/notification-endpoints.md)
@@ -79,33 +89,23 @@
   * [Post Endpoints](deso-backend/api/post-endpoints.md)
   * [Messages Endpoints](deso-backend/api/messages-endpoints.md)
   * [Access Group Endpoints](deso-backend/api/access-group-endpoints.md)
-* [9⃣ Transactions: API](deso-backend/transaction-utilities.md)
+* [4⃣ Transactions: API](deso-backend/transaction-utilities.md)
 
 ## DeSo Exchange Listings
 
 * [1⃣ Exchange Listing: API](deso-exchange-listings/exchange-listing-api.md)
 
-## DeSo Repos
+## DeSo Nodes
 
-* [Architecture Overview](deso-repos/architecture-overview/README.md)
-  * [Setup a local node and frontend app](deso-repos/architecture-overview/dev-setup/README.md)
-    * [Making Your First Changes](deso-repos/architecture-overview/dev-setup/making-your-first-changes.md)
-
-## For Node Operators
-
-* [1⃣ Node: Requirements](for-node-operators/requirements.md)
-* [2⃣ Node: Setup](for-node-operators/setup.md)
-* [3⃣ Node: Staying Up-To-Date](for-node-operators/node-staying-up-to-date.md)
-* [4⃣ Node: FAQ](for-node-operators/running-a-node.md)
+* [1⃣ Node: Requirements](deso-nodes/requirements.md)
+* [2⃣ Node: Setup](deso-nodes/setup.md)
+* [3⃣ Node: Staying Up-To-Date](deso-nodes/node-staying-up-to-date.md)
+* [4⃣ Node: FAQ](deso-nodes/running-a-node.md)
 
 ## Contact And Media
 
 * [Contact US](contact-and-media/contact-us.md)
-* [Social Media and Community](contact-and-media/social-media-and-community/README.md)
-  * [DeSo Discord Servers](contact-and-media/social-media-and-community/discord/README.md)
-    * [Community Team](contact-and-media/social-media-and-community/discord/community-team.md)
-    * [Discord Roles](contact-and-media/social-media-and-community/discord/discord-roles.md)
-    * [Community Guidelines](contact-and-media/social-media-and-community/discord/community-guidelines.md)
+* [Social Media and Community](contact-and-media/social-media-and-community.md)
 * [Reporting an Account or Post](contact-and-media/reporting-an-account-or-post.md)
 
 ## 中文

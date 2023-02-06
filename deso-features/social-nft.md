@@ -189,23 +189,34 @@ Very simply, the steps to minting and selling a DeSo NFT are as follows:
 
 *   Create a post, which consists of a snippet of text and an embedded image or video. All
 
-    NFTs on DeSo start as posts, and you can turn any pre-existing post into an NFT.
-* Hit "**Mint NFT**" and select from the options:
-  * You can mint either a "one of a kind" or "one of N" NFT. In the latter case, there will be multiple winners of the same piece of content.
-  * The creator can set a creator royalty and a coin-holder royalty. This is a percentage of the sale that will go to the creator and to the creator's coin-holders as cashflow. This cashflow hits on every **secondary sale** of the NFT as well. The DeSo platform does not take a fee.
-  * Optionally, the creator can set a piece of unlockable content that only the winner of the NFT will get access to. This feature enables hyper-exclusive experiences to be built on DeSo NFTs, like one-of-a-kind songs that only the winner can listen to.
-* Once an NFT is minted, users can bid on the NFT. They must have enough in their wallet to cover the bid, but nothing is withdrawn from their wallet until the auction is closed by the creator. This allows users to bid on as many things as they like.
-* Whenever the creator is ready, they can close the auction by selecting a winner, or winners in the case of a "one of N" NFT. Importantly, the creator has full control over who gets to own their work; they don't have to give it to the highest bidder.
-* Once the auction is over, the winner(s) get to show off the NFT on their profile. It shows up in their NFTs tab, and it can be pinned to their main page.
+    NFTs on DeSo start as posts, and you can turn any pre-existing post into an NFT.\
 
-We didn't want to over-complicate things, and we believe this simple set of features enables all of the interesting use-cases described previously.
+* Hit "**Mint NFT**" and select from the options:\
+
+  * You can mint either a "one of a kind" or "one of N" NFT. In the latter case, there will be multiple winners of the same piece of content.\
+
+  * The creator can set a creator royalty and a coin-holder royalty. This is a percentage of the sale that will go to the creator and to the creator's coin-holders as cashflow. This cashflow hits on every **secondary sale** of the NFT as well. The DeSo platform does not take a fee.\
+
+  * Optionally, the creator can set a piece of unlockable content that only the winner of the NFT will get access to. This feature enables hyper-exclusive experiences to be built on DeSo NFTs, like one-of-a-kind songs that only the winner can listen to.\
+
+* Once an NFT is minted, users can bid on the NFT. They must have enough in their wallet to cover the bid, but nothing is withdrawn from their wallet until the auction is closed by the creator. This allows users to bid on as many things as they like.\
+
+* Whenever the creator is ready, they can close the auction by selecting a winner, or winners in the case of a "one of N" NFT. Importantly, the creator has full control over who gets to own their work; they don't have to give it to the highest bidder.\
+
+* Once the auction is over, the winner(s) get to show off the NFT on their profile. It shows up in their NFTs tab, and it can be pinned to their main page.\
+
+
+We didn't want to over-complicate things, and we believe this simple set of features enables all of the interesting use-cases described previously.\
+
 
 Finally, as a means of concentrating liquidity around certain NFTs, we have designed a system that allows node operators to schedule "showcases." Showcases work as follows:
 
 * A node operator selects a collection of NFTs that they want to showcase.
 * The node operator schedules these NFTs to "drop" at a certain time.
-* At the scheduled time, the new NFTs are showcased on the Home page in their own tab.
+* At the scheduled time, the new NFTs are showcased on the Home page in their own tab.\
 
-Using this system, a node operator can curate a collection of NFTs every week, or even more frequently, and engage the community around them.
+
+Using this system, a node operator can curate a collection of NFTs every week, or even more frequently, and engage the community around them.\
+
 
 This, in some sense, allows node operators to serve as the curators of their own digital galleries, with each drop introducing a new exhibition.

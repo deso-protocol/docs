@@ -145,9 +145,12 @@ You can also pin posts to your feed, which is a good way of communicating announ
 
 When you run a node, you act as a moderator and have a variety of superpowers that help you manage spam and harmful content.
 
-* **Blacklisting** a profile removes it everywhere except peoples' wallet pages. This makes it so that anyone who was holding the blacklisted profile can sell out of their holdings.
-* **Graylisting** a profile removes it from the leaderboard, removes it from search, removes its comments from threads, and removes its posts from the Admin panel.
-* **Whitelisting** a profile makes that user's posts show up on the global feed automatically with some frequency (currently it allows five posts per day).
+* **Blacklisting** a profile removes it everywhere except peoples' wallet pages. This makes it so that anyone who was holding the blacklisted profile can sell out of their holdings.\
+
+* **Graylisting** a profile removes it from the leaderboard, removes it from search, removes its comments from threads, and removes its posts from the Admin panel.\
+
+* **Whitelisting** a profile makes that user's posts show up on the global feed automatically with some frequency (currently it allows five posts per day).\
+
 * Finally, a mod can allow a phone number to be re-used to claim starter $DESO. This is useful for various testing situations.
 
 ![](<../.gitbook/assets/image-deso-4- (1).png>)
@@ -178,13 +181,15 @@ Super Admins can set two values in the `Super` tab to manage the price at which 
 
 This is the minimum price at which you are willing to sell $DESO on your node. If the price retrieved from exchange APIs is lower than this amount, your node will sell $DESO at this reserve price instead of the API price.\
 \
-Additionally, the price in the right sidebar will appear as reserve price in the event that the price from the API dips below the reserve price.
+Additionally, the price in the right sidebar will appear as reserve price in the event that the price from the API dips below the reserve price.\
+
 
 **Buy DeSo Fee Rate**
 
 This is a percentage-based fee applied to all $DESO purchased on your node. If the current price of $DESO in USD is $100 and the `Buy DeSo Fee Rate` is 5%, the buyer will pay $105 per $DESO and the node operator has earned $5 net.\
 \
-For more details on configuring your node to sell $DESO, please read the section titled `Sell $DESO on your node`.
+For more details on configuring your node to sell $DESO, please read the section titled `Sell $DESO on your node`.\
+
 
 ### Sell $DESO on your node
 

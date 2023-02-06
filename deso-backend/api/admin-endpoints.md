@@ -8,7 +8,7 @@
 POST /api/v0/admin/node-control
 ```
 
-TODO
+
 
 ### Get Mempool Stats
 

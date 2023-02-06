@@ -1,3 +1,7 @@
+---
+description: Creating a new open-economy of scale for moderation via global participation
+---
+
 # 3⃣ Content Moderation
 
 ### Centralized Moderation[​](https://deso-docs.vercel.app/docs/blockchain/content-moderation#centralized-moderation) <a href="#centralized-moderation" id="centralized-moderation"></a>

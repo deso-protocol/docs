@@ -1,6 +1,4 @@
-# 9⃣ Transactions: API
-
-## Introduction
+# 4⃣ Transactions: API
 
 Transactions are the building material of every blockchain.
 
@@ -10,8 +8,9 @@ Transactions have three steps in their lifecycle
 
 1. **Construct:** The first step for a developer is to interact with the DeSo Backend API through a transaction construction endpoint to get an unsigned user transaction.\
    &#x20;\
-   [social-transactions-api.md](construct-transactions/social-transactions-api.md "mention"), [nft-transactions-api.md](construct-transactions/nft-transactions-api.md "mention"), [financial-transactions-api.md](construct-transactions/financial-transactions-api.md "mention"), and [derived-keys-transaction-api.md](construct-transactions/derived-keys-transaction-api.md "mention") explain the endpoints that will get you an unsigned transaction.
-2. **Sign:** The developer will then take the output `TransactionHex` from the construct step's response, which encodes the user transaction, and signs it using the DeSo Identity.\
+   [social-transactions-api.md](construct-transactions/social-transactions-api.md "mention"), [nft-transactions-api.md](construct-transactions/nft-transactions-api.md "mention"), [financial-transactions-api.md](construct-transactions/financial-transactions-api.md "mention"), and [derived-keys-transaction-api.md](construct-transactions/derived-keys-transaction-api.md "mention") explain the endpoints that will get you an unsigned transaction.\
+
+2. **Sign:** The developer will then take the output `TransactionHex` from the construct step's response, which encodes the user transaction, and signs it using DeSo Identity.\
    \
    You can read about signing transactions in the[#sign](../deso-identity/iframe-api/endpoints.md#sign "mention") section of the [endpoints.md](../deso-identity/iframe-api/endpoints.md "mention") documentation.\
 

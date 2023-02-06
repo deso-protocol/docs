@@ -1,3 +1,7 @@
+---
+description: The future of cross-chain interoperability
+---
+
 # 6⃣ Smart Services
 
 When Brian Armstrong started Coinbase, he made a very contrarian decision:
@@ -63,9 +67,11 @@ For example, we believe your tokens, your NFTs, and your social graph will benef
 In light of this, there are a few reasons we believe blockchains will continue to be useful:
 
 * **Censorship-resistance.**
-  * When assets and content are stored on a blockchain, no one company or app can freeze someone's assets or censor their voice. This seems to imply that users will prefer to have important assets like their tokens ultimately stored on a blockchain, even if they use smart services for computations like swaps, crowdsales, or loans.
+  * When assets and content are stored on a blockchain, no one company or app can freeze someone's assets or censor their voice. This seems to imply that users will prefer to have important assets like their tokens ultimately stored on a blockchain, even if they use smart services for computations like swaps, crowd sales, or loans.\
+
 * **Portability.**
-  * Although smart services can interoperate via Web2 APIs, putting your assets on a blockchain virtually guarantees that they will be accessible to you and to third-party developers forever. It also means that a token or post on one smart service will show up in all other smart services in much the same way assets like Bitcoin can move between cryptocurrency exchanges today.
+  * Although smart services can interoperate via Web2 APIs, putting your assets on a blockchain virtually guarantees that they will be accessible to you and to third-party developers forever. It also means that a token or post on one smart service will show up in all other smart services in much the same way assets like Bitcoin can move between cryptocurrency exchanges today.\
+
 * **Overcoming regulatory constraints.**
   * By eliminating reliance on a centralized party entirely, blockchains can sometimes satisfy regulatory requirements that centralized services cannot. For example, issuing tokens or NFTs on a blockchain can provide extra protection against securities law concerns.
 
@@ -278,7 +284,7 @@ Competition among smart service hosting providers should be highly-competitive a
 
 Ethereum layer-2 solutions like Arbitrum or ZK-Rollups achieve similar scalability improvements as smart services and improve on trustlessness, but they do so at the expense of being much more difficult to build apps with than smart services.
 
-For example, you cannot write a customized ZK-Rollups app using solely javascript and Web2 APIs.
+For example, you cannot write a customized ZK-Rollups app using solely Javascript and Web2 APIs.
 
 As such, layer-2 solutions do not engage millions of existing Web2 developers the way that smart services do, which is where we believe most of the value of going off-chain will come from.
 

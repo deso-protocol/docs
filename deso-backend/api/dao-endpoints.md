@@ -1,24 +1,26 @@
 ---
-description: Description of endpoints used to DAOs, and on-chain trading of DAO coins.
+description: >-
+  Description of endpoints used for creating and on-chain trading of DeSo
+  Tokens.
 ---
 
-# DAO Endpoints
+# DeSo Tokens Endpoints
 
-For endpoints to check ownership of DAO coins, see [#get-hodlers-for-public-key](social-endpoints.md#get-hodlers-for-public-key "mention") and [#is-hodling-public-key](social-endpoints.md#is-hodling-public-key "mention").
+<mark style="color:red;">Note: "DAO Coins" are now referred to as "</mark><mark style="color:red;">**DeSo Tokens**</mark><mark style="color:red;">" in all public-facing documentation, but the code and API have not yet been updated to reflect this change.</mark>\ <mark style="color:red;"></mark>\ <mark style="color:red;"></mark>\ <mark style="color:red;"></mark>For endpoints to check ownership of DeSo Tokens, see [#get-hodlers-for-public-key](social-endpoints.md#get-hodlers-for-public-key "mention") and [#is-hodling-public-key](social-endpoints.md#is-hodling-public-key "mention").
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-dao-coin-limit-orders" summary="Gets All Open Orders on Order Book for a DAO Coin Market" %}
+{% swagger method="post" path="" baseUrl="/api/v0/get-dao-coin-limit-orders" summary="Gets All Open Orders on Order Book for a DeSo Token (DAO Coin) Market" %}
 {% swagger-description %}
-There are two types of markets where DAO coins can be traded on the on-chain order book exchange: 1) markets where a DAO coin is traded for $DESO, and 2) markets where a DAO coin is traded for another DAO coin.
+There are two types of markets where DeSo Tokens can be traded on the on-chain order book exchange: 1) markets where a DeSo Token is traded for $DESO, and 2) markets where a DeSo Token is traded for another DeSo Token.
 
-This endpoint returns all open orders given two coins that can be traded against each other. At least one of the two coins must be a DAO coin.
+This endpoint returns all open orders given two coins that can be traded against each other. At least one of the two coins must be a DeSo Token.
 
-See [#create-dao-coin-limit-order](../construct-transactions/dao-transactions-api.md#create-dao-coin-limit-order "mention") for how to create new limit orders to trade DAO coins.
+See [#create-dao-coin-limit-order](../construct-transactions/dao-transactions-api.md#create-dao-coin-limit-order "mention") for how to create new limit orders to trade DeSo Tokens.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/0af8093227b219de31487ac129e799fee61e39ef/routes/dao\_coin\_exchange.go#L37).
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="DAOCoin1CreatorPublicKeyBase58CheckOrUsername" type="string" required="true" %}
-Public key or username of the creator of the DAO, whose DAO coin makes up one side of a market.
+Public key or username of the creator of the Token, whose DeSo Token makes up one side of a market.
 
 
 
@@ -26,7 +28,7 @@ An empty string here represents $DESO as one side of the market.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="DAOCoin2CreatorPublicKeyBase58CheckOrUsername2" type="string" required="true" %}
-Public key or username of the creator of the DAO, whose DAO coin makes up the second side of the market.
+Public key or username of the creator of the DAO, whose DeSo Token makes up the second side of the market.
 
 
 
@@ -85,7 +87,7 @@ An empty string here represents $DESO as the second side of the market.
 
 {% swagger method="post" path="" baseUrl="/api/v0/get-transactor-dao-coin-limit-orders" summary="Gets All Open Limit Orders Created by a Transactor" %}
 {% swagger-description %}
-This endpoint returns all open orders that were created by a given transactor on the DAO coin on-chain order book exchange.
+This endpoint returns all open orders that were created by a given transactor on the DeSo Tokens on-chain order book exchange.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/0af8093227b219de31487ac129e799fee61e39ef/routes/dao\_coin\_exchange.go#L136).
 {% endswagger-description %}

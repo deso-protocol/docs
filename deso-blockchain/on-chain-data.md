@@ -1,3 +1,7 @@
+---
+description: Defending against the risk of censorship via maximum on-chain transparency
+---
+
 # 5⃣ On-Chain Data
 
 ### Centralization Risks
@@ -35,7 +39,7 @@ To be concrete, below is a complete list of everything that DeSo is currently eq
 
 * Raw images and videos are stored in centralized but publicly accessible and easily replicable repositories, making the on-chain links sufficient to guarantee access into perpetuity.
 * Emails and phone numbers are stored by individual node operators in order to protect users' privacy. We do not think this presents a significant centralization risk; however, if this proves incorrect then this information can be encrypted and stored with the profile in a privacy-preserving fashion relatively easily.
-* Decisions about what profiles to show or hide, or how to curate content, lie with node operators. However, we think this is a positive force for decentralization, as we will discuss when we cover moderation.
+* Decisions about what profiles to show or hide, or how to curate content, lie with node operators. However, we think this is a positive force for decentralization, as we will discuss  moderation here [content-moderation.md](content-moderation.md "mention")
 
 As more features are added to DeSo, we will continue to ensure that all data that could pose a centralization risk lives on-chain.
 

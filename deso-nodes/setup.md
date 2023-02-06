@@ -26,4 +26,4 @@ Note in order to turn your node on or off open the Docker GUI navigate to the co
 
 ![](../.gitbook/assets/docker-toggle-container.PNG)
 
-Congratulations, your Deso node is now running locally! Navigate to [http://deso.run](http://deso.run/) or locahost:8080 in your browser to see your local instance.&#x20;
+Congratulations, your Deso node is now running locally! Navigate to [http://deso.run](http://deso.run/) or `locahost:8080` in your browser to see your local instance.&#x20;

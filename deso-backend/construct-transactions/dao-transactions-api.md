@@ -4,40 +4,42 @@ description: >-
   blockchain
 ---
 
-# DAO Transactions API
+# DeSo Tokens Transactions API
 
-{% swagger method="post" path="" baseUrl="/api/v0/dao-coin" summary="DAO Coin" expanded="false" %}
+<mark style="color:red;">Note: "DAO Coins" are now referred to as "</mark><mark style="color:red;">**DeSo Tokens**</mark><mark style="color:red;">" in all public-facing documentation, but the code and API have not yet been updated to reflect this change.</mark>\ <mark style="color:red;"></mark>
+
+{% swagger method="post" path="" baseUrl="/api/v0/dao-coin" summary="Create DeSo Token (DAO Coin)" expanded="false" %}
 {% swagger-description %}
-Create a DAO coin transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.&#x20;
+Create a DeSo Token transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.&#x20;
 
-A `mint` operation creates new DAO coins
+A `mint` operation creates new DeSo Tokens
 
-A `burn` operation destroys DAO coins
+A `burn` operation destroys DeSo Tokens
 
-An `update_transfer_restriction_status` operation updates the restrictions on transferring a DAO coin
+An `update_transfer_restriction_status` operation updates the restrictions on transferring a DeSo Tokens
 
-A `disable_minting` operation prevents minting of any future DAO coins
+A `disable_minting` operation prevents minting of any future DeSo Tokens
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/transaction.go#L2271).
 
 Example usages in frontend:\
-&#x20; \- Make request to [DAO Coin](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/backend-api.service.ts#L1739)\
-&#x20; \- Use DAO Coin to [mint DAO coins](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L214)\
-&#x20; \- Use DAO Coin to [burn DAO coins](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L333)\
-&#x20; \- Use DAO Coin to [update transfer restriction status](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L292)\
-&#x20; \- Use DAO Coin to [disable minting](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L257)
+&#x20; \- Make request to [DeSo Tokens](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/backend-api.service.ts#L1739)\
+&#x20; \- Use DeSo Tokens to [mint DeSo Tokens](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L214)\
+&#x20; \- Use DeSo Tokens to [burn DeSo Tokens](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L333)\
+&#x20; \- Use DeSo Tokens to [update transfer restriction status](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L292)\
+&#x20; \- Use DeSo Tokens to [disable minting](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/dao-coins.component.ts#L257)
 {% endswagger-description %}
 
 {% swagger-parameter in="body" required="true" name="UpdaterPublicKeyBase58Check" type="String" %}
-Public key performing the DAO Coin operation
+Public key performing the DeSo Token operation
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" required="true" name="ProfilePublicKeyBase58CheckOrUsername" type="String" %}
-Public key  or username of the creator of the DAO on whose DAO coins Updater is operating
+Public key  or username of the creator of the Token on whose DeSo Token Updater is operating
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" required="true" name="OperationType" type="String" %}
-Type of DAO coin operation being perform. Must be 
+Type of DeSo Token operation being perform. Must be 
 
 `mint`
 
@@ -55,7 +57,7 @@ Type of DAO coin operation being perform. Must be
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="CoinsToMintNanos" type="String" %}
-Hex string representing the number of DAO coins minted in this operation.
+Hex string representing the number of DeSo Tokens in this operation.
 
 
 
@@ -63,7 +65,7 @@ Hex string representing the number of DAO coins minted in this operation.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="CoinsToBurnNanos" type="String" %}
-Hex string representing the number of DAO coins burned in this operation.
+Hex string representing the number of DeSo Tokens burned in this operation.
 
 
 
@@ -90,7 +92,7 @@ Array of
 objects that define additional outputs that need to be added to this transaction
 {% endswagger-parameter %}
 
-{% swagger-response status="200: OK" description="Successfully constructed a DAO Coin transaction" %}
+{% swagger-response status="200: OK" description="Successfully constructed a DeSo Token transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -140,25 +142,25 @@ objects that define additional outputs that need to be added to this transaction
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/transfer-dao-coin" summary="Transfer DAO Coin" %}
+{% swagger method="post" path="" baseUrl="/api/v0/transfer-dao-coin" summary="Transfer DeSo Token (DAO Coin)" %}
 {% swagger-description %}
-Create a transfer DAO coin transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.&#x20;
+Create a transfer DeSo Token transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.&#x20;
 
-Transfer DAO coin transactions sends DAO coins owned by the sender to the receiver.
+Transfer DeSo Token coin transactions sends DeSo Token owned by the sender to the receiver.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/transaction.go#L2448).
 
 Example usages in frontend:\
-&#x20; \- Make request to [Transfer DAO Coin](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/backend-api.service.ts#L1761)\
-&#x20; \- Use TransferDAOCoin to [construct, sign, and submit a DAO coin transfer transaction](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/transfer-dao-coin-modal/transfer-dao-coin-modal.component.ts#L67).
+&#x20; \- Make request to [Transfer DeSo Token](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/backend-api.service.ts#L1761)\
+&#x20; \- Use TransferDAOCoin to [construct, sign, and submit a DeSo Token transfer transaction](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/dao-coins/transfer-dao-coin-modal/transfer-dao-coin-modal.component.ts#L67).
 {% endswagger-description %}
 
 {% swagger-parameter in="body" name="SenderPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user sending DAO coins
+Public key of the user sending DeSo Token
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="ProfilePublicKeyBase58CheckOrUsername" required="true" type="String" %}
-Public key of the creator whose DAO coin will be sent in this transaction
+Public key of the creator whose DeSo Token will be sent in this transaction
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="ReceiverPublicKeyBase58CheckOrUsername" required="true" type="String" %}
@@ -166,7 +168,7 @@ Public key of the recipient
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" required="true" name="DAOCoinToTransferNanos" type="String" %}
-Hex string representing the amount of DAO coins to transfer in this transaction
+Hex string representing the amount of DeSo Tokens to transfer in this transaction
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" required="true" name="MinFeeRateNanosPerKB" type="uint64" %}
@@ -181,7 +183,7 @@ Array of
 objects that define additional outputs that need to be added to this transaction
 {% endswagger-parameter %}
 
-{% swagger-response status="200: OK" description="Successfully constructed a DAO coin transfer transaction" %}
+{% swagger-response status="200: OK" description="Successfully constructed a DeSo Token transfer transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -234,11 +236,11 @@ objects that define additional outputs that need to be added to this transaction
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/create-doa-coin-limit-order" summary="Create DAO Coin Limit Order" %}
+{% swagger method="post" path="" baseUrl="/api/v0/create-doa-coin-limit-order" summary="Create DeSo Token (DAO Coin) Limit Order" %}
 {% swagger-description %}
-Create a new limit order to trade DAO coins. The transaction needs to be signed and submitted through `api/v0/submit-transaction` before the order can be placed on the book or the coins are traded.
+Create a new limit order to trade DeSo Tokens. The transaction needs to be signed and submitted through `api/v0/submit-transaction` before the order can be placed on the book or the coins are traded.
 
-DAO coins can be traded on an on-chain order book exchange. There are two types of markets where DAO coins can be traded on the exchange: 1) markets where a DAO coin is traded for $DESO, and 2) markets where a DAO coin is traded for another DAO coin.
+DeSo Tokens can be traded on an on-chain order book exchange. There are two types of markets where DeSo Tokens can be traded on the exchange: 1) markets where a DeSo Token is traded for $DESO, and 2) markets where a DeSo Token is traded for another DeSo Token.
 
 This endpoint allows the creation of limit orders for either type of market.
 
@@ -250,19 +252,19 @@ Public key of the user creating the limit order
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="BuyingDAOCoinCreatorPublicKeyBase58CheckOrUsername" required="true" type="String" %}
-Public key or username of the creator of a DAO whose DAO coin is being bought.
+Public key or username of the creator of a profile, whose DeSo Token is being bought.
 
 
 
-If the order is selling a DAO coin for $DESO, then this parameter needs to be an empty string.
+If the order is selling a DeSo Token for $DESO, then this parameter needs to be an empty string.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="SellingDAOCoinCreatorPublicKeyBase58CheckOrUsername" required="true" type="String" %}
-Public key or username of the creator of a DAO whose DAO coin is being sold.&#x20;
+Public key or username of the creator of a profile whose DeSo Token is being sold.&#x20;
 
 
 
-If the order is buying a DAO coin with $DESO, then this parameter needs to be an empty string.
+If the order is buying a DeSo Token with $DESO, then this parameter needs to be an empty string.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" required="true" name="ExchangeRateCoinsToSellPerCoinToBuy" type="float64" %}
@@ -301,7 +303,7 @@ Array of
 objects that define additional outputs that need to be added to this transaction
 {% endswagger-parameter %}
 
-{% swagger-response status="200: OK" description="Successfully constructed a DAO coin limit order transaction" %}
+{% swagger-response status="200: OK" description="Successfully constructed a DeSo Token coin limit order transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -364,9 +366,9 @@ objects that define additional outputs that need to be added to this transaction
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/cancel-dao-coin-limit-order" summary="Cancel DAO Coin Limit Order" %}
+{% swagger method="post" path="" baseUrl="/api/v0/cancel-dao-coin-limit-order" summary="Cancel DeSo Token (DAO Coin) Limit Order" %}
 {% swagger-description %}
-Cancel an open limit order to trade DAO coins. The transaction needs to be signed and submitted through `api/v0/submit-transaction` before the order is cancelled.&#x20;
+Cancel an open limit order to trade DeSo Token. The transaction needs to be signed and submitted through `api/v0/submit-transaction` before the order is cancelled.&#x20;
 
 This endpoint allows a transactor to cancel a limit order they had previously created. The request will only succeed if the order is still open, and has not been completely filled or previously cancelled.
 

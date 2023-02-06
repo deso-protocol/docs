@@ -1,3 +1,7 @@
+---
+description: Scaling decentralized social networks with an innovative PoS roadmap
+---
+
 # 2⃣ Consensus (PoW & PoS)
 
 ## From PoW to PoS
@@ -69,15 +73,21 @@ The math below walks through DeSo scalability at each stage:
 
      * At the aforementioned validation speed of 12MB/s on an Intel Xeon E-2276M, it would take approximately 238e9 bytes/week / (12e6 validated bytes / second \* 60 seconds/minute \* 60 minutes/hour) = **5.5-6 hours to download and validate one week of 120MB blocks** at a validation speed of 12MB/s on good hardware.\
 
-   * Under these assumptions, This means that the warp upgrade can allow us to sync a node in \~5.5h while maintaining 1,800 transactions per second (TPS) long-term.
-     * 1,811 tps vs Twitter with 6,000 posts per second and 300M users (assume only posts, no likes)
+   * Under these assumptions, This means that the warp upgrade can allow us to sync a node in \~5.5h while maintaining 1,800 transactions per second (TPS) long-term.\
+
+     * 1,811 tps vs Twitter with 6,000 posts per second and 300M users (assume only posts, no likes)\
+
      * Users = 300M \* 1,811 / 6000 / 3 txns per post = **\~30M users.**\
        ****
 4. **Sharding**
-   * All transactions can then be write-sharded to make syncing a node parallelizable, thus providing multiple orders of magnitude in speedup. For example, we could do a very simple optimization, which is to shard all posts into their own sub-chain, and then shard other transactions across two of their own sub-chains.\
+   * All transactions can then be write-sharded to make syncing a node parallelizable, thus providing multiple orders of magnitude in speedup.\
+     \
+     For example, we could do a very simple optimization, which is to shard all posts into their own sub-chain, and then shard other transactions across two of their own sub-chains.\
 
    * This would result in a node being capable of syncing 3x faster, meaning that we could support **\~90M users without an increase in sync time**.\
 
-   * Ultimately, all transactions can be sharded into sub-chains by user ID, which would allow for virtually unlimited parallelization. For example, with thirty shards, we achieve another \~10x multiplier on the TPS without an increase in sync time, thus achieving **\~1 billion users**.\
+   * Ultimately, all transactions can be sharded into sub-chains by user ID, which would allow for virtually unlimited parallelization.\
+     \
+     For example, with thirty shards, we achieve another \~10x multiplier on the TPS without an increase in sync time, thus achieving **\~1 billion users**.\
 
    * This number can be scaled further by increasing the number of shards.
