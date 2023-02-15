@@ -3,6 +3,7 @@
 * [🚀 DeSo Vision](README.md)
 * [📅 DeSo Roadmap](deso-roadmap.md)
 * [🛠 DeSo Tech Stack](deso-tech-stack.md)
+* [🌐 DeSo Applications](deso-applications.md)
 
 ## DeSo Blockchain
 
@@ -19,7 +20,7 @@
 * [1⃣ Associations](deso-features/associations.md)
 * [2⃣ Creator Coins](deso-features/creator-coins.md)
 * [3⃣ Feeds & Moderation](deso-features/feeds-and-moderation.md)
-* [4⃣ Social NFT](deso-features/social-nft.md)
+* [4⃣ Social NFTs](deso-features/social-nfts.md)
 * [5⃣ Social Tipping](deso-features/social-tipping.md)
 
 ## DeSo Repos

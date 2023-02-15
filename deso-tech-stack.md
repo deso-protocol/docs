@@ -4,6 +4,11 @@ description: An overview of tools & resources for building on DeSo
 
 # 🛠 DeSo Tech Stack
 
+{% embed url="https://www.youtube.com/watch?v=BqoTfBT5gwM" %}
+Learn about the technical advantages of building on DeSo in 90 seconds
+{% endembed %}
+
+\
 The DeSo Foundation's goal is to give founders and developers a set of world-class tools and resources to focus on building decentralized social and consumer-focused applications.
 
 There will be countless other ideas and opportunities that arise as DeSo unlocks an army of web2 developers who are aching to participate in the future of decentralization and social.&#x20;
@@ -134,45 +139,3 @@ We strive on the following development principles:
   * **File Storage (coming soon with DeSo Vaults)**
     * On-chain blob storage for images & videos (soon)
     * On-chain file storage for static HTML websites (soon)
-
-### Ideas for Potential DeSo Applications
-
-Here are a few ideas of what's possible to build on DeSo (**fully on-chain**):
-
-* Activity Feeds
-* AI-Driven Content Creation
-* Content Management Platforms
-* Creator Monetization Tools
-* Cross-Chain Swapping
-* Curation Services
-* DAO Tooling
-* Decentralized Media
-* Decentralized Order-Book Exchanges
-* Decentralized Social Networks
-* End-to-End Encrypted & Private, Token-Gated Apps
-* End-to-End Encrypted Messaging & Group Chats
-* Forums & Communities
-* Fundraising Platforms
-* Image Sharing Apps
-* Internationalized Social Feeds
-* Governance & Polls
-* Loyalty & Referral Programs
-* Long-Form / Blogging Platforms
-* Music NFTs and Discovery
-* NFT Virtual Ticketing & Access
-* NFT Marketplaces
-* NFT Minting Sites
-* Notification Services
-* Open-Source Algorithms
-* Play-2-Earn Gaming
-* Post-2-Earn&#x20;
-* Q\&A / Upvoting Apps
-* Social Analytics
-* Social Airdrops & Rewards
-* Social Betting
-* Social Leaderboards
-* Social Post Scheduling
-* Social Sharing & Listening
-* Social Wallet Apps
-* Talent Discovery Platforms
-* Video Sharing Apps
