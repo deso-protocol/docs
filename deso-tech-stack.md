@@ -4,8 +4,8 @@ description: An overview of tools & resources for building on DeSo
 
 # 🛠 DeSo Tech Stack
 
-{% embed url="https://www.youtube.com/watch?v=BqoTfBT5gwM" %}
-Learn about the technical advantages of building on DeSo in 90 seconds
+{% embed url="https://www.youtube.com/watch?v=q2FPbh6zBTg" %}
+Learn about the advantages of building on DeSo in 90 seconds
 {% endembed %}
 
 \
