@@ -25,17 +25,17 @@ If you want to port these examples to your own app, set up a project using the d
 
 If you're not sure, Create React App is a reasonable choice for getting a development environment up and running for quick prototyping/experimenting.
 
-Next, install the [DeSo identity library](https://www.npmjs.com/package/@deso-core/identity) using your preferred package manager:
+Next, install the [DeSo Protocol SDK](https://www.npmjs.com/package/deso-protocol) using your preferred package manager:
 
 ```
 # npm
-npm i @deso-core/identity
+npm i deso-protocol
 
 # yarn
-yarn add @deso-core/identity
+yarn add deso-protocol
 ```
 
-Finally, use the examples found in this repo to help you build social features for your application using the [DeSo blockchain](https://deso.com/)
+Finally, use the examples found in this repo to help you build social features for your application.
 
 There are lots of comments throughout the code, but if anything is unclear, please open an issue!
 

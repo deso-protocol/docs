@@ -20,16 +20,16 @@ Once you have your app up and running with the default scaffolding, we’ll inst
 
 ### Installation
 
-[The DeSo identity library](https://www.npmjs.com/package/@deso-core/identity) is used for core functionality when building an application for the DeSo blockchain: logging in, logging out, signing and submitting transactions, and more. \
+[The DeSo Protocol SDK](https://www.npmjs.com/package/deso-protocol) is used for core functionality when building an application for the DeSo blockchain: logging in, logging out, signing and submitting transactions, and more. \
 \
-NPM: [https://www.npmjs.com/package/@deso-core/identity](https://www.npmjs.com/package/@deso-core/identity)\
-Github: [https://github.com/deso-protocol/deso-workspace/tree/main/libs/identity](https://github.com/deso-protocol/deso-workspace/tree/main/libs/identity)
+NPM: [https://www.npmjs.com/package/deso-protocol](https://www.npmjs.com/package/deso-protocol)\
+Github: [https://github.com/deso-protocol/deso-workspace/tree/main/libs/deso-protocol](https://github.com/deso-protocol/deso-workspace/tree/main/libs/deso-protocol)
 
 \
 In the root of your application run:
 
 ```
-npm install @deso-core/identity
+npm i deso-protocol
 ```
 
 And now you should be ready to start building!
@@ -69,9 +69,9 @@ This looks as follows:
 In this example, we will ask users for permission to create an unlimited number of posts and make an unlimited number of transfers until they meet the global limit of 1 $DESO.
 
 ```
-import { identity } from '@deso-core/identity';
+import { configure } from 'deso-protocol';
 
-identity.configure({
+configure({
   spendingLimitOptions: {
     // NOTE: this value is in Deso nanos, so 1 Deso * 1e9
     GlobalDESOLimit: 1 * 1e9 // == 1 Deso
@@ -82,7 +82,7 @@ identity.configure({
       SUBMIT_POST: 'UNLIMITED',
     },
   }
-})
+});
 ```
 
 **Important:** You’ll want to make sure you call configure only once prior to calling any other identity methods.
@@ -96,13 +96,13 @@ While you’ll typically want to ask for specific permissions in a production ap
 This example requests approval for unlimited access:
 
 ```
-import { identity } from '@deso-core/identity';
+import { configure } from 'deso-protocol';
 
-identity.configure({
+configure({
   spendingLimitOptions: {
     IsUnlimited: true
   }
-})
+});
 ```
 
 ### App Name
@@ -112,15 +112,14 @@ identity.configure({
 This can be used to group and identify derived keys that have been issued by a given app. If you don’t set the appName, the domain name your app is running on will be used by default.
 
 ```
-import { identity } from '@deso-core/identity';
+import { configure } from 'deso-protocol';
 
-identity.configure({
-	appName: 'My Cool App',
-
-	spendingLimitOptions: {
-      IsUnlimited: true
-	}
-})
+configure({
+  appName: 'My Cool App',
+  spendingLimitOptions: {
+    IsUnlimited: true
+  }
+});
 ```
 
 Soon, users will be able to easily see all the apps they’ve used, and what permissions they’ve granted them (this is why setting a good app name is helpful!).\
