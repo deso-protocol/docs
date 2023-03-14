@@ -43,8 +43,8 @@
 
 ## DESO FRONTEND
 
-* [1⃣ Frontend: Get Started](deso-frontend/exchange-listing-api.md)
-* [2⃣ Frontend: React Example](deso-frontend/exchange-listing-api-1.md)
+* [1⃣ Frontend: Get Started](deso-frontend/get-started.md)
+* [2⃣ Frontend: React Example](deso-frontend/react-example.md)
 
 ## DESO BACKEND
 

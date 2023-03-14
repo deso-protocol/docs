@@ -22,7 +22,7 @@ We strive on the following development principles:
 ### **1) Easy for web2 developers to build.**
 
 * **API-Driven & Permissionless**\
-  ****Everything that DeSo builds is API-driven from the start. We believe this makes it easier for Web2 developers to focus on creating world-class Web3 applications, using familiar programming languages like [Javascript](deso-frontend/exchange-listing-api.md) & Python. There's no need to learn smart-contract languages and write cost-prohibitive contracts.\
+  ****Everything that DeSo builds is API-driven from the start. We believe this makes it easier for Web2 developers to focus on creating world-class Web3 applications, using familiar programming languages like [Javascript](deso-frontend/get-started.md) & Python. There's no need to learn smart-contract languages and write cost-prohibitive contracts.\
   \
   Anyone in the world can also run their own DeSo node to curate and moderate their own feed. Read more: [feeds-and-moderation.md](deso-features/feeds-and-moderation.md "mention")\
 
@@ -56,7 +56,7 @@ We strive on the following development principles:
   Here's a list of how DeSo Identity solves many of these problems:\
 
   * **Sign in with DeSo**
-    * Any developer can add a "Sign in With DeSo" login with a [few lines of Javascript](deso-frontend/exchange-listing-api.md).\
+    * Any developer can add a "Sign in With DeSo" login with a [few lines of Javascript](deso-frontend/get-started.md).\
 
   * **Self-Custodial Wallet**
     * Take full custody of your own keys. We like to say "_**not your keys, not your content**_". \
