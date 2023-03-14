@@ -1,4 +1,4 @@
-# Reporting an Account or Post
+# ⚠ Reporting an Account or Post
 
 * The best way to report a post or account is to do so via our “Report” buttons. This method allows us to keep a record of every public key that is reported so we can reverse search blacklisted accounts if needed. \
 

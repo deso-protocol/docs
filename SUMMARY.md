@@ -4,6 +4,8 @@
 * [📅 DeSo Roadmap](deso-roadmap.md)
 * [🛠 DeSo Tech Stack](deso-tech-stack.md)
 * [🌐 DeSo Applications](deso-applications.md)
+* [💸 DeSo Wallet](https://wallet.deso.com)
+* [💬 DeSo Chat](https://chat.deso.com)
 
 ## DeSo Blockchain
 
@@ -43,8 +45,8 @@
 
 ## DESO FRONTEND
 
-* [1⃣ Frontend: Get Started](deso-frontend/get-started.md)
-* [2⃣ Frontend: React Example](deso-frontend/react-example.md)
+* [1⃣ Frontend: Get Started](deso-frontend/exchange-listing-api.md)
+* [2⃣ Frontend: React Example](deso-frontend/exchange-listing-api-1.md)
 
 ## DESO BACKEND
 
@@ -105,9 +107,15 @@
 
 ## Contact And Media
 
-* [Contact US](contact-and-media/contact-us.md)
-* [Social Media and Community](contact-and-media/social-media-and-community.md)
-* [Reporting an Account or Post](contact-and-media/reporting-an-account-or-post.md)
+* [☀ DeSo Website](https://deso.com)
+* [📑 DeSo Blog](https://diamondapp.com/u/deso?feedTab=Hot\&tab=blog)
+* [💻 DeSo Github](https://github.com/deso-protocol)
+* [💎 DeSo Diamond](https://diamondapp.com/u/deso)
+* [🐦 DeSo Twitter](https://twitter.com/desoprotocol)
+* [🥫 DeSo Discord](https://discord.gg/deso)
+* [📺 DeSo YouTube](https://www.youtube.com/@desoblockchain)
+* [📬 Contact US](contact-and-media/contact-us.md)
+* [⚠ Reporting an Account or Post](contact-and-media/reporting-an-account-or-post.md)
 
 ## 中文
 
