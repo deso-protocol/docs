@@ -4,6 +4,14 @@ description: Scaling decentralized social networks with an innovative PoS roadma
 
 # 2⃣ Consensus (PoW & PoS)
 
+## Revolution PoS announced on March 2023
+
+DeSo [recently announced](https://diamondapp.com/u/nader/blog/the-next-phase-of-deso-revolution-proof-of-stake-bitclout-20?feedTab=Hot) a switch to Proof of Stake in 2023 with a first look at a detailed proposal.
+
+Read the breakthrough **Revolution Proof of Stake** whitepaper here:\
+\
+[https://revolution.deso.com/](https://revolution.deso.com/) (pw = _decentralization_)
+
 ## From PoW to PoS
 
 Today, DeSo runs a hybrid Proof of Work consensus mechanism that allows it to use far less energy than Bitcoin or Ethereum while remaining secure against 51% attacks.
