@@ -12,7 +12,7 @@ Compared to private, monopolized Web2 social media, all of the data on the DeSo 
 
 This means that **anybody can access this information and build their own application** using that data.&#x20;
 
-However, blockchains require transactions and cryptography to validate information. ****&#x20;
+However, blockchains require transactions and cryptography to validate information.&#x20;
 
 We know this can be a hassle, so we've built this API along with the [Broken link](broken-reference "mention") service to make it easy for you, the developer, to focus on what matters: building your application.&#x20;
 

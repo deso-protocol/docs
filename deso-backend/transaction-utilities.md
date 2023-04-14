@@ -80,7 +80,7 @@ Hex of transaction
 | TxOutputs         | <p>Array of transaction outputs</p><p></p><p>[{ PublicKey: string, AmountNanos: integer }]</p> | <p>Attribute of transaction</p><p></p><p>Each element represents an output (DeSo being received) in the transaction</p>                                              |
 | TxnMeta           | Transaction Metadata object                                                                    | <p>Attribute of transaction</p><p></p><p>Transaction Metadata descriptions coming soon. Each transaction type has its own transaction metadata object structure.</p> |
 | TxnHashHex        | String                                                                                         | Hex of transaction hash broadcasted to the DeSo blockchain                                                                                                           |
-| PostEntryResponse | ``[`PostEntryResponse`](broken-reference)                                                      | If a transaction is a submit post transaction, the `PostEntryResponse` that was created by the transaction is included                                               |
+| PostEntryResponse | [`PostEntryResponse`](broken-reference)                                                        | If a transaction is a submit post transaction, the `PostEntryResponse` that was created by the transaction is included                                               |
 {% endtab %}
 {% endtabs %}
 {% endswagger-response %}

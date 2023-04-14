@@ -34,13 +34,13 @@ It also means that derived keys are extremely sensitive information and therefor
 1. Generate a derived key by making a call to [#derive](../window-api/#derive "mention") window API endpoint\
 
 2. Construct a `AuthorizeDerivedKey` transaction via Backend API through `/api/v0/authorize-derived-key`\
-   ``
+
 3. Sign the `AuthorizeDerivedKey` transaction with the derived key\
 
 4. Submit signed `AuthorizeDerivedKey` transaction via `/api/v0/submit-transaction`\
-   ``
+
 5. (Optional) Confirm that the derived key was successfully authorized through Backend API in `/api/v0/get-user-derived-keys`\
-   ``
+
 
 ### Generate Derived Key
 
@@ -90,9 +90,9 @@ Let’s take a look at these values:
   To check if a derived key is valid you should compare the current block height, e.g. taken from `/api/v0/get-app-state` Backend API endpoint, with the `expirationBlock` that you can find by querying the `/api/v0/get-user-derived-keys` Backend API endpoint.\
 
 * `derivedJwt` is a JWT token with a month-long timeout signed by the `derivedPublicKeyBase58Check`\
-  ``
+
 * `jwt` is a JWT token with a month-long timeout signed by the owner `publicKeyBase58Check`\
-  ``
+
 * `network`  is the network for which this derived key was generated\
 
 * `messagingKeyName` is the key name used for v3 messaging\

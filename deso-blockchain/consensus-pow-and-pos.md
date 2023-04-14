@@ -86,7 +86,7 @@ The math below walks through DeSo scalability at each stage:
      * 1,811 tps vs Twitter with 6,000 posts per second and 300M users (assume only posts, no likes)\
 
      * Users = 300M \* 1,811 / 6000 / 3 txns per post = **\~30M users.**\
-       ****
+
 4. **Sharding**
    * All transactions can then be write-sharded to make syncing a node parallelizable, thus providing multiple orders of magnitude in speedup.\
      \

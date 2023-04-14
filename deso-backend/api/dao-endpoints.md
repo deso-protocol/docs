@@ -6,7 +6,10 @@ description: >-
 
 # DeSo Tokens Endpoints
 
-<mark style="color:red;">Note: "DAO Coins" are now referred to as "</mark><mark style="color:red;">**DeSo Tokens**</mark><mark style="color:red;">" in all public-facing documentation, but the code and API have not yet been updated to reflect this change.</mark>\ <mark style="color:red;"></mark>\ <mark style="color:red;"></mark>\ <mark style="color:red;"></mark>For endpoints to check ownership of DeSo Tokens, see [#get-hodlers-for-public-key](social-endpoints.md#get-hodlers-for-public-key "mention") and [#is-hodling-public-key](social-endpoints.md#is-hodling-public-key "mention").
+<mark style="color:red;">Note: "DAO Coins" are now referred to as "</mark><mark style="color:red;">**DeSo Tokens**</mark><mark style="color:red;">" in all public-facing documentation, but the code and API have not yet been updated to reflect this change.</mark>\
+\
+\
+For endpoints to check ownership of DeSo Tokens, see [#get-hodlers-for-public-key](social-endpoints.md#get-hodlers-for-public-key "mention") and [#is-hodling-public-key](social-endpoints.md#is-hodling-public-key "mention").
 
 {% swagger method="post" path="" baseUrl="/api/v0/get-dao-coin-limit-orders" summary="Gets All Open Orders on Order Book for a DeSo Token (DAO Coin) Market" %}
 {% swagger-description %}

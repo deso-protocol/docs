@@ -22,12 +22,12 @@ We strive on the following development principles:
 ### **1) Easy for web2 developers to build.**
 
 * **API-Driven & Permissionless**\
-  ****Everything that DeSo builds is API-driven from the start. We believe this makes it easier for Web2 developers to focus on creating world-class Web3 applications, using familiar programming languages like [Javascript](deso-frontend/exchange-listing-api.md) & Python. There's no need to learn smart-contract languages and write cost-prohibitive contracts.\
+  Everything that DeSo builds is API-driven from the start. We believe this makes it easier for Web2 developers to focus on creating world-class Web3 applications, using familiar programming languages like [Javascript](deso-frontend/exchange-listing-api.md) & Python. There's no need to learn smart-contract languages and write cost-prohibitive contracts.\
   \
   Anyone in the world can also run their own DeSo node to curate and moderate their own feed. Read more: [feeds-and-moderation.md](deso-features/feeds-and-moderation.md "mention")\
 
 * **Virtually Zero Gas Fees**\
-  ****On DeSo, you'll never expect to pay more than a fraction of a penny for thousands of on-chain transactions. The average fee per post is <$0.000017, in contrast to Ethereum where the average fee per post can cost >$50 depending on gas fees.\
+  On DeSo, you'll never expect to pay more than a fraction of a penny for thousands of on-chain transactions. The average fee per post is <$0.000017, in contrast to Ethereum where the average fee per post can cost >$50 depending on gas fees.\
   \
   DeSo solves very complex storage & indexing problems to be able to handle decentralized social applications extremely efficiently. This is an advantage of DeSo being an "infinite-state" blockchain that's optimized for storage-heavy use cases. Read more: [infinite-state.md](deso-blockchain/infinite-state.md "mention")\
 
@@ -47,7 +47,7 @@ We strive on the following development principles:
 ### **2) Easy for mainstream users to onboard.**
 
 * **Frictionless Usage & Onboarding**\
-  ****DeSo is a very user-experienced-driven project, as we believe the key to Web3 social is to make the user experience on par with the expectations of Web2 social.\
+  DeSo is a very user-experienced-driven project, as we believe the key to Web3 social is to make the user experience on par with the expectations of Web2 social.\
   \
   This means unlike other blockchains, DeSo makes it very simple to sign up and try applications with an identity, wallet, and free "starter $DESO" to start engaging.\
   \
@@ -76,7 +76,7 @@ We strive on the following development principles:
     * All of your NFTs, Creator Coins, and DeSo Tokens are coupled with your Identity. See an example here: [https://signup.deso.com/wallet](https://signup.deso.com/wallet)\
 
 * **Privacy & Safety**\
-  ****DeSo was built with ideas like Account Abstraction in mind from day one. \
+  DeSo was built with ideas like Account Abstraction in mind from day one. \
   \
   We utilize "derived keys" and "spending limits" which makes it safer to give permissions to specific applications like posting, commenting, or following — without giving up your private keys.\
   \
@@ -87,7 +87,7 @@ We strive on the following development principles:
 ### **3) Easy for creators to engage & monetize.**
 
 * **Monetization & Social Features**\
-  ****A unique advantage for DeSo being its own layer-1 is that the blockchain combines social + money transactions very seamlessly.\
+  A unique advantage for DeSo being its own layer-1 is that the blockchain combines social + money transactions very seamlessly.\
   \
   This allows DeSo offers multiple methods of on-chain monetization and social features for developers to build on, like the following:\
 

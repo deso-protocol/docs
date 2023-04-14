@@ -1,6 +1,7 @@
 # Table of contents
 
 * [🚀 DeSo Vision](README.md)
+* [⭐ DeSo Tutorial (Build Apps)](deso-tutorial-build-apps.md)
 * [📅 DeSo Roadmap](deso-roadmap.md)
 * [🛠 DeSo Tech Stack](deso-tech-stack.md)
 * [🌐 DeSo Applications](deso-applications.md)

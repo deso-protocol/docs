@@ -22,7 +22,7 @@ If your frontend repo is loaded into Goland, the following steps should allow yo
 * Look for the `GLOBAL_TAB` function in the file and modify the return statement as follows (you can name your feed whatever you want):\
 
   * `static GLOBAL_TAB = "Satoshi's Feed";`\
-    ``
+
 * Save your changes.
 
 \
@@ -63,4 +63,3 @@ Now you should see some custom content in the post that you added to the feed. Y
 
 ##
 
-****

@@ -84,8 +84,8 @@ We use the following commit hashes to refer to the code:
 
   * Choose a remote peer as a syncPeer in [`_startSync()`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L685). Call this the "remote peer."\
 
-  * Send the remote peer [`MsgDeSoGetHeaders` in `_startSync()`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L765)``\
-    ``
+  * Send the remote peer [`MsgDeSoGetHeaders` in `_startSync()`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L765)\
+
   * Remote peer replies to the `MsgDeSoGetHeaders` with a [`MsgDeSoHeaderBundle` in `_handleGetHeaders()`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L439).\
 
     * Note that a "header locator" similar to Bitcoin is used to determine which headers are needed.\
@@ -145,10 +145,10 @@ We use the following commit hashes to refer to the code:
     * Note that we are currently working on increasing the nonce size to 64 bits up from 32 bits. This will result in ExtraNonce being basically deprecated, and will make `GetBlockTemplate()` much faster because it won't have to copy a block.\
 
   * Once a block has been submitted via SubmitBlock, it is then relayed to other peers via the INV mechanism described previously. This happens as follows:
-    * [`SubmitBlock()` in `miner.go`](https://github.com/deso-protocol/backend/blob/47bcc8af71b039f857bd949fcea94bfbed8b57e8/routes/miner.go#L125) calls [`ProcessBlock()`](https://github.com/deso-protocol/backend/blob/47bcc8af71b039f857bd949fcea94bfbed8b57e8/routes/miner.go#L177)``\
-      ``
-    * `ProcessBlock()` notifies core's `server.go` that a block was connected by calling [`_handleBlockMainChainConnectedd()`](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L1854)``\
-      ``
+    * [`SubmitBlock()` in `miner.go`](https://github.com/deso-protocol/backend/blob/47bcc8af71b039f857bd949fcea94bfbed8b57e8/routes/miner.go#L125) calls [`ProcessBlock()`](https://github.com/deso-protocol/backend/blob/47bcc8af71b039f857bd949fcea94bfbed8b57e8/routes/miner.go#L177)\
+
+    * `ProcessBlock()` notifies core's `server.go` that a block was connected by calling [`_handleBlockMainChainConnectedd()`](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L1854)\
+
     * `_handleBlockMainChainConnectedd()` updates the mempool using [`UpdateAfterConnectBlock()`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L1078), which removes transactions from the mempool that have been mined into the block\
 
     * `ProcessBlock()` notifies `server.go` again by [enqueing a `MsgDeSoBlockAccepted`](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L2135) message at the end, triggering a call to [`_handleBlockAccepted`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L1127).
