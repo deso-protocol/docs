@@ -6,7 +6,7 @@ description: Everything you need to know to build and deploy your first DeSo app
 
 ### Getting Help
 
-If you need help building, you can always ask questions in our community Discord, where you can post in the #dev-general channel and someone will get back to you.
+If you need help building, you can always ask questions in our community [Discord](https://discord.gg/deso), where you can post in the #dev-general channel and someone will get back to you.
 
 And if all else fails, you can always get our attention by @-mentioning @nader, @lazynina, @jacksondean or @stas\_kh, or @deso on any DeSo app, such as [Diamond](https://diamondapp.com).
 
@@ -54,7 +54,7 @@ We recommend loading up the following projects, for basic app development:
         * The DeSo DEX is actually what powers the Openfund trade page [here](https://openfund.com/trade/Openfund). Everything is actually fully on-chain, so you can build your own fully-functional exchange off of it if you wanted to.\
 
       * On-chain end-to-end encrypted direct messages _**and**_ group chats, which no other chain supports.
-        * You can see this functionality on [Diamond](https://diamondapp.com), and in our chat prototype [here](https://ln.deso.run/).\
+        * You can see this functionality on [Diamond](https://diamondapp.com), and in our chat prototype [here](https://chat.deso.com).\
 
       * The full “Twitter” feature set, including the ability to create a profile with an on-chain profile picture, the ability to submit posts/comments, the ability to follow other users, interact, etc… all fully on-chain.\
         \
@@ -405,12 +405,15 @@ There are several resources you can lean on for this:
 
 * [DeSo Docs](https://docs.deso.org/deso-backend/construct-transactions). The DeSo docs are currently going through a major overhaul, and the Identity library, which allows you to construct, sign, and submit transactions very easily, did not exist at the time the _**current**_ docs were written.\
   \
-  That said, the docs linked here do a good job of documenting **most** of the transactions that are available to be called, along with the parameters they accept. Below are some caveats:
+  That said, the docs linked here do a good job of documenting **most** of the transactions that are available to be called, along with the parameters they accept. Below are some caveats:\
+
   * Certain newer transaction types are missing because it takes time to update them. To see the full list of transactions that are supported at any given time, you should always refer to the actual open-source code.\
 
     * The TxnType list in [network.go](https://github.com/deso-protocol/core/blob/main/lib/network.go#L205) in the core repo shows the full list of raw transactions that you can construct, sign, and submit to the DeSo blockchain using the identity library.\
 
-    * Then, to figure out how to actually _**construct**_ the transactions, and what parameters you can pass to each endpoint, you can check [the list of RoutePath variables](https://github.com/deso-protocol/backend/blob/main/routes/server.go#L40) in the backend repo (which includes _**getters**_ like fetching all of a user’s posts, etc…). Generally, you should be able to swap out the URL in the example app for submitting a post shown [here](https://github.com/deso-protocol/deso-examples-react/blob/4abfdf739b38b3318d524aa713b85bebc1d196a1/src/routes/sign-and-submit-tx.jsx#L59) with _**any**_ of the transaction-related RoutePaths in that file to construct the transaction that you want.\
+    * Then, to figure out how to actually _**construct**_ the transactions, and what parameters you can pass to each endpoint, you can check [the list of RoutePath variables](https://github.com/deso-protocol/backend/blob/main/routes/server.go#L40) in the backend repo (which includes _**getters**_ like fetching all of a user’s posts, etc…). \
+      \
+      Generally, you should be able to swap out the URL in the example app for submitting a post shown [here](https://github.com/deso-protocol/deso-examples-react/blob/4abfdf739b38b3318d524aa713b85bebc1d196a1/src/routes/sign-and-submit-tx.jsx#L59) with _**any**_ of the transaction-related RoutePaths in that file to construct the transaction that you want.\
 
   * In the docs and in the code you will notice a reference to “DAO Coins” and a “DAO Transactions API.”\
     \
