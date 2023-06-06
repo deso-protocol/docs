@@ -157,7 +157,7 @@ curl --header "Content-Type: application/json" --request POST --data '{
 
 * This endpoint will return information for the transaction created. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section on this endpoint for more information on what is returned.\
 
-* A custom “fee rate” can also be set. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint for more detail on that. A good default value for this is 1000.
+* A custom “fee rate” can also be set. We recommend providing a value of 1000 for MinFeeRateNanosPerKB. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint for more detail on that.
 
 _**Note: This API is strictly for use by exchanges**. The diamondapp.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users._
 
@@ -370,8 +370,8 @@ POST PARAMS:
     // 1e9 nanos, so to send 1 DeSo, this value would need to be set to 1e9.
     AmountNanos int64
     // The fee rate to use for this transaction. If left unset, a default fee rate
-    // will be used. This can be checked using the “DryRun” parameter below. We 
-    // providing a value of 1000 for this.
+    // will be used. This can be checked using the “DryRun” parameter below. However, 
+    // we recommend providing a value of 1000 for this.
     MinFeeRateNanosPerKB int64
     // When set to true, the transaction is returned in the response but not
     // actually broadcast to the network. Useful for testing.
