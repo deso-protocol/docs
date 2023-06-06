@@ -157,7 +157,7 @@ curl --header "Content-Type: application/json" --request POST --data '{
 
 * This endpoint will return information for the transaction created. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section on this endpoint for more information on what is returned.\
 
-* A custom “fee rate” can also be set. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint for more detail on that.
+* A custom “fee rate” can also be set. See the [Full API Guide](exchange-listing-api.md#full-api-guide) section for this endpoint for more detail on that. A good default value for this is 1000.
 
 _**Note: This API is strictly for use by exchanges**. The diamondapp.com nodes use a different API that never receives your seed phrase, and your seed phrase never leaves your browser. In contrast, exchanges are typically custodial and so some of these endpoints manipulate seeds on behalf of users._
 
@@ -350,18 +350,7 @@ RETURNS:
 
 DeSo can be transferred from one public key to another using this simple API call. To transfer DeSo, one must either provide a public/private key pair.
 
-DeSo uses a UTXO model like Bitcoin but DeSo transactions are generally simpler than Bitcoin transactions because DeSo always uses the “from public key” as the “change” public key (meaning that it does not “rotate” keys by default).\
-\
-For example, if a transaction sends 10 DeSo from PubA to PubB with 5 DeSo in “change” and 1 DeSo as a “miner fee,” then the transaction would look as follows:
-
-```
-Input: 16 DeSo (10 DeSo to send, 5 DeSo in change, and 1 DeSo as a fee)
-PubB: 10 DeSo (the amount being sent from A to B)
-PubA: 5 DeSo (change returned to A)
-
-Implicit 1 DeSo is paid as a fee to the miner. The miner fee is implicitly
-computed as (total input – total output) just like in Bitcoin.
-```
+DeSo recently transitioned from a UTXO model to a balance model and any references to UTXOs in the examples below have been deprecated.
 
 The maximum amount of DeSo can be sent by specifying a negative amount when calling the endpoint.\
 \
@@ -381,7 +370,8 @@ POST PARAMS:
     // 1e9 nanos, so to send 1 DeSo, this value would need to be set to 1e9.
     AmountNanos int64
     // The fee rate to use for this transaction. If left unset, a default fee rate
-    // will be used. This can be checked using the “DryRun” parameter below.
+    // will be used. This can be checked using the “DryRun” parameter below. We 
+    // providing a value of 1000 for this.
     MinFeeRateNanosPerKB int64
     // When set to true, the transaction is returned in the response but not
     // actually broadcast to the network. Useful for testing.
