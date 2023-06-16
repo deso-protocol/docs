@@ -12,12 +12,12 @@ And if all else fails, you can always get our attention by @-mentioning @nader, 
 
 ### Dev Setup
 
-We recommend using a JetBrains IDE like [GoLand](https://www.jetbrains.com/go/) to get started. Even if you’re more familiar with tools like Emacs or Vim, using IntelliJ will make it a lot easier for us to help you debug what’s going on, and to use valuable plugins like GitHub Copilot for AI code suggestions.
+We recommend using a JetBrains IDE like [GoLand](https://www.jetbrains.com/go/) to get started. Even if you’re more familiar with tools like Emacs or Vim, using GoLand will make it a lot easier for us to help you debug what’s going on, and to use valuable plugins like GitHub Copilot for AI code suggestions.
 
-Once you’ve set up IntelliJ, the next step is to import all the DeSo-related projects so that you can hop around the code effectively. You do this simply by executing the following steps:
+Once you’ve set up GoLand, the next step is to import all the DeSo-related projects so that you can hop around the code effectively. You do this simply by executing the following steps:
 
 * `git clone {repo}`
-* Open up IntelliJ
+* Open up GoLand
 * File > Open > `{project directory}`
 * At this point, you will have the option of opening the directory in a new window or _**attaching**_ it to your existing project.
   * We recommend simply attaching all projects to a single window so that you can easily search through all of them using `CTRL+SHIFT+F`
@@ -75,7 +75,7 @@ We recommend loading up the following projects, for basic app development:
     * Probably the most useful later on will be [backend-api-service.ts](https://github.com/deso-protocol/frontend/blob/main/src/app/backend-api.service.ts), which shows how to call all of the backend endpoints from a real-world frontend (though it doesn’t use the deso-workspace/identity library yet unfortunately, it does it through the raw identity library instead).\
 
 
-Once you’ve loaded up all the repos, your IntelliJ “Project” panel should look something like this (notice I use Goland not IntelliJ, which is why the icon is different— but they’re the same software basically, just with a few extra plugins pre-installed).
+Once you’ve loaded up all the repos, your GoLand “Project” panel should look something like this.
 
 Simple:
 
