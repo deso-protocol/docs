@@ -12,7 +12,7 @@ And if all else fails, you can always get our attention by @-mentioning @nader, 
 
 ### Dev Setup
 
-We recommend using a JetBrains IDE like [IntelliJ](https://www.jetbrains.com/idea/) to get started. Even if you’re more familiar with tools like Emacs or Vim, using IntelliJ will make it a lot easier for us to help you debug what’s going on, and to use valuable plugins like GitHub Copilot for AI code suggestions.
+We recommend using a JetBrains IDE like [GoLand](https://www.jetbrains.com/go/) to get started. Even if you’re more familiar with tools like Emacs or Vim, using IntelliJ will make it a lot easier for us to help you debug what’s going on, and to use valuable plugins like GitHub Copilot for AI code suggestions.
 
 Once you’ve set up IntelliJ, the next step is to import all the DeSo-related projects so that you can hop around the code effectively. You do this simply by executing the following steps:
 
