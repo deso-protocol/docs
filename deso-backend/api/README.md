@@ -43,7 +43,8 @@ Below is an example of a ProfileEntryResponse with explanations about each attri
     "ProfileEntryResponse": <ProfileEntryResponse>, // ProfileEntryResponse of the user that is HODLing 
   }],  
   "IsFeaturedTutorialWellKnownCreator": false,
-  "IsFeaturedTutorialUpAndComingCreator": false
+  "IsFeaturedTutorialUpAndComingCreator": false,
+  "DESOBalanceNanos": 10000000, // User's balance of DESO in nanos. 
 }
 ```
 
