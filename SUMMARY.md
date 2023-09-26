@@ -113,7 +113,7 @@
 * [💻 DeSo Github](https://github.com/deso-protocol)
 * [💎 DeSo Diamond](https://diamondapp.com/u/deso)
 * [🐦 DeSo Twitter](https://twitter.com/desoprotocol)
-* [🥫 DeSo Discord](https://discord.gg/deso)
+* [🥫 DeSo Discord](https://discord.gg/nrT4RAx5)
 * [📺 DeSo YouTube](https://www.youtube.com/@desoblockchain)
 * [📬 Contact US](contact-and-media/contact-us.md)
 * [⚠ Reporting an Account or Post](contact-and-media/reporting-an-account-or-post.md)

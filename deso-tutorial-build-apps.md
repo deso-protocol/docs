@@ -6,7 +6,7 @@ description: Everything you need to know to build and deploy your first DeSo app
 
 ### Getting Help
 
-If you need help building, you can always ask questions in our community [Discord](https://discord.gg/deso), where you can post in the #dev-general channel and someone will get back to you.
+If you need help building, you can always ask questions in our community [Discord](https://discord.gg/nrT4RAx5), where you can post in the #dev-general channel and someone will get back to you.
 
 And if all else fails, you can always get our attention by @-mentioning @nader, @lazynina, @jacksondean or @stas\_kh, or @deso on any DeSo app, such as [Diamond](https://diamondapp.com).
 
