@@ -5,8 +5,9 @@
 * [📅 DeSo Roadmap](deso-roadmap.md)
 * [🛠 DeSo Tech Stack](deso-tech-stack.md)
 * [🌐 DeSo Applications](deso-applications.md)
-* [💸 DeSo Wallet](https://wallet.deso.com)
+* [🔍 DeSo Block Explorer](https://explorer.deso.com)
 * [💬 DeSo Chat](https://chat.deso.com)
+* [💸 DeSo Wallet](https://wallet.deso.com)
 
 ## DeSo Blockchain
 
