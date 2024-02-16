@@ -107,6 +107,7 @@ We recommend having a machine with at least 32GB of RAM and 50GB of storage.
 ### How do I configure SSL?
 
 There is an example SSL configuration in `nginx.dev`.
+  - here's one example of [Setting up SSL](ssl-support)
 
 ### How do I use the BlockCypher API?
 
