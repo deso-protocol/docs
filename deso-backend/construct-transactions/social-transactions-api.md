@@ -136,7 +136,7 @@ Example usages in frontend:\
 \- Using SubmitPost function to [create a new post](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/feed/feed-create-post/feed-create-post.component.ts#L186)
 {% endswagger-description %}
 
-{% swagger-parameter in="body" name="UpdaterPulicKeyBase58Check" type="String" required="true" %}
+{% swagger-parameter in="body" name="UpdaterPublicKeyBase58Check" type="String" required="true" %}
 Public key of the user who is making or updating the post
 {% endswagger-parameter %}
 
