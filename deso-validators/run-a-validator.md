@@ -119,13 +119,20 @@ Some info about staking with [Revolution Proof of Stake](https://www.google.com/
   * [Testnet link](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503195007487\&usg=AOvVaw3lTZ\_tdrqDn8LNuTMsAv4U)
   * [Mainnet link](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503195007662\&usg=AOvVaw03wk4x\_yQYHDH80B2vD3Ok)
 * Make sure you are logged in with the account that originally staked the $DESO
-* Click “Unstake” on the /validators page
-  * ![](https://lh7-us.googleusercontent.com/docsz/AD\_4nXcEkkwvj0js0ELMCvTp13orX8ZZqBH7umCP1w1pjinaONdjMnu1ig0QmBJK4U2ZCpCtpR-tdGNN1q3smS\_M0g2buiyEeMPqagBjVW\_z9LlzGxyBfzSJhnQhr8fC0jeIUwXhr6ikFzOk9zPBqujSFa-4TzQj?key=Oj9nXlPuOUnCJ5YUj2muHA)
+*   Click “Unstake” on the /validators page
+
+
+
+    <figure><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXcEkkwvj0js0ELMCvTp13orX8ZZqBH7umCP1w1pjinaONdjMnu1ig0QmBJK4U2ZCpCtpR-tdGNN1q3smS_M0g2buiyEeMPqagBjVW_z9LlzGxyBfzSJhnQhr8fC0jeIUwXhr6ikFzOk9zPBqujSFa-4TzQj?key=Oj9nXlPuOUnCJ5YUj2muHA" alt=""><figcaption></figcaption></figure>
 * Select the amount of stake you want to remove
 * Hit “Update Stake”
-* After you unstake, your stake appears as a “Locked Stake Entry” and is locked for a 3 hour cooldown period. This prevents anyone from gaming the leader selection algorithm. You can see how much time is left before you can unlock by clicking “View Details.”
-  * ![](https://lh7-us.googleusercontent.com/docsz/AD\_4nXczF-QtB1mfiTZu13WzWG4kZYGAZOAtcyfwWLH3-fE0zQnQjFT9phghuRP672HrkwdWZlv-dBPrScHTwB7leyfoRiVZz9E3sktSMcNXmTy1DIjz0S5U3bT1cyhsIuBt0W\_PcgIwbVL6Q7tpsWqo5RHUq1lk?key=Oj9nXlPuOUnCJ5YUj2muHA)
-  * Note that other protocols require weeks or months of cooldown, but Revolution PoS only requires three hours, and we aim to decrease this even further over time.
+*   After you unstake, your stake appears as a “Locked Stake Entry” and is locked for a 3 hour cooldown period. This prevents anyone from gaming the leader selection algorithm. You can see how much time is left before you can unlock by clicking “View Details.”
+
+
+
+    <figure><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXczF-QtB1mfiTZu13WzWG4kZYGAZOAtcyfwWLH3-fE0zQnQjFT9phghuRP672HrkwdWZlv-dBPrScHTwB7leyfoRiVZz9E3sktSMcNXmTy1DIjz0S5U3bT1cyhsIuBt0W_PcgIwbVL6Q7tpsWqo5RHUq1lk?key=Oj9nXlPuOUnCJ5YUj2muHA" alt=""><figcaption></figcaption></figure>
+
+    * Note that other protocols require weeks or months of cooldown, but Revolution PoS only requires three hours, and we aim to decrease this even further over time.
 * After the cooldown period is over, you just hit “Unlock” on the locked stake entry to get your $DESO
 
 ## Running a Node <a href="#h.85kweyti5tlv" id="h.85kweyti5tlv"></a>
