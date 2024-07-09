@@ -103,7 +103,6 @@
 
 ## DeSo Nodes
 
-* [1️⃣ Node: Requirements](deso-nodes/requirements.md)
 * [2️⃣ Node: Setup](deso-nodes/setup.md)
 * [3️⃣ Node: Staying Up-To-Date](deso-nodes/node-staying-up-to-date.md)
 * [4️⃣ Node: FAQ](deso-nodes/running-a-node.md)
