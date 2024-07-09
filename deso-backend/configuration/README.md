@@ -2,9 +2,9 @@
 description: Overview of the configuration flags for running your own backend
 ---
 
-# 1⃣ Backend: Config
+# 1️⃣ Backend: Config
 
-**Core Protocol:**Trying to build the next great social app on top of the DeSo blockchain or running a node and want to know the ins-and-outs of all the endpoints?
+**Core Protocol:** Trying to build the next great social app on top of the DeSo blockchain or running a node and want to know the ins-and-outs of all the endpoints?
 
 This section is for you.
 

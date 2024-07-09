@@ -1,4 +1,4 @@
-# 4⃣ Social NFT
+# 4️⃣ Social NFTs
 
 ## What are Social NFTs?
 
@@ -48,19 +48,7 @@ This not only increases the value of DeSo NFTs, but we think it will also lead t
 \
 Here's a list of features supported on-chain by DeSo NFTs:
 
-| NFT Feature              | On-Chain? | Transaction Type      |
-| ------------------------ | --------- | --------------------- |
-| Mint an NFT              | ✅ Yes     | CREATE\_NFT           |
-| Update an NFT            | ✅ Yes     | UPDATE\_NFT           |
-| Burn an NFT              | ✅ Yes     | BURN\_NFT             |
-| Bid on NFT (Auction)     | ✅ Yes     | NFT\_BID              |
-| Accept NFT Bid (Auction) | ✅ Yes     | ACCEPT\_NFT\_BID      |
-| Transfer an NFT          | ✅ Yes     | NFT\_TRANSFER         |
-| Accept NFT Transfer      | ✅ Yes     | ACCEPT\_NFT\_TRANSFER |
-| Exclusive NFT Content    | ✅ Yes     | CREATE\_NFT           |
-| NFT Creator Royalties    | ✅ Yes     | CREATE\_NFT           |
-| NFT Coinholder Royalties | ✅ Yes     | CREATE\_NFT           |
-| NFT Royalty Splits       | ✅ Yes     | CREATE\_NFT           |
+<table><thead><tr><th>NFT Feature</th><th width="126.00000000000003">On-Chain?</th><th>Transaction Type</th></tr></thead><tbody><tr><td>Mint an NFT</td><td>✅ Yes</td><td>CREATE_NFT</td></tr><tr><td>Update an NFT</td><td>✅ Yes</td><td>UPDATE_NFT</td></tr><tr><td>Burn an NFT</td><td>✅ Yes</td><td>BURN_NFT</td></tr><tr><td>Bid on NFT (Auction)</td><td>✅ Yes</td><td>NFT_BID</td></tr><tr><td>Accept NFT Bid (Auction)</td><td>✅ Yes</td><td>ACCEPT_NFT_BID</td></tr><tr><td>Transfer an NFT</td><td>✅ Yes</td><td>NFT_TRANSFER</td></tr><tr><td>Accept NFT Transfer</td><td>✅ Yes</td><td>ACCEPT_NFT_TRANSFER</td></tr><tr><td>Exclusive NFT Content</td><td>✅ Yes</td><td>CREATE_NFT</td></tr><tr><td>NFT Creator Royalties</td><td>✅ Yes</td><td>CREATE_NFT</td></tr><tr><td>NFT Coinholder Royalties</td><td>✅ Yes</td><td>CREATE_NFT</td></tr><tr><td>NFT Royalty Splits</td><td>✅ Yes</td><td>CREATE_NFT</td></tr></tbody></table>
 
 \
 Below are just some examples of the possibilities on how to use DeSo Social NFTs...

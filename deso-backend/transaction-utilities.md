@@ -1,4 +1,4 @@
-# 4⃣ Transactions: API
+# 4️⃣ Transactions: API
 
 Transactions are the building material of every blockchain.
 
@@ -20,8 +20,10 @@ Transactions have three steps in their lifecycle
 
 You can read more about Transactions in this section of the [Identity documentation. ](../deso-identity/identity/concepts.md#transactions)
 
-{% swagger method="post" path="" baseUrl="/api/v0/submit-transaction" summary="Submit a transaction" expanded="false" %}
-{% swagger-description %}
+## Submit a transaction
+
+<mark style="color:green;">`POST`</mark> `/api/v0/submit-transaction`
+
 Submit a signed transaction to DeSo blockchain.&#x20;
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/transaction.go#L85).
@@ -29,13 +31,15 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Submit Transaction](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L685)\
 &#x20; \- Use Submit Transaction [in conjunction with signing transaction](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L483)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" required="true" name="TransactionHex" type="String" %}
-Hex of transaction
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-response status="200: OK" description="" %}
+| Name                                             | Type   | Description        |
+| ------------------------------------------------ | ------ | ------------------ |
+| TransactionHex<mark style="color:red;">\*</mark> | String | Hex of transaction |
+
+{% tabs %}
+{% tab title="200: OK " %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json
@@ -83,15 +87,17 @@ Hex of transaction
 | PostEntryResponse | [`PostEntryResponse`](broken-reference)                                                        | If a transaction is a submit post transaction, the `PostEntryResponse` that was created by the transaction is included                                               |
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Unable to broadcast  transaction to network" %}
+{% tab title="400: Bad Request Unable to broadcast  transaction to network" %}
 
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-txn" summary="Get Transaction" expanded="false" %}
-{% swagger-description %}
+## Get Transaction
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-txn`
+
 Check if transaction is currently in mempool. This is particularly useful if you need to wait for a transaction to be broadcasted before submitting a subsequent transaction.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/transaction.go#L34).
@@ -99,13 +105,15 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Get Txn](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L591)\
 &#x20; \- Use Get Txn to [see if a transaction has been broadcast to the network](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/app.component.ts#L268)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactionHashHex" type="Strng" required="true" %}
-Hex of Transaction hash that we want to check made it to the mempool
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-response status="200: OK" %}
+| Name                                                 | Type  | Description                                                          |
+| ---------------------------------------------------- | ----- | -------------------------------------------------------------------- |
+| TransactionHashHex<mark style="color:red;">\*</mark> | Strng | Hex of Transaction hash that we want to check made it to the mempool |
+
+{% tabs %}
+{% tab title="200: OK undefined" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -116,34 +124,43 @@ Hex of Transaction hash that we want to check made it to the mempool
 {% endtab %}
 
 {% tab title="Response Field Descriptions" %}
-<table><thead><tr><th>Name</th><th>Type</th><th>Description</th><th data-hidden></th></tr></thead><tbody><tr><td>TxnFound</td><td>boolean</td><td>If true, the transaction is currently in the mempool</td><td></td></tr></tbody></table>
+<table><thead><tr><th width="183.59818909503872">Name</th><th width="150.33415912312768">Type</th><th width="214.06091476123234">Description</th><th data-hidden></th></tr></thead><tbody><tr><td>TxnFound</td><td>boolean</td><td>If true, the transaction is currently in the mempool</td><td></td></tr></tbody></table>
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/append-extra-data" summary="Append Extra Data" expanded="false" %}
-{% swagger-description %}
+## Append Extra Data
+
+<mark style="color:green;">`POST`</mark> `/api/v0/append-extra-data`
+
 Append custom ExtraData for a given transaction hex. This endpoint is typically used when signing with a derived key.
 
 Note: If you will be using this endpoint, you will need to increase MinFeeRateNanosPerKB to 1500 when using a transaction construction endpoint.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/transaction.go#L2314)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" required="true" name="TransactionHex" type="String" %}
-The hex of the transaction on which extra data will be appended.
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="ExtraData" type="map[string]string" required="true" %}
-Arbitrary key value map that will be merged with any extra data decoded from TransactionHex. Keys from this map will overwrite keys that were decoded from TransactionHex
-{% endswagger-parameter %}
+| Name                                             | Type               | Description                                                                                                                                                               |
+| ------------------------------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| TransactionHex<mark style="color:red;">\*</mark> | String             | The hex of the transaction on which extra data will be appended.                                                                                                          |
+| ExtraData<mark style="color:red;">\*</mark>      | map\[string]string | Arbitrary key value map that will be merged with any extra data decoded from TransactionHex. Keys from this map will overwrite keys that were decoded from TransactionHex |
 
-{% swagger-response status="200: OK" description="Hex of transaction with extra data appended" %}
+{% tabs %}
+{% tab title="400: Bad Request " %}
+```javascript
+{
+    // Response
+}
+```
+{% endtab %}
+
+{% tab title="200: OK Hex of transaction with extra data appended" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -154,24 +171,16 @@ Arbitrary key value map that will be merged with any extra data decoded from Tra
 {% endtab %}
 
 {% tab title="Response Field Descriptions" %}
-| Name           | Type   | Description                                 |
-| -------------- | ------ | ------------------------------------------- |
-| TransactionHex | string | hex of transaction with extra data appended |
+<table><thead><tr><th>Name</th><th>Type</th><th width="179">Description</th></tr></thead><tbody><tr><td>TransactionHex</td><td>string</td><td>hex of transaction with extra data appended</td></tr></tbody></table>
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger-response status="400: Bad Request" description="" %}
-```javascript
-{
-    // Response
-}
-```
-{% endswagger-response %}
-{% endswagger %}
+## Get Transaction Spending
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-transaction-spending" summary="Get Transaction Spending" expanded="false" %}
-{% swagger-description %}
+<mark style="color:green;">`POST`</mark> `/api/v0/get-transaction-spending`
+
 Calculates the total transaction spending by subtracting transaction output to sender from transaction inputs. This allows a convenient way to display to users how much they will spend if they submit a given transaction to the network.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/transaction.go#L2384)
@@ -179,13 +188,15 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in identity:\
 &#x20; \- Make request to [Get Transaction Spending](https://github.com/deso-protocol/identity/blob/9dad527dc46498b9aaa0344abd70dc8895acf246/src/app/backend-api.service.ts#L199)\
 &#x20; \- Use Get Transaction Spending to [show user total spending of transaction](https://github.com/deso-protocol/identity/blob/9dad527dc46498b9aaa0344abd70dc8895acf246/src/app/approve/approve.component.ts#L62)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactionHex" type="String" required="true" %}
-The hex of the transaction on which extra data will be appended.
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-response status="200: OK" description="Total amount spent in the transaction" %}
+| Name                                             | Type   | Description                                                      |
+| ------------------------------------------------ | ------ | ---------------------------------------------------------------- |
+| TransactionHex<mark style="color:red;">\*</mark> | String | The hex of the transaction on which extra data will be appended. |
+
+{% tabs %}
+{% tab title="200: OK Total amount spent in the transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -201,5 +212,5 @@ The hex of the transaction on which extra data will be appended.
 | TotalSpendingNanos | Integer | Total amount spent by the transactor in this transaction |
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

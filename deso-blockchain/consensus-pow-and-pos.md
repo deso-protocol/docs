@@ -2,25 +2,7 @@
 description: Scaling decentralized social networks with an innovative PoS roadmap
 ---
 
-# 2⃣ Consensus (PoW & PoS)
-
-## Revolution PoS announced on March 2023
-
-DeSo [recently announced](https://diamondapp.com/u/nader/blog/the-next-phase-of-deso-revolution-proof-of-stake-bitclout-20?feedTab=Hot) a switch to Proof of Stake in 2023 with a first look at a detailed proposal.
-
-Read the breakthrough **Revolution Proof of Stake** whitepaper here:\
-\
-[https://revolution.deso.com/](https://revolution.deso.com/) (pw = _decentralization_)
-
-## From PoW to PoS
-
-Today, DeSo runs a hybrid Proof of Work consensus mechanism that allows it to use far less energy than Bitcoin or Ethereum while remaining secure against 51% attacks.
-
-Its current power consumption can be estimated via websites such as bitpool.me, and we believe it to be significantly less than 500 Kilowatts.
-
-This being said, the core development team behind DeSo has invested significant resources into developing a groundbreaking proof of stake proposal that we expect to reveal in the coming weeks, and that we expect to launch before the end of the year 2023.
-
-Importantly, this proposal, like everything else with DeSo, will be especially well-suited to supporting the unique constraints of social applications.
+# 2️⃣ Scaling Roadmap
 
 ## A Simplified Scaling Roadmap
 
@@ -34,13 +16,24 @@ Below, we detail a concrete scaling roadmap with four relatively straightforward
 
 * **Phase 1:** Proof of Stake
 * **Phase 2:** Bigger Blocks
-* **Phase 3:** Warp Sync
+* **Phase 3:** HyperSync
 * **Phase 4:** Sharding
 
 The math below walks through DeSo scalability at each stage:
 
 1. **Proof of Stake**
-   * While PoS is not strictly required in order to scale DeSo, it is a top priority regardless, and so it will either precede or happen in parallel with the other scaling steps.\
+   * DeSo moved from PoW to it's breakthrough [Revolution PoS](https://revolution.deso.com/) on **July 9th, 2024**
+     * Revolution PoS brings many novel innovations including:
+       * Content, Identity, Social Graphs, Finance and Assets fully on-chain & decentralized on a single Layer-1, with streamlined onboarding.
+       * Support for fully on-chain Twitter-scale consumer apps at 500 posts per second, and thousands of DeFi transactions per second.
+       *   <1/10,00th of a cent per post compared to \~$1 on Solana and $100+ on Ethereum.
+
+           1 second confirmation times.
+       * Data synced over a thousand permissionless validators with HyperSync, and secured via on-chain E2E-Encryption where needed.
+       * Burn-Maximizing Fee (BMF) model built to minimize congestion, and increase value for coin-holders.
+       * State-of-the art Fast-HotStuff consensus, the first of it's kind in production.
+       * Permissionlessly run validators with no staking minimums, no slashing risks, with commodity hardware (when using min. requirements).
+     * You learn learn more about Revolution via [revolution.deso.com ](https://revolution.deso.com)\
 
 2. **Bigger blocks**
    * The average DeSo blockchain post size is **218 bytes**.\
@@ -61,7 +54,7 @@ The math below walks through DeSo scalability at each stage:
 
    * That’s where we can get with a basic block size increase alone. But we have a few other cards to play.\
 
-3. **Warp sync**
+3. **HyperSync**
    * With an Ethereum-like [warp or snap sync](https://blog.ethereum.org/2021/03/03/geth-v1-10-0/), we loosen a key constraint, which is the need for all nodes to always validate the entire history of transactions. (You can still run an archival node, but this won’t be necessary for normal operations.)
      * As a concrete example, if all you're downloading is the current creator coin balances for each user, then all that user's trades are effectively compressed into a few integers because you don't care about the history (only the end state).\
 
