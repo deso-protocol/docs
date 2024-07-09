@@ -7,11 +7,11 @@ description: Instructions on how to stake/unstake $DESO and run a validator
 ## Video Walkthroughs <a href="#h.7vr9ab79ocun" id="h.7vr9ab79ocun"></a>
 
 * [An Overview of DeSo](https://www.google.com/url?q=https://www.youtube.com/watch?v%3DKXBTlSryNwA\&sa=D\&source=editors\&ust=1720503194993230\&usg=AOvVaw1P4wF7ok3tOeGmN-FKLMRZ)
-  * [Staking and Unstaking $DESO](https://www.google.com/url?q=https://www.youtube.com/watch?v%3DViIJ6VMRENo%26feature%3Dyoutu.be\&sa=D\&source=editors\&ust=1720503194993554\&usg=AOvVaw3SVx-lR6a6m0H3uP22DrRP)
-    * For Mainnet, use [explorer.deso.com/validators](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503194993782\&usg=AOvVaw3NjwImbq8S6SWdBCkxmD29)
-    * For Testnet, use [explorer-testnet.deso.com/validators](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503194993913\&usg=AOvVaw3RckY4HfuGm\_FICSfw79DX)
+* [Staking and Unstaking $DESO](https://www.google.com/url?q=https://www.youtube.com/watch?v%3DViIJ6VMRENo%26feature%3Dyoutu.be\&sa=D\&source=editors\&ust=1720503194993554\&usg=AOvVaw3SVx-lR6a6m0H3uP22DrRP)
+  * For Mainnet, use [explorer.deso.com/validators](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503194993782\&usg=AOvVaw3NjwImbq8S6SWdBCkxmD29)
+  * For Testnet, use [explorer-testnet.deso.com/validators](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503194993913\&usg=AOvVaw3RckY4HfuGm\_FICSfw79DX)
 * [Running a Node and Validator](https://www.google.com/url?q=https://www.loom.com/share/8ea0dc18fe204678b2665fecbafbf874?sid%3D37ab0e0e-ec1c-4530-bda4-c8b314298dbf\&sa=D\&source=editors\&ust=1720503194994260\&usg=AOvVaw3SnpLWshcbt-2HFkSBGDAA)
-* IMPORTANT: [See updates and extra notes here](https://www.google.com/url?q=https://docs.google.com/document/d/1q39rKRgua-rLSCbq842elIu\_V7siRn-2aMn\_c3IG3ag/edit\&sa=D\&source=editors\&ust=1720503194994542\&usg=AOvVaw1Vb6ief8J7S9Aqfi8VjJBv)
+  * IMPORTANT: [See updates and extra notes here](https://www.google.com/url?q=https://docs.google.com/document/d/1q39rKRgua-rLSCbq842elIu\_V7siRn-2aMn\_c3IG3ag/edit\&sa=D\&source=editors\&ust=1720503194994542\&usg=AOvVaw1Vb6ief8J7S9Aqfi8VjJBv)
 
 ## Getting Started <a href="#h.vaab5azenvay" id="h.vaab5azenvay"></a>
 
@@ -182,23 +182,28 @@ A **validator** is a node that participates in consensus. With Revolution, valid
 * **Clone the run repo.** [The “run” repo here](https://www.google.com/url?q=https://github.com/deso-protocol/run\&sa=D\&source=editors\&ust=1720503195010995\&usg=AOvVaw0wJo4Lf4HIQ5DkMCJp3sFU) contains everything you need to get a node running with, a frontend interface attached. Some notes on using the run repo:
   * Start by cloning the run repo onto your node.
   * This branch has several docker-compose files. Let’s take a look at [testnet.docker-compose.yml](https://www.google.com/url?q=https://github.com/deso-protocol/run/blob/feature/proof-of-stake/testnet.docker-compose.yml\&sa=D\&source=editors\&ust=1720503195011260\&usg=AOvVaw36N3A5nxKRFD6YXwreYVrl):
-    * It sets up a service named backend. This is the service that will connect to the rest of the network and sync data from it. The backend service has two ports: a “protocol” port 18000, where other nodes connect to it, and an “API” port 18001, which exposes a bunch of convenience endpoints and powers the frontend.
+    * It sets up a service named backend. This is the service that will connect to the rest of the network and sync data from it.\
+      \
+      The backend service has two ports: a “protocol” port `18000`, where other nodes connect to it, and an “API” port `18001`, which exposes a bunch of convenience endpoints and powers the frontend.\
+
     * It also sets up a service called “frontend” and “nginx” service. This allows you to visually manipulate your node.\
 
-* **Run your node!** To run your node, all you have to do is type “make testnet” (if you have a permission error, use “sudo make testnet”). This will automatically run the testnet.docker-compose.yml and set up the backend+frontend+nginx services.
-  * If you run into issues or you want to start “from scratch”, the Makefile also defines a command called “make testnet-wipe”, which will wipe everything your node has done and start over.
-  * **To run a mainnet node, simply run “make mainnet” instead of “make testnet”.**
-    * Note that this will leverage the mainnet.docker-compose.yml instead.\
+* **Run your node!** To run your node, all you have to do is type “`make testnet`” (if you have a permission error, use “`sudo make testnet`”). This will automatically run the testnet.docker-compose.yml and set up the backend+frontend+nginx services.
+  * If you run into issues or you want to start “from scratch”, the Makefile also defines a command called “`make testnet-wipe`”, which will wipe everything your node has done and start over.
+  * **To run a mainnet node, simply run “`make mainnet`” instead of “`make testnet`”.**
+    * Note that this will leverage the `mainnet.docker-compose.yml` instead.\
 
-*   **Access your node’s frontend.** Once your docker-compose is running, you can access your node using its reference frontend at yournodesdomain.com:8080. To properly access your frontend, you need to visit this address and set a key-value in local storage that tells your frontend the address of your node’s API endpoint.\
+*   **Access your node’s frontend.** Once your docker-compose is running, you can access your node using its reference frontend at `yournodesdomain.com:8080`. To properly access your frontend, you need to visit this address and set a key-value in local storage that tells your frontend the address of your node’s API endpoint.\
     \
-    The key is “lastLocalNodeV2” and the value should be yournodesdomain.com:18001 if you ran “make testnet” and yournodesdomain.com:17001 if you ran “make mainnet”. See screenshot below for an example from the video. Once you set this, you can access your node’s frontend at yournodesdomain.com:8080 and tweak it via the Admin panel. \
+    The key is “`lastLocalNodeV2`” and the value should be `"yournodesdomain.com:18001"` if you ran `make testnet` and `"yournodesdomain.com:17001"` if you ran `make mainnet`. \
+    \
+    See screenshot below for an example from the video. Once you set this, you can access your node’s frontend at `yournodesdomain.com:8080` and tweak it via the Admin panel. \
     \
     We will have improved docs on this soon!
 
 
 
-    <figure><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXeRvJt8rx9tySY4EmhBtL8bHzy188bGFpu0bMxAfP4xNo4Pi_y9RFZDU4wzwXuLuJdj2SjMU_IeHA9IMDgb1powoW3FkSBof55cjlm83_qXaFF5wmokx2ecuHEfvB6rrSHnIdIi5jg7QCMyCnjVLZWFJZ0M?key=Oj9nXlPuOUnCJ5YUj2muHA" alt=""><figcaption><p>lastLocalNodeV2</p></figcaption></figure>
+    <figure><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXeRvJt8rx9tySY4EmhBtL8bHzy188bGFpu0bMxAfP4xNo4Pi_y9RFZDU4wzwXuLuJdj2SjMU_IeHA9IMDgb1powoW3FkSBof55cjlm83_qXaFF5wmokx2ecuHEfvB6rrSHnIdIi5jg7QCMyCnjVLZWFJZ0M?key=Oj9nXlPuOUnCJ5YUj2muHA" alt=""><figcaption><p>Update the value for "lastLocalNodeV2"</p></figcaption></figure>
 
 ### Node Setup (From Source) <a href="#h.vdjummgkx9ho" id="h.vdjummgkx9ho"></a>
 
@@ -210,7 +215,7 @@ TODO: Make this more clear and show a video doing this on a new node from scratc
   * backend
   * frontend
 * cd backend/scripts/nodes
-* For mainnet run ./n0. For testnet run ./n0\_test
+* For mainnet run `./n0`. For testnet run `./n0_test`
 * If you want, you can play with all the flags in those files to get different behavior.
 
 If you’re interested in a walkthrough of the code, check out our [Architecture Overview](https://www.google.com/url?q=https://docs.deso.org/deso-repos/architecture-overview\&sa=D\&source=editors\&ust=1720503195012546\&usg=AOvVaw2ufsWYKUDyP-dbH6q8Kvoe)
@@ -251,21 +256,21 @@ Below are the instructions for setting up a validator. We assume you’ve read t
 
     * **Registering a domain (covered in the video tutorial).** Once you have an IP address associated with your node, you can associate a domain with it simply by setting a single A record on your DNS settings just like you would for a normal website. See sirstakesalot.com for an example.\
 
-    * **Default ports.** By default, your testnet node will expose a protocol port on 18000 and an API port on 18001. For mainnet, the default ports are 17000 and 17001.
+    * **Default ports.** By default, your testnet node will expose a protocol port on `18000` and an API port on `18001`. For mainnet, the default ports are `17000` and `17001`.
       * The protocol port is the one that matters for consensus, as it’s what nodes use to connect to you and send you blocks. The API port is mainly used to power a frontend that you can use to manage your node.
       * When you register your validator, you need to include the protocol port, and so your registration string will look like “example.com:18000” for testnet or “example.com:17000” for mainnet.
       * You can also change the ports to whatever you want, just as long as the string in your registration transaction matches what your node is actually doing.\
 
     *   **Run your node and make sure it’s exposed to the outside world.** Once you have your static IP and domain, you can use the validator registration UI to check your node’s connection. \
-        You can also use this curl command, but replace your domain and port with what your node is running on (for mainnet, node you must use port 17001):
+        \
+        You can also use this curl command, but replace your domain and port with what your node is running on (for mainnet, node you must use port `17001`):
 
-        * curl [http://sirstakesalot.com:18001/api/v0/health-check](https://www.google.com/url?q=http://sirstakesalot.com:18001/api/v0/health-check\&sa=D\&source=editors\&ust=1720503195014735\&usg=AOvVaw3aV-kYEYnFUyvUgsAV-0hh)\
-
-        * Note this is querying the API port 18001 not the protocol port. This is usually fine but the UI will actually check your protocol port.
-
+        * `curl` [`http://sirstakesalot.com:18001/api/v0/health-check`](https://www.google.com/url?q=http://sirstakesalot.com:18001/api/v0/health-check\&sa=D\&source=editors\&ust=1720503195014735\&usg=AOvVaw3aV-kYEYnFUyvUgsAV-0hh)
+          * Note this is querying the API port `18001` not the protocol port. This is usually fine but the UI will actually check your protocol port.
 
 
-        <figure><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXfkzzOxoK5TSPn4i3VvtCQb0RZftfNxyqQMSwlsLsrvxZHrtCpbfpBk2FRAJT_LaKXXLcuAAK2_Gs1UJWr9O-SOZqDfWjY5wQlfRZ8Ej8Xr02aSyj0DY-SjiqqKL4VyBXeVUwuFn0XmIFnRjsvd_4sXmLhk?key=Oj9nXlPuOUnCJ5YUj2muHA" alt=""><figcaption><p><br></p></figcaption></figure>
+
+        <figure><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXfkzzOxoK5TSPn4i3VvtCQb0RZftfNxyqQMSwlsLsrvxZHrtCpbfpBk2FRAJT_LaKXXLcuAAK2_Gs1UJWr9O-SOZqDfWjY5wQlfRZ8Ej8Xr02aSyj0DY-SjiqqKL4VyBXeVUwuFn0XmIFnRjsvd_4sXmLhk?key=Oj9nXlPuOUnCJ5YUj2muHA" alt=""><figcaption><p>Click "Test"<br></p></figcaption></figure>
   * **Setting up your voting public key.** Once your validator is reachable by the outside world, you need to set up your voting public key. This is the key that you’ll use to sign consensus messages like votes or block proposals. Below we explain how to generate this keypair.\
 
     * **First, generate a seed.** Your validator keypair can be generated from an ordinary 12-word seed phrase, just like the one you get on any DeSo app. You can either use one that’s associated with an existing profile or a brand new one that you designate just for PoS messages.\
@@ -276,7 +281,7 @@ Below are the instructions for setting up a validator. We assume you’ve read t
 
       * The other benefit of having a script to generate the pubkey+authorization is that it allows for totally offline generation of validator pubkey and authorization, which is needed by custodians and exchanges that want to stake.\
 
-    * **Set POS\_VALIDATOR\_SEED in your config.** Note that there is one missing step in the video, which is you need to set your POS\_VALIDATOR\_SEED in the testnet.docker-compose.yml or mainnet.docker-compose.yml file to be equal to the seed you used with the [validator key generator](https://www.google.com/url?q=https://github.com/deso-protocol/validator-key-generator\&sa=D\&source=editors\&ust=1720503195015904\&usg=AOvVaw1BfinK5cUp9norf8mSS4zI). This is how your validator becomes capable of signing blocks with its bls keypair.\
+    * **Set POS\_VALIDATOR\_SEED in your config.** Note that there is one missing step in the video, which is you need to set your `POS_VALIDATOR_SEED` in the `testnet.docker-compose.yml` or `mainnet.docker-compose.yml` file to be equal to the seed you used with the [validator key generator](https://www.google.com/url?q=https://github.com/deso-protocol/validator-key-generator\&sa=D\&source=editors\&ust=1720503195015904\&usg=AOvVaw1BfinK5cUp9norf8mSS4zI). This is how your validator becomes capable of signing blocks with its bls keypair.\
 
   * **Commission.** This is what percentage of the staking rewards you get to keep. A lower commission will attract more people to stake with you.\
 
@@ -288,6 +293,10 @@ Below are the instructions for setting up a validator. We assume you’ve read t
 
 * **Time to register!** Once you’ve filled in all the fields, hit the “Register Validator” button. This will construct and submit a transaction that links your voting public key with your node’s public domain+port and your DeSo profile (the one that you’re logged-in with). Linking all of these together on-chain makes it so that 1. other nodes can connect to your validator node and 2. people can stake to your validator node. Exciting!\
 
-* **Keeping your validator up.** If your validator is down for a 12h period, it will be “jailed.” You will see this in the validator UI. To unjail your validator, you will need to go back to the validator registration page after you’ve fixed your node and hit “Unjail Validator.” Note that there will be a cooldown of a few hours before your validator is able to vote in consensus again.
+* **Keeping your validator up.** If your validator is down for a 12-hour period, it will be “jailed.” You will see this in the validator UI.\
+  \
+  To **unjail** your validator, you will need to go back to the validator registration page after you’ve fixed your node and hit “Unjail Validator.” \
+  \
+  Note that there will be a cooldown of a few hours before your validator is able to vote in consensus again.
 
 Once your validator is registered, it should appear immediately on the validators page. You can then stake to it following the prior instructions.
