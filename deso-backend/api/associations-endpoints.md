@@ -6,16 +6,20 @@ description: Description of endpoints used in querying for associations
 
 ### User Associations
 
-{% swagger method="get" path="{{ associationID }}" baseUrl="/api/v0/user-associations/" summary="Get user association by ID" %}
-{% swagger-description %}
+## Get user association by ID
+
+<mark style="color:blue;">`GET`</mark> `/api/v0/user-associations/{{ associationID }}`
+
 Retrieve a single user association by ID.
-{% endswagger-description %}
 
-{% swagger-parameter in="path" name="associationID" type="string" required="true" %}
-The identifier of the association to retrieve
-{% endswagger-parameter %}
+#### Path Parameters
 
-{% swagger-response status="200: OK" description="Successfully retrieved the association" %}
+| Name                                            | Type   | Description                                   |
+| ----------------------------------------------- | ------ | --------------------------------------------- |
+| associationID<mark style="color:red;">\*</mark> | string | The identifier of the association to retrieve |
+
+{% tabs %}
+{% tab title="200: OK Successfully retrieved the association" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```javascript
@@ -74,51 +78,37 @@ The identifier of the association to retrieve
 {% endtabs %}
 
 
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Invalid parameter provided" %}
+{% tab title="400: Bad Request Invalid parameter provided" %}
 ```javascript
 {
     "error": "string"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="count" baseUrl="/api/v0/user-associations/" summary="Count user associations" %}
-{% swagger-description %}
+## Count user associations
+
+<mark style="color:green;">`POST`</mark> `/api/v0/user-associations/count`
+
 Count the number of user associations matching the provided query parameters.
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactorPublicKeyBase58Check" type="string" %}
-The public key of the user who created the association
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="TargetUserPublicKeyBase58Check" type="string" %}
-The public key of the user to whom the association references
-{% endswagger-parameter %}
+| Name                           | Type   | Description                                                            |
+| ------------------------------ | ------ | ---------------------------------------------------------------------- |
+| TransactorPublicKeyBase58Check | string | The public key of the user who created the association                 |
+| TargetUserPublicKeyBase58Check | string | The public key of the user to whom the association references          |
+| AppPublicKeyBase58Check        | string | The public key of the application on which the association was created |
+| AssociationType                | string | The association type (exact match)                                     |
+| AssociationTypePrefix          | string | The prefix of the association type (wildcard match)                    |
+| AssociationValue               | string | The association value (exact match)                                    |
+| AssociationValuePrefix         | string | The prefix of the association value (wildcard match)                   |
 
-{% swagger-parameter in="body" name="AppPublicKeyBase58Check" type="string" %}
-The public key of the application on which the association was created
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationType" type="string" %}
-The association type (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationTypePrefix" type="string" %}
-The prefix of the association type (wildcard match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValue" type="string" %}
-The association value (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValuePrefix" type="string" %}
-The prefix of the association value (wildcard match)
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully queried for the number of matching associations" %}
+{% tabs %}
+{% tab title="200: OK Successfully queried for the number of matching associations" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```javascript
@@ -132,43 +122,35 @@ The prefix of the association value (wildcard match)
 ...coming soon!
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Invalid parameters provided" %}
+{% tab title="400: Bad Request Invalid parameters provided" %}
 ```javascript
 {
     "error": "string"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="counts" baseUrl="/api/v0/user-associations/" summary="Count user associations by multiple values" %}
-{% swagger-description %}
+## Count user associations by multiple values
+
+<mark style="color:green;">`POST`</mark> `/api/v0/user-associations/counts`
+
 Count the number of user associations matching the provided query. Here, you can provide an array of association values and the count of associations matching any in that list will be returned.
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactorPublicKeyBase58Check" type="string" %}
-The public key of the user who created the association
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="TargetUserPublicKeyBase58Check" type="string" %}
-The public key of the user to whom the association references
-{% endswagger-parameter %}
+| Name                                                | Type      | Description                                                            |
+| --------------------------------------------------- | --------- | ---------------------------------------------------------------------- |
+| TransactorPublicKeyBase58Check                      | string    | The public key of the user who created the association                 |
+| TargetUserPublicKeyBase58Check                      | string    | The public key of the user to whom the association references          |
+| AssociationType<mark style="color:red;">\*</mark>   | string    | The association type (exact match)                                     |
+| AssociationValues<mark style="color:red;">\*</mark> | \[]string | An array of association values                                         |
+| AppPublicKeyBase58Check                             | string    | The public key of the application on which the association was created |
 
-{% swagger-parameter in="body" name="AppPublicKeyBase58Check" type="string" %}
-The public key of the application on which the association was created
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationType" type="string" required="true" %}
-The association type (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValues" type="[]string" required="true" %}
-An array of association values
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully queried for the number of matching associations" %}
+{% tabs %}
+{% tab title="200: OK Successfully queried for the number of matching associations" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```javascript
@@ -186,79 +168,44 @@ An array of association values
 ...coming soon!
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Invalid parameters provided" %}
+{% tab title="400: Bad Request Invalid parameters provided" %}
 ```javascript
 {
     "error": "string"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="query" baseUrl="/api/v0/user-associations/" summary="Query for user associations" %}
-{% swagger-description %}
+## Query for user associations
+
+<mark style="color:green;">`POST`</mark> `/api/v0/user-associations/query`
+
 Retrieve user associations matching the provided query parameters.
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactorPublicKeyBase58Check" type="string" %}
-The public key of the user who created the association
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="TargetUserPublicKeyBase58Check" type="string" %}
-The public key of the user to whom the association references
-{% endswagger-parameter %}
+| Name                           | Type      | Description                                                                                                                          |
+| ------------------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| TransactorPublicKeyBase58Check | string    | The public key of the user who created the association                                                                               |
+| TargetUserPublicKeyBase58Check | string    | The public key of the user to whom the association references                                                                        |
+| AssociationType                | string    | The association type (exact match)                                                                                                   |
+| AssociationTypePrefix          | string    | The prefix of the association type (wildcard match)                                                                                  |
+| AssociationValue               | string    | The association value (exact match)                                                                                                  |
+| AssociationValuePrefix         | string    | The prefix of the association value (wildcard match)                                                                                 |
+| Limit                          | integer   | The maximum number of associations to retrieve (default is 100)                                                                      |
+| LastSeenAssociationID          | string    | The identifier of the last retrieved association; this parameter functions like an offset allowing users to paginate through results |
+| SortDescending                 | boolean   | If true, results are returned in reverse order                                                                                       |
+| IncludeTransactorProfile       | boolean   | If true, include the transactors' user profiles in the response                                                                      |
+| IncludeTargetUserProfile       | boolean   | If true, include the target users' profiles in the response                                                                          |
+| IncludeAppProfile              | boolean   | If true, include the applications' user profiles in the response                                                                     |
+| AssociationValues              | \[]string | An array of association values; associations matching any of the values in this list will be returned                                |
+| AppPublicKeyBase58Check        | string    | The public key of the application on which the association was created                                                               |
 
-{% swagger-parameter in="body" name="AppPublicKeyBase58Check" type="string" %}
-The public key of the application on which the association was created
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationType" type="string" %}
-The association type (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationTypePrefix" type="string" %}
-The prefix of the association type (wildcard match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValue" type="string" %}
-The association value (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValuePrefix" type="string" %}
-The prefix of the association value (wildcard match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValues" type="[]string" %}
-An array of association values; associations matching any of the values in this list will be returned
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="Limit" type="integer" %}
-The maximum number of associations to retrieve (default is 100)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="LastSeenAssociationID" type="string" %}
-The identifier of the last retrieved association; this parameter functions like an offset allowing users to paginate through results
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="SortDescending" type="boolean" %}
-If true, results are returned in reverse order
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IncludeTransactorProfile" type="boolean" %}
-If true, include the transactors' user profiles in the response
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IncludeTargetUserProfile" type="boolean" %}
-If true, include the target users' profiles in the response
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IncludeAppProfile" type="boolean" %}
-If true, include the applications' user profiles in the response
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieved matching associations" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved matching associations" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```javascript
@@ -323,29 +270,33 @@ If true, include the applications' user profiles in the response
 ...coming soon!
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Invalid parameters provided" %}
+{% tab title="400: Bad Request Invalid parameters provided" %}
 ```javascript
 {
     "error": "string"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 ### Post Associations
 
-{% swagger method="get" path="{{ associationID }}" baseUrl="/api/v0/post-associations/" summary="Get post association by ID" %}
-{% swagger-description %}
+## Get post association by ID
+
+<mark style="color:blue;">`GET`</mark> `/api/v0/post-associations/{{ associationID }}`
+
 Retrieve a single post association by ID.
-{% endswagger-description %}
 
-{% swagger-parameter in="path" name="associationID" type="string" required="true" %}
-The identifier of the association to retrieve
-{% endswagger-parameter %}
+#### Path Parameters
 
-{% swagger-response status="200: OK" description="Successfully retrieved the association" %}
+| Name                                            | Type   | Description                                   |
+| ----------------------------------------------- | ------ | --------------------------------------------- |
+| associationID<mark style="color:red;">\*</mark> | string | The identifier of the association to retrieve |
+
+{% tabs %}
+{% tab title="200: OK Successfully retrieved the association" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```javascript
@@ -474,51 +425,37 @@ The identifier of the association to retrieve
 ...coming soon!
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Invalid parameter provided" %}
+{% tab title="400: Bad Request Invalid parameter provided" %}
 ```javascript
 {
     "error": "string"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="count" baseUrl="/api/v0/post-associations/" summary="Count post associations" %}
-{% swagger-description %}
+## Count post associations
+
+<mark style="color:green;">`POST`</mark> `/api/v0/post-associations/count`
+
 Count the number of post associations matching the provided query parameters.
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactorPublicKeyBase58Check" type="string" %}
-The public key of the user who created the association
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="PostHashHex" type="string" %}
-The identifier of the post to which the association references
-{% endswagger-parameter %}
+| Name                           | Type   | Description                                                            |
+| ------------------------------ | ------ | ---------------------------------------------------------------------- |
+| TransactorPublicKeyBase58Check | string | The public key of the user who created the association                 |
+| PostHashHex                    | string | The identifier of the post to which the association references         |
+| AppPublicKeyBase58Check        | string | The public key of the application on which the association was created |
+| AssociationType                | string | The association type (exact match)                                     |
+| AssociationTypePrefix          | string | The prefix of the association type (wildcard match)                    |
+| AssociationValue               | string | The association value (exact match)                                    |
+| AssociationValuePrefix         | string | The prefix of the association value (wildcard match)                   |
 
-{% swagger-parameter in="body" name="AppPublicKeyBase58Check" type="string" %}
-The public key of the application on which the association was created
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationType" type="string" %}
-The association type (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationTypePrefix" type="string" %}
-The prefix of the association type (wildcard match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValue" type="string" %}
-The association value (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValuePrefix" type="string" %}
-The prefix of the association value (wildcard match)
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully queried for the number of matching associations" %}
+{% tabs %}
+{% tab title="200: OK Successfully queried for the number of matching associations" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```javascript
@@ -532,43 +469,35 @@ The prefix of the association value (wildcard match)
 ...coming soon!
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Invalid parameters provided" %}
+{% tab title="400: Bad Request Invalid parameters provided" %}
 ```javascript
 {
     "error": "string"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="counts" baseUrl="/api/v0/post-associations/" summary="Count post associations by multiple values" %}
-{% swagger-description %}
+## Count post associations by multiple values
+
+<mark style="color:green;">`POST`</mark> `/api/v0/post-associations/counts`
+
 Count the number of post associations matching the provided query. Here, you can provide an array of association values and the count of associations matching any in that list will be returned.
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactorPublicKeyBase58Check" type="string" %}
-The public key of the user who created the association
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="PostHashHex" type="string" %}
-The identifier of the post to which this association references
-{% endswagger-parameter %}
+| Name                                                | Type      | Description                                                             |
+| --------------------------------------------------- | --------- | ----------------------------------------------------------------------- |
+| TransactorPublicKeyBase58Check                      | string    | The public key of the user who created the association                  |
+| PostHashHex                                         | string    | The identifier of the post to which this association references         |
+| AppPublicKeyBase58Check                             | string    | The public key of the application on which this association was created |
+| AssociationType<mark style="color:red;">\*</mark>   | string    | The association type (exact match)                                      |
+| AssociationValues<mark style="color:red;">\*</mark> | \[]string | An array of association values                                          |
 
-{% swagger-parameter in="body" name="AppPublicKeyBase58Check" type="string" %}
-The public key of the application on which this association was created
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationType" type="string" required="true" %}
-The association type (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValues" type="[]string" required="true" %}
-An array of association values
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully queried for the number of matching associations" %}
+{% tabs %}
+{% tab title="200: OK Successfully queried for the number of matching associations" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```javascript
@@ -586,83 +515,45 @@ An array of association values
 ...coming soon!
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Invalid parameters provided" %}
+{% tab title="400: Bad Request Invalid parameters provided" %}
 ```javascript
 {
     "error": "string"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="query" baseUrl="/api/v0/post-associations/" summary="Query for post associations" %}
-{% swagger-description %}
+## Query for post associations
+
+<mark style="color:green;">`POST`</mark> `/api/v0/post-associations/query`
+
 Retrieve post associations matching the provided query parameters.
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactorPublicKeyBase58Check" type="string" %}
-The public key of the user who created the association
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="PostHashHex" type="string" %}
-The identifier of the post to which this association references
-{% endswagger-parameter %}
+| Name                           | Type      | Description                                                                                                                          |
+| ------------------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| TransactorPublicKeyBase58Check | string    | The public key of the user who created the association                                                                               |
+| PostHashHex                    | string    | The identifier of the post to which this association references                                                                      |
+| AppPublicKeyBase58Check        | string    | The public key of the application on which this association was created                                                              |
+| AssociationType                | string    | The association type (exact match)                                                                                                   |
+| AssociationTypePrefix          | string    | The prefix of the association type (wildcard match)                                                                                  |
+| AssociationValue               | string    | The association value (exact match)                                                                                                  |
+| AssociationValuePrefix         | string    | The prefix of the association value (wildcard match)                                                                                 |
+| AssociationValues              | \[]string | An array of association values; associations matching any of the values in this list will be returned                                |
+| Limit                          | integer   | The maximum number of associations to retrieve (default is 100)                                                                      |
+| LastSeenAssociationID          | string    | The identifier of the last retrieved association; this parameter functions like an offset allowing users to paginate through results |
+| SortDescending                 | boolean   | If true, results are returned in reverse order                                                                                       |
+| IncludeTransactorProfile       | boolean   | If true, include the transactors' use profiles in the response                                                                       |
+| IncludePostEntry               | boolean   | If true, include the target posts' entries in the response                                                                           |
+| IncludePostAuthorProfile       | boolean   | If true, include the target posts' authors' user profiles in the response                                                            |
+| IncludeAppProfile              | boolean   | If true, include the applications' user profiles in the response                                                                     |
 
-{% swagger-parameter in="body" name="AppPublicKeyBase58Check" type="string" %}
-The public key of the application on which this association was created
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationType" type="string" %}
-The association type (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationTypePrefix" type="string" %}
-The prefix of the association type (wildcard match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValue" type="string" %}
-The association value (exact match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValuePrefix" type="string" %}
-The prefix of the association value (wildcard match)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AssociationValues" type="[]string" %}
-An array of association values; associations matching any of the values in this list will be returned
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="Limit" type="integer" %}
-The maximum number of associations to retrieve (default is 100)
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="LastSeenAssociationID" type="string" %}
-The identifier of the last retrieved association; this parameter functions like an offset allowing users to paginate through results
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="SortDescending" type="boolean" %}
-If true, results are returned in reverse order
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IncludeTransactorProfile" type="boolean" %}
-If true, include the transactors' use profiles in the response
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IncludePostEntry" type="boolean" %}
-If true, include the target posts' entries in the response
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IncludePostAuthorProfile" type="boolean" %}
-If true, include the target posts' authors' user profiles in the response
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IncludeAppProfile" type="boolean" %}
-If true, include the applications' user profiles in the response
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieved matching associations" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved matching associations" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```javascript
@@ -737,13 +628,13 @@ If true, include the applications' user profiles in the response
 ...coming soon!
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="Invalid parameters provided" %}
+{% tab title="400: Bad Request Invalid parameters provided" %}
 ```javascript
 {
     "error": "string"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

@@ -2,20 +2,24 @@
 
 
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-user-dm-threads-ordered-by-timestamp" summary="Get User Direct Message Threads Ordered by Timestamp" %}
-{% swagger-description %}
+## Get User Direct Message Threads Ordered by Timestamp
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-user-dm-threads-ordered-by-timestamp`
+
 Get User Direct Message Threads Ordered by Timestamp returns an array of NewMessageEntryResponse objects for the public key provided in the request body. Each NewMessageEntryResponse object represents the most recent message each in DM conversation a user has. This is useful for showing a list of DM conversations in a user's inbox. The first NewMessageEntryResponse object is the most recent conversation and the last one is the old.
 
 Additionally, a map of public key to [#profileentryresponse](./#profileentryresponse "mention") objects for convenience so you don't need to make an extra request to get profile entry responses for the public keys in the response.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/v3.1.1/routes/new\_message.go#L459).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UserPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user for whom we want to fetch all DM conversations
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-response status="200: OK" description="" %}
+| Name                                                       | Type   | Description                                                           |
+| ---------------------------------------------------------- | ------ | --------------------------------------------------------------------- |
+| UserPublicKeyBase58Check<mark style="color:red;">\*</mark> | String | Public key of the user for whom we want to fetch all DM conversations |
+
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
   "MessageThreads": [
@@ -78,55 +82,37 @@ Public key of the user for whom we want to fetch all DM conversations
   }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-paginated-messages-for-dm-thread" summary="Get Paginated Messages for a Direct Message Thread" %}
-{% swagger-description %}
+## Get Paginated Messages for a Direct Message Thread
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-paginated-messages-for-dm-thread`
+
 Get Paginated Messages For DM Thread returns an array of NewMessageEntryResponse objects based on the conversation defined in the request body. Each NewMessageEntryResponse object represent a message in the a DM conversation. This is useful for showing all messages in a conversation. This first NewMessageEntryResponse object is the most recent message and the last one is the oldest. This endpoint supports pagination.
 
 Additionally, a map of public key to [#profileentryresponse](./#profileentryresponse "mention") objects for convenience so you don't need to make an extra request to get profile entry responses for the public keys in the response.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/v3.1.1/routes/new\_message.go#L496).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UserGroupOwnerPublicKeyBase58Check" type="String" required="true" %}
-Public key of one of the users in a DM conversation
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="UserGroupKeyName" type="String" required="true" %}
-Access group key name of UserGroupOwnerPublicKeyBase58Check in the DM conversation
-{% endswagger-parameter %}
+| Name                                                                  | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                      |
+| --------------------------------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UserGroupOwnerPublicKeyBase58Check<mark style="color:red;">\*</mark>  | String | Public key of one of the users in a DM conversation                                                                                                                                                                                                                                                                                                                                                              |
+| UserGroupKeyName<mark style="color:red;">\*</mark>                    | String | Access group key name of UserGroupOwnerPublicKeyBase58Check in the DM conversation                                                                                                                                                                                                                                                                                                                               |
+| PartyGroupOwnerPublicKeyBase58Check<mark style="color:red;">\*</mark> | String | Public key of the other user in a DM conversation                                                                                                                                                                                                                                                                                                                                                                |
+| PartyGroupKeyName<mark style="color:red;">\*</mark>                   | String | Access group key name of PartyGroupOwnerPublicKeyBase58Check in the DM conversation                                                                                                                                                                                                                                                                                                                              |
+| StartTimestampString                                                  | String | <p>String version of a timestamp in nanos. This defines the start point of the page. Messages newer than this timestamp are excluded.</p><p>To get the most recent (but not in the future) messages, set TimestampNanosString to (Date.now()*1e6).toString()</p><p>To get the next page of messages, take TimestampNanosString from the last NewMessageEntryResponse object in the previous page's response.</p> |
+| StartTimestamp                                                        | uint64 | Timestamp in nanos. This is less preferred than passing StartTimestamp string as JSON encoding and decoding can lose precision on these values.                                                                                                                                                                                                                                                                  |
+| MaxMessagesToFetch                                                    | int    | Maximum number of messages to fetch. You will always receive this amount of messages or fewer.                                                                                                                                                                                                                                                                                                                   |
 
-{% swagger-parameter in="body" name="PartyGroupOwnerPublicKeyBase58Check" type="String" required="true" %}
-Public key of the other user in a DM conversation
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="PartyGroupKeyName" type="String" required="true" %}
-Access group key name of PartyGroupOwnerPublicKeyBase58Check in the DM conversation
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="StartTimestampString" type="String" required="false" %}
-String version of a timestamp in nanos. This defines the start point of the page. Messages newer than this timestamp are excluded.
-
-To get the most recent (but not in the future) messages, set TimestampNanosString to (Date.now()\*1e6).toString()
-
-To get the next page of messages, take TimestampNanosString from the last NewMessageEntryResponse object in the previous page's response.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="StartTimestamp" type="uint64" required="false" %}
-Timestamp in nanos. This is less preferred than passing StartTimestamp string as JSON encoding and decoding can lose precision on these values.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MaxMessagesToFetch" type="int" required="false" %}
-Maximum number of messages to fetch. You will always receive this amount of messages or fewer.
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
   "ThreadMessages": [
@@ -241,27 +227,31 @@ Maximum number of messages to fetch. You will always receive this amount of mess
   }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-user-group-chat-threads-ordered-by-timestamp" summary="Get User Group Chat  Threads Ordered by Timestamp" %}
-{% swagger-description %}
+## Get User Group Chat  Threads Ordered by Timestamp
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-user-group-chat-threads-ordered-by-timestamp`
+
 Get User Group Chat Threads Ordered by Timestamp returns an array of NewMessageEntryResponse objects for the public key provided in the request body. Each NewMessageEntryResponse object represents the most recent message each in a group chat a user has. This is useful for showing a list of group chats in a user's inbox. The first NewMessageEntryResponse object is the most recent conversation and the last one is the oldest.
 
 Additionally, a map of public key to [#profileentryresponse](./#profileentryresponse "mention") objects for convenience so you don't need to make an extra request to get profile entry responses for the public keys in the response.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/v3.1.1/routes/new\_message.go#L656).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UserPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user for whom we want to fetch all DM conversations
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-response status="200: OK" description="" %}
+| Name                                                       | Type   | Description                                                           |
+| ---------------------------------------------------------- | ------ | --------------------------------------------------------------------- |
+| UserPublicKeyBase58Check<mark style="color:red;">\*</mark> | String | Public key of the user for whom we want to fetch all DM conversations |
+
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
   "MessageThreads": [
@@ -323,47 +313,35 @@ Public key of the user for whom we want to fetch all DM conversations
   }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-paginated-messages-for-group-chat-thread" summary="Get Paginated Messages For Group Chat Thread" %}
-{% swagger-description %}
+## Get Paginated Messages For Group Chat Thread
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-paginated-messages-for-group-chat-thread`
+
 Get Paginated Messages For Group Chat Thread returns an array of NewMessageEntryResponse objects based on the group chat defined in the request body. Each NewMessageEntryResponse object represent a message in the group chat. This is useful for showing all messages in a conversation. This first NewMessageEntryResponse object is the most recent message and the last one is the oldest. This endpoint supports pagination.
 
 Additionally, a map of public key to [#profileentryresponse](./#profileentryresponse "mention") objects for convenience so you don't need to make an extra request to get profile entry responses for the public keys in the response.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/v3.1.1/routes/new\_message.go#L686).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UserPublicKeyBase58Check" type="String" required="true" %}
-Public key of the access group owner who owns this group chat.
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="AccessGroupKeyName" type="String" required="true" %}
-Name of the access group for which we want to fetch messages.
-{% endswagger-parameter %}
+| Name                                                       | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ---------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UserPublicKeyBase58Check<mark style="color:red;">\*</mark> | String | Public key of the access group owner who owns this group chat.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| AccessGroupKeyName<mark style="color:red;">\*</mark>       | String | Name of the access group for which we want to fetch messages.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| StartTimestampString                                       | String | <p>String version of a timestamp in nanos. This defines the start point of the page. Messages newer than this timestamp are included. To get the most recent messages of the conversation, pass the current timestamp in nanoseconds converted to a string (not formatted as a timestamp).</p><p>To get the most recent (but not in the future) messages, set TimestampNanosString to (Date.now()*1e6).toString()</p><p>To get the next page of messages, take TimestampNanosString from the last NewMessageEntryResponse object in the previous page's response.</p> |
+| StartTimestamp                                             | uint64 | Timestamp in nanos. This is less preferred than passing StartTimestamp string as JSON encoding and decoding can lose precision on these values.                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| MaxMessagesToFetch<mark style="color:red;">\*</mark>       | int    | Maximum number of messages to fetch. You will always receive this amount of messages or fewer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
-{% swagger-parameter in="body" name="StartTimestampString" type="String" required="false" %}
-String version of a timestamp in nanos. This defines the start point of the page. Messages newer than this timestamp are included. To get the most recent messages of the conversation, pass the current timestamp in nanoseconds converted to a string (not formatted as a timestamp).
-
-To get the most recent (but not in the future) messages, set TimestampNanosString to (Date.now()\*1e6).toString()
-
-To get the next page of messages, take TimestampNanosString from the last NewMessageEntryResponse object in the previous page's response.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="StartTimestamp" type="uint64" required="false" %}
-Timestamp in nanos. This is less preferred than passing StartTimestamp string as JSON encoding and decoding can lose precision on these values.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MaxMessagesToFetch" type="int" required="true" %}
-Maximum number of messages to fetch. You will always receive this amount of messages or fewer.
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
   "GroupChatMessages": [
@@ -435,27 +413,31 @@ Maximum number of messages to fetch. You will always receive this amount of mess
   }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-all-user-message-threads" summary="Get All User Message Threads" %}
-{% swagger-description %}
+## Get All User Message Threads
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-all-user-message-threads`
+
 Get All User Message Threads Group returns an array of NewMessageEntryResponse objects for the public key provided in the request body. Each NewMessageEntryResponse object represents the most recent message each in a conversation (DM or group chat) a user has. This is useful for showing a list of all conversations in a user's inbox. The first NewMessageEntryResponse object is the most recent conversation and the last one is the oldest.
 
 Additionally, a map of public key to [#profileentryresponse](./#profileentryresponse "mention") objects for convenience so you don't need to make an extra request to get profile entry responses for the public keys in the response.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/v3.1.1/routes/new\_message.go#L791).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UserPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user for whom we want to fetch all conversations
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-response status="200: OK" description="" %}
+| Name                                                       | Type   | Description                                                        |
+| ---------------------------------------------------------- | ------ | ------------------------------------------------------------------ |
+| UserPublicKeyBase58Check<mark style="color:red;">\*</mark> | String | Public key of the user for whom we want to fetch all conversations |
+
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
   "MessageThreads": [
@@ -537,9 +519,9 @@ Public key of the user for whom we want to fetch all conversations
   }
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

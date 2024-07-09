@@ -11,8 +11,10 @@ description: >-
 \
 For endpoints to check ownership of DeSo Tokens, see [#get-hodlers-for-public-key](social-endpoints.md#get-hodlers-for-public-key "mention") and [#is-hodling-public-key](social-endpoints.md#is-hodling-public-key "mention").
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-dao-coin-limit-orders" summary="Gets All Open Orders on Order Book for a DeSo Token (DAO Coin) Market" %}
-{% swagger-description %}
+## Gets All Open Orders on Order Book for a DeSo Token (DAO Coin) Market
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-dao-coin-limit-orders`
+
 There are two types of markets where DeSo Tokens can be traded on the on-chain order book exchange: 1) markets where a DeSo Token is traded for $DESO, and 2) markets where a DeSo Token is traded for another DeSo Token.
 
 This endpoint returns all open orders given two coins that can be traded against each other. At least one of the two coins must be a DeSo Token.
@@ -20,25 +22,16 @@ This endpoint returns all open orders given two coins that can be traded against
 See [#create-dao-coin-limit-order](../construct-transactions/dao-transactions-api.md#create-dao-coin-limit-order "mention") for how to create new limit orders to trade DeSo Tokens.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/0af8093227b219de31487ac129e799fee61e39ef/routes/dao\_coin\_exchange.go#L37).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="DAOCoin1CreatorPublicKeyBase58CheckOrUsername" type="string" required="true" %}
-Public key or username of the creator of the Token, whose DeSo Token makes up one side of a market.
+#### Request Body
 
+| Name                                                                             | Type   | Description                                                                                                                                                                                            |
+| -------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| DAOCoin2CreatorPublicKeyBase58CheckOrUsername2<mark style="color:red;">\*</mark> | string | <p>Public key or username of the creator of the DAO, whose DeSo Token makes up the second side of the market.</p><p></p><p>An empty string here represents $DESO as the second side of the market.</p> |
+| DAOCoin1CreatorPublicKeyBase58CheckOrUsername<mark style="color:red;">\*</mark>  | string | <p>Public key or username of the creator of the Token, whose DeSo Token makes up one side of a market.</p><p></p><p>An empty string here represents $DESO as one side of the market.</p>               |
 
-
-An empty string here represents $DESO as one side of the market.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="DAOCoin2CreatorPublicKeyBase58CheckOrUsername2" type="string" required="true" %}
-Public key or username of the creator of the DAO, whose DeSo Token makes up the second side of the market.
-
-
-
-An empty string here represents $DESO as the second side of the market.
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieved all open orders for a coin pair" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved all open orders for a coin pair" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -69,37 +62,41 @@ An empty string here represents $DESO as the second side of the market.
 ```
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     "error": "..." // Error message
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="500: Internal Server Error" description="" %}
+{% tab title="500: Internal Server Error " %}
 ```javascript
 {
     "error": "..." // Error message
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-transactor-dao-coin-limit-orders" summary="Gets All Open Limit Orders Created by a Transactor" %}
-{% swagger-description %}
+## Gets All Open Limit Orders Created by a Transactor
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-transactor-dao-coin-limit-orders`
+
 This endpoint returns all open orders that were created by a given transactor on the DeSo Tokens on-chain order book exchange.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/0af8093227b219de31487ac129e799fee61e39ef/routes/dao\_coin\_exchange.go#L136).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TransactorPublicKeyBase58CheckOrUsername" type="string" required="true" %}
-Public key or username of the user whose open orders we want to retrieve.
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-response status="200: OK" description="Successfully retrieved all open orders for the transactor" %}
+| Name                                                                       | Type   | Description                                                               |
+| -------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------- |
+| TransactorPublicKeyBase58CheckOrUsername<mark style="color:red;">\*</mark> | string | Public key or username of the user whose open orders we want to retrieve. |
+
+{% tabs %}
+{% tab title="200: OK Successfully retrieved all open orders for the transactor" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -120,21 +117,21 @@ Public key or username of the user whose open orders we want to retrieve.
 ```
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     "error": "..." // Error message
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="500: Internal Server Error" description="" %}
+{% tab title="500: Internal Server Error " %}
 ```javascript
 {
     "error": "..." // Error message
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

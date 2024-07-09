@@ -14,8 +14,10 @@ Please make sure you've read [.](./ "mention") so you are familiar with the foll
 * [#nftentryresponse](./#nftentryresponse "mention")
 * [#nftcollectionresponse](./#nftcollectionresponse "mention")
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-nfts-for-user" summary="Get NFTs For User" %}
-{% swagger-description %}
+## Get NFTs For User
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-nfts-for-user`
+
 Get NFTs that a user owns, optionally filtering on for-sale status and pending (NFT transferred) status.&#x20;
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L1024).
@@ -23,33 +25,18 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFTs For User](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L980)\
 &#x20; \- Use GetNFTsForUser to [get NFTs to display in a gallery on a user's profile](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-nfts/creator-profile-nfts.component.ts#L126)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UserPublicKeyBase58Check" type="String" required="true" %}
-Public key for user who owns NFTs
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="ReaderPublicKeyBase58Check" type="String" %}
-Public key of the reader
-{% endswagger-parameter %}
+| Name                                                       | Type    | Description                                                                                                                                                                                                                                                                                                                |
+| ---------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UserPublicKeyBase58Check<mark style="color:red;">\*</mark> | String  | Public key for user who owns NFTs                                                                                                                                                                                                                                                                                          |
+| ReaderPublicKeyBase58Check                                 | String  | Public key of the reader                                                                                                                                                                                                                                                                                                   |
+| IsForSale                                                  | Boolean | <p>  - If true, only return NFTs that are for sale. </p><p>  - If false, only return NFTs that are not for sale.</p><p>  - If not provided, return NFTs regardless of for sale status</p>                                                                                                                                  |
+| IsPending                                                  | Boolean | <p>  - If IsForSale is provided, this value is ignored.</p><p>  - Otherwise, if true, only return NFTs that are pending acceptance (NFTs that have been transferred but not accepted).</p><p>  - If false, only return NFTs that are not pending acceptance. If not provided, return NFTs regardless of pending status</p> |
 
-{% swagger-parameter in="body" name="IsForSale" type="Boolean" %}
-&#x20; \- If true, only return NFTs that are for sale.&#x20;
-
-&#x20; \- If false, only return NFTs that are not for sale.
-
-&#x20; \- If not provided, return NFTs regardless of for sale status
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IsPending" type="Boolean" %}
-&#x20; \- If IsForSale is provided, this value is ignored.
-
-&#x20; \- Otherwise, if true, only return NFTs that are pending acceptance (NFTs that have been transferred but not accepted).
-
-&#x20; \- If false, only return NFTs that are not pending acceptance. If not provided, return NFTs regardless of pending status
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieved the requested NFTs owned by the provided user" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved the requested NFTs owned by the provided user" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -68,19 +55,21 @@ Public key of the reader
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-nft-bids-for-user" summary="Get NFT Bids For User" %}
-{% swagger-description %}
+## Get NFT Bids For User
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-nft-bids-for-user`
+
 Get active bids for a user.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/nft.go#L927).
@@ -88,17 +77,16 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFT Bids For User](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L993)\
 &#x20; \- Use GetNFTBidsForUser to [show a user their outstanding bids when they view their own profile](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/creator-profile-page/creator-profile-nfts/creator-profile-nfts.component.ts#L98)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UserPublicKeyBase58Check" type="String" required="true" %}
-Public key for user whose bids we want to find
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="ReaderPublicKeyBase58Check" type="String" %}
-Public key of the reader
-{% endswagger-parameter %}
+| Name                                                       | Type   | Description                                    |
+| ---------------------------------------------------------- | ------ | ---------------------------------------------- |
+| UserPublicKeyBase58Check<mark style="color:red;">\*</mark> | String | Public key for user whose bids we want to find |
+| ReaderPublicKeyBase58Check                                 | String | Public key of the reader                       |
 
-{% swagger-response status="200: OK" description="Successfully retrieved all NFT bids for a given user" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved all NFT bids for a given user" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -130,19 +118,21 @@ Public key of the reader
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-nft-bids-for-nft-post" summary="Get NFT Bids For NFT Post" %}
-{% swagger-description %}
+## Get NFT Bids For NFT Post
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-nft-bids-for-nft-post`
+
 Get all bids for all serial numbers of a given NFT post.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L1113).
@@ -150,17 +140,16 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFT Bids For NFT Post](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L969)\
 &#x20; \- Use GetNFTBidsForNFTPost to [show all active bids on all serial numbers of an NFT collection](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/nft-post-page/nft-post/nft-post.component.ts#L152)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="PostHashHex" type="String" required="true" %}
-Hex of Post hash for which we want to fetch bids
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="ReaderPublicKeyBase58Check" type="String" %}
-Public key of the reader
-{% endswagger-parameter %}
+| Name                                          | Type   | Description                                      |
+| --------------------------------------------- | ------ | ------------------------------------------------ |
+| PostHashHex<mark style="color:red;">\*</mark> | String | Hex of Post hash for which we want to fetch bids |
+| ReaderPublicKeyBase58Check                    | String | Public key of the reader                         |
 
-{% swagger-response status="200: OK" description="Successfully retrieved all bids on all serial numbers for the given post" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved all bids on all serial numbers for the given post" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -184,19 +173,21 @@ Public key of the reader
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-nft-showcase" summary="Get NFT Showcase" %}
-{% swagger-description %}
+## Get NFT Showcase
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-nft-showcase`
+
 Get summaries of all NFTs included in the NFT showcase.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L760).
@@ -204,13 +195,15 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usage in frontend:\
 &#x20; \- Make request to [Get NFT Showcase](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1004)\
 &#x20; \- Use GetNFTShowcase to [fetch all the NFTs to display in the NFT showcase](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/nft-showcase/nft-showcase.component.ts#L39)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="ReaderPublicKeyBase58Check" type="String" %}
-Public key of the reader
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-response status="200: OK" description="Successfully retrieved NFT Collection Responses for all NFT posts in the current NFT showcase" %}
+| Name                       | Type   | Description              |
+| -------------------------- | ------ | ------------------------ |
+| ReaderPublicKeyBase58Check | String | Public key of the reader |
+
+{% tabs %}
+{% tab title="200: OK Successfully retrieved NFT Collection Responses for all NFT posts in the current NFT showcase" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -221,24 +214,24 @@ Public key of the reader
 {% endtab %}
 
 {% tab title="Response Field Descriptions" %}
-| Name           | Type                                         | Description                                                                                                     |
-| -------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| NFTCollections | [NFTCollectionResponse](broken-reference)\[] | Array of [Broken link](broken-reference "mention")objects representing all the NFTs in the current NFT Showcase |
+<table><thead><tr><th width="196.33333333333331">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>NFTCollections</td><td><a href="broken-reference">NFTCollectionResponse</a>[]</td><td>Array of <a data-mention href="broken-reference">Broken link</a>objects representing all the NFTs in the current NFT Showcase</td></tr></tbody></table>
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-next-nft-showcase" summary="Get Next NFT Showcase" %}
-{% swagger-description %}
+## Get Next NFT Showcase
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-next-nft-showcase`
+
 Get the time the next NFT showcase drop so it can be advertised to users
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L858).
@@ -246,9 +239,9 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Get Next NFT Showcase](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1015)\
 &#x20; \- Use GetNextNFTShowcase to [show users the time at which the next NFT showcase drops](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/feed/feed.component.ts#L105)
-{% endswagger-description %}
 
-{% swagger-response status="200: OK" description="Successfully retrieved the timestamp at which the next NFT showcase will drop" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved the timestamp at which the next NFT showcase will drop" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -259,24 +252,24 @@ Example usages in frontend:\
 {% endtab %}
 
 {% tab title="Response Field Descriptions" %}
-| Name                  | Type   | Description                          |
-| --------------------- | ------ | ------------------------------------ |
-| NextNFTShowcaseTstamp | uint64 | Time the next NFT showcase will drop |
+<table><thead><tr><th width="282.89550731953557">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>NextNFTShowcaseTstamp</td><td>uint64</td><td>Time the next NFT showcase will drop</td></tr></tbody></table>
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-nft-collection-summary" summary="Get NFT Collection Summary" %}
-{% swagger-description %}
+## Get NFT Collection Summary
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-nft-collection-summary`
+
 Get an [#nftcollectionresponse](./#nftcollectionresponse "mention") that summarizes a single NFT post
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L1195).
@@ -284,21 +277,16 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFT Collection Summary](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1021)\
 &#x20; \- Use GetNFTCollectionSummary to [a summary of the current state of the NFT collection and each serial number](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/place-bid-modal/place-bid-modal.component.ts#L49)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="PostHashHex" required="true" type="String" %}
-Hex of Post hash for which we want to fetch a 
+#### Request Body
 
-[#nftcollectionresponse](./#nftcollectionresponse "mention")
+| Name                                          | Type   | Description                                                                                                |
+| --------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| PostHashHex<mark style="color:red;">\*</mark> | String | Hex of Post hash for which we want to fetch a [#nftcollectionresponse](./#nftcollectionresponse "mention") |
+| ReaderPublicKeyBase58Check                    | String | Public key of the reader                                                                                   |
 
-
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="ReaderPublicKeyBase58Check" type="String" %}
-Public key of the reader
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieved the NFT Collection for the requested post" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved the NFT Collection for the requested post" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -326,40 +314,37 @@ Public key of the reader
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-nft-entries-for-nft-post" summary="Get NFT Entries For Post Hash" %}
-{% swagger-description %}
+## Get NFT Entries For Post Hash
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-nft-entries-for-nft-post`
+
 Gets an NFTEntryResponse for each serial number of this NFT post.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/036804dc7c182305ceb8172cbb92598dcbd4d102/routes/nft.go#L1275).
 
 Example usages in frontend:\
 &#x20; \- Make request to [Get NFT Entries for Post Hash](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1028)&#x20;
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="PostHashHex" type="String" required="true" %}
-Hex of Post hash for which we want to fetch all 
+#### Request Body
 
-[#nftentryresponse](./#nftentryresponse "mention")
+| Name                                          | Type   | Description                                                                                                |
+| --------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| PostHashHex<mark style="color:red;">\*</mark> | String | Hex of Post hash for which we want to fetch all [#nftentryresponse](./#nftentryresponse "mention") objects |
+| ReaderPublicKeyBase58Check                    | String | Public key of the reader                                                                                   |
 
- objects
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="ReaderPublicKeyBase58Check" type="String" %}
-Public key of the reader
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieved NFTEntryResponse objects for all serial numbers of the NFT post" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved NFTEntryResponse objects for all serial numbers of the NFT post" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -375,13 +360,13 @@ Public key of the reader
 | NFTEntryResponses | [Broken link](broken-reference "mention")\[] | An array of [Broken link](broken-reference "mention") objects representing the current state of each serial number of the NFT post |
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

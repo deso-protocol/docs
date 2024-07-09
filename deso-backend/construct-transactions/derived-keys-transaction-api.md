@@ -6,70 +6,35 @@ description: >-
 
 # Derived Keys Transaction API
 
-{% swagger method="post" path="" baseUrl="/api/v0/authorize-derived-key" summary="Authorize Derived Key" %}
-{% swagger-description %}
+## Authorize Derived Key
+
+<mark style="color:green;">`POST`</mark> `/api/v0/authorize-derived-key`
+
 Create an authorize derived key transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
 
 Authorize derived key transactions allows another public key to submit transaction on behalf of the owner public key.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/954490fee2319072a9d6af710e3a3dd21bfc4f2d/routes/transaction.go#L2646).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" required="true" type="String" name="OwnerPublicKeyBase58Check" %}
-Public key of the derived key owner
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" required="true" type="String" name="DerivedPublicKeyBase58Check" %}
-The derived public key
-{% endswagger-parameter %}
+| Name                                                          | Type               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| OwnerPublicKeyBase58Check<mark style="color:red;">\*</mark>   | String             | Public key of the derived key owner                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| DerivedPublicKeyBase58Check<mark style="color:red;">\*</mark> | String             | The derived public key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ExpirationBlock<mark style="color:red;">\*</mark>             | uint64             | Height of block after which this derived key will no longer work.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| AccessSignature<mark style="color:red;">\*</mark>             | String             | The signature of hash(derived key + expiration block) made by the owner.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| DeleteKey<mark style="color:red;">\*</mark>                   | Boolean            | The intended operation on the derived key. If true, this derived key will no longer be valid.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>        | uint64             | Rate per KB                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| TransactionFees                                               | TransactionFee\[]  | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| TransactionSpendingLimitHex<mark style="color:red;">\*</mark> | String             | <p>Hex string representing a TransactionSpendingLimit struct that will be merged with the TransactionSpendingLimitTracker for this derived key. We require this be sent as a hex in order toguarantee that the AccessHash computed from this value is consistent with what the user is requesting.</p><p>The TransactionSpendingLimit is an object defining the permissions of this derived key. Derived key will be restricted to certain transaction types and can only spend up to the specified amount of DESO. See the section on <a data-mention href="../api/#transactionspendinglimitresponse">#transactionspendinglimitresponse</a> for more details.      </p> |
+| Memo                                                          | String             | Memo to describe the purpose of this derived key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| AppName                                                       | String             | App requested this derived key. This is used if a memo is not provided so a user can remember which app has access with this derived key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ExtraData                                                     | map\[string]string | extra data, values must be strings. This is an arbitrary json object that can be used to add extra metadata on a derived key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| DerivedKeySignature                                           | Boolean            | Set to true if you intend to sign this transaction with the derived public key instead of the owner public key. This will add the DerivedPublicKey to ExtraData                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-{% swagger-parameter in="body" name="DerivedKeySignature" type="Boolean" %}
-Set to true if you intend to sign this transaction with the derived public key instead of the owner public key. This will add the DerivedPublicKey to ExtraData
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" type="uint64" name="ExpirationBlock" %}
-Height of block after which this derived key will no longer work.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" type="String" name="AccessSignature" %}
-The signature of hash(derived key + expiration block) made by the owner.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" type="Boolean" name="DeleteKey" %}
-The intended operation on the derived key. If true, this derived key will no longer be valid.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" type="uint64" name="MinFeeRateNanosPerKB" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="TransactionFee[]" name="TransactionFees" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionSpendingLimitHex" type="String" required="true" %}
-Hex string representing a TransactionSpendingLimit struct that will be merged with the TransactionSpendingLimitTracker for this derived key. We require this be sent as a hex in order toguarantee that the AccessHash computed from this value is consistent with what the user is requesting.
-
-The TransactionSpendingLimit is an object defining the permissions of this derived key. Derived key will be restricted to certain transaction types and can only spend up to the specified amount of DESO. See the section on [#transactionspendinglimitresponse](../api/#transactionspendinglimitresponse "mention") for more details.     &#x20;
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="Memo" type="String" %}
-Memo to describe the purpose of this derived key
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AppName" type="String" %}
-App requested this derived key. This is used if a memo is not provided so a user can remember which app has access with this derived key.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="ExtraData" type="map[string]string" %}
-extra data, values must be strings. This is an arbitrary json object that can be used to add extra metadata on a derived key
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed Authorize Derived Key transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed Authorize Derived Key transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -113,13 +78,13 @@ extra data, values must be strings. This is an arbitrary json object that can be
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

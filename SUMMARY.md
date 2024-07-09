@@ -110,7 +110,7 @@
 
 ## DESO VALIDATORS
 
-* [1️⃣ Run a Validator](deso-validators/running-a-node.md)
+* [1️⃣ Run a Validator](deso-validators/run-a-validator.md)
 
 ## Contact And Media
 

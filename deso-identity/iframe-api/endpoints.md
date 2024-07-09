@@ -16,9 +16,7 @@ The sign message is responsible for signing transaction hexes. If approval is re
 
 #### Payload for public keys
 
-| Name           | Type   | Description                              |
-| -------------- | ------ | ---------------------------------------- |
-| transactionHex | string | Hex of the transaction you want to sign. |
+<table><thead><tr><th width="295.3333333333333">Name</th><th width="141">Type</th><th>Description</th></tr></thead><tbody><tr><td>transactionHex</td><td>string</td><td>Hex of the transaction you want to sign.</td></tr></tbody></table>
 
 #### Payload for derived keys
 
@@ -81,22 +79,13 @@ The encrypt API is responsible for encrypting messages. For more details check o
 
 #### Payload for public keys
 
-| Name               | Type   | Description                                        |
-| ------------------ | ------ | -------------------------------------------------- |
-| recipientPublicKey | string | Public key of the recipient in base58check format. |
-| message            | string | Message text that you want to encrypt.             |
+<table><thead><tr><th width="316.3333333333333">Name</th><th width="127">Type</th><th>Description</th></tr></thead><tbody><tr><td>recipientPublicKey</td><td>string</td><td>Public key of the recipient in base58check format.</td></tr><tr><td>message</td><td>string</td><td>Message text that you want to encrypt.</td></tr></tbody></table>
 
 #### Payload for derived keys
 
 Only required if logged in user is using a derived key to sign on behalf of an owner public key.
 
-|                                 |        |                                                                                    |
-| ------------------------------- | ------ | ---------------------------------------------------------------------------------- |
-| recipientPublicKey              | string | Public key of the recipient in base58check format.                                 |
-| message                         | string | Message text that you want to encrypt.                                             |
-| encryptedMessagingKeyRandomness | string | This value is used in place of the `encryptedSeedHex` when encrypting the message. |
-| derivedPublicKeyBase58Check     | string | Public key requesting encryption in base58check format.                            |
-| ownerPublicKeyBase58Check       | string | Public key used  only for validation.                                              |
+<table><thead><tr><th width="322"></th><th width="120"></th><th></th></tr></thead><tbody><tr><td>recipientPublicKey</td><td>string</td><td>Public key of the recipient in base58check format.</td></tr><tr><td>message</td><td>string</td><td>Message text that you want to encrypt.</td></tr><tr><td>encryptedMessagingKeyRandomness</td><td>string</td><td>This value is used in place of the <code>encryptedSeedHex</code> when encrypting the message.</td></tr><tr><td>derivedPublicKeyBase58Check</td><td>string</td><td>Public key requesting encryption in base58check format.</td></tr><tr><td>ownerPublicKeyBase58Check</td><td>string</td><td>Public key used  only for validation. </td></tr></tbody></table>
 
 #### Request
 
@@ -200,12 +189,7 @@ To see how this can be done, we recommend tracing through the [`DecryptUnlockabl
 
 #### Payload for derived keys
 
-|                                 |                     |                                                                                        |
-| ------------------------------- | ------------------- | -------------------------------------------------------------------------------------- |
-| derivedPublicKeyBase58Check     | string              | Public key requesting decryption in base58check format.                                |
-| ownerPublicKeyBase58Check       | string              | Used to identify which messaging group member entry is used to decrypt group messages. |
-| encryptedMessagingKeyRandomness | string              | Required to decrypt the request.                                                       |
-| encryptedMessages               | \[]encryptedMessage | List of encrypted messages objects.                                                    |
+<table><thead><tr><th></th><th width="201"></th><th></th></tr></thead><tbody><tr><td>derivedPublicKeyBase58Check</td><td>string</td><td>Public key requesting decryption in base58check format.</td></tr><tr><td>ownerPublicKeyBase58Check</td><td>string</td><td>Used to identify which messaging group member entry is used to decrypt group messages.</td></tr><tr><td>encryptedMessagingKeyRandomness</td><td>string</td><td>Required to decrypt the request.</td></tr><tr><td>encryptedMessages</td><td>[]encryptedMessage</td><td>List of encrypted messages objects.</td></tr></tbody></table>
 
 #### Request
 
@@ -307,9 +291,7 @@ JWTs are used in some Backend API endpoints such as `/api/v0/upload-image.` The 
 
 #### payload for derived keys
 
-| Name                        | Type    | Description                                      |
-| --------------------------- | ------- | ------------------------------------------------ |
-| derivedPublicKeyBase58Check | string  | Informs Identity on how to sign the transaction. |
+<table><thead><tr><th width="348">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>derivedPublicKeyBase58Check</td><td>string </td><td>Informs Identity on how to sign the transaction.</td></tr></tbody></table>
 
 #### Request
 

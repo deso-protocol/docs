@@ -6,24 +6,20 @@ description: >-
 
 # Transaction Spending Limits Endpoints
 
-{% swagger method="get" path="" baseUrl="/api/v0/get-transaction-spending-limit-response-from-hex/{transactionSpendingLimitHex}" summary="Get Transaction Spending Limit Response From Hex" %}
-{% swagger-description %}
-This endpoint converts a hex string representing a TransactionSpendingLimit object into a client-friendly 
+## Get Transaction Spending Limit Response From Hex
 
-[#transactionspendinglimitresponse](./#transactionspendinglimitresponse "mention")
+<mark style="color:blue;">`GET`</mark> `/api/v0/get-transaction-spending-limit-response-from-hex/{transactionSpendingLimitHex}`
 
- object. This is mainly used by identity to parse the transaction spending limit from extra data of an 
+This endpoint converts a hex string representing a TransactionSpendingLimit object into a client-friendly [#transactionspendinglimitresponse](./#transactionspendinglimitresponse "mention") object. This is mainly used by identity to parse the transaction spending limit from extra data of an [#authorize-derived-key](../construct-transactions/derived-keys-transaction-api.md#authorize-derived-key "mention") transaction to show the user the permissions they are granting to a derived key.
 
-[#authorize-derived-key](../construct-transactions/derived-keys-transaction-api.md#authorize-derived-key "mention")
+#### Path Parameters
 
- transaction to show the user the permissions they are granting to a derived key.
-{% endswagger-description %}
+| Name                                                          | Type   | Description                                        |
+| ------------------------------------------------------------- | ------ | -------------------------------------------------- |
+| transactionSpendingLimitHex<mark style="color:red;">\*</mark> | String | Hex string representing a TransactionSpendingLimit |
 
-{% swagger-parameter in="path" name="transactionSpendingLimitHex" type="String" required="true" %}
-Hex string representing a TransactionSpendingLimit
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieved a TransactionSpendingLimitResponse from the provided hex" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved a TransactionSpendingLimitResponse from the provided hex" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -37,39 +33,31 @@ Hex string representing a TransactionSpendingLimit
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-transaction-spending-limit-hex-string" summary="Get Transaction Spending Limit Hex String" %}
-{% swagger-description %}
-This endpoint converts a 
+## Get Transaction Spending Limit Hex String
 
-[#transactionspendinglimitresponse](./#transactionspendinglimitresponse "mention")
+<mark style="color:green;">`POST`</mark> `/api/v0/get-transaction-spending-limit-hex-string`
 
- into a hex string. This is mainly used by identity to convert the object into the form needed to generate an access signature at the 
+This endpoint converts a [#transactionspendinglimitresponse](./#transactionspendinglimitresponse "mention") into a hex string. This is mainly used by identity to convert the object into the form needed to generate an access signature at the [#derive](../../deso-identity/window-api/endpoints.md#derive "mention") endpoint.
 
-[#derive](../../deso-identity/window-api/endpoints.md#derive "mention")
+#### Request Body
 
- endpoint.
-{% endswagger-description %}
+| Name                                                       | Type                             | Description                                                                                                                           |
+| ---------------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| TransactionSpendingLimit<mark style="color:red;">\*</mark> | TransactionSpendingLimitResponse | The [#transactionspendinglimitresponse](./#transactionspendinglimitresponse "mention") for which you wish to retrieve the hex string. |
 
-{% swagger-parameter in="body" name="TransactionSpendingLimit" type="TransactionSpendingLimitResponse" required="true" %}
-The 
-
-[#transactionspendinglimitresponse](./#transactionspendinglimitresponse "mention")
-
- for which you wish to retrieve the hex string.
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieve the hex string for the provided TransactionSpendingLimitResponse object" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieve the hex string for the provided TransactionSpendingLimitResponse object" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -83,13 +71,13 @@ The
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

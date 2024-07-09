@@ -6,8 +6,10 @@ description: >-
 
 # Financial Transactions API
 
-{% swagger method="post" path="" baseUrl="/api/v0/send-deso" summary="Send DeSo" %}
-{% swagger-description %}
+## Send DeSo
+
+<mark style="color:green;">`POST`</mark> `/api/v0/send-deso`
+
 Create a Basic transfer transaction. Basic transfer transactions send DeSo from one used to another. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
 
 A Basic Transfer transaction sends DeSo from the sender to the receiver.
@@ -18,33 +20,19 @@ Example usage in frontend:\
 &#x20; \- Make request to Send DeSo to get [a preview of the transaction.](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/transaction.go#L905)\
 &#x20; \- Make request to Send DeSo and [sign+submit the transaction.](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L667)\
 &#x20; \- Use SendDeSo to [transfer DeSo to another user.](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/transfer-deso/transfer-deso.component.ts#L165)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="SenderPublicKeyBase58Check" type="String" required="true" %}
-Public key of the sender
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="RecipientPublicKeyOrUsername" type="String" required="true" %}
-Public key or Username of the recipient
-{% endswagger-parameter %}
+| Name                                                           | Type            | Description                                                                                                                                                               |
+| -------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SenderPublicKeyBase58Check<mark style="color:red;">\*</mark>   | String          | Public key of the sender                                                                                                                                                  |
+| RecipientPublicKeyOrUsername<mark style="color:red;">\*</mark> | String          | Public key or Username of the recipient                                                                                                                                   |
+| AmountNanos<mark style="color:red;">\*</mark>                  | int64           | transaction amount in nanos - If less than 0, this will create a max spend transaction that will send all funds from Sender to Receiver                                   |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>         | uint64          | Rate per KB                                                                                                                                                               |
+| TransactionFees                                                | TransactionFee] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p> |
 
-{% swagger-parameter in="body" name="AmountNanos" type="int64" required="true" %}
-transaction amount in nanos - If less than 0, this will create a max spend transaction that will send all funds from Sender to Receiver
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint64" required="true" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="TransactionFee]" name="TransactionFees" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed Send DeSo transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed Send DeSo transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 
@@ -89,19 +77,21 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/buy-or-sell-creator-coin" summary="Buy Or Sell Creator Coin" %}
-{% swagger-description %}
+## Buy Or Sell Creator Coin
+
+<mark style="color:green;">`POST`</mark> `/api/v0/buy-or-sell-creator-coin`
+
 Create a buy/sell creator coin transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.&#x20;
 
 A buy creator coin transaction locks DeSo in the creator coin of a creator and in return gives the purchaser creator coins.&#x20;
@@ -114,97 +104,25 @@ Example usages in frontend:\
 &#x20; \- Make request to [Buy Or Sell Creator Coin](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1485)\
 &#x20; \- Use BuyOrSellCreatorCoin to get a [preview of purchase/sale of creator coins](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/trade-creator-page/trade-creator-form/trade-creator-form.component.ts#L190)\
 &#x20; \- Use BuyOrSellCreatorCoin to [buy or sell creator coins](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/trade-creator-page/trade-creator-preview/trade-creator-preview.component.ts#L89)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UpdaterPublicKeyBase58Check" type="String" required="true" %}
-Public key of user purchasing/selling creator coins
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="CreatorPublicKeyBase58Check" required="true" type="String" %}
-Public key of creator whose coin is being purchased
-{% endswagger-parameter %}
+| Name                                                          | Type             | Description                                                                                                                                                               |
+| ------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MinCreatorCoinExpectedNanos                                   | uint64           | <p>Minimum amount of Creator Coins expected when buying creator coins<br><br>only required for buy transactions</p>                                                       |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>        | uint64           | Rate per KB                                                                                                                                                               |
+| CreatorCoinToSellNanos<mark style="color:red;">\*</mark>      | uint64           | <p>Amount of Creator Coin to sell<br><br>only required for sell transactions</p>                                                                                          |
+| TransactionFees                                               | TrasactionFee\[] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p> |
+| CreatorPublicKeyBase58Check<mark style="color:red;">\*</mark> | String           | Public key of creator whose coin is being purchased                                                                                                                       |
+| DeSoToAddNanos<mark style="color:red;">\*</mark>              | uint64           | deprecated                                                                                                                                                                |
+| OperationType<mark style="color:red;">\*</mark>               | String           | "buy" or "sell"                                                                                                                                                           |
+| MinDeSoExpectedNanos                                          | uint64           | <p>Minimum DeSo expected to be received when selling creator coins<br><br>only required for sell transactions</p>                                                         |
+| DeSoToSellNanos<mark style="color:red;">\*</mark>             | uint64           | <p>Amount of DeSo to spend purchasing creator coins<br><br>only required for buy transactions</p>                                                                         |
+| UpdaterPublicKeyBase58Check<mark style="color:red;">\*</mark> | String           | Public key of user purchasing/selling creator coins                                                                                                                       |
+| InTutorial                                                    | Boolean          | When true, perform additional checks to ensure user is at the correct point in the tutorial to execute this buy/sell creator coin transaction                             |
 
-{% swagger-parameter in="body" name="OperationType" type="String" required="true" %}
-"buy" or "sell"
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" name="DeSoToSellNanos" type="uint64" %}
-Amount of DeSo to spend purchasing creator coins
-
-\
-
-
-
-
-\
-
-
-only required for buy transactions
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" name="CreatorCoinToSellNanos" type="uint64" %}
-Amount of Creator Coin to sell
-
-\
-
-
-
-
-\
-
-
-only required for sell transactions
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="DeSoToAddNanos" type="uint64" required="true" %}
-deprecated
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinDeSoExpectedNanos" type="uint64" %}
-Minimum DeSo expected to be received when selling creator coins
-
-\
-
-
-
-
-\
-
-
-only required for sell transactions
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinCreatorCoinExpectedNanos" type="uint64" %}
-Minimum amount of Creator Coins expected when buying creator coins
-
-\
-
-
-
-
-\
-
-
-only required for buy transactions
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint64" required="true" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionFees" type="TrasactionFee[]" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="InTutorial" type="Boolean" %}
-When true, perform additional checks to ensure user is at the correct point in the tutorial to execute this buy/sell creator coin transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully construct Buy Creator Coin transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully construct Buy Creator Coin transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -253,9 +171,13 @@ When true, perform additional checks to ensure user is at the correct point in t
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="200: OK" description="Successfully constructed Sell Creator Coin transaction" %}
+{% tab title="400: Bad Request " %}
+
+{% endtab %}
+
+{% tab title="200: OK Successfully constructed Sell Creator Coin transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -304,15 +226,13 @@ When true, perform additional checks to ensure user is at the correct point in t
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+## Transfer Creator Coin
 
-{% endswagger-response %}
-{% endswagger %}
+<mark style="color:green;">`POST`</mark> `/api/v0/transfer-creator-coin`
 
-{% swagger method="post" path="" baseUrl="/api/v0/transfer-creator-coin" summary="Transfer Creator Coin" %}
-{% swagger-description %}
 Create a transfer creator coin transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.&#x20;
 
 Transfer creator coin transactions sends creator coins owned by the sender to the receiver.
@@ -323,37 +243,20 @@ Example usages in frontend:\
 &#x20; \- Make request to [Transfer Creator Coin](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1543)\
 &#x20; \- Use TransferCreatorCoin to get a [preview of a creator coin transfer transaction](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/trade-creator-page/trade-creator-form/trade-creator-form.component.ts#L152).\
 &#x20; \- Use TransferCreatorCoin to [construct, sign, and submit a creator coin transfer transaction](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/trade-creator-page/trade-creator-preview/trade-creator-preview.component.ts#L167).
-{% endswagger-description %}
 
-{% swagger-parameter in="body" type="String" name="SenderPublicKeyBase58Check" required="true" %}
-Public key of user sending creator coins
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="CreatorPublicKeyBase58Check" type="String" required="true" %}
-Public key of creator whose coins will be sent
-{% endswagger-parameter %}
+| Name                                                                     | Type             | Description                                                                                                                                                               |
+| ------------------------------------------------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SenderPublicKeyBase58Check<mark style="color:red;">\*</mark>             | String           | Public key of user sending creator coins                                                                                                                                  |
+| CreatorPublicKeyBase58Check<mark style="color:red;">\*</mark>            | String           | Public key of creator whose coins will be sent                                                                                                                            |
+| ReceiverUsernameOrPublicKeyBase58Check<mark style="color:red;">\*</mark> | String           | username or public key of user who will receive creator coins                                                                                                             |
+| CreatorCoinToTransferNanos<mark style="color:red;">\*</mark>             | uint64           | Amount of Creator Coin to transfer                                                                                                                                        |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>                   | uint64           | Rate per KB                                                                                                                                                               |
+| TrasactionFees                                                           | TrasactionFee\[] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p> |
 
-{% swagger-parameter in="body" name="ReceiverUsernameOrPublicKeyBase58Check" type="String" required="true" %}
-username or public key of user who will receive creator coins
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="CreatorCoinToTransferNanos" type="uint64" required="true" %}
-Amount of Creator Coin to transfer
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" type="uint64" name="MinFeeRateNanosPerKB" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" type="TrasactionFee[]" name="TrasactionFees" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed Transfer Creator Coin transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed Transfer Creator Coin transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -395,13 +298,13 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

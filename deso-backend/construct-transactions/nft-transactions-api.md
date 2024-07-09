@@ -8,8 +8,10 @@ description: >-
 
 
 
-{% swagger method="post" path="" baseUrl="/api/v0/create-nft" summary="Create NFT" %}
-{% swagger-description %}
+## Create NFT
+
+<mark style="color:green;">`POST`</mark> `/api/v0/create-nft`
+
 Create a create NFT transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.&#x20;
 
 Create NFT transactions mints the post specified by NFTPostHashHex as an NFT.
@@ -19,69 +21,28 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Create NFT](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/backend-api.service.ts#L916)\
 &#x20; \- Use CreateNFT to [mint a post as an NFT](https://github.com/deso-protocol/frontend/blob/60cf5571269c01b13da618e214d35d7f2b5614f1/src/app/mint-nft-modal/mint-nft-modal.component.ts#L227)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UpdaterPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user creating the NFT
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="NFTPostHashHex" type="String" required="true" %}
-Hash of the Post being minted as an NFT
-{% endswagger-parameter %}
+| Name                                                             | Type               | Description                                                                                                                                                                                                                                                                                         |
+| ---------------------------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NFTRoyaltyToCoinBasisPoints<mark style="color:red;">\*</mark>    | int                | Percentage (specified in basis points) of each sale that should be added to the DeSo locked on the post creator's coin                                                                                                                                                                              |
+| NFTRoyaltyToCreatorBasisPoints<mark style="color:red;">\*</mark> | int                | Percentage (specified in basis points) of each sale that should be taken as a royalty to the creator of the post                                                                                                                                                                                    |
+| TransactionFees                                                  | TransactionFee\[]  | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p>                                                                                                                           |
+| HasUnlockable<mark style="color:red;">\*</mark>                  | Boolean            | When true, owner must provide unlockable text when selling this NFT                                                                                                                                                                                                                                 |
+| UpdaterPublicKeyBase58Check<mark style="color:red;">\*</mark>    | String             | Public key of the user creating the NFT                                                                                                                                                                                                                                                             |
+| IsForSale<mark style="color:red;">\*</mark>                      | Boolean            | When true, put all serial numbers on sale                                                                                                                                                                                                                                                           |
+| MinBidAmountNanos                                                | int                | Minimum bid amount allowed for all serial numbers                                                                                                                                                                                                                                                   |
+| NFTPostHashHex<mark style="color:red;">\*</mark>                 | String             | Hash of the Post being minted as an NFT                                                                                                                                                                                                                                                             |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>           | uint64             | Rate per KB                                                                                                                                                                                                                                                                                         |
+| NumCopies<mark style="color:red;">\*</mark>                      | int                | Number of copies to mint                                                                                                                                                                                                                                                                            |
+| IsBuyNow                                                         | Boolean            | If IsForSale is false, this field is ignored. If IsBuyNow is true and IsForSale is true, all serial numbers will be put on sale and can be purchased outright at BuyNowPriceNanos. Please note that at this time, you cannot make an NFT contain an unlockable and set IsBuyNow to true.            |
+| BuyNowPriceNanos                                                 | uint64             | The price at which another user can purchase this NFT without requiring an accept NFT bid transaction from the NFT owner                                                                                                                                                                            |
+| AdditionalDESORoyaltiesMap                                       | map\[string]uint64 | A map of public key to basis points. Each public key specified will receive a royalty of each sale paid directly to their DeSo wallet. If a public key is mapped to 100 basis points, they will receive 1% of all sales.                                                                            |
+| AdditionalCoinRoyaltiesMap                                       | map\[string]uint64 | A map of public key to basis points. Each public key specified will have a percentage of each sale added to the amount of DESO locked in their profile's creator coin. If a public key is mapped  to 100 basis points, their creator coin will have 1% of the sale price added to the DESO locked.  |
 
-{% swagger-parameter in="body" name="NumCopies" type="int" required="true" %}
-Number of copies to mint
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="NFTRoyaltyToCreatorBasisPoints" type="int" required="true" %}
-Percentage (specified in basis points) of each sale that should be taken as a royalty to the creator of the post
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="NFTRoyaltyToCoinBasisPoints" type="int" required="true" %}
-Percentage (specified in basis points) of each sale that should be added to the DeSo locked on the post creator's coin
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="HasUnlockable" type="Boolean" required="true" %}
-When true, owner must provide unlockable text when selling this NFT
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IsForSale" type="Boolean" required="true" %}
-When true, put all serial numbers on sale
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinBidAmountNanos" type="int" %}
-Minimum bid amount allowed for all serial numbers
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IsBuyNow" type="Boolean" required="false" %}
-If IsForSale is false, this field is ignored. If IsBuyNow is true and IsForSale is true, all serial numbers will be put on sale and can be purchased outright at BuyNowPriceNanos. Please note that at this time, you cannot make an NFT contain an unlockable and set IsBuyNow to true.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="BuyNowPriceNanos" type="uint64" %}
-The price at which another user can purchase this NFT without requiring an accept NFT bid transaction from the NFT owner
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AdditionalDESORoyaltiesMap" type="map[string]uint64" %}
-A map of public key to basis points. Each public key specified will receive a royalty of each sale paid directly to their DeSo wallet. If a public key is mapped to 100 basis points, they will receive 1% of all sales.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="AdditionalCoinRoyaltiesMap" type="map[string]uint64" %}
-A map of public key to basis points. Each public key specified will have a percentage of each sale added to the amount of DESO locked in their profile's creator coin. If a public key is mapped  to 100 basis points, their creator coin will have 1% of the sale price added to the DESO locked. 
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint64" required="true" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionFees" type="TransactionFee[]" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed a Create NFT transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed a Create NFT transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -131,19 +92,21 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/update-nft" summary="Update NFT" %}
-{% swagger-description %}
+## Update NFT
+
+<mark style="color:green;">`POST`</mark> `/api/v0/update-nft`
+
 
 
 Create an update NFT transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
@@ -156,49 +119,23 @@ Example usages in frontend:  \
 &#x20; \- Make request to [Update NFT](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L868)\
 &#x20; \- Use UpdateNFT to [put an NFT on sale](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/create-nft-auction-modal/create-nft-auction-modal.component.ts#L49)\
 &#x20; \- Use UpdateNFT to [close the auction on an NFT without selling](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/close-nft-auction-modal/close-nft-auction-modal.component.ts#L34)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UpdaterPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user creating the NFT
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" required="true" name="NFTPostHashHex" type="String" %}
-Hash of the NFT Post being updated
-{% endswagger-parameter %}
+| Name                                                          | Type              | Description                                                                                                                                                                                                                                                                              |
+| ------------------------------------------------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UpdaterPublicKeyBase58Check<mark style="color:red;">\*</mark> | String            | Public key of the user creating the NFT                                                                                                                                                                                                                                                  |
+| NFTPostHashHex<mark style="color:red;">\*</mark>              | String            | Hash of the NFT Post being updated                                                                                                                                                                                                                                                       |
+| SerialNumber<mark style="color:red;">\*</mark>                | int               | serial number to update                                                                                                                                                                                                                                                                  |
+| IsForSale<mark style="color:red;">\*</mark>                   | Boolean           | When true, put this serial number on sale                                                                                                                                                                                                                                                |
+| MinBidAmountNanos<mark style="color:red;">\*</mark>           | int               | Minimum bid amount allowed for this serial number                                                                                                                                                                                                                                        |
+| MinFeeRteNanosPerKB<mark style="color:red;">\*</mark>         | uint64            | Rate per KB                                                                                                                                                                                                                                                                              |
+| TransactionFees                                               | TransactionFee\[] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p>                                                                                                                |
+| IsBuyNow                                                      | Boolean           | If IsForSale is false, this field is ignored. If IsBuyNow is true and IsForSale is true, all serial numbers will be put on sale and can be purchased outright at BuyNowPriceNanos. Please note that at this time, you cannot make an NFT contain an unlockable and set IsBuyNow to true. |
+| BuyNowPriceNanos                                              | uint64            | The price at which another user can purchase this NFT without requiring an accept NFT bid transaction from the NFT owner                                                                                                                                                                 |
 
-{% swagger-parameter in="body" required="true" name="SerialNumber" type="int" %}
-serial number to update
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" name="IsForSale" type="Boolean" %}
-When true, put this serial number on sale
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" name="MinBidAmountNanos" type="int" %}
-Minimum bid amount allowed for this serial number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="IsBuyNow" type="Boolean" %}
-If IsForSale is false, this field is ignored. If IsBuyNow is true and IsForSale is true, all serial numbers will be put on sale and can be purchased outright at BuyNowPriceNanos. Please note that at this time, you cannot make an NFT contain an unlockable and set IsBuyNow to true.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="BuyNowPriceNanos" type="uint64" %}
-The price at which another user can purchase this NFT without requiring an accept NFT bid transaction from the NFT owner
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinFeeRteNanosPerKB" type="uint64" required="true" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionFees" type="TransactionFee[]" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed an Update NFT transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed an Update NFT transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -244,19 +181,21 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/create-nft-bid" summary="Create NFT Bid" %}
-{% swagger-description %}
+## Create NFT Bid
+
+<mark style="color:green;">`POST`</mark> `/api/v0/create-nft-bid`
+
 Create an NFT bid transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
 
 NFT Bid transactions submit a bid on an NFT. If the owner of the NFT accepts this bid - by submitting an Accept NFT Bid transaction - the bidder will send the bid amount to the owner and in return receive the NFT.
@@ -268,37 +207,20 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Create NFT Bid](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L889)\
 &#x20; \- Use CreateNFTBid to [submit a bid for an NFT](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/place-bid-modal/place-bid-modal.component.ts#L102)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UpdaterPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user submitting the bid
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="NFTPostHashHex" type="String" required="true" %}
-Hash of the NFT Post being bid on
-{% endswagger-parameter %}
+| Name                                                          | Type            | Description                                                                                                                                                               |
+| ------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UpdaterPublicKeyBase58Check<mark style="color:red;">\*</mark> | String          | Public key of the user submitting the bid                                                                                                                                 |
+| NFTPostHashHex<mark style="color:red;">\*</mark>              | String          | Hash of the NFT Post being bid on                                                                                                                                         |
+| SerialNumber<mark style="color:red;">\*</mark>                | int             | serial number to bid on                                                                                                                                                   |
+| BidAmountNanos<mark style="color:red;">\*</mark>              | int             | Amount UpdaterPublicKeyBase58Check is bidding on this serial number                                                                                                       |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>        | uint64          | Rate per KB                                                                                                                                                               |
+| TransactionFees                                               | TransactionFee] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p> |
 
-{% swagger-parameter in="body" required="true" type="int" name="SerialNumber" %}
-serial number to bid on
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" type="int" name="BidAmountNanos" %}
-Amount UpdaterPublicKeyBase58Check is bidding on this serial number
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" type="uint64" name="MinFeeRateNanosPerKB" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionFees" type="TransactionFee]" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed an NFT Bid transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed an NFT Bid transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -340,19 +262,21 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/accept-nft-bid" summary="Accept NFT Bid" %}
-{% swagger-description %}
+## Accept NFT Bid
+
+<mark style="color:green;">`POST`</mark> `/api/v0/accept-nft-bid`
+
 Create an accept NFT Bid transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
 
 Accept NFT Bid transactions accepts a bid, divides the proceeds of the bid amount among the owner, creator, and creator coin based on royalties, and updates the owner of the NFT to be the bidder selected.
@@ -369,55 +293,22 @@ Example usages in frontend:\
 
 
 
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UpdaterPublicKeyBase58Check" type="String" required="true" %}
-Public key of the current NFT Owner
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="NFTPostHashHex" type="String" required="true" %}
-Hash of the NFT Post being sold
-{% endswagger-parameter %}
+| Name                                                          | Type              | Description                                                                                                                                                               |
+| ------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UpdaterPublicKeyBase58Check<mark style="color:red;">\*</mark> | String            | Public key of the current NFT Owner                                                                                                                                       |
+| NFTPostHashHex<mark style="color:red;">\*</mark>              | String            | Hash of the NFT Post being sold                                                                                                                                           |
+| SerialNumber<mark style="color:red;">\*</mark>                | int               | serial number to being sold                                                                                                                                               |
+| BidderPublicKeyBase58Check<mark style="color:red;">\*</mark>  | String            | Public key of the bidder being award the NFT                                                                                                                              |
+| BidAmountNanos<mark style="color:red;">\*</mark>              | int               | Bid amount being accepted                                                                                                                                                 |
+| EncryptedUnlockableText                                       | String            | <p>Text encrypted with a shared secret between the current owner and the bidder<br><br>Required if NFT has unlockable content</p>                                         |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>        | uint64            | Rate per KB                                                                                                                                                               |
+| TransactionFees                                               | TransactionFee\[] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p> |
 
-{% swagger-parameter in="body" name="SerialNumber" type="int" required="true" %}
-serial number to being sold
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="BidderPublicKeyBase58Check" required="true" type="String" %}
-Public key of the bidder being award the NFT
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="BidAmountNanos" type="int" required="true" %}
-Bid amount being accepted
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="EncryptedUnlockableText" type="String" %}
-Text encrypted with a shared secret between the current owner and the bidder
-
-\
-
-
-
-
-\
-
-
-Required if NFT has unlockable content
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinFeeRateNanosPerKB" required="true" type="uint64" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionFees" type="TransactionFee[]" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed an Accept NFT Bid transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed an Accept NFT Bid transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -469,19 +360,21 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/transfer-nft" summary="Transfer NFT" %}
-{% swagger-description %}
+## Transfer NFT
+
+<mark style="color:green;">`POST`</mark> `/api/v0/transfer-nft`
+
 Create a transfer NFT transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
 
 Transfer NFT transactions sends an NFT from the sender to the receiver at no cost to the receiver. NFT transfers will be pending until receiver submits an [#accept-nft-transfer](nft-transactions-api.md#accept-nft-transfer "mention")transaction
@@ -491,51 +384,21 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in [diamondapp.com](https://diamondapp.com)'s frontend:\
 &#x20; \- Make request to [Transfer NFT](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/backend-api.service.ts#L1068)\
 &#x20; \- Use Transfer NFT to [send NFT to another user](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/transfer-nft/transfer-nft.component.ts#L93)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="SenderPublicKeyBase58Check" type="String" required="true" %}
-Public key of the current NFT Owner
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="ReceiverPublicKeyBase58Check" type="String" required="true" %}
-Public key of the recipient of the NFT
-{% endswagger-parameter %}
+| Name                                                           | Type              | Description                                                                                                                                                               |
+| -------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SenderPublicKeyBase58Check<mark style="color:red;">\*</mark>   | String            | Public key of the current NFT Owner                                                                                                                                       |
+| ReceiverPublicKeyBase58Check<mark style="color:red;">\*</mark> | String            | Public key of the recipient of the NFT                                                                                                                                    |
+| NFTPostHashHex<mark style="color:red;">\*</mark>               | String            | Hash of the NFT Post being transferred                                                                                                                                    |
+| SerialNumber<mark style="color:red;">\*</mark>                 | int               | Serial number being transferred                                                                                                                                           |
+| EncryptedUnlockableText                                        | String            | <p>Text that encrypted with a shared secret between the current owner and the receiver<br><br>Required if NFT has unlockable content</p>                                  |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>         | uint64            | Rate per KB                                                                                                                                                               |
+| TransactionFees                                                | TransactionFee\[] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p> |
 
-{% swagger-parameter in="body" name="NFTPostHashHex" type="String" required="true" %}
-Hash of the NFT Post being transferred
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="SerialNumber" type="int" required="true" %}
-Serial number being transferred
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="EncryptedUnlockableText" type="String" required="false" %}
-Text that encrypted with a shared secret between the current owner and the receiver
-
-\
-
-
-
-
-\
-
-
-Required if NFT has unlockable content
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint64" required="true" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionFees" type="TransactionFee[]" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed Transfer NFT transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed Transfer NFT transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -580,19 +443,21 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/accept-nft-transfer" summary="Accept NFT Transfer" %}
-{% swagger-description %}
+## Accept NFT Transfer
+
+<mark style="color:green;">`POST`</mark> `/api/v0/accept-nft-transfer`
+
 Create an accept NFT Transfer transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
 
 Accept NFT Transfer transaction changes a transferred NFT status from pending to not pending. Since anybody can send a user an NFT, the recipient needs to accept the transfer before the NFT can appear on their profile in order to prevent users from sending spam NFTs.
@@ -608,33 +473,19 @@ Example usages in [diamondapp.com](https://diamondapp.com)'s frontend:\
 
 
 
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UpdaterPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user accepting the NFT transfer
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="NFTPostHashHex" type="String" required="true" %}
-Hash of the NFT Post for which the transfer is being accepted
-{% endswagger-parameter %}
+| Name                                                          | Type              | Description                                                                                                                                                               |
+| ------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UpdaterPublicKeyBase58Check<mark style="color:red;">\*</mark> | String            | Public key of the user accepting the NFT transfer                                                                                                                         |
+| NFTPostHashHex<mark style="color:red;">\*</mark>              | String            | Hash of the NFT Post for which the transfer is being accepted                                                                                                             |
+| SerialNumber<mark style="color:red;">\*</mark>                | int               | serial number for which the transfer is being accepted                                                                                                                    |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>        | uint64            | Rate per KB                                                                                                                                                               |
+| TransactionFees                                               | TransactionFee\[] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p> |
 
-{% swagger-parameter in="body" name="SerialNumber" type="int" required="true" %}
-serial number for which the transfer is being accepted
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="MinFeeRateNanosPerKB" type="uint64" required="true" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionFees" type="TransactionFee[]" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully construct an Accept NFT Transfer transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully construct an Accept NFT Transfer transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 
@@ -678,19 +529,21 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/burn-nft" summary="Burn NFT" %}
-{% swagger-description %}
+## Burn NFT
+
+<mark style="color:green;">`POST`</mark> `/api/v0/burn-nft`
+
 Create a Burn NFT transaction. Transaction needs to be signed and submitted through `api/v0/submit-transaction` before changes come into effect.
 
 NFT Burn transactions burns the NFT, meaning that no user can ever own that Post hash-serial number combination.
@@ -700,33 +553,19 @@ Endpoint implementation in backend.
 Example usages in frontend:\
 &#x20; \- Make request to [Burn NFT](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/backend-api.service.ts#L906)\
 &#x20; \- Use BurnNFT to [burn the NFT ](https://github.com/diamond-app/frontend/blob/735634e38dfa0605035ded19b46b92766ec856c4/src/app/nft-burn/nft-burn.component.ts#L89)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" required="true" name="UpdaterPublicKeyBase58Check" type="String" %}
-Public key of the user burning the NFT transfer
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" required="true" name="NFTPostHashHex" type="String" %}
-Hash of the NFT Post that is being burnt
-{% endswagger-parameter %}
+| Name                                                          | Type              | Description                                                                                                                                                               |
+| ------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UpdaterPublicKeyBase58Check<mark style="color:red;">\*</mark> | String            | Public key of the user burning the NFT transfer                                                                                                                           |
+| NFTPostHashHex<mark style="color:red;">\*</mark>              | String            | Hash of the NFT Post that is being burnt                                                                                                                                  |
+| SerialNumber<mark style="color:red;">\*</mark>                | int               | serial number that is being burnt                                                                                                                                         |
+| MinFeeRateNanosPerKB<mark style="color:red;">\*</mark>        | uint64            | Rate per KB                                                                                                                                                               |
+| TransactionFees                                               | TransactionFee\[] | <p>Array of</p><p><a data-mention href="./#transactionfee">#transactionfee</a></p><p>objects that define additional outputs that need to be added to this transaction</p> |
 
-{% swagger-parameter in="body" required="true" name="SerialNumber" type="int" %}
-serial number that is being burnt
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" type="uint64" name="MinFeeRateNanosPerKB" %}
-Rate per KB
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="TransactionFees" type="TransactionFee[]" required="false" %}
-Array of
-
-[#transactionfee](./#transactionfee "mention")
-
-objects that define additional outputs that need to be added to this transaction
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully constructed Burn NFT transaction" %}
+{% tabs %}
+{% tab title="200: OK Successfully constructed Burn NFT transaction" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -768,13 +607,13 @@ objects that define additional outputs that need to be added to this transaction
 ...coming soon! See comments in sample response for descriptions for now.
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

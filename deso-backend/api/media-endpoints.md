@@ -6,8 +6,10 @@ description: >-
 
 # Media Endpoints
 
-{% swagger method="post" path="" baseUrl="/api/v0/upload-image" summary="Upload Image" %}
-{% swagger-description %}
+## Upload Image
+
+<mark style="color:green;">`POST`</mark> `/api/v0/upload-image`
+
 Uploads an image to be included in a post and returns the URL where the image is stored. This endpoint also handles the resizing of the image.
 
 Note that the request body should have `multipart/form-data` as the content type.
@@ -17,21 +19,17 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Upload Image](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L825)\
 &#x20; \- Use UploadImage to [upload an image when a user is making a post](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/feed/feed-create-post/feed-create-post.component.ts#L279)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="UserPublicKeyBase58Check" type="String" required="true" %}
-Public key of the user uploading the image.
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="JWT" type="String" required="true" %}
-JWT of the user uploading the image.
-{% endswagger-parameter %}
+| Name                                                       | Type   | Description                                                                         |
+| ---------------------------------------------------------- | ------ | ----------------------------------------------------------------------------------- |
+| UserPublicKeyBase58Check<mark style="color:red;">\*</mark> | String | Public key of the user uploading the image.                                         |
+| JWT<mark style="color:red;">\*</mark>                      | String | JWT of the user uploading the image.                                                |
+| file<mark style="color:red;">\*</mark>                     | File   | image file to upload. Must be gif, jpeg, png, or webp file. Must be less than 10 MB |
 
-{% swagger-parameter in="body" name="file" type="File" required="true" %}
-image file to upload. Must be gif, jpeg, png, or webp file. Must be less than 10 MB
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully uploaded image and response has URL at which image can be found" %}
+{% tabs %}
+{% tab title="200: OK Successfully uploaded image and response has URL at which image can be found" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -47,19 +45,21 @@ image file to upload. Must be gif, jpeg, png, or webp file. Must be less than 10
 | ImageURL | String | URL at which the uploaded image can be found |
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/upload-video" summary="Upload Video" %}
-{% swagger-description %}
+## Upload Video
+
+<mark style="color:green;">`POST`</mark> `/api/v0/upload-video`
+
 UploadVideo creates a one-time tokenized URL that can be used to upload larger video files using the tus protocol. The client uses the Location header in the response from this function to upload the file. The client uses the Stream-Media-Id header in the response from cloudflare to understand how to access the file for streaming.&#x20;
 
 For more details, see the Cloudflare documentation on direct creator uploads [here](https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads#using-tus-recommended-for-videos-over-200mb)
@@ -69,35 +69,32 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 For an example of uploading a video using this endpoint and the tus protocol, see the [implementation in frontend](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/feed/feed-create-post/feed-create-post.component.ts#L291).\
 \
 After the upload finishes, you can check if the video is ready to be streamed by hitting the [#get-video-status](media-endpoints.md#get-video-status "mention")endpoint
-{% endswagger-description %}
 
-{% swagger-parameter in="header" name="Upload-Length" type="Number" required="true" %}
-Length of video to be uploaded in bytes
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="header" name="Upload-Metadata" type="JSON" %}
-Arbitrary metadata values - see 
+| Name                                            | Type   | Description                                                                                                                                                                                   |
+| ----------------------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Upload-Length<mark style="color:red;">\*</mark> | Number | Length of video to be uploaded in bytes                                                                                                                                                       |
+| Upload-Metadata                                 | JSON   | Arbitrary metadata values - see [cloudflare documentation for more details](https://developers.cloudflare.com/stream/uploading-videos/upload-video-file#supported-options-in-upload-metadata) |
 
-[cloudflare documentation for more details](https://developers.cloudflare.com/stream/uploading-videos/upload-video-file#supported-options-in-upload-metadata)
-
-
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully created one-time tokenized URL that can be used to upload a video" %}
+{% tabs %}
+{% tab title="200: OK Successfully created one-time tokenized URL that can be used to upload a video" %}
 The Location header specifies the one-time tokenized URL. The Stream-Media-Id header is the ID used to stream the video from cloudflare after uploading the video.
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="get" path="" baseUrl="/api/v0/get-video-status/{videoId}" summary="Get Video Status" %}
-{% swagger-description %}
+## Get Video Status
+
+<mark style="color:blue;">`GET`</mark> `/api/v0/get-video-status/{videoId}`
+
 Get Video Status queries cloudflare's API to see if a video is ready to be streamed. This is useful in showing a preview of an uploaded video to an end-user when they are creating a post.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/media.go#L372).
@@ -105,17 +102,15 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usage in frontend:\
 &#x20; \- Make request to [Get Video Status](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L2228)\
 &#x20; \- Use GetVideoStatus to [poll and see if a video is ready to be streamed after a user finished uploading it.](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/lib/services/stream/cloudflare-stream-service.ts#L31)
-{% endswagger-description %}
 
-{% swagger-parameter in="path" name="videoId" type="String" required="true" %}
-videoId retrieved from the 
+#### Path Parameters
 
-`stream-media-id`
+| Name                                      | Type   | Description                                                                |
+| ----------------------------------------- | ------ | -------------------------------------------------------------------------- |
+| videoId<mark style="color:red;">\*</mark> | String | videoId retrieved from the `stream-media-id` header when uploading a video |
 
- header when uploading a video
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully queried Cloudflare for the status of the video" %}
+{% tabs %}
+{% tab title="200: OK Successfully queried Cloudflare for the status of the video" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -131,19 +126,21 @@ videoId retrieved from the
 | ReadyToStream | Boolean | If true, the video is ready to be streamed. If false, the video is still being processed by cloudflare |
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="post" path="" baseUrl="/api/v0/get-full-tiktok-url" summary="Get Full TikTok URL" %}
-{% swagger-description %}
+## Get Full TikTok URL
+
+<mark style="color:green;">`POST`</mark> `/api/v0/get-full-tiktok-url`
+
 Given a short video ID of a TikTok, find the URL that can be used to embed this video. The short URL users get when copying a link to a TikTok from TikTok's mobile app isn't embeddable, so this endpoint allows us to find the desktop version of the URL from which we can construct an embeddable version of the URL.
 
 Endpoint implementation in [backend](https://github.com/deso-protocol/backend/blob/709cbfbc62cf3a0e6d56c393e555fc277c93fb76/routes/media.go#L244).
@@ -151,17 +148,15 @@ Endpoint implementation in [backend](https://github.com/deso-protocol/backend/bl
 Example usages in frontend:\
 &#x20; \- Make request to [Get Full TikTok URL](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/app/backend-api.service.ts#L1962)\
 &#x20; \- Use GetFullTikTokURL to [get an embeddable URL for the short form TikTok url](https://github.com/deso-protocol/frontend/blob/e006beb72867f6d48a78adb1d126c66144a4298c/src/lib/services/embed-url-parser-service/embed-url-parser-service.ts#L147)
-{% endswagger-description %}
 
-{% swagger-parameter in="body" name="TikTokShortVideoID" type="String" required="true" %}
-Video ID found at the end of a URL copied from the TikTok mobile app.&#x20;
+#### Request Body
 
+| Name                                                 | Type   | Description                                                                                                                                                                          |
+| ---------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| TikTokShortVideoID<mark style="color:red;">\*</mark> | String | <p>Video ID found at the end of a URL copied from the TikTok mobile app. </p><p></p><p>For example, <code>TTPd2Eobq3</code> is the VideoID in https://vm.tiktok.com/TTPd2Eobq3/`</p> |
 
-
-For example, `TTPd2Eobq3` is the VideoID in https://vm.tiktok.com/TTPd2Eobq3/\`
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="Successfully retrieved the embeddable version of the mobile TikTok URL provided" %}
+{% tabs %}
+{% tab title="200: OK Successfully retrieved the embeddable version of the mobile TikTok URL provided" %}
 {% tabs %}
 {% tab title="Sample Response" %}
 ```json5
@@ -177,13 +172,13 @@ For example, `TTPd2Eobq3` is the VideoID in https://vm.tiktok.com/TTPd2Eobq3/\`
 | FullTikTokURL | String | Desktop version of the mobile TikTok URL provided in the request body that can be embedded in a post |
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}

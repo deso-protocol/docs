@@ -208,14 +208,7 @@ const derive = window.open('https://identity.deso.org/derive');
 
 #### URL Parameters
 
-| Name                     | Type   | Description                                                                                                                                                                                          |
-| ------------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| callback (optional)      | string | Callback URL for the payload as explained in [#callbacks](./#callbacks "mention")                                                                                                                    |
-| testnet (optional)       | bool   | Whether we're on testnet or mainnet. Default is `false`                                                                                                                                              |
-| webview (optional)       | bool   | Whether we're using webview. Default is `false`                                                                                                                                                      |
-| TransactionSpendingLimit | string | [#transactionspendinglimitresponse](../../deso-backend/api/#transactionspendinglimitresponse "mention") as a JSON string. Use `encodeURIComponent(JSON.stringify(transactionSpendingLimitResponse))` |
-| PublicKey                | String | Public key (in base 58) for which you want to generate a derived key (Optional)                                                                                                                      |
-| DerivedPublicKey         | String | Derived key (in base 58) that you want to use instead of allowing identity to generate a new one (Optional)                                                                                          |
+<table><thead><tr><th width="265">Name</th><th width="150">Type</th><th>Description</th></tr></thead><tbody><tr><td>callback (optional)</td><td>string</td><td>Callback URL for the payload as explained in <a data-mention href="./#callbacks">#callbacks</a></td></tr><tr><td>testnet (optional)</td><td>bool</td><td>Whether we're on testnet or mainnet. Default is <code>false</code></td></tr><tr><td>webview (optional)</td><td>bool</td><td>Whether we're using webview. Default is <code>false</code></td></tr><tr><td>TransactionSpendingLimit</td><td>string</td><td><a data-mention href="../../deso-backend/api/#transactionspendinglimitresponse">#transactionspendinglimitresponse</a> as a JSON string. Use <code>encodeURIComponent(JSON.stringify(transactionSpendingLimitResponse))</code></td></tr><tr><td>PublicKey</td><td>String</td><td>Public key (in base 58) for which you want to generate a derived key (Optional)</td></tr><tr><td>DerivedPublicKey</td><td>String</td><td>Derived key (in base 58) that you want to use instead of allowing identity to generate a new one (Optional)</td></tr></tbody></table>
 
 #### Response
 
