@@ -63,9 +63,9 @@ description: Instructions on how to stake/unstake $DESO and run a validator
   * These docs will be refreshed after the launch of Revolution PoS on mainnet so note that some things may be out of date!
   * Good starting points:
     * [Current Roadmap](https://www.google.com/url?q=https://docs.deso.org/deso-roadmap\&sa=D\&source=editors\&ust=1720503195002740\&usg=AOvVaw0NGrUqGCR9vEjJXfN-UyrQ)
-      * [List of Notable DeSo Apps](https://www.google.com/url?q=https://docs.deso.org/deso-applications\&sa=D\&source=editors\&ust=1720503195002931\&usg=AOvVaw20C2NX8OczFmw28a3uWWA2)
-      * [Building a DeSo App](https://www.google.com/url?q=https://docs.deso.org/deso-tutorial-build-apps\&sa=D\&source=editors\&ust=1720503195003131\&usg=AOvVaw1rsbzfbl\_Wzxg9rMG4JtsQ) (Getting Started)
-      * [Architecture Overview](https://www.google.com/url?q=https://docs.deso.org/deso-repos/architecture-overview\&sa=D\&source=editors\&ust=1720503195003304\&usg=AOvVaw3E1LJx8t-3VpqyN7KlRhu-)
+    * [List of Notable DeSo Apps](https://www.google.com/url?q=https://docs.deso.org/deso-applications\&sa=D\&source=editors\&ust=1720503195002931\&usg=AOvVaw20C2NX8OczFmw28a3uWWA2)
+    * [Building a DeSo App](https://www.google.com/url?q=https://docs.deso.org/deso-tutorial-build-apps\&sa=D\&source=editors\&ust=1720503195003131\&usg=AOvVaw1rsbzfbl\_Wzxg9rMG4JtsQ) (Getting Started)
+    * [Architecture Overview](https://www.google.com/url?q=https://docs.deso.org/deso-repos/architecture-overview\&sa=D\&source=editors\&ust=1720503195003304\&usg=AOvVaw3E1LJx8t-3VpqyN7KlRhu-)
 * [Exchange listing API](https://www.google.com/url?q=https://docs.deso.org/deso-exchange-listings/exchange-listing-api\&sa=D\&source=editors\&ust=1720503195003573\&usg=AOvVaw2ndD5F9vsFNHmG\_lZl12NA)
   * $DESO is currently listed on [Coinbase](https://www.google.com/url?q=https://www.coinbase.com/advanced-trade/spot/DESO-USD\&sa=D\&source=editors\&ust=1720503195003820\&usg=AOvVaw3YhNSw3s54rBVUdd2sPKvU), [Gate](https://www.google.com/url?q=https://www.gate.io/trade/DESO\_USDT?ref%3D3018394\&sa=D\&source=editors\&ust=1720503195003953\&usg=AOvVaw1-q9UFr73NIEpC6OEvPcdb), and [Huobi](https://www.google.com/url?q=https://www.htx.com/trade/deso\_usdt?invite\_code%3Dd8c53\&sa=D\&source=editors\&ust=1720503195004082\&usg=AOvVaw0RsBe-OA7PUq0fg4oG2NEq).
   * It can also be traded permissionlessly via the DeSo DEX on [Openfund](https://www.google.com/url?q=https://openfund.com/trade/deso\&sa=D\&source=editors\&ust=1720503195004269\&usg=AOvVaw08zhRM-XX39fmRl-km-dR8) or [HeroSwap](https://www.google.com/url?q=https://heroswap.com\&sa=D\&source=editors\&ust=1720503195004376\&usg=AOvVaw3UfkK1iWSFc7as6Wx5rJdl).
@@ -281,7 +281,7 @@ Below are the instructions for setting up a validator. We assume you’ve read t
 
       * The other benefit of having a script to generate the pubkey+authorization is that it allows for totally offline generation of validator pubkey and authorization, which is needed by custodians and exchanges that want to stake.\
 
-    * **Set POS\_VALIDATOR\_SEED in your config.** Note that there is one missing step in the video, which is you need to set your `POS_VALIDATOR_SEED` in the `testnet.docker-compose.yml` or `mainnet.docker-compose.yml` file to be equal to the seed you used with the [validator key generator](https://www.google.com/url?q=https://github.com/deso-protocol/validator-key-generator\&sa=D\&source=editors\&ust=1720503195015904\&usg=AOvVaw1BfinK5cUp9norf8mSS4zI). This is how your validator becomes capable of signing blocks with its bls keypair.\
+    * **Set POS\_VALIDATOR\_SEED in your config.** Note that there is one missing step in the video, which is you need to set your `POS_VALIDATOR_SEED` in the `testnet.docker-compose.yml` or `mainnet.docker-compose.yml` file to be **equal** to the seed you used with the [validator key generator](https://www.google.com/url?q=https://github.com/deso-protocol/validator-key-generator\&sa=D\&source=editors\&ust=1720503195015904\&usg=AOvVaw1BfinK5cUp9norf8mSS4zI). This is how your validator becomes capable of signing blocks with its bls keypair.\
 
   * **Commission.** This is what percentage of the staking rewards you get to keep. A lower commission will attract more people to stake with you.\
 
@@ -295,7 +295,7 @@ Below are the instructions for setting up a validator. We assume you’ve read t
 
 * **Keeping your validator up.** If your validator is down for a 12-hour period, it will be “jailed.” You will see this in the validator UI.\
   \
-  To **unjail** your validator, you will need to go back to the validator registration page after you’ve fixed your node and hit “Unjail Validator.” \
+  To **unjail** your validator, you will need to go back to the [validator registration page](https://explorer.deso.com/validator-settings) after you’ve fixed your node and hit “Unjail Validator.” \
   \
   Note that there will be a cooldown of a few hours before your validator is able to vote in consensus again.
 
