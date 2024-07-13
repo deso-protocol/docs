@@ -102,11 +102,15 @@ Answers to common questions and issues about running your own node:
 
 ### What are the minimum requirements for syncing a node?
 
-We recommend having a machine with at least 32GB of RAM and 50GB of storage.
+We recommend having a machine with at least 32GB of RAM and 100GB of storage.
 
 ### How do I configure SSL?
 
 There is an example SSL configuration in `nginx.dev`.
+
+### How do I host a node on AWS EC2?
+
+Community member [@sigil](https://bitclout.com/u/sigil) and [@aryanm](https://bitclout.com/u/aryanm) put together a guide that can be found [here](https://docs.bitswap.network/setting-up-a-bitclout-node-using-aws-ec2).
 
 ### How do I use the BlockCypher API?
 
@@ -141,3 +145,6 @@ Twilio provides an SMS API that allows you to confirm user phone numbers and thu
 
 Twilio pricing can be reviewed [here](https://www.twilio.com/sms/pricing/us).
 
+### My node crashed with error 'exit code 137'?
+
+You will need to increase the resources of your machine or Docker image. Node software requires a large amount of RAM for the initial sync and indexing process.
