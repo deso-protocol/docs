@@ -161,7 +161,7 @@ extra data, values must be strings. This is an arbitrary json object that can be
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="IsHidden" type="Boolean" required="false" %}
-When true, this post will be hidden
+When true, this post will be hidden. You can't hide a post when creating it, you must submit a second transaction to hide the post.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" required="true" name="MinFeeRateNanosPerKB" type="uint64" %}
