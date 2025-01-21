@@ -11,11 +11,13 @@
 * [🏛️ DeSo Governance](deso-governance.md)
 * [⭐ DeSo Tutorial (Build Apps)](deso-tutorial-build-apps.md)
 * [📅 DeSo Roadmap](deso-roadmap.md)
-* [🛠️ DeSo Tech Stack](deso-tech-stack.md)
-* [🌐 DeSo Applications](deso-applications.md)
 * [🔍 DeSo Block Explorer](https://explorer.deso.com)
 * [💸 DeSo Wallet](https://wallet.deso.com)
 * [💬 DeSo Chat Protocol](https://chat.deso.com)
+* [👽 Openfund](https://openfund.com)
+* [👀 Focus](https://focus.xyz)
+* [🛠️ DeSo Tech Stack](deso-tech-stack.md)
+* [🌐 DeSo Applications](deso-applications.md)
 
 ## DeSo Blockchain
 
