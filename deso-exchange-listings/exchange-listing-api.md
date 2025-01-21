@@ -1,4 +1,4 @@
-# 1⃣ Exchange Listing: API
+# 1️⃣ Exchange Listing: API
 
 The developer community recommends using the open-source Rosetta API implementation, currently used by Coinbase, for integrating DeSo on an exchange: [https://github.com/deso-protocol/rosetta-deso](https://github.com/deso-protocol/rosetta-deso).\
 \
@@ -47,7 +47,7 @@ What we will use in our examples:
 
 All of the commands and examples in this guide will assume that you have a DeSo node running on your local machine.\
 \
-To set one up, simply follow the instructions in the open-source /run repository. If you run into any trouble, ask for help in the #nodes channel on the [official DeSo Discord](https://discord.gg/nrT4RAx5):
+To set one up, simply follow the instructions in the open-source /run repository. If you run into any trouble, ask for help using [this contact info](../openfund/the-deso-python-sdk/getting-help-from-the-community.md).
 
 * [https://github.com/deso-protocol/run](https://github.com/deso-protocol/run)\
 
