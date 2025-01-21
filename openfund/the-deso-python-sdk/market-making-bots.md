@@ -1,3 +1,7 @@
+---
+coverY: 0
+---
+
 # Market-Making Bots
 
 Use the [DeSo Python SDK](https://github.com/deso-protocol/deso-python-sdk) to complete the following Challenge Exercises, and build a fully-functioning market-making bot:

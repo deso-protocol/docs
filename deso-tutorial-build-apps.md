@@ -6,9 +6,11 @@ description: Everything you need to know to build and deploy your first DeSo app
 
 ### Getting Help
 
-If you need help building, you can always ask questions in our community [Discord](https://discord.gg/nrT4RAx5), where you can post in the #dev-general channel and someone will get back to you.
+Up-front, if you ever run into trouble and want to talk to someone, the [DeSo PoS Discussion Telegram Channel](https://t.me/deso_pos_discussion) is a great resource. Everyone who runs a node is in there, as well as members of the DeSo core team. Many there are generally very knowledgeable on the ins and outs of the DeSo blockchain, and super helpful to new users trying to understand what’s going on. We used to run a Discord, but we’ve found a simple dev-focused Telegram channel works better.
 
-And if all else fails, you can always get our attention by @-mentioning @nader, @lazynina, @jacksondean or @stas\_kh, or @deso on any DeSo app, such as [Diamond](https://diamondapp.com).
+If you ever run into issues while doing a swap, the [HeroSwap Support](https://t.me/heroswap) channel can help you. This shouldn’t be needed but we include it here for completeness.
+
+And if all else fails, you can always get our attention by @-mentioning @nader, @lazynina, @stas\_kh, or @deso on any DeSo app, such as [Openfund](https://openfund.com), [Focus](https://focus.xyz), and [Diamond](https://diamondapp.com).
 
 ### Dev Setup
 
