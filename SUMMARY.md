@@ -10,6 +10,9 @@
   * [Designed for the End-Game](deso-tokenomics/designed-for-the-end-game.md)
 * [🏛️ DeSo Governance](deso-governance.md)
 * [⭐ DeSo Tutorial (Build Apps)](deso-tutorial-build-apps.md)
+* [🖥️ Node Architecture Overview](architecture-overview/README.md)
+  * [Setup a Node & Frontend Locally](architecture-overview/dev-setup.md)
+  * [Making Your First Changes](architecture-overview/making-your-first-changes.md)
 * [📅 DeSo Roadmap](deso-roadmap.md)
 * [🔍 DeSo Block Explorer](https://explorer.deso.com)
 * [💸 DeSo Wallet](https://wallet.deso.com)
@@ -38,10 +41,6 @@
 * [5️⃣ Social Tipping](deso-features/social-tipping.md)
 
 ## DeSo Repos
-
-* [1️⃣ Architecture Overview](deso-repos/architecture-overview/README.md)
-  * [Setup a Node & Frontend Locally](deso-repos/architecture-overview/dev-setup.md)
-  * [Making Your First Changes](deso-repos/architecture-overview/making-your-first-changes.md)
 
 ## DeSo Identity
 

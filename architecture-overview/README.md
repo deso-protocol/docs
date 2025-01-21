@@ -1,4 +1,4 @@
-# 1️⃣ Architecture Overview
+# 🖥️ Node Architecture Overview
 
 _TODO: This was written when DeSo was running on Proof of Work, but it's still a great reference. See_ [_here_](https://revolution.deso.com) _for info about Proof of Stake upgrades._
 
@@ -22,7 +22,7 @@ The DeSo Foundation prepared sample code that you can check out, and you can run
 
 Below is a simple diagram that shows visually how these repositories fit together:
 
-![](../../.gitbook/assets/image%20\(14\).png)
+![](../.gitbook/assets/image%20\(14\).png)
 
 ## Overview of the architecture
 
