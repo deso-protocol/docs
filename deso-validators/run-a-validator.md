@@ -6,7 +6,7 @@ description: Instructions on how to stake/unstake $DESO and run a validator
 
 ## Getting Help from the Community <a href="#h.7vr9ab79ocun" id="h.7vr9ab79ocun"></a>
 
-If you get stuck at any point, [go here for help](run-a-validator.md#h.7vr9ab79ocun).
+If you get stuck at any point, [go here for help](../openfund/the-deso-python-sdk/getting-help-from-the-community.md).
 
 ## Video Walkthroughs <a href="#h.7vr9ab79ocun" id="h.7vr9ab79ocun"></a>
 
