@@ -1,12 +1,10 @@
-# 1⃣ Architecture Overview
+# 1️⃣ Architecture Overview
+
+_TODO: This was written when DeSo was running on Proof of Work, but it's still a great reference. See_ [_here_](https://revolution.deso.com) _for info about Proof of Stake upgrades._
 
 ## Introduction: The DeSo Repos
 
-Applications running on the DeSo blockchain such as [Diamond](https://diamondapp.com) typically consist of four components: frontend, backend, core, and identity.
-
-This software architecture encapsulates the entirety of what needs to be run in order to make a Web3 decentralized social platform like Diamond.
-
-This architecture gives you the ability to you run your own DeSo node and get access to all the blockchain data.
+The code powering a DeSo node like node.deso.org consists of four repos: frontend, backend, core, and identity. When you run a DeSo node using this code, you get access to all of the blockchain data from the beginning of time (late 2020).
 
 The DeSo Foundation prepared sample code that you can check out, and you can run it to quickly **create** **your own social network**!
 
@@ -59,9 +57,9 @@ We use the following commit hashes to refer to the code:
     \
     When we spin up new nodes, we often use `--connect-ips` with a trusted node because it's easier than bootstrapping from the sea of nodes that are running in the wider internet.\
 
-* The ConnectionManager is responsible for managing all connections with peers. It's initialized using a [`Start()`](https://github.com/deso-protocol/core/blob/135c03a/lib/connection\_manager.go#L769) function that is kicked off in main.go. Tracing the code starting from this function is a great way to understand how connections with peers are established and maintained.\
+* The ConnectionManager is responsible for managing all connections with peers. It's initialized using a [`Start()`](https://github.com/deso-protocol/core/blob/135c03a/lib/connection_manager.go#L769) function that is kicked off in main.go. Tracing the code starting from this function is a great way to understand how connections with peers are established and maintained.\
 
-* When the ConnectionManager connects to a peer, it does a "version negotiation" similar to Bitcoin. This happens in [`ConnectPeer()`](https://github.com/deso-protocol/core/blob/135c03a/lib/connection\_manager.go#L372). If the peer passes this version negotiation, then the peer is passed off to `server.go` via a "newPeerChan." server.go is then responsible for doing higher-level interactions with the peer.\
+* When the ConnectionManager connects to a peer, it does a "version negotiation" similar to Bitcoin. This happens in [`ConnectPeer()`](https://github.com/deso-protocol/core/blob/135c03a/lib/connection_manager.go#L372). If the peer passes this version negotiation, then the peer is passed off to `server.go` via a "newPeerChan." server.go is then responsible for doing higher-level interactions with the peer.\
 
   * `server.go` is started using a [`Start()`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L1720), which is a good place to start tracing through it. `server.go` can be thought of as the "main loop" for the node.\
     \
@@ -120,23 +118,23 @@ We use the following commit hashes to refer to the code:
 
     * When a transaction is processed in `server.go`, it is basically just calling [`processTransaction()`](https://github.com/deso-protocol/core/blob/135c03a/lib/mempool.go#L1887) in `mempool.go`.\
       \
-      If the transaction is valid then it will be added to the mempool, and if not then it will be rejected. In order to validate a transaction, mempool uses the previously mentioned [`ConnectTransaction()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L6043) function defined in `block_view.go`.\
+      If the transaction is valid then it will be added to the mempool, and if not then it will be rejected. In order to validate a transaction, mempool uses the previously mentioned [`ConnectTransaction()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L6043) function defined in `block_view.go`.\
 
 * Now we understand how a node syncs initial blocks, and how it accepts new blocks and transactions in the steady-state. The next step is to understand how blocks are created and mined:\
 
-  * `block_producer.go` runs in a continuous loop kicked off via a [`Start()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_producer.go#L522) function called in main.go. `Start()` calls [`UpdateLatestBlockTemplate()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_producer.go#L476) at regular intervals to create new blocks for miners to mine. This is a great function to trace.\
+  * `block_producer.go` runs in a continuous loop kicked off via a [`Start()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_producer.go#L522) function called in main.go. `Start()` calls [`UpdateLatestBlockTemplate()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_producer.go#L476) at regular intervals to create new blocks for miners to mine. This is a great function to trace.\
 
-  * Function [`_getBlockTemplate()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_producer.go#L110) contains the logic for constructing a new block. It basically does the following:
+  * Function [`_getBlockTemplate()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_producer.go#L110) contains the logic for constructing a new block. It basically does the following:
     * Add txns from the mempool to the block until the block is full.
     * Compute the fee, merkle root, etc.\
 
-  * Newly-created "block template" is added to `recentBlockTemplatesProduced` in [`AddBlockTemplate()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_producer.go#L376).\
+  * Newly-created "block template" is added to `recentBlockTemplatesProduced` in [`AddBlockTemplate()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_producer.go#L376).\
 
   * `block_producer.go` just produces block templates, but it's up to miners to compute winning hashes. That happens via a remote process as follows:\
 
     * Every node exposes two functions via JSON API: [`GetBlockTemplate()`](https://github.com/deso-protocol/backend/tree/main/routes#L10372) and [`SubmitBlock()`](https://github.com/deso-protocol/backend/tree/main/routes#L10445). The URL paths for these and all other API functions can be seen [here](https://github.com/deso-protocol/backend/tree/main/routes#L9638) and [here](https://github.com/deso-protocol/core/blob/135c03a/lib/api.go#L63) (the latter powers the block explorer).\
 
-    * Miners run [`remote_miner_main.go`](https://github.com/deso-protocol/core/blob/135c03a/remote\_miner\_main.go) and connect to any node they want via a flag. This can be their own local node or a remote node like node.deso.org. `remote_miner_main.go` will continuously call `GetBlockTemplate()` on the chosen node and hash it until it's found a block.\
+    * Miners run [`remote_miner_main.go`](https://github.com/deso-protocol/core/blob/135c03a/remote_miner_main.go) and connect to any node they want via a flag. This can be their own local node or a remote node like node.deso.org. `remote_miner_main.go` will continuously call `GetBlockTemplate()` on the chosen node and hash it until it's found a block.\
       \
       Once it has found a winning hash, it calls `SubmitBlock()`, which then causes the node to process it and broadcast it to the rest of the network.\
 
@@ -154,11 +152,11 @@ We use the following commit hashes to refer to the code:
     * `ProcessBlock()` notifies `server.go` again by [enqueing a `MsgDeSoBlockAccepted`](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L2135) message at the end, triggering a call to [`_handleBlockAccepted`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L1127).
       * This creates an `INV` for the new block that gets relayed to all the peers who will then request it from this node.\
 
-* There is one more important thread that a node runs at startup, which is the BitcoinManager thread defined in `bitcoin_manager.go`. Like everything else, it has a [`Start()`](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L2105) function that is kicked off in `main.go` via `server.go` (called [here](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L1741). It works as follows:\
+* There is one more important thread that a node runs at startup, which is the BitcoinManager thread defined in `bitcoin_manager.go`. Like everything else, it has a [`Start()`](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L2105) function that is kicked off in `main.go` via `server.go` (called [here](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L1741). It works as follows:\
 
-  * It looks for a Bitcoin peer and connects to it through [`_getBitcoinPeer()`](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L1741).\
+  * It looks for a Bitcoin peer and connects to it through [`_getBitcoinPeer()`](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L1741).\
 
-  * It sends the Bitcoin peer a [`GetHeaders`](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L1985) and kicks off a single-threaded main loop with its peer [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L2001).\
+  * It sends the Bitcoin peer a [`GetHeaders`](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L1985) and kicks off a single-threaded main loop with its peer [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L2001).\
 
   * It downloads headers until it is fully synced with the Bitcoin peer.
     * All we really need from a Bitcoin node is its header chain.
@@ -166,13 +164,13 @@ We use the following commit hashes to refer to the code:
 
   * In addition to the header chain, new blocks are downloaded from the Bitcoin node in order to extract valid BitcoinExchange transactions from them. Basically, any transaction that sends Bitcoin to the sink address, [defined here](https://github.com/deso-protocol/core/blob/135c03a/lib/constants.go#L506), is recognized as being able to print DeSo on the Bitcoin chain.\
 
-    * Blocks are downloaded from the Bitcoin peer whenever a new header is received from the peer [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L1414) and [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L1333).\
+    * Blocks are downloaded from the Bitcoin peer whenever a new header is received from the peer [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L1414) and [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L1333).\
 
-    * You can see how the extraction of a BitcoinExchange transaction works [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L1632).\
+    * You can see how the extraction of a BitcoinExchange transaction works [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L1632).\
 
-  * Like other services, whenever the BitcoinManager gets some new transactions or headers, it notifies server.go by adding a message that will be processed by `messageHandler`. This happens [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L1098).\
+  * Like other services, whenever the BitcoinManager gets some new transactions or headers, it notifies server.go by adding a message that will be processed by `messageHandler`. This happens [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L1098).\
 
-  * The BitcoinManager does some other things, like for example it is used to broadcast BitcoinExchange transactions to many peers at once [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin\_manager.go#L1806). But its main purpose is to download the Bitcoin header chain and, to a lesser extent, to download new blocks and extract valid BitcoinExchange transactions from them.\
+  * The BitcoinManager does some other things, like for example it is used to broadcast BitcoinExchange transactions to many peers at once [here](https://github.com/deso-protocol/core/blob/135c03a/lib/bitcoin_manager.go#L1806). But its main purpose is to download the Bitcoin header chain and, to a lesser extent, to download new blocks and extract valid BitcoinExchange transactions from them.\
 
   * Note also that using a single Bitcoin peer may seem insecure, but because the node checks the minimum work is above a certain threshold, it's generally not an issue.\
     \
@@ -267,7 +265,7 @@ Below we trace how seeds and transactions are created while giving detail on the
 
   * The transaction is then validated and broadcasted in [`VerifyAndBroadcastTransaction()`](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L226).\
 
-    * It does [some pre-validation](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L2155) of the transaction by calling [`ConnectTransaction()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L6043) on it.\
+    * It does [some pre-validation](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L2155) of the transaction by calling [`ConnectTransaction()`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L6043) on it.\
 
     * If the validation passes then it calls [`BroadcastTransaction()`](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L209), which calls [`_addNewTxn()`](https://github.com/deso-protocol/core/blob/135c03a/lib/server.go#L1023) in server.go, which adds the transaction to the mempool calling [`ProcessTransaction()`](https://github.com/deso-protocol/core/blob/135c03a/lib/mempool.go#L1943).\
 
@@ -339,39 +337,39 @@ Below we trace how seeds and transactions are created while giving detail on the
 
 ### Transaction validation
 
-* Virtually all transaction validation happens in [`_connectTransaction`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L5022) in `block_view.go`.
+* Virtually all transaction validation happens in [`_connectTransaction`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L5022) in `block_view.go`.
 * Validation works by applying the transaction to a "view," which is basically a "simulation" of what would happen if the transaction were written to the database, but that doesn’t actually modify the database.\
   \
-  This is useful because a view can allow you to "simulate" what would happen if you applied a bunch of transactions to the database in sequence in order to validate whole blocks before ever actually writing anything to the database. And this is exactly what [`ConnectBlock`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L5120) does.\
+  This is useful because a view can allow you to "simulate" what would happen if you applied a bunch of transactions to the database in sequence in order to validate whole blocks before ever actually writing anything to the database. And this is exactly what [`ConnectBlock`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L5120) does.\
 
   * A view is basically a "copy on write" system. When a transaction requires something to be written to the database, an in-memory entry is created representing that entry.\
     \
-    This generally happens in calls to \_set.\*mappings and \_get.\*, such as [`_setProfileEntryMappings`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L2873) and [`_getProfileEntryForUsername`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L2757).\
+    This generally happens in calls to \_set.\*mappings and \_get.\*, such as [`_setProfileEntryMappings`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L2873) and [`_getProfileEntryForUsername`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L2757).\
 
-* If all of the transactions that have been applied to a view appear to be valid, the view can be "flushed" to the database, which writes all of the updates those transactions produced to the database. The flush code for the view is [here](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L6503), and it delegates to individual flush functions [here](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L6466).\
+* If all of the transactions that have been applied to a view appear to be valid, the view can be "flushed" to the database, which writes all of the updates those transactions produced to the database. The flush code for the view is [here](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L6503), and it delegates to individual flush functions [here](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L6466).\
 
-  * In most cases, flushing to the db just requires first [deleting entries that have i`sDeleted=true`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L6347) and then [writing entries that have isDeleted=false](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L6384).\
+  * In most cases, flushing to the db just requires first [deleting entries that have i`sDeleted=true`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L6347) and then [writing entries that have isDeleted=false](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L6384).\
 
   * The core ProcessBlock function basically just applies all the txns in a block to a view via [`ConnectBlock()`](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L1688) and then [flushes it](https://github.com/deso-protocol/core/blob/135c03a/lib/blockchain.go#L1725). The mempool uses a view to validate transactions as well [inside of its core `processTransaction` function](https://github.com/deso-protocol/core/blob/135c03a/lib/mempool.go#L1402).\
 
 * We can walk through connecting an UpdateProfile transaction to see how it works.\
 
-  * `_connectTransaction` delegates to [`_connectUpdateProfile`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L5069)\`\`\
+  * `_connectTransaction` delegates to [`_connectUpdateProfile`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L5069)\`\`\
 
-  * [A bunch of validation happens](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L4069)\
+  * [A bunch of validation happens](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L4069)\
 
-  * UTXO's are generally always checked by a call to [`_connectBasicTransfer`](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L4129), which returns the total input and output of the transaction.\
+  * UTXO's are generally always checked by a call to [`_connectBasicTransfer`](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L4129), which returns the total input and output of the transaction.\
 
-  * An existing profile entry is [looked up](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L4108) if one exists. If it exists, it is updated. Otherwise, a new one is created from scratch.
-    * Updating an existing profile happens [here](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L4154) while creating a new one happens [here](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L4195).\
+  * An existing profile entry is [looked up](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L4108) if one exists. If it exists, it is updated. Otherwise, a new one is created from scratch.
+    * Updating an existing profile happens [here](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L4154) while creating a new one happens [here](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L4195).\
 
-  * In both cases, mappings for the profile are first [deleted from the view](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L4242) and then [set on the view](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L4246).\
+  * In both cases, mappings for the profile are first [deleted from the view](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L4242) and then [set on the view](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L4246).\
 
     * Note that deleting something from the view never actually deletes a mapping, it only marks it as `isDeleted=true`.\
       \
       This is because the flush needs to propagate this change to the db, and it can only do that if it knows the entry is scheduled to be deleted by leaving it in the view.\
 
-  * Finally, [some information is saved](https://github.com/deso-protocol/core/blob/135c03a/lib/block\_view.go#L4249) that allows us to roll back or "disconnect" the transaction in the future if needed.\
+  * Finally, [some information is saved](https://github.com/deso-protocol/core/blob/135c03a/lib/block_view.go#L4249) that allows us to roll back or "disconnect" the transaction in the future if needed.\
 
 * Every transaction has both a `_connect` and a `_disconnect`.\
   \
