@@ -22,13 +22,9 @@ Today's blockchains are not currently equipped to handle the storage and indexin
 
 To use an analogy from the centralized world, **the infrastructure that powers the New York Stock Exchange today is vastly different from that which powers Facebook, Instagram, or Twitter** — they have completely different architectures tailored to support their respective applications at a massive scale.
 
-Similarly, our thesis with DeSo is that a blockchain that can scale decentralized social applications to one billion users will likely look vastly different than a blockchain that can scale DeFi apps to the same level.
-
-Thus, we believe the future of crypto does not consist of a single general-purpose blockchain that rules them all, but rather a series of dominant, specialized blockchains, each tailored to a particular category of applications.
-
 ## Centralization of Social Media
 
-DeSo represents a more than two-year effort to create a blockchain capable of decentralizing the social media category, and we believe it presents the first clear path to solving the existing problems that plague social media today.
+DeSo represents a more than five-year effort to create a blockchain capable of decentralizing the social media category, and we believe it presents the first clear path to solving the existing problems that plague social media today.
 
 Today, social media is even more centralized than the financial industry was, prior to the creation of Bitcoin. A handful of private companies effectively control public discourse and earn monopoly profits off of content that they don't even create.
 
@@ -75,7 +71,7 @@ Today, a post submitted to Instagram, TikTok, or Twitter belongs to these corpor
 
 In contrast, DeSo stores all of its data on a public blockchain, which means that anyone in the world can run a node that exposes their own curated feed.
 
-Today, there are [over 100 other projects](http://bithunt.com/explore) running nodes and building apps on DeSo as well.&#x20;
+Today, there are over 100 projects running nodes and building apps on DeSo as well.&#x20;
 
 ### The Future "Curator" Economy
 

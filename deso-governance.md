@@ -1,0 +1,7 @@
+# 🏛️ DeSo Governance
+
+Changes to the DeSo blockchain happen according to upgrades to its Revolution PoS consensus mechanism, which is described in detail [here](https://revolution.deso.com/) and [here](https://docs.deso.org/deso-validators/run-a-validator), with all current validators and their staking percentages listed on [the DeSo block explorer here](https://explorer.deso.com/validators).
+
+In simple terms, anyone can submit an upgrade to [DeSo’s fully open-source code](http://github.com/deso-protocol/core), but an upgrade to the DeSo blockchain goes through only if 2/3rds of the validators (weighted by stake) upgrade their software before a particular block height. This is similar to how other Proof of Stake blockchains work, such as Ethereum, and it ensures that changes to the blockchain get heavy oversight and buy-in from the major economic players in the ecosystem before they go through.
+
+For the avoidance of doubt, it is impossible to upgrade the DeSo blockchain without a 2/3rds stake-weighted majority accepting the changes, noting that the DeSo blockchain is [fully 100% open-source](https://github.com/deso-protocol/core), and that no individual owns more than 20% of the DESO in existence. Learn about the key repos and how the code works [here](https://docs.deso.org/~/changes/fDLjGJdJathPNuf23Eol/deso-repos/architecture-overview) (outdated but good) and [here](https://docs.deso.org/~/changes/fDLjGJdJathPNuf23Eol/openfund/algorithmic-trading/debugging-tips-and-code-walkthrough).

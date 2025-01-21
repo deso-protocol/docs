@@ -1,12 +1,19 @@
 # Table of contents
 
 * [🚀 DeSo Vision](README.md)
+* [🪙 DeSo Tokenomics](deso-tokenomics/README.md)
+  * [No Equity, Just Coins and Code](deso-tokenomics/no-equity-just-coins-and-code.md)
+  * [Current DESO Supply](deso-tokenomics/current-deso-supply.md)
+  * [Initial DESO Distribution](deso-tokenomics/initial-deso-distribution.md)
+  * [DESO Sinks](deso-tokenomics/deso-sinks.md)
+  * [The BMF: Burn-Maximizing Fee Mechanism](deso-tokenomics/the-bmf-burn-maximizing-fee-mechanism.md)
+  * [Designed for the End-Game](deso-tokenomics/designed-for-the-end-game.md)
+* [🏛️ DeSo Governance](deso-governance.md)
 * [⭐ DeSo Tutorial (Build Apps)](deso-tutorial-build-apps.md)
 * [📅 DeSo Roadmap](deso-roadmap.md)
 * [🛠️ DeSo Tech Stack](deso-tech-stack.md)
 * [🌐 DeSo Applications](deso-applications.md)
 * [🔍 DeSo Block Explorer](https://explorer.deso.com)
-* [🪙 DeSo Tokenomics](https://diamondapp.com/u/nader/blog/desos-tokenomics-in-depth)
 * [💸 DeSo Wallet](https://wallet.deso.com)
 * [💬 DeSo Chat Protocol](https://chat.deso.com)
 

@@ -1,0 +1,3 @@
+# Designed for the End-Game
+
+When the DeSo Blockchain was first being built, it was designed from the ground up for what the team refers to as "the end-game." Every incentive has been intensely scrutinized, and designed to be robust under a state in which the blockchain has become mature, dominant, and structurally important. It is difficult to see the impact of these design decisions now because we are in the early days of crypto, but the difference between strong tokenomic incentives and weak ones will have major impacts on society depending on which blockchain ends up winning, and the Core Team has taken this extremely seriously from the very beginning.
