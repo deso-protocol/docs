@@ -126,3 +126,18 @@
 
 * [什么是DeSo? (What is DeSo?)](zhong-wen/shi-mo-shi-deso-what-is-deso.md)
 * [愿景 (The Vision)](zhong-wen/yuan-jing-the-vision.md)
+
+## Openfund
+
+* [What is Openfund?](openfund/what-is-openfund.md)
+* [Openfund Tokenomics](openfund/openfund-tokenomics.md)
+* [Openfund Governance](openfund/openfund-governance.md)
+* [Algorithmic Trading](openfund/algorithmic-trading/README.md)
+  * [Creating DeSo Testnet Accounts](openfund/algorithmic-trading/creating-deso-testnet-accounts.md)
+  * [Debugging Tips and Code Walkthrough](openfund/algorithmic-trading/debugging-tips-and-code-walkthrough.md)
+  * [The DeSo Python SDK](openfund/algorithmic-trading/the-deso-python-sdk/README.md)
+    * [Write Blockchain Bots with AI](openfund/algorithmic-trading/the-deso-python-sdk/write-blockchain-bots-with-ai.md)
+    * [Market-Making Bots](openfund/algorithmic-trading/the-deso-python-sdk/market-making-bots.md)
+    * [Social AI Agents](openfund/algorithmic-trading/the-deso-python-sdk/social-ai-agents.md)
+    * [AI-Generating Your Code](openfund/algorithmic-trading/the-deso-python-sdk/ai-generating-your-code.md)
+* [How Do the Advanced AMMs Work?](openfund/how-do-the-advanced-amms-work.md)

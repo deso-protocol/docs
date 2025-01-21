@@ -1,4 +1,4 @@
-# 1⃣ Associations
+# 1️⃣ Associations
 
 A social network can be visualized as an undirected graph with users and posts acting as nodes and their interactions acting as the edges connecting them.
 
@@ -16,7 +16,7 @@ And in total, we've introduced **4 new distinct transaction types** on the DeSo 
 * _CREATE\_POST\_ASSOCIATION_
 * _DELETE\_POST\_ASSOCIATION_
 
-A simple way to think of this relationship is that 1) user associations connect a user (_the transactor_) to another user (_the target user_), and 2) post associations connect a user (_the transactor_) to a post (_the target pos_t).
+A simple way to think of this relationship is that 1) user associations connect a user (_the transactor_) to another user (_the target user_), and 2) post associations connect a user (_the transactor_) to a post (_the target po&#x73;_&#x74;).
 
 In addition to the transactor and the target user or post, associations have three customizable fields:
 

@@ -79,27 +79,11 @@ Once you’ve loaded up all the repos, your GoLand “Project” panel should lo
 
 Simple:
 
-<div>
-
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1576055b-25f0-47e0-bde6-cc939c4ecd4b/Untitled.png" alt="">
-
- 
-
-<figure><img src=".gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
-
-</div>
+<div><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1576055b-25f0-47e0-bde6-cc939c4ecd4b/Untitled.png" alt=""> <figure><img src=".gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure></div>
 
 Advanced:
 
-<div>
-
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/839539f5-01c3-4a68-89fb-46e89aa8d919/Untitled.png" alt="">
-
- 
-
-<figure><img src=".gitbook/assets/Untitled (1).png" alt=""><figcaption></figcaption></figure>
-
-</div>
+<div><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/839539f5-01c3-4a68-89fb-46e89aa8d919/Untitled.png" alt=""> <figure><img src=".gitbook/assets/Untitled (1).png" alt=""><figcaption></figcaption></figure></div>
 
 If you chose to clone and attach all of the suggested repos (besides MegaSwap), **you actually have 100% of the code powering the DeSo blockchain sitting on your computer right now.**
 
@@ -121,7 +105,7 @@ For this, there are a couple of other tutorials that you may find interesting:
 
     * For most people, it is sufficient to simply use another node such as [node.deso.org](http://node.deso.org) to construct transactions and query.\
       \
-      _**BUT**_ if you’d like to run your own node, and download all of DeSo’s user data, including all profiles, posts, and follows from the beginning of time, then the above guide will show you how.\
+      &#xNAN;_**BUT**_ if you’d like to run your own node, and download all of DeSo’s user data, including all profiles, posts, and follows from the beginning of time, then the above guide will show you how.\
 
     * It will also show you how to build and curate your own feed, if you want.
 
@@ -165,15 +149,7 @@ To get the example app up and running, simply follow the steps from the README o
 
 Once you’re done, you should be able to visit [localhost:3000](http://localhost:3000) in an Incognito tab and see the following. We recommend you load it up in Incognito to avoid cluttering your main wallet:
 
-<div>
-
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3c22fa4-8cfa-407e-93bc-00f12eca261d/Untitled.png" alt="">
-
- 
-
-<figure><img src=".gitbook/assets/Untitled (2).png" alt=""><figcaption><p>localhost:3000</p></figcaption></figure>
-
-</div>
+<div><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3c22fa4-8cfa-407e-93bc-00f12eca261d/Untitled.png" alt=""> <figure><img src=".gitbook/assets/Untitled (2).png" alt=""><figcaption><p>localhost:3000</p></figcaption></figure></div>
 
 Once your app is running, click the “Sign and Submit Transaction” tab, and go through the process of logging in and creating a post.\
 \
@@ -208,27 +184,11 @@ To do this, go through the following steps:
 
 * You should reach this page with a couple of clicks:
 
-<div>
-
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2efb1059-5880-4b31-ac3f-ce3505fab857/Untitled.png" alt="">
-
- 
-
-<figure><img src=".gitbook/assets/Untitled (3).png" alt=""><figcaption></figcaption></figure>
-
-</div>
+<div><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2efb1059-5880-4b31-ac3f-ce3505fab857/Untitled.png" alt=""> <figure><img src=".gitbook/assets/Untitled (3).png" alt=""><figcaption></figcaption></figure></div>
 
 * Now, instead of using your phone number, click “Buy or Send $DESO Anonymously,” and scroll down to the “Transfer $DESO to your new account” section:
 
-<div>
-
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b52238b8-ff8f-4ebf-9fa3-f664c16f55f0/Untitled.png" alt="">
-
- 
-
-<figure><img src=".gitbook/assets/Untitled (4).png" alt=""><figcaption></figcaption></figure>
-
-</div>
+<div><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b52238b8-ff8f-4ebf-9fa3-f664c16f55f0/Untitled.png" alt=""> <figure><img src=".gitbook/assets/Untitled (4).png" alt=""><figcaption></figcaption></figure></div>
 
 * Now, send 0.00001 $DESO from your main account to the test account. It’s only about a hundredth of a penny, and your app will make much more than that when it’s successful don’t worry :)
   * Also, note that it says that you need to send 0.01 $DESO. Ignore that — you can get away with much less.\
@@ -255,15 +215,7 @@ We won’t go into it just yet, but it will be a key way in which users move fun
 
 To see examples of MegaSwap in action, check it out at [megaswap.xyz](https://megaswap.xyz), [Diamond](https://diamondapp.com/buy-deso), and [Openfund](https://openfund.com/wallet). Note that Diamond does a one-line [embed](https://megaswap.xyz/#/iframe/docs/v1) while Openfund uses the API documented [here](https://megaswap.xyz/#/api/docs/v1).
 
-<div>
-
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dc536ea0-d0f8-4f0b-bf88-1620e20e7bb3/Screen_Shot_2023-02-09_at_8.37.51_AM.png" alt="">
-
- 
-
-<figure><img src=".gitbook/assets/Screen Shot 2023-02-09 at 8.37.51 AM.png" alt=""><figcaption><p>MegaSwap.xyz</p></figcaption></figure>
-
-</div>
+<div><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dc536ea0-d0f8-4f0b-bf88-1620e20e7bb3/Screen_Shot_2023-02-09_at_8.37.51_AM.png" alt=""> <figure><img src=".gitbook/assets/Screen Shot 2023-02-09 at 8.37.51 AM.png" alt=""><figcaption><p>MegaSwap.xyz</p></figcaption></figure></div>
 
 ## Basic Configuration Options
 
