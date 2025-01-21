@@ -4,4 +4,4 @@ DESO is the native token of the DeSo Blockchain. It is burned as a fee on every 
 
 Simply put, the more transactions that run through the DeSo network, the more fees are burned, and the more scarce the currency. In the short-term, the APY paid to support staking is inflationary, but staking rewards will be lowered over time, and in the short-term they encourage users to stake their DESO, which also has a deflationary effect.
 
-Read the next section to learn about DeSo's founding story, initial supply distribution, and more.
+**Read the next section to learn about DeSo's founding story, initial supply distribution, and more.**
