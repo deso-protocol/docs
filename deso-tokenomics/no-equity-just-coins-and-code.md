@@ -1,6 +1,6 @@
 # No Equity, Just Coins and Code
 
-The DeSo Blockchain was bootstrapped and self-funded by [Nader Al-Naji](https://www.linkedin.com/in/nader-al-naji-86b14a3a/). In 2019, Nader recognized that special-purpose blockchains could vastly out-perform existing approaches on storage-heavy applications like social use-cases and trading. And so he set about building DeSo to address what he felt were the largest opportunities in crypto.
+The DeSo Blockchain was bootstrapped and self-funded by [Nader Al-Naji](https://www.linkedin.com/in/nader-al-naji-86b14a3a/). In 2019, Nader recognized that special-purpose blockchains could vastly out-perform existing approaches on storage-heavy applications like social use-cases and advanced trading applications. And so he set about building DeSo to address what he felt were the largest opportunities in crypto.
 
 Nader and his team, which we often refer to as the DeSo Core Team, worked on developing the blockchain from 2019 until late 2020 when they officially launched the network, and third-party nodes started running. In addition to developing the DeSo Blockchain, the team also developed the first application, called [BitClout](https://docs.bitclout.com/), which went viral and pioneered a concept now known as "Social Tokens." In early 2021, the DeSo Blockchain code was made [100% open-source](http://github.com/deso-protocol/core), solidifying DeSo as a truly decentralized layer-1 platform.
 
