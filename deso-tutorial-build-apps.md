@@ -16,7 +16,7 @@ And if all else fails, you can always get our attention by @-mentioning @nader, 
 
 Interested in using Python to construct, sign, and submit DeSo Transactions? Check out [the DeSo Python SDK](deso-tutorial-build-apps.md#the-deso-python-sdk) to get started.
 
-The tutorial that follows is concerned with setting up your dev environment for browsing the main repos, as well as for frontend development using [the DeSo Javascript sdk](https://www.npmjs.com/package/des-protocol). It's a good primer but not required if you just want to build a Python trading bot, for example.
+The tutorial that follows is concerned with setting up your dev environment for browsing the main repos, as well as for frontend development using [the DeSo Javascript sdk](https://www.npmjs.com/package/des-protocol). It's a good primer but not required if you just want to build a [Python Market-Making Bot](openfund/the-deso-python-sdk/market-making-bots.md) or a [Social AI Agent](openfund/the-deso-python-sdk/social-ai-agents.md), for example.
 
 ### Dev Setup
 
