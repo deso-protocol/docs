@@ -10,21 +10,11 @@ description: >-
 Learn about DeSo in 90-seconds — https://deso.com
 {% endembed %}
 
-## Moving from DeFi to DeSo <a href="#moving-from-defi-to-deso" id="moving-from-defi-to-deso"></a>
+## Scaling From DeFi to DeSo <a href="#moving-from-defi-to-deso" id="moving-from-defi-to-deso"></a>
 
-In this paper, we introduce DeSo, short for "**decentralized social**" the first and only blockchain custom-built from the ground up to power and scale a new category of decentralized social applications to one billion users.
-
-While much research has been dedicated to scaling "_decentralized finance_" or "_DeFi_" applications, relatively little has been invested in building blockchains that can scale social media applications, even though the latter category is arguably just as large, if not larger, and holds just as much promise for value creation.
-
-Moreover, while several **general-purpose blockchains (Ethereum, Solana, Polygon, etc.)** tout their ability to scale to tens of thousands of "_transactions per second_", scaling up "_posts per second"_ is a very different problem.\
-\
-Today's blockchains are not currently equipped to handle the storage and indexing requirements of social media applications at scale.
-
-To use an analogy from the centralized world, **the infrastructure that powers the New York Stock Exchange today is vastly different from that which powers Facebook, Instagram, or Twitter** — they have completely different architectures tailored to support their respective applications at a massive scale.
+The DeSo blockchain is a layer-1 blockchain built from the ground up to power storage-heavy applications like social media use-cases and advanced trading applications. It costs over $100 to make a 200-character "Tweet" on Ethereum, and over $2 on Solana, yet only 1/10,000th of a cent on DeSo. The same goes for storing any content, including financial content like a resting limit order on an order-book exchange. This content storage advantage gives the DeSo Blockchain the unique ability to not only marry social content with crypto for the first time (see [Focus](https://focus.xyz), [docs](https://docs.google.com/document/d/14Um8ErmoE8IhgZrACSI2FeTo2yji2Q1Hxvw7KNoozM8/edit?tab=t.0)), but also to improve on core DeFi primitives like order-book exchanges and perpetuals exchanges (see [Openfund](https://openfund.com), [docs](broken-reference)).
 
 ## Centralization of Social Media
-
-DeSo represents a more than five-year effort to create a blockchain capable of decentralizing the social media category, and we believe it presents the first clear path to solving the existing problems that plague social media today.
 
 Today, social media is even more centralized than the financial industry was, prior to the creation of Bitcoin. A handful of private companies effectively control public discourse and earn monopoly profits off of content that they don't even create.
 
@@ -36,7 +26,7 @@ These problems stem from the fact that the data and content created by users tod
 
 Because only a handful of companies have access to the content, only these companies can curate competitive feeds, only these companies can build competitive new features and apps, and only these companies can monetize this content — content that isn't even created by these companies in the first place.
 
-**We're stuck in a loop:**
+We're stuck in a loop:
 
 1. Users have to use these companies' apps because they have a monopoly on the content.
 2. This forces creators into continuing to give their content up to them in order to get reach.
@@ -55,10 +45,6 @@ In particular, Bitcoin created a way to store transactions on a public ledger th
 
 Bitcoin and Ethereum have shown that dominant platforms can be built around open code and open data, rather than around private companies that monopolize their data and benefit shareholders at the expense of everyone else.
 
-Bitcoin and Ethereum don't have data moats to protect.
-
-In fact, the more open they are and the more people that build on top of them, the more value accrues to Bitcoin and Ethereum holders.
-
 This open model for software is already disrupting financial institutions all over the world, from banks to exchanges, and we think, for the first time, this model can be extended to disrupt the social media giants and their outdated ads-driven business models.
 
 If we can start putting social media content into a public blockchain, rather than giving it to a handful of private companies to monopolize, we believe we can create an economy of scale around that blockchain that is powerful enough to rival, and ultimately surpass, what the traditional social media giants have created.
@@ -70,8 +56,6 @@ In some sense, we can solve a collective action problem among independent publis
 Today, a post submitted to Instagram, TikTok, or Twitter belongs to these corporations, rather than the creator who posted it. And the monetization goes predominantly to these corporations as a result.
 
 In contrast, DeSo stores all of its data on a public blockchain, which means that anyone in the world can run a node that exposes their own curated feed.
-
-Today, there are over 100 projects running nodes and building apps on DeSo as well.&#x20;
 
 ### The Future "Curator" Economy
 
