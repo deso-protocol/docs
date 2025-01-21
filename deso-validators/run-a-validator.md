@@ -4,23 +4,27 @@ description: Instructions on how to stake/unstake $DESO and run a validator
 
 # 1️⃣ Run a Validator
 
+## Getting Help from the Community <a href="#h.7vr9ab79ocun" id="h.7vr9ab79ocun"></a>
+
+If you get stuck at any point, [go here for help](run-a-validator.md#h.7vr9ab79ocun).
+
 ## Video Walkthroughs <a href="#h.7vr9ab79ocun" id="h.7vr9ab79ocun"></a>
 
 * [An Overview of DeSo](https://www.google.com/url?q=https://www.youtube.com/watch?v%3DKXBTlSryNwA\&sa=D\&source=editors\&ust=1720503194993230\&usg=AOvVaw1P4wF7ok3tOeGmN-FKLMRZ)
 * [Staking and Unstaking $DESO](https://www.google.com/url?q=https://www.youtube.com/watch?v%3DViIJ6VMRENo%26feature%3Dyoutu.be\&sa=D\&source=editors\&ust=1720503194993554\&usg=AOvVaw3SVx-lR6a6m0H3uP22DrRP)
   * For Mainnet, use [explorer.deso.com/validators](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503194993782\&usg=AOvVaw3NjwImbq8S6SWdBCkxmD29)
-  * For Testnet, use [explorer-testnet.deso.com/validators](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503194993913\&usg=AOvVaw3RckY4HfuGm\_FICSfw79DX)
+  * For Testnet, use [explorer-testnet.deso.com/validators](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503194993913\&usg=AOvVaw3RckY4HfuGm_FICSfw79DX)
 * [Running a Node and Validator](https://www.google.com/url?q=https://www.loom.com/share/8ea0dc18fe204678b2665fecbafbf874?sid%3D37ab0e0e-ec1c-4530-bda4-c8b314298dbf\&sa=D\&source=editors\&ust=1720503194994260\&usg=AOvVaw3SnpLWshcbt-2HFkSBGDAA)
-  * IMPORTANT: [See updates and extra notes here](https://www.google.com/url?q=https://docs.google.com/document/d/1q39rKRgua-rLSCbq842elIu\_V7siRn-2aMn\_c3IG3ag/edit\&sa=D\&source=editors\&ust=1720503194994542\&usg=AOvVaw1Vb6ief8J7S9Aqfi8VjJBv)
+  * IMPORTANT: [See updates and extra notes here](https://www.google.com/url?q=https://docs.google.com/document/d/1q39rKRgua-rLSCbq842elIu_V7siRn-2aMn_c3IG3ag/edit\&sa=D\&source=editors\&ust=1720503194994542\&usg=AOvVaw1Vb6ief8J7S9Aqfi8VjJBv)
 
 ## Getting Started <a href="#h.vaab5azenvay" id="h.vaab5azenvay"></a>
 
 * **Background:**
-  * [What is DeSo?](https://www.google.com/url?q=https://deso.com\&sa=D\&source=editors\&ust=1720503194994945\&usg=AOvVaw1S11-Ld78F-rvbliLTG7l\_)
+  * [What is DeSo?](https://www.google.com/url?q=https://deso.com\&sa=D\&source=editors\&ust=1720503194994945\&usg=AOvVaw1S11-Ld78F-rvbliLTG7l_)
   * [Our vision](https://www.google.com/url?q=https://docs.deso.org/\&sa=D\&source=editors\&ust=1720503194995143\&usg=AOvVaw1cogkeRRdSE96QMD5Vx9Ti)
   * [Current roadmap](https://www.google.com/url?q=https://docs.deso.org/deso-roadmap\&sa=D\&source=editors\&ust=1720503194995361\&usg=AOvVaw3fK3gPElyr-nNiQb27o9eB)
   * [Focus](https://www.google.com/url?q=https://focus.xyz\&sa=D\&source=editors\&ust=1720503194995538\&usg=AOvVaw27wq2Q6CzCsenzeloRCszV) (Coming Soon!)
-  * [What is Revolution Proof of Stake?](https://www.google.com/url?q=https://revolution.deso.com/\&sa=D\&source=editors\&ust=1720503194995749\&usg=AOvVaw0usuSgK\_Mmq3Tswwa2Y0hm)
+  * [What is Revolution Proof of Stake?](https://www.google.com/url?q=https://revolution.deso.com/\&sa=D\&source=editors\&ust=1720503194995749\&usg=AOvVaw0usuSgK_Mmq3Tswwa2Y0hm)
     * 1 second confirmation times
     * 500 posts per second (\~10% of Twitter Scale)
     * 20% APY
@@ -28,46 +32,46 @@ description: Instructions on how to stake/unstake $DESO and run a validator
     * Quick-unstaking
     * Burn-maximizing fees
     * Fully permission-less and decentralized
-  * [Resources](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo\_75o8md0RNwFguF\_FeUEG\_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr\_S89Ml/pub#h.gcb427f1q4hl)
+  * [Resources](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo_75o8md0RNwFguF_FeUEG_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr_S89Ml/pub#h.gcb427f1q4hl)
 * **Staking:**
-  * [Staking Your $DESO](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo\_75o8md0RNwFguF\_FeUEG\_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr\_S89Ml/pub#h.1owmq1kzue21)
-  * [Unstaking your $DESO](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo\_75o8md0RNwFguF\_FeUEG\_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr\_S89Ml/pub#h.qe2fcaayxtb)
+  * [Staking Your $DESO](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo_75o8md0RNwFguF_FeUEG_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr_S89Ml/pub#h.1owmq1kzue21)
+  * [Unstaking your $DESO](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo_75o8md0RNwFguF_FeUEG_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr_S89Ml/pub#h.qe2fcaayxtb)
 * **Running a Node & Validator**
-  * [Running a Node](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo\_75o8md0RNwFguF\_FeUEG\_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr\_S89Ml/pub#h.85kweyti5tlv)
-  * [Running a Validator](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo\_75o8md0RNwFguF\_FeUEG\_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr\_S89Ml/pub#h.79y85q98fhdi)
+  * [Running a Node](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo_75o8md0RNwFguF_FeUEG_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr_S89Ml/pub#h.85kweyti5tlv)
+  * [Running a Validator](https://docs.google.com/document/u/1/d/e/2PACX-1vTBJidczUhRBhl2hTo_75o8md0RNwFguF_FeUEG_CkooN5dMLBrGyqcXvIu5efE9iAhC8ZqRr_S89Ml/pub#h.79y85q98fhdi)
 
 ## Resources <a href="#h.gcb427f1q4hl" id="h.gcb427f1q4hl"></a>
 
 * [deso.com](https://www.google.com/url?q=https://deso.com\&sa=D\&source=editors\&ust=1720503194997379\&usg=AOvVaw1uZW3409CJ-nz6rFVhxwbR)
   * [Current roadmap](https://www.google.com/url?q=https://docs.deso.org/deso-roadmap\&sa=D\&source=editors\&ust=1720503194997648\&usg=AOvVaw0vfOQaORDWyeCq4IhN3lsD)
 * Block explorers:
-  * [Mainnet block explorer](https://www.google.com/url?q=https://explorer.deso.com\&sa=D\&source=editors\&ust=1720503194997989\&usg=AOvVaw2699kku36pIIMimwLb8-22) ([legacy explorer](https://www.google.com/url?q=https://explorer.deso.org/\&sa=D\&source=editors\&ust=1720503194998169\&usg=AOvVaw0FPzzgSwCrk3\_HUiXJOsqn))
+  * [Mainnet block explorer](https://www.google.com/url?q=https://explorer.deso.com\&sa=D\&source=editors\&ust=1720503194997989\&usg=AOvVaw2699kku36pIIMimwLb8-22) ([legacy explorer](https://www.google.com/url?q=https://explorer.deso.org/\&sa=D\&source=editors\&ust=1720503194998169\&usg=AOvVaw0FPzzgSwCrk3_HUiXJOsqn))
   * [Testnet block explorer](https://www.google.com/url?q=https://explorer-testnet.deso.com/\&sa=D\&source=editors\&ust=1720503194998461\&usg=AOvVaw1f-uKZOUvFstxKffCWOmOF) ([legacy explorer](https://www.google.com/url?q=https://explorer.deso.org/?query-node%3Dhttps:%252F%252Ftest.deso.org\&sa=D\&source=editors\&ust=1720503194998659\&usg=AOvVaw06EyOPcKqQmiiullVuswEi))
   * Note: The legacy explorer is more accurate, but much less readable. If you run into an issue with the main explorer, always check back with the legacy explorer for now.
 * Validator Hubs:
   * [Mainnet validator hub](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503194998986\&usg=AOvVaw1ACqGhRtFJnXyNCYwuPgnh)
   * [Testnet validator hub](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503194999178\&usg=AOvVaw02R496bT7UWEKd3cTdIJUs)
 * Managing funds, managing identity, and generating transactions:
-  * [The DeSo Wallet](https://www.google.com/url?q=https://wallet.deso.com/\&sa=D\&source=editors\&ust=1720503194999399\&usg=AOvVaw2\_F7oQ72XplTE0KPys7AYJ) (and the [Testnet DeSo Wallet](https://www.google.com/url?q=https://wallet-testnet.deso.com/\&sa=D\&source=editors\&ust=1720503194999536\&usg=AOvVaw2piTIS4QALfp7KGdcRdsRf))
-    * You can manage your funds here, or using the reference nodes listed below, or using any app built on DeSo, including [Diamond](https://www.google.com/url?q=https://diamondapp.com\&sa=D\&source=editors\&ust=1720503194999750\&usg=AOvVaw2b8d0uW\_3qIhSFlxoUWu8T), [Openfund](https://www.google.com/url?q=https://openfund.com\&sa=D\&source=editors\&ust=1720503194999899\&usg=AOvVaw0co2vPjWq\_2n3tALkDbaJC), and [Focus](https://www.google.com/url?q=https://focus.xyz\&sa=D\&source=editors\&ust=1720503195000027\&usg=AOvVaw2F3cQyL6bGz-qQz5qi3nmc) (Coming Soon!).
+  * [The DeSo Wallet](https://www.google.com/url?q=https://wallet.deso.com/\&sa=D\&source=editors\&ust=1720503194999399\&usg=AOvVaw2_F7oQ72XplTE0KPys7AYJ) (and the [Testnet DeSo Wallet](https://www.google.com/url?q=https://wallet-testnet.deso.com/\&sa=D\&source=editors\&ust=1720503194999536\&usg=AOvVaw2piTIS4QALfp7KGdcRdsRf))
+    * You can manage your funds here, or using the reference nodes listed below, or using any app built on DeSo, including [Diamond](https://www.google.com/url?q=https://diamondapp.com\&sa=D\&source=editors\&ust=1720503194999750\&usg=AOvVaw2b8d0uW_3qIhSFlxoUWu8T), [Openfund](https://www.google.com/url?q=https://openfund.com\&sa=D\&source=editors\&ust=1720503194999899\&usg=AOvVaw0co2vPjWq_2n3tALkDbaJC), and [Focus](https://www.google.com/url?q=https://focus.xyz\&sa=D\&source=editors\&ust=1720503195000027\&usg=AOvVaw2F3cQyL6bGz-qQz5qi3nmc) (Coming Soon!).
     * Every DeSo app, including the wallet, has access to the same blockchain data, so it doesn’t matter which app you use to manage your account.
     * Technically, your DeSo public/private keys are managed locally in your browser by the [DeSo Identity iFrame](https://www.google.com/url?q=https://docs.deso.org/deso-blockchain/privacy-and-security%23do-deso-applications-have-access-to-my-seed-phrase\&sa=D\&source=editors\&ust=1720503195000458\&usg=AOvVaw2KfbM7tqlz-hJ8umjFu3ym), which allows you to sign transactions on any app on the web (with approval). It’s exactly like MetaMask, only it doesn’t require you to install a browser extension, and it can do much more than send/receive funds.
 * [Mainnet Reference Node](https://www.google.com/url?q=https://node.deso.org/\&sa=D\&source=editors\&ust=1720503195000648\&usg=AOvVaw2xhUMmM4tvxbw2bWvtJk2X) (and the [Testnet Reference Node](https://www.google.com/url?q=https://test.deso.org/\&sa=D\&source=editors\&ust=1720503195000808\&usg=AOvVaw3cotlIKlW94MhnQ-Kbzk22))
-  * The reference nodes can generate the full set of DeSo transactions, including making posts, following users, etc…, which the wallet app may not be able to do. You can also try other nodes like [Diamond](https://www.google.com/url?q=https://diamondapp.com\&sa=D\&source=editors\&ust=1720503195001030\&usg=AOvVaw1UehhmztpzEFtLOHG9GdHo), [Openfund](https://www.google.com/url?q=https://openfund.com\&sa=D\&source=editors\&ust=1720503195001185\&usg=AOvVaw34u7yHwLqz4vjzTf4dCMAI), or [Focus](https://www.google.com/url?q=https://focus.xyz\&sa=D\&source=editors\&ust=1720503195001346\&usg=AOvVaw2\_AHi047e4-7L\_SDkY5RmG) (Coming Soon!)
+  * The reference nodes can generate the full set of DeSo transactions, including making posts, following users, etc…, which the wallet app may not be able to do. You can also try other nodes like [Diamond](https://www.google.com/url?q=https://diamondapp.com\&sa=D\&source=editors\&ust=1720503195001030\&usg=AOvVaw1UehhmztpzEFtLOHG9GdHo), [Openfund](https://www.google.com/url?q=https://openfund.com\&sa=D\&source=editors\&ust=1720503195001185\&usg=AOvVaw34u7yHwLqz4vjzTf4dCMAI), or [Focus](https://www.google.com/url?q=https://focus.xyz\&sa=D\&source=editors\&ust=1720503195001346\&usg=AOvVaw2_AHi047e4-7L_SDkY5RmG) (Coming Soon!)
   * Enter your phone number on the testnet node to get 1 testnet $DESO to test your apps with
 * Other recommended nodes:
-  * [Diamond](https://www.google.com/url?q=https://diamondapp.com\&sa=D\&source=editors\&ust=1720503195001689\&usg=AOvVaw0DsTUjcEwdlN0UBlNGvpHD), [DeSocialWorld](https://www.google.com/url?q=https://desocialworld.com\&sa=D\&source=editors\&ust=1720503195001817\&usg=AOvVaw00612Z7xHE364tngOeFZp5), [Openfund](https://www.google.com/url?q=https://openfund.com\&sa=D\&source=editors\&ust=1720503195001959\&usg=AOvVaw2\_FAO78YT90U9aY8zhtsrq), [Focus](https://www.google.com/url?q=https://focus.xyz\&sa=D\&source=editors\&ust=1720503195002111\&usg=AOvVaw0qv9xNHoEHf-1tljAOlPCV) (Coming Soon!)
+  * [Diamond](https://www.google.com/url?q=https://diamondapp.com\&sa=D\&source=editors\&ust=1720503195001689\&usg=AOvVaw0DsTUjcEwdlN0UBlNGvpHD), [DeSocialWorld](https://www.google.com/url?q=https://desocialworld.com\&sa=D\&source=editors\&ust=1720503195001817\&usg=AOvVaw00612Z7xHE364tngOeFZp5), [Openfund](https://www.google.com/url?q=https://openfund.com\&sa=D\&source=editors\&ust=1720503195001959\&usg=AOvVaw2_FAO78YT90U9aY8zhtsrq), [Focus](https://www.google.com/url?q=https://focus.xyz\&sa=D\&source=editors\&ust=1720503195002111\&usg=AOvVaw0qv9xNHoEHf-1tljAOlPCV) (Coming Soon!)
   * You can also run your own node locally on your own computer!
-* [The DeSo Docs](https://www.google.com/url?q=https://docs.deso.org/\&sa=D\&source=editors\&ust=1720503195002352\&usg=AOvVaw33W\_2S0LlUSSzVwwWFf5ck)
+* [The DeSo Docs](https://www.google.com/url?q=https://docs.deso.org/\&sa=D\&source=editors\&ust=1720503195002352\&usg=AOvVaw33W_2S0LlUSSzVwwWFf5ck)
   * Use CTRL+K to find documentation on any transaction type, or any other information you may need.
   * These docs will be refreshed after the launch of Revolution PoS on mainnet so note that some things may be out of date!
   * Good starting points:
     * [Current Roadmap](https://www.google.com/url?q=https://docs.deso.org/deso-roadmap\&sa=D\&source=editors\&ust=1720503195002740\&usg=AOvVaw0NGrUqGCR9vEjJXfN-UyrQ)
     * [List of Notable DeSo Apps](https://www.google.com/url?q=https://docs.deso.org/deso-applications\&sa=D\&source=editors\&ust=1720503195002931\&usg=AOvVaw20C2NX8OczFmw28a3uWWA2)
-    * [Building a DeSo App](https://www.google.com/url?q=https://docs.deso.org/deso-tutorial-build-apps\&sa=D\&source=editors\&ust=1720503195003131\&usg=AOvVaw1rsbzfbl\_Wzxg9rMG4JtsQ) (Getting Started)
+    * [Building a DeSo App](https://www.google.com/url?q=https://docs.deso.org/deso-tutorial-build-apps\&sa=D\&source=editors\&ust=1720503195003131\&usg=AOvVaw1rsbzfbl_Wzxg9rMG4JtsQ) (Getting Started)
     * [Architecture Overview](https://www.google.com/url?q=https://docs.deso.org/deso-repos/architecture-overview\&sa=D\&source=editors\&ust=1720503195003304\&usg=AOvVaw3E1LJx8t-3VpqyN7KlRhu-)
-* [Exchange listing API](https://www.google.com/url?q=https://docs.deso.org/deso-exchange-listings/exchange-listing-api\&sa=D\&source=editors\&ust=1720503195003573\&usg=AOvVaw2ndD5F9vsFNHmG\_lZl12NA)
-  * $DESO is currently listed on [Coinbase](https://www.google.com/url?q=https://www.coinbase.com/advanced-trade/spot/DESO-USD\&sa=D\&source=editors\&ust=1720503195003820\&usg=AOvVaw3YhNSw3s54rBVUdd2sPKvU), [Gate](https://www.google.com/url?q=https://www.gate.io/trade/DESO\_USDT?ref%3D3018394\&sa=D\&source=editors\&ust=1720503195003953\&usg=AOvVaw1-q9UFr73NIEpC6OEvPcdb), and [Huobi](https://www.google.com/url?q=https://www.htx.com/trade/deso\_usdt?invite\_code%3Dd8c53\&sa=D\&source=editors\&ust=1720503195004082\&usg=AOvVaw0RsBe-OA7PUq0fg4oG2NEq).
+* [Exchange listing API](https://www.google.com/url?q=https://docs.deso.org/deso-exchange-listings/exchange-listing-api\&sa=D\&source=editors\&ust=1720503195003573\&usg=AOvVaw2ndD5F9vsFNHmG_lZl12NA)
+  * $DESO is currently listed on [Coinbase](https://www.google.com/url?q=https://www.coinbase.com/advanced-trade/spot/DESO-USD\&sa=D\&source=editors\&ust=1720503195003820\&usg=AOvVaw3YhNSw3s54rBVUdd2sPKvU), [Gate](https://www.google.com/url?q=https://www.gate.io/trade/DESO_USDT?ref%3D3018394\&sa=D\&source=editors\&ust=1720503195003953\&usg=AOvVaw1-q9UFr73NIEpC6OEvPcdb), and [Huobi](https://www.google.com/url?q=https://www.htx.com/trade/deso_usdt?invite_code%3Dd8c53\&sa=D\&source=editors\&ust=1720503195004082\&usg=AOvVaw0RsBe-OA7PUq0fg4oG2NEq).
   * It can also be traded permissionlessly via the DeSo DEX on [Openfund](https://www.google.com/url?q=https://openfund.com/trade/deso\&sa=D\&source=editors\&ust=1720503195004269\&usg=AOvVaw08zhRM-XX39fmRl-km-dR8) or [HeroSwap](https://www.google.com/url?q=https://heroswap.com\&sa=D\&source=editors\&ust=1720503195004376\&usg=AOvVaw3UfkK1iWSFc7as6Wx5rJdl).
   * $DESO can be listed on any exchange permissionlessly using this guide.
 * [About Revolution Proof of Stake](https://www.google.com/url?q=https://revolution.deso.com/\&sa=D\&source=editors\&ust=1720503195004589\&usg=AOvVaw0TkH21kS1nNpQEVaHg8l1W)
@@ -76,7 +80,7 @@ description: Instructions on how to stake/unstake $DESO and run a validator
 
 Some info about staking with [Revolution Proof of Stake](https://www.google.com/url?q=https://revolution.deso.com/\&sa=D\&source=editors\&ust=1720503195004909\&usg=AOvVaw3QnhXsoI9Mbm1MvaZ2ZsUK):
 
-* **20% APY to start.** The APY for staking your $DESO starts at 20% and adjusts depending on how much $DESO is staked on the network. You can always see an updated APY on the validators page on the block explorer ([mainnet](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503195005157\&usg=AOvVaw3fx1mPHEsO3JaSZVXFUfX\_), [testnet](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503195005305\&usg=AOvVaw32ykBeqMktKaxRhxWq2xgi))\
+* **20% APY to start.** The APY for staking your $DESO starts at 20% and adjusts depending on how much $DESO is staked on the network. You can always see an updated APY on the validators page on the block explorer ([mainnet](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503195005157\&usg=AOvVaw3fx1mPHEsO3JaSZVXFUfX_), [testnet](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503195005305\&usg=AOvVaw32ykBeqMktKaxRhxWq2xgi))\
 
 * Revolution Proof of Stake makes a lot of improvements over state-of-the-art PoS systems, including Cosmos, Solana, and Ethereum. Some benefits of staking with Revolution are listed below:
   * **No slashing.** Revolution does not require slashing of stake. Instead, validators who are unresponsive are automatically “jailed” for a period of time, preventing them from harming consensus until they have resolved their issues. The only risk of staking to a bad validator is that you will miss out on rewards if they have downtime.\
@@ -86,13 +90,13 @@ Some info about staking with [Revolution Proof of Stake](https://www.google.com/
 
   * **Fully permissionless and decentralized.** Revolution is permissionless and does not require a minimum amount of stake to become a validator. The idea was to reproduce the level of permission-lessness of Proof of Work systems, but in a Proof of Stake context.\
 
-* Learn more about Revolution and its many other breakthroughs by reading [the docs here](https://www.google.com/url?q=https://revolution.deso.com/\&sa=D\&source=editors\&ust=1720503195005829\&usg=AOvVaw3X\_o7xnjNGHJtEXmxd3HF7).
+* Learn more about Revolution and its many other breakthroughs by reading [the docs here](https://www.google.com/url?q=https://revolution.deso.com/\&sa=D\&source=editors\&ust=1720503195005829\&usg=AOvVaw3X_o7xnjNGHJtEXmxd3HF7).
 
 **Staking your $DESO:**
 
 * For Testnet only:
   * Pick up some free testnet $DESO
-    * Visit [https://test.deso.org](https://www.google.com/url?q=https://test.deso.org\&sa=D\&source=editors\&ust=1720503195006186\&usg=AOvVaw0X21zHELERJPi6CM\_ykFgN)
+    * Visit [https://test.deso.org](https://www.google.com/url?q=https://test.deso.org\&sa=D\&source=editors\&ust=1720503195006186\&usg=AOvVaw0X21zHELERJPi6CM_ykFgN)
     * Create an account
     * When creating an account you can enter your phone number to get 1 free testnet $DESO from the faucet
     * Note that testnet $DESO does not have any value outside of the test environment!\
@@ -116,8 +120,8 @@ Some info about staking with [Revolution Proof of Stake](https://www.google.com/
 ## Unstaking your $DESO <a href="#h.qe2fcaayxtb" id="h.qe2fcaayxtb"></a>
 
 * Go back to the main validator page on the block explorer
-  * [Testnet link](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503195007487\&usg=AOvVaw3lTZ\_tdrqDn8LNuTMsAv4U)
-  * [Mainnet link](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503195007662\&usg=AOvVaw03wk4x\_yQYHDH80B2vD3Ok)
+  * [Testnet link](https://www.google.com/url?q=https://explorer-testnet.deso.com/validators\&sa=D\&source=editors\&ust=1720503195007487\&usg=AOvVaw3lTZ_tdrqDn8LNuTMsAv4U)
+  * [Mainnet link](https://www.google.com/url?q=https://explorer.deso.com/validators\&sa=D\&source=editors\&ust=1720503195007662\&usg=AOvVaw03wk4x_yQYHDH80B2vD3Ok)
 * Make sure you are logged in with the account that originally staked the $DESO
 *   Click “Unstake” on the /validators page
 
@@ -156,8 +160,8 @@ A **validator** is a node that participates in consensus. With Revolution, valid
     * CPU: 8 cores (less may be OK)
     * Disk: 500GB (less may be OK)
     * Recommended build (premium):
-      * [24-core/48-thread, 256GB RAM, 4TB NVME ssd](https://www.google.com/url?q=https://newegg.io/cb6a734d\&sa=D\&source=editors\&ust=1720503195009580\&usg=AOvVaw0lUHJo9eB3M4QW\_cHBPUsg)
-      * You will also need [this Enermax cooler for your CPU](https://www.google.com/url?q=https://www.amazon.com/gp/product/B07H778NCW/ref%3Dppx\_yo\_dt\_b\_search\_asin\_title?ie%3DUTF8%26th%3D1\&sa=D\&source=editors\&ust=1720503195009807\&usg=AOvVaw004aurDIXheyaUskDRpd0n)
+      * [24-core/48-thread, 256GB RAM, 4TB NVME ssd](https://www.google.com/url?q=https://newegg.io/cb6a734d\&sa=D\&source=editors\&ust=1720503195009580\&usg=AOvVaw0lUHJo9eB3M4QW_cHBPUsg)
+      * You will also need [this Enermax cooler for your CPU](https://www.google.com/url?q=https://www.amazon.com/gp/product/B07H778NCW/ref%3Dppx_yo_dt_b_search_asin_title?ie%3DUTF8%26th%3D1\&sa=D\&source=editors\&ust=1720503195009807\&usg=AOvVaw004aurDIXheyaUskDRpd0n)
       * If you want, you can order less RAM to make the build a bit cheaper. The CPU is tough to downsize, though, because there aren’t many that support 8 RAM slots, which is \
         what we want everyone to have for future-proofing.\
 
@@ -209,7 +213,7 @@ A **validator** is a node that participates in consensus. With Revolution, valid
 
 TODO: Make this more clear and show a video doing this on a new node from scratch.
 
-* [Go through this tutorial and checkout all the repos listed](https://www.google.com/url?q=https://docs.deso.org/deso-tutorial-build-apps\&sa=D\&source=editors\&ust=1720503195012057\&usg=AOvVaw13zbuDPqRkvR\_9Ha5Kj3X\_)
+* [Go through this tutorial and checkout all the repos listed](https://www.google.com/url?q=https://docs.deso.org/deso-tutorial-build-apps\&sa=D\&source=editors\&ust=1720503195012057\&usg=AOvVaw13zbuDPqRkvR_9Ha5Kj3X_)
 * After that you should have \*at least\* the following repos locally:
   * core
   * backend
@@ -228,7 +232,7 @@ Below are the instructions for setting up a validator. We assume you’ve read t
 
 * Testnet only:
   * First, pick up some free testnet $DESO
-  * Visit [https://test.deso.org](https://www.google.com/url?q=https://test.deso.org\&sa=D\&source=editors\&ust=1720503195012989\&usg=AOvVaw0yavsq\_hnUcwBSYYGerden)
+  * Visit [https://test.deso.org](https://www.google.com/url?q=https://test.deso.org\&sa=D\&source=editors\&ust=1720503195012989\&usg=AOvVaw0yavsq_hnUcwBSYYGerden)
   * Create an account
   * When creating an account you can enter your phone number to get 1 free testnet $DESO from the faucet
   * Note that testnet $DESO does not have any value outside of the test environment!\
@@ -275,7 +279,7 @@ Below are the instructions for setting up a validator. We assume you’ve read t
 
     * **First, generate a seed.** Your validator keypair can be generated from an ordinary 12-word seed phrase, just like the one you get on any DeSo app. You can either use one that’s associated with an existing profile or a brand new one that you designate just for PoS messages.\
 
-    * **Next, get the public key and authorization bytes.** Once you have a seed phrase you like, you need to use [this validator key generator](https://www.google.com/url?q=https://github.com/deso-protocol/validator-key-generator\&sa=D\&source=editors\&ust=1720503195015440\&usg=AOvVaw2nifvX4og\_kZSxbPNRd3W3) script to generate a voting public key and a voting authorization, which you will enter into the UI.\
+    * **Next, get the public key and authorization bytes.** Once you have a seed phrase you like, you need to use [this validator key generator](https://www.google.com/url?q=https://github.com/deso-protocol/validator-key-generator\&sa=D\&source=editors\&ust=1720503195015440\&usg=AOvVaw2nifvX4og_kZSxbPNRd3W3) script to generate a voting public key and a voting authorization, which you will enter into the UI.\
 
       * Why is this necessary? The reason is that your validator keys are BLS keys, while your standard DeSo keys are ECDSA private keys. BLS keys allow for “signature aggregation,” which is needed by Revolution PoS, and hence even if you use the same seed for both your DeSo account and your validator, you will need to use this script to generate a voting public key that is distinct from your DeSo public key.\
 
@@ -288,8 +292,8 @@ Below are the instructions for setting up a validator. We assume you’ve read t
   * **Delegated stake.** If you disable this, nobody will be able to stake to your validator except you. This is useful if you just want to run a validator to manage your own stake.\
 
   * **Announcements and Discussion Telegrams.** Please join these telegrams to get your passwords! You can register without joining these, but then you may miss out on critical updates.
-    * [Discussion Telegram](https://www.google.com/url?q=https://t.me/deso\_pos\_discussion\&sa=D\&source=editors\&ust=1720503195016353\&usg=AOvVaw0hw11KFldrvc2HpCsav4\_X)
-    * [Announcements Telegram](https://www.google.com/url?q=https://t.me/deso\_pos\_announcements\&sa=D\&source=editors\&ust=1720503195016567\&usg=AOvVaw3ZSbA4mvIz-yEnYfrmoTRo)\
+    * [Discussion Telegram](https://www.google.com/url?q=https://t.me/deso_pos_discussion\&sa=D\&source=editors\&ust=1720503195016353\&usg=AOvVaw0hw11KFldrvc2HpCsav4_X)
+    * [Announcements Telegram](https://www.google.com/url?q=https://t.me/deso_pos_announcements\&sa=D\&source=editors\&ust=1720503195016567\&usg=AOvVaw3ZSbA4mvIz-yEnYfrmoTRo)\
 
 * **Time to register!** Once you’ve filled in all the fields, hit the “Register Validator” button. This will construct and submit a transaction that links your voting public key with your node’s public domain+port and your DeSo profile (the one that you’re logged-in with). Linking all of these together on-chain makes it so that 1. other nodes can connect to your validator node and 2. people can stake to your validator node. Exciting!\
 
