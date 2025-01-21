@@ -140,7 +140,7 @@
 * [Openfund Tokenomics](openfund/openfund-tokenomics.md)
 * [Openfund Governance](openfund/openfund-governance.md)
 * [Algorithmic Trading](openfund/algorithmic-trading/README.md)
-  * [The DeSo Python SDK](https://x.com)
+  * [The DeSo Python SDK](openfund/the-deso-python-sdk/README.md)
 * [The DeSo Python SDK](openfund/the-deso-python-sdk/README.md)
   * [Getting Help from the Community](openfund/the-deso-python-sdk/getting-help-from-the-community.md)
   * [Creating DeSo Testnet Accounts](openfund/the-deso-python-sdk/creating-deso-testnet-accounts.md)

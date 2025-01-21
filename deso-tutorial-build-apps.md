@@ -12,6 +12,12 @@ If you ever run into issues while doing a swap, the [HeroSwap Support](https://t
 
 And if all else fails, you can always get our attention by @-mentioning @nader, @lazynina, @stas\_kh, or @deso on any DeSo app, such as [Openfund](https://openfund.com), [Focus](https://focus.xyz), and [Diamond](https://diamondapp.com).
 
+### The DeSo Python SDK
+
+Interested in using Python to construct, sign, and submit DeSo Transactions? Check out [the DeSo Python SDK](deso-tutorial-build-apps.md#the-deso-python-sdk) to get started.
+
+The tutorial that follows is concerned with setting up your dev environment for browsing the main repos, as well as for frontend development using [the DeSo Javascript sdk](https://www.npmjs.com/package/des-protocol). It's a good primer but not required if you just want to build a Python trading bot, for example.
+
 ### Dev Setup
 
 We recommend using a JetBrains IDE like [GoLand](https://www.jetbrains.com/go/) to get started. Even if you’re more familiar with tools like Emacs or Vim, using GoLand will make it a lot easier for us to help you debug what’s going on, and to use valuable plugins like GitHub Copilot for AI code suggestions.
