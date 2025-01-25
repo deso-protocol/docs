@@ -40,8 +40,6 @@
 * [4️⃣ Social NFTs](deso-features/social-nfts.md)
 * [5️⃣ Social Tipping](deso-features/social-tipping.md)
 
-## DeSo Repos
-
 ## DeSo Identity
 
 * [1️⃣ Identity: Overview](deso-identity/identity/README.md)
@@ -119,22 +117,6 @@
 
 * [1️⃣ Run a Validator](deso-validators/run-a-validator.md)
 
-## Contact And Media
-
-* [☀️ DeSo Website](https://deso.com)
-* [📑 DeSo Blog](https://diamondapp.com/u/deso?feedTab=Hot\&tab=blog)
-* [💻 DeSo Github](https://github.com/deso-protocol)
-* [💎 DeSo Diamond](https://diamondapp.com/u/deso)
-* [🐦 DeSo Twitter](https://twitter.com/desoprotocol)
-* [📺 DeSo YouTube](https://www.youtube.com/@desoblockchain)
-* [📬 Contact US](contact-and-media/contact-us.md)
-* [⚠️ Reporting an Account or Post](contact-and-media/reporting-an-account-or-post.md)
-
-## 中文
-
-* [什么是DeSo? (What is DeSo?)](zhong-wen/shi-mo-shi-deso-what-is-deso.md)
-* [愿景 (The Vision)](zhong-wen/yuan-jing-the-vision.md)
-
 ## Openfund
 
 * [What is Openfund?](openfund/what-is-openfund.md)
@@ -151,3 +133,19 @@
   * [Social AI Agents](openfund/the-deso-python-sdk/social-ai-agents.md)
   * [AI-Generating Your Code](openfund/the-deso-python-sdk/ai-generating-your-code.md)
 * [How Do the Advanced AMMs Work?](openfund/how-do-the-advanced-amms-work.md)
+
+## Contact And Media
+
+* [☀️ DeSo Website](https://deso.com)
+* [📑 DeSo Blog](https://diamondapp.com/u/deso?feedTab=Hot\&tab=blog)
+* [💻 DeSo Github](https://github.com/deso-protocol)
+* [💎 DeSo Diamond](https://diamondapp.com/u/deso)
+* [🐦 DeSo Twitter](https://twitter.com/desoprotocol)
+* [📺 DeSo YouTube](https://www.youtube.com/@desoblockchain)
+* [📬 Contact US](contact-and-media/contact-us.md)
+* [⚠️ Reporting an Account or Post](contact-and-media/reporting-an-account-or-post.md)
+
+## 中文
+
+* [什么是DeSo? (What is DeSo?)](zhong-wen/shi-mo-shi-deso-what-is-deso.md)
+* [愿景 (The Vision)](zhong-wen/yuan-jing-the-vision.md)
