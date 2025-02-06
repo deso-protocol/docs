@@ -1,6 +1,6 @@
 # Crypto-Native Monetization
 
-In this section, we go through some of Focus's crypto-native monetization mechanics, made possible by the micro-payment functionality that the DeSo blockchain enables.
+In this section, we go through some of Focus's crypto-native monetization mechanics, made possible by the micro-payment functionality that crypto uniquely enables.
 
 **Token trading.** On Focus, the creator of a token can set any trading fee they want, including a trading fee of 0% if they so choose. When they do so, half of this fee goes to the creator, a quarter goes to their referrer, and the final quarter is taken as fee revenue for the Focus platform. In addition, a flat 10 basis points is allocated to [the Openfund DEX](https://docs.deso.org/openfund/what-is-openfund), where users can "Advanced Trade" Focus tokens. 100% of the fee revenue portion is used to buy & burn $FOCUS tokens, and this amount is charged no matter whether the user executes the trade on Focus, on Openfund, or elsewhere (thanks to the global fee mechanics of the DeSo Blockchain).
 
