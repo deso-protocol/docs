@@ -136,11 +136,11 @@
 
 ## Focus
 
-* [The Crypto Social Network](focus/the-crypto-social-network.md)
-* [Next-Generation Token Mechanics](focus/next-generation-token-mechanics/README.md)
-  * [Launching Your Token](focus/next-generation-token-mechanics/launching-your-token.md)
-  * [How the Order-Book AMMs Work](focus/next-generation-token-mechanics/how-the-order-book-amms-work.md)
-* [Crypto-Native Social Monetization](focus/crypto-native-social-monetization.md)
+* [The Crypto Social Network](focus/what-is-focus.md)
+* [Next-Generation Token Mechanics](focus/the-next-generation-token-platform.md)
+  * [Launching Your Token](focus/launching-your-token.md)
+  * [How the Order-Book AMMs Work](focus/how-the-order-book-amms-work.md)
+* [Crypto-Native Monetization](focus/crypto-native-monetization.md)
 * [Focus Tokenomics](focus/focus-tokenomics.md)
 * [The Social Airdrop](focus/the-social-airdrop.md)
 * [Decentralizing Social Media](focus/decentralizing-social-media.md)

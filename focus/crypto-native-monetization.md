@@ -1,4 +1,4 @@
-# Crypto-Native Social Monetization
+# Crypto-Native Monetization
 
 In this section, we go through some of Focus's crypto-native monetization mechanics, made possible by the micro-payment functionality that the DeSo blockchain enables.
 
