@@ -1,4 +1,4 @@
-# Focus vs Other Token Platforms
+# The Next-Generation Token Platform
 
 Focus is a next-generation crypto-native social network, and, as such, tokens are the beating heart of the platform. Today, meme tokens have generated tens of billions in market cap, and hundreds of billions in volume, but the platforms to launch them and trade them are woefully immature. Focus was designed from the ground up, over the past two years, to take token trading to the next level. It is built by the creators of BitClout, arguably the original meme token platform, and improves significantly on all platforms that have emerged since. We'll go through each improvement over existing platforms one by one, and explain how Focus improves materially on the state of the art.
 

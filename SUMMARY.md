@@ -138,7 +138,7 @@
 
 * [What is Focus?](focus/what-is-focus.md)
 * [The Social Airdrop](focus/the-social-airdrop.md)
-* [Focus vs Other Token Platforms](focus/focus-vs-other-token-platforms.md)
+* [The Next-Generation Token Platform](focus/the-next-generation-token-platform.md)
 * [Launching Your Token](focus/launching-your-token.md)
 * [How the Order-Book AMMs Work](focus/how-the-order-book-amms-work.md)
 * [Focus Tokenomics](focus/focus-tokenomics.md)
