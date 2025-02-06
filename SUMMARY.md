@@ -136,10 +136,11 @@
 
 ## Focus
 
-* [What Is Focus?](focus/what-is-focus.md)
+* [What is Focus?](focus/what-is-focus.md)
+* [The Social Airdrop](focus/the-social-airdrop.md)
+* [Focus vs Other Token Platforms](focus/focus-vs-other-token-platforms.md)
 * [Launching Your Token](focus/launching-your-token.md)
 * [How the Order-Book AMMs Work](focus/how-the-order-book-amms-work.md)
-* [The Social Airdrop](focus/the-social-airdrop.md)
 * [Focus Tokenomics](focus/focus-tokenomics.md)
 * [Decentralizing Social Media](focus/decentralizing-social-media.md)
 
