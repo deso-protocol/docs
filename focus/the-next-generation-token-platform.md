@@ -1,6 +1,6 @@
 # Next-Generation Token Mechanics
 
-Focus is a next-generation crypto-native social network that provides creators a whole host of new ways to monetize with crypto. This section explains its advanced token launch mechanics, but in later sections we'll discuss tipping, subscriptions, unlockable content, paid DMs, and more.
+Focus pioneers many new crypto-native ways for creators to monetize with crypto. This section explains its advanced token launch mechanics, but in later sections we'll discuss tipping, subscriptions, unlockable content, paid DMs, and more.
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
