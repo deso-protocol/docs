@@ -1,7 +1,5 @@
 # Launching Your Token
 
-The first thing to understand about Focus is that all tokens have on-chain profiles, stored on the DeSo blockchain, like [this one](https://focus.xyz/JianYang). This allows token creators to set a description, but it also allows them to make posts, gain a following, show off the assets in their wallet, etc... Perhaps most importantly, because every token has a profile, every token also has a unique human-readable username that is also their ticker. To see any token's profile, simply navigate to focus.xyz/{username}, eg [focus.xyz/JianYang](https://focus.xyz/JianYang).
-
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdi8De1w_D29U2LswTS4mWdy8U0LKQq7YcRkXZ8hrhS6NCGi5oQZNurqLdeETN29xTxixCzpDr9X7RoVaEzx_v4hQYhYm5Wj8YSCgB1yGibiREyZf5_BEEpF-BTuWYxUqi8HZ8P6g?key=0P_5h4lc0AvHuJMCOd-Jug3Z" alt=""><figcaption></figcaption></figure>
 
 Launching a token is a strictly optional additional step that comes after creating a profile. Once you've created a normal account on focus.xyz by going through the onboarding flow, you can use Focus like an ordinary social network (but where everything is stored on-chain and powered by crypto), or you can additionally launch a token.
