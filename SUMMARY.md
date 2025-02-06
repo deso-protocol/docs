@@ -134,6 +134,15 @@
   * [AI-Generating Your Code](openfund/the-deso-python-sdk/ai-generating-your-code.md)
 * [How Do the Advanced AMMs Work?](openfund/how-do-the-advanced-amms-work.md)
 
+## Focus
+
+* [What Is Focus?](focus/what-is-focus.md)
+* [Launching Your Token](focus/launching-your-token.md)
+* [How the Order-Book AMMs Work](focus/how-the-order-book-amms-work.md)
+* [The Social Airdrop](focus/the-social-airdrop.md)
+* [Focus Tokenomics](focus/focus-tokenomics.md)
+* [Decentralizing Social Media](focus/decentralizing-social-media.md)
+
 ## Contact And Media
 
 * [☀️ DeSo Website](https://deso.com)

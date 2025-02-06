@@ -1,0 +1,7 @@
+# Decentralizing Social Media
+
+The Focus platform stores all of its content on the DeSo blockchain, [whose code is 100% open-source](https://github.com/deso-protocol). This means that, just like with Bitcoin, anyone on the internet can [run a DeSo node](https://github.com/deso-protocol/run) that serves the Focus content, and every node on the network stores a full copy of all the data. This also means that anybody can build apps on top of the Focus data without the risk of being de-platformed, and they can even create their own completely novel UX’es and their own feed algorithms. You can learn more about the DeSo vision [here](https://docs.deso.org/).
+
+**What information is stored on-chain? Basically all of it.** Every profile, every post, every engagement, every follow, every DM (encrypted), every token holding, and on and on... As we built out Focus, we strived to make it so that every single feature, including complex features like paid reposts and unlockable content, is a feature that a third-party app could permissionlessly provide an interface to, based solely on the data that’s available on-chain. No walled gardens, no “data moats,” no BS.
+
+In the same way that you can move Bitcoin from one wallet to another, DeSo makes it so that you can move your identity and content, in the form of your profile, followers, posts, token balances, etc anywhere as well. Thus, in some sense, we hope Focus and DeSo will decentralize social media in much the same way as Bitcoin is decentralizing the financial system.
