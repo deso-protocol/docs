@@ -1,6 +1,6 @@
 # What is Focus?
 
-Focus is a new type of social network that mixes crypto speculation and social media. Focus is built from the ground up on the state-of-the-art Decentralized Social blockchain, aka [DeSo](https://deso.com), which is backed by Sequoia, Social Capital, Andreessen Horowitz, and Coinbase Ventures. Focus introduces new ways for creators to monetize and leverages a new kind of viral mechanic we call the social airdrop to maximize retention and solve the cold-start problem.
+Focus is a new type of social network that mixes crypto speculation and social media. It introduces new ways for creators to monetize with crypto and leverages a new kind of viral mechanic we call the social airdrop to maximize retention and solve the cold-start problem. Focus is built from the ground up on the state-of-the-art Decentralized Social blockchain, aka [DeSo](https://deso.com).
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeLi6tcVR_rRNcR6k8MF_L13o6mZgux0Q8JnN-dj8ICm7rNBZ1x3iXIaMJ8xE4ibTRrod8bSqiNHCrI2nnV663nVo4uVMn5Fm-kvFv_EVZUJLd_QLm1wxJVBC_kY4tZKtzho3f3AXy-HB2DVKlv?key=OiaN1IqwlJgquq4Id8kYZA" alt=""><figcaption></figcaption></figure>
 
