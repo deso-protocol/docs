@@ -4,7 +4,7 @@ Focus pioneers many new crypto-native ways for creators to monetize with crypto.
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-Today, meme tokens have generated tens of billions in market cap, and hundreds of billions in volume, but the platforms to launch them and trade them are woefully immature. Focus was designed from the ground up, over the past two years, to take token trading to the next level. It is built by the creators of BitClout, arguably the original meme token platform, and improves significantly on all platforms that have emerged since. We'll go through each improvement over existing platforms one by one, and explain how Focus improves materially on the state of the art.
+Today, meme tokens have generated tens of billions in market cap, and hundreds of billions in volume, but the platforms to launch them and trade them are woefully immature. Focus was designed from the ground up, over the past two years, to take token trading to the next level, and to add a much-needed social element to it. It is built by the creators of BitClout, arguably the original meme token platform, and improves significantly on all platforms that have emerged since. We'll go through each improvement over existing platforms one by one, and explain how Focus improves materially on the state of the art.
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdtElfo_Q9pACePRpcwCR3bzpGCyOM3G1kSL-9ur85GbrF38PZzgB2jqTBxKifwx2W9Q7k5z1sOof9uaSokW5QUUyYMjYIIU8zg9LlclTH_ox-JaPZhiCAnsGQm5MybX5GA05tnvw?key=0P_5h4lc0AvHuJMCOd-Jug3Z" alt=""><figcaption></figcaption></figure>
 
