@@ -124,3 +124,9 @@ With your help, we hope to build the DeSo blockchain into an enduring positive f
 After much thought over the past several years, we are convinced that the pendulum will swing back toward decentralization, perhaps permanently, and we all have an opportunity to be a part of that.
 
 A new generation of applications that the entire world can build collaboratively, unlocking the full potential of human ingenuity.
+
+### Have more questions?
+
+DeepWiki (powered by Devin AI) provides up-to-date documentation you can talk to for this repo, click the button below to try it out.
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/deso-protocol/docs)
