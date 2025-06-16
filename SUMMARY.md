@@ -57,6 +57,10 @@
 * [1️⃣ Frontend: Get Started](deso-frontend/exchange-listing-api.md)
 * [2️⃣ Frontend: React Example](deso-frontend/exchange-listing-api-1.md)
 
+***
+
+* [3️⃣ Frontend: NextJS Example](frontend-nextjs-example.md)
+
 ## DESO BACKEND
 
 * [1️⃣ Backend: Config](deso-backend/configuration/README.md)
