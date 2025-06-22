@@ -34,7 +34,7 @@ We also want the iframe window to be on top of your application and take the ent
 
 You should modify the `z-index` attribute to fit your application. In case that we will have to show the iframe to the user, you will set the attribute `display: block`
 
-For example, `document.getElementById("identity.style.display = "block");`
+For example, `document.getElementById("identity").style.display = "block"`
 
 ## Messages
 
